@@ -1,6 +1,6 @@
 # Jade Garden Tiles
 
-A portrait-first Phaser 3 match-three game with Mahjong top/side accessibility, an atomic four-slot tray, 30 deterministic levels, 12 rotating collections, approved optional audio, an offline leaderboard, and a mock-only economy preview. Fruit and Cars currently use twelve original premium raster symbols; the remaining sixty symbols retain the procedural fallback pending human visual approval.
+A portrait-first Phaser 3 match-three game with Mahjong top/side accessibility, an atomic four-slot tray, 30 deterministic levels, 12 rotating collections, approved optional audio, private on-device records, and a mock-only economy catalog. The six reference-backed collections (Fruit, Cars, Sports, Auto Parts, Wild Animals, and Pets) use 36 original premium raster symbols. The remaining 36 symbols retain the procedural fallback pending production artwork and human visual approval.
 
 ## Run and verify
 
@@ -24,7 +24,7 @@ src/
   data/      12 collections/materials and 30 level configurations
   game/      Tile visual, BoardManager, atomic SlotManager
   logic/     pure tray reducer, accessibility, generator, solver, scoring rules
-  scenes/    boot, home, levels, game, shop, leaderboard, rewards
+  scenes/    boot, home, levels, game, test shop, local records, rewards
   systems/   resilient save migration and progression (no audio runtime)
   ui/        responsive projection, reusable controls and animated modal
 tests/       tray invariants, solver/occlusion, progression and layout
@@ -36,4 +36,4 @@ The third identical tray entry is removed from logical state synchronously befor
 
 The app uses a full-viewport Phaser RESIZE canvas with a 540×960 design camera, felt extension around long/tablet aspect ratios, safe board/tray regions, and CSS notch insets. Fredoka, Poppins and Cairo load before screen layout with a bounded fallback timeout. Approved SFX and two ambient beds are centrally managed with separate persisted Music and SFX controls, quiet defaults, gesture unlock, voice caps, lifecycle recovery, and a fully muted mode.
 
-Economy features are deliberately local mock/test implementations. There are no payment-provider, ad-network, or server-authoritative operations. See `docs/MOCK_ECONOMY.md` and `docs/SAVE_MIGRATION.md` before changing persistence or enabling external services.
+Economy features are deliberately local mock/test implementations. There are no payment-provider, ad-network, Supabase, or server-authoritative operations. The Records screen shows only this device's saved results; it does not simulate online players or ranks. See `docs/MOCK_ECONOMY.md` and `docs/SAVE_MIGRATION.md` before changing persistence or enabling external services.

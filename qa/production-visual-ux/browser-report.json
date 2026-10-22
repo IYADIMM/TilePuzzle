@@ -1,0 +1,251 @@
+{
+  "generatedAt": "2026-10-22T19:54:00.043Z",
+  "passed": true,
+  "visualAcceptance": "PENDING_USER_REVIEW",
+  "commercialReadiness": "INTERNAL_ALPHA",
+  "performance": {
+    "fps": 61,
+    "averageFrameMs": 16.66,
+    "maxFrameMs": 16.8,
+    "textureCount": 113,
+    "canvas": [
+      390,
+      844
+    ]
+  },
+  "pointerInteraction": {
+    "count": 36,
+    "first": [
+      {
+        "id": "L1-T24",
+        "x": 300,
+        "y": 235
+      },
+      {
+        "id": "L1-T22",
+        "x": 95,
+        "y": 235
+      },
+      {
+        "id": "L1-T31",
+        "x": 232,
+        "y": 284
+      }
+    ],
+    "last": [
+      {
+        "id": "L1-T11",
+        "x": 193,
+        "y": 392
+      },
+      {
+        "id": "L1-T8",
+        "x": 193,
+        "y": 553
+      },
+      {
+        "id": "L1-T18",
+        "x": 193,
+        "y": 457
+      }
+    ]
+  },
+  "debugFacts": {
+    "enabled": true,
+    "labels": 36,
+    "reasons": [
+      "top-blocked",
+      "selectable"
+    ]
+  },
+  "rewardFacts": {
+    "activeScenes": [
+      "Reward"
+    ],
+    "saved": {
+      "score": 2400,
+      "stars": 3,
+      "bestTime": 44
+    }
+  },
+  "captures": [
+    {
+      "name": "gameplay-fruit-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\production-visual-ux\\gameplay-fruit-390x844.png",
+      "theme": "fruits",
+      "tileCount": 36,
+      "premiumIcons": 36,
+      "premiumBodies": 36,
+      "tile": [
+        88,
+        77
+      ],
+      "span": [
+        379,
+        466
+      ],
+      "selectable": 15
+    },
+    {
+      "name": "gameplay-cars-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\production-visual-ux\\gameplay-cars-390x844.png",
+      "theme": "cars",
+      "tileCount": 36,
+      "premiumIcons": 36,
+      "premiumBodies": 36,
+      "tile": [
+        88,
+        77
+      ],
+      "span": [
+        379,
+        466
+      ],
+      "selectable": 14
+    },
+    {
+      "name": "gameplay-sports-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\production-visual-ux\\gameplay-sports-390x844.png",
+      "theme": "sports",
+      "tileCount": 39,
+      "premiumIcons": 39,
+      "premiumBodies": 39,
+      "tile": [
+        88,
+        77
+      ],
+      "span": [
+        379,
+        466
+      ],
+      "selectable": 13
+    },
+    {
+      "name": "gameplay-auto-parts-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\production-visual-ux\\gameplay-auto-parts-390x844.png",
+      "theme": "auto-parts",
+      "tileCount": 39,
+      "premiumIcons": 39,
+      "premiumBodies": 39,
+      "tile": [
+        88,
+        76
+      ],
+      "span": [
+        379,
+        461
+      ],
+      "selectable": 11
+    },
+    {
+      "name": "gameplay-wild-animals-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\production-visual-ux\\gameplay-wild-animals-390x844.png",
+      "theme": "wild-animals",
+      "tileCount": 42,
+      "premiumIcons": 42,
+      "premiumBodies": 42,
+      "tile": [
+        88,
+        76
+      ],
+      "span": [
+        379,
+        461
+      ],
+      "selectable": 10
+    },
+    {
+      "name": "gameplay-pets-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\production-visual-ux\\gameplay-pets-390x844.png",
+      "theme": "pets",
+      "tileCount": 42,
+      "premiumIcons": 42,
+      "premiumBodies": 42,
+      "tile": [
+        88,
+        76
+      ],
+      "span": [
+        379,
+        461
+      ],
+      "selectable": 11
+    },
+    {
+      "name": "responsive-fruit-360x640",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\production-visual-ux\\responsive-fruit-360x640.png",
+      "viewport": {
+        "width": 360,
+        "height": 640
+      }
+    },
+    {
+      "name": "responsive-fruit-430x932",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\production-visual-ux\\responsive-fruit-430x932.png",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      }
+    },
+    {
+      "name": "responsive-fruit-768x1024",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\production-visual-ux\\responsive-fruit-768x1024.png",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      }
+    },
+    {
+      "name": "tutorial-free-edge-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\production-visual-ux\\tutorial-free-edge-390x844.png"
+    },
+    {
+      "name": "home-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\production-visual-ux\\home-390x844.png"
+    },
+    {
+      "name": "level-journey-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\production-visual-ux\\level-journey-390x844.png"
+    },
+    {
+      "name": "test-shop-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\production-visual-ux\\test-shop-390x844.png"
+    },
+    {
+      "name": "local-records-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\production-visual-ux\\local-records-390x844.png"
+    },
+    {
+      "name": "audio-settings-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\production-visual-ux\\audio-settings-390x844.png"
+    },
+    {
+      "name": "debug-blocker-logic-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\production-visual-ux\\debug-blocker-logic-390x844.png",
+      "enabled": true,
+      "labels": 36,
+      "reasons": [
+        "top-blocked",
+        "selectable"
+      ]
+    },
+    {
+      "name": "genuine-pointer-level-complete-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\production-visual-ux\\genuine-pointer-level-complete-390x844.png",
+      "activeScenes": [
+        "Reward"
+      ],
+      "saved": {
+        "score": 2400,
+        "stars": 3,
+        "bestTime": 44
+      }
+    }
+  ],
+  "errors": [],
+  "limitations": [
+    "Six remaining collections still use procedural icon fallbacks.",
+    "Material-specific raster tile bodies are not yet produced for all 12 materials.",
+    "Visual approval belongs to the user and is not inferred from automated checks."
+  ]
+}

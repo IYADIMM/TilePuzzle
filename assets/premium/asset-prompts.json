@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "generator": "built-in image_gen",
   "references": [
     "Jade_Garden_Codex_Visual_Evidence_Pack/references/01_approved_asset_style.png",
@@ -25,5 +25,11 @@
     "car-race.png": "One blue professional race car with white stripes, wing and number 7.",
     "car-taxi.png": "One yellow city taxi sedan with roof sign and checker stripe.",
     "car-convertible.png": "One red open-top roadster with folded roof and cream seats."
+  },
+  "phase2Masters": {
+    "sports-master-v2.png": "Six isolated premium sports symbols in a 3x2 transparent grid: soccer, basketball, tennis, baseball, football, trophy.",
+    "auto-parts-master-v2.png": "Six isolated premium auto-part symbols in a 3x2 transparent grid: gear, spark plug, tire, piston, steering wheel, brake disc.",
+    "wild-animals-master-v2.png": "Six isolated premium wildlife symbols in a 3x2 transparent grid: lion, elephant, zebra, giraffe, tiger, panda.",
+    "pets-master-v2.png": "Six isolated premium pet symbols in a 3x2 transparent grid: puppy, kitten, rabbit, hamster, parrot, goldfish."
   }
 }

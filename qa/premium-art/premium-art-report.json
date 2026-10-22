@@ -1,83 +1,159 @@
 {
   "passed": true,
-  "allLoaded": true,
-  "fruit": {
-    "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\premium-art\\fruit-runtime.png",
-    "runtime": {
-      "keys": {
-        "premium:tile-body": true,
-        "premium:tray-four-slot": true,
-        "premium:button-mahogany": true,
-        "icon:cherries": true,
-        "icon:orange": true,
-        "icon:strawberry": true,
-        "icon:pineapple": true,
-        "icon:watermelon": true,
-        "icon:grapes": true,
-        "icon:sports-car": true,
-        "icon:vintage-car": true,
-        "icon:suv": true,
-        "icon:race-car": true,
-        "icon:taxi": true,
-        "icon:convertible": true
-      },
-      "premiumBodies": 36,
-      "premiumIconTiles": 36,
-      "boardTypeIds": [
-        "watermelon",
-        "grapes",
-        "cherries",
-        "strawberry",
-        "orange",
-        "pineapple"
-      ],
-      "trayTexture": "premium:tray-four-slot",
-      "canvas": [
-        390,
-        844
-      ]
+  "technicalIntegration": "PASSED",
+  "visualAcceptance": "PENDING_USER_REVIEW",
+  "collections": [
+    {
+      "level": 1,
+      "id": "fruit",
+      "reference": "07_collection_fruit_garden.png",
+      "liveFile": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\premium-art\\fruit-runtime.png",
+      "comparisonFile": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\premium-art\\fruit-direction-vs-runtime.png",
+      "runtime": {
+        "typeIds": [
+          "watermelon",
+          "grapes",
+          "cherries",
+          "strawberry",
+          "orange",
+          "pineapple"
+        ],
+        "premiumBodies": 36,
+        "premiumIcons": 36,
+        "tileCount": 36,
+        "trayTexture": "premium:tray-four-slot",
+        "canvas": [
+          390,
+          844
+        ]
+      }
+    },
+    {
+      "level": 2,
+      "id": "cars",
+      "reference": "08_collection_dream_garage.png",
+      "liveFile": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\premium-art\\cars-runtime.png",
+      "comparisonFile": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\premium-art\\cars-direction-vs-runtime.png",
+      "runtime": {
+        "typeIds": [
+          "suv",
+          "sports-car",
+          "taxi",
+          "convertible",
+          "vintage-car",
+          "race-car"
+        ],
+        "premiumBodies": 36,
+        "premiumIcons": 36,
+        "tileCount": 36,
+        "trayTexture": "premium:tray-four-slot",
+        "canvas": [
+          390,
+          844
+        ]
+      }
+    },
+    {
+      "level": 3,
+      "id": "sports",
+      "reference": "09_collection_champions_club.png",
+      "liveFile": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\premium-art\\sports-runtime.png",
+      "comparisonFile": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\premium-art\\sports-direction-vs-runtime.png",
+      "runtime": {
+        "typeIds": [
+          "baseball",
+          "basketball",
+          "trophy",
+          "tennis",
+          "soccer",
+          "football"
+        ],
+        "premiumBodies": 39,
+        "premiumIcons": 39,
+        "tileCount": 39,
+        "trayTexture": "premium:tray-four-slot",
+        "canvas": [
+          390,
+          844
+        ]
+      }
+    },
+    {
+      "level": 4,
+      "id": "auto-parts",
+      "reference": "10_collection_master_garage.png",
+      "liveFile": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\premium-art\\auto-parts-runtime.png",
+      "comparisonFile": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\premium-art\\auto-parts-direction-vs-runtime.png",
+      "runtime": {
+        "typeIds": [
+          "tire",
+          "steering-wheel",
+          "brake-disc",
+          "gear",
+          "spark-plug",
+          "piston"
+        ],
+        "premiumBodies": 39,
+        "premiumIcons": 39,
+        "tileCount": 39,
+        "trayTexture": "premium:tray-four-slot",
+        "canvas": [
+          390,
+          844
+        ]
+      }
+    },
+    {
+      "level": 5,
+      "id": "wild-animals",
+      "reference": "11_collection_wild_safari.png",
+      "liveFile": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\premium-art\\wild-animals-runtime.png",
+      "comparisonFile": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\premium-art\\wild-animals-direction-vs-runtime.png",
+      "runtime": {
+        "typeIds": [
+          "lion",
+          "panda",
+          "tiger",
+          "zebra",
+          "giraffe",
+          "elephant"
+        ],
+        "premiumBodies": 42,
+        "premiumIcons": 42,
+        "tileCount": 42,
+        "trayTexture": "premium:tray-four-slot",
+        "canvas": [
+          390,
+          844
+        ]
+      }
+    },
+    {
+      "level": 6,
+      "id": "pets",
+      "reference": "12_collection_cozy_companions.png",
+      "liveFile": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\premium-art\\pets-runtime.png",
+      "comparisonFile": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\premium-art\\pets-direction-vs-runtime.png",
+      "runtime": {
+        "typeIds": [
+          "parrot",
+          "kitten",
+          "goldfish",
+          "rabbit",
+          "puppy",
+          "hamster"
+        ],
+        "premiumBodies": 42,
+        "premiumIcons": 42,
+        "tileCount": 42,
+        "trayTexture": "premium:tray-four-slot",
+        "canvas": [
+          390,
+          844
+        ]
+      }
     }
-  },
-  "cars": {
-    "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\premium-art\\cars-runtime.png",
-    "runtime": {
-      "keys": {
-        "premium:tile-body": true,
-        "premium:tray-four-slot": true,
-        "premium:button-mahogany": true,
-        "icon:cherries": true,
-        "icon:orange": true,
-        "icon:strawberry": true,
-        "icon:pineapple": true,
-        "icon:watermelon": true,
-        "icon:grapes": true,
-        "icon:sports-car": true,
-        "icon:vintage-car": true,
-        "icon:suv": true,
-        "icon:race-car": true,
-        "icon:taxi": true,
-        "icon:convertible": true
-      },
-      "premiumBodies": 36,
-      "premiumIconTiles": 36,
-      "boardTypeIds": [
-        "suv",
-        "sports-car",
-        "taxi",
-        "convertible",
-        "vintage-car",
-        "race-car"
-      ],
-      "trayTexture": "premium:tray-four-slot",
-      "canvas": [
-        390,
-        844
-      ]
-    }
-  },
-  "home": {
-    "premiumButtonImages": 5
-  },
+  ],
   "errors": [],
-  "note": "Technical asset integration passed. Visual acceptance remains pending user review."
+  "note": "This verifies runtime use, dimensions, and transparency pipeline. It does not grant visual approval."
 }

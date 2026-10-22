@@ -15,10 +15,14 @@ This pipeline is intentionally separate from the procedural SVG fallback. Approv
 1. Icon-free glossy ivory rectangular tile body.
 2. Cherries, orange, strawberry, pineapple, watermelon, and grapes symbols.
 3. Sports coupe, luxury sedan, SUV, race car, taxi, and convertible symbols.
-4. Mahogany tray with exactly four wells.
-5. Blank matching mahogany/gold button plate.
+4. Soccer, basketball, tennis, baseball, football, and trophy symbols.
+5. Gear, spark plug, tire, piston, steering wheel, and brake disc symbols.
+6. Lion, elephant, zebra, giraffe, tiger, and panda symbols.
+7. Puppy, kitten, rabbit, hamster, parrot, and goldfish symbols.
+8. Mahogany tray with exactly four wells.
+9. Blank matching mahogany/gold button plate.
 
-The original six prototype cells are extracted from the source atlases into standalone native PNG sources. The six added symbols are standalone native transparent PNG renders. Processing handles all twelve through the same manifest-driven path and emits an independent 512×512 WebP for each symbol. The tile body remains separate from every face icon.
+Collection masters are extracted from transparent 3×1 or 3×2 source atlases into standalone native PNG sources. Processing handles all 36 symbols through the same manifest-driven path and emits an independent 512×512 WebP for each symbol. The tile body remains separate from every face icon.
 
 ## Rebuild optimized assets
 
@@ -38,14 +42,14 @@ The processor:
 ## Runtime policy
 
 - Phaser preloads the raster prototypes under stable texture keys.
-- Fruits and cars use the premium tile body plus six premium symbols each.
-- Remaining icons and material themes retain the SVG/canvas fallback until visual approval.
+- Fruits, cars, sports, auto parts, wild animals, and pets use the premium tile body plus six premium symbols each.
+- Desserts, flowers, ocean life, music, travel, and space retain the SVG/canvas fallback until their production artwork is complete and visually reviewed.
 - Tray and primary buttons use raster sprites globally because their geometry is collection-independent.
 - State, hitboxes, blocking, and matching never depend on image dimensions.
 
 ## Expansion gate
 
-Do not automatically expand this prototype to 72 icons or 12 raster materials. First review `qa/premium-art/fruit-approved-vs-runtime-audit.png` and `qa/premium-art/cars-approved-vs-runtime-audit.png`. After explicit human approval, generate one source master per coherent collection/material family, process through this script, and add stable mappings without changing gameplay IDs.
+The current six-collection implementation is a production candidate, not approved artwork. Review the live browser captures in `qa/production-visual-ux/` against the supplied concept sheets. Expand the remaining six collections through the same source/master/manifest pipeline without changing gameplay IDs; do not represent technical integration as human visual approval.
 
 ## Editable-source limitation
 

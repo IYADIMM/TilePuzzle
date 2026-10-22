@@ -20,10 +20,10 @@ export class MenuScene extends Phaser.Scene {
     this.drawHeroTiles();
     addGoldButton(this,270,559,326,`PLAY  •  LEVEL ${this.save.lastLevel}`,()=>this.scene.start('Game',{level:this.save.lastLevel}),'');
     addGoldButton(this,170,638,182,'LEVELS',()=>this.scene.start('LevelSelect'));addGoldButton(this,370,638,182,'COLLECTION',()=>this.scene.start('Collection'));
-    addGoldButton(this,164,717,190,'LEADERBOARD',()=>this.scene.start('Leaderboard'));addGoldButton(this,382,717,170,'SHOP',()=>this.scene.start('Shop'));
+    addGoldButton(this,164,717,190,'MY RECORDS',()=>this.scene.start('Leaderboard'));addGoldButton(this,382,717,170,'TEST SHOP',()=>this.scene.start('Shop'));
     const pending=this.save.queuedChestRewards?.length||0;this.add.text(270,773,pending?`TREASURE READY  •  ${pending} QUEUED`:'TREASURE TRAIL',{...TEXT.hud,fontSize:'15px',color:'#f6cc55',letterSpacing:2,stroke:'#2f1007',strokeThickness:3}).setOrigin(.5);
     addProgressBar(this,240,810,300,pending?1:this.save.chestProgress/5,pending?'CLAIM READY':`${this.save.chestProgress} / 5`);addIconButton(this,435,810,'play',()=>this.showChest(),'Treasure');
-    this.add.text(270,878,'MATCH THREE  •  CLIMB THE GARDEN LEAGUE',{...TEXT.hud,fontSize:'11px',color:'#bdd2c8',letterSpacing:1.3}).setOrigin(.5);
+    this.add.text(270,878,'MATCH THREE  •  GROW YOUR LOCAL GARDEN RECORD',{...TEXT.hud,fontSize:'11px',color:'#bdd2c8',letterSpacing:1.1}).setOrigin(.5);
   }
   drawHeroTiles(){
     const ids=['cherries','blossom','orange'];
@@ -35,8 +35,8 @@ export class MenuScene extends Phaser.Scene {
 
 export function drawBackdrop(scene,music='menu'){
   if(music)bindSceneAudio(scene,music);
-  const g=scene.add.graphics();g.fillGradientStyle(0x21634e,0x10513f,0x07362d,0x031e1a,1).fillRect(-300,-400,1140,1760);
-  for(let i=0;i<170;i++)g.fillStyle(i%3?0xffffff:0x021511,Phaser.Math.FloatBetween(.008,.028)).fillCircle(Phaser.Math.Between(12,528),Phaser.Math.Between(-100,1080),Phaser.Math.Between(1,3));
+  scene.add.image(270,480,'bg:premium-felt').setDisplaySize(540,1760);
+  const g=scene.add.graphics();
   g.fillStyle(THEME.woodDark).fillRect(0,-400,19,1760).fillRect(521,-400,19,1760);g.fillGradientStyle(0xbe6a35,0x7f381c,0x3a1508,0x682910,1).fillRect(5,-400,10,1760).fillRect(525,-400,10,1760);g.fillStyle(0xffffff,.13).fillRect(7,-400,3,1760).fillRect(527,-400,3,1760);g.fillStyle(THEME.gold,.72).fillRect(15,-400,2,1760).fillRect(523,-400,2,1760);
   for(const [x,y,s] of [[28,115,1],[512,118,-1],[34,820,1],[506,824,-1]]){g.fillStyle(0x1c632e,.75);for(let i=0;i<4;i++)g.fillEllipse(x+s*i*12,y+i*14,30,14);}
 }

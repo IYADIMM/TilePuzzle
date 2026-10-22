@@ -1,18 +1,31 @@
 {
-  "scope": "offline-demo-rendering-only",
-  "weekly": {
-    "rank": 19,
-    "rowCount": 19,
-    "sorted": true
-  },
-  "friends": {
-    "rank": 8,
-    "rowCount": 8
+  "scope": "truthful-device-local-records-only",
+  "local": {
+    "mode": "device-local",
+    "texts": [
+      "MY GARDEN RECORDS",
+      "SAVED ON THIS DEVICE  •  NOT AN ONLINE RANK",
+      "LOCAL LEAGUE POINTS",
+      "0",
+      "3 LEVELS CLEARED  •  7 STARS",
+      "BEST LEVEL RESULTS",
+      "LEVEL 1",
+      "★★★",
+      "2,100",
+      "LEVEL 2",
+      "★★☆",
+      "1,650",
+      "LEVEL 3",
+      "★★☆",
+      "1,300",
+      "HOW POINTS WORK"
+    ],
+    "localPoints": 0,
+    "recordCount": 3
   },
   "screens": [
-    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\leaderboard\\weekly-390x844.png",
-    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\leaderboard\\friends-390x844.png",
-    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\leaderboard\\weekly-430x932.png"
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\leaderboard\\local-records-390x844.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\leaderboard\\local-records-430x932.png"
   ],
   "errors": [],
   "passed": true

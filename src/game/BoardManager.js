@@ -6,7 +6,7 @@ import { Tile } from './Tile.js';
 import { getAudioManager } from '../audio/AudioManager.js';
 
 export class BoardManager {
-  constructor(scene,config,bounds,onSelect){this.scene=scene;this.config=config;this.bounds=bounds;this.onSelect=onSelect;this.tiles=[];this.locked=false;this.debugEnabled=new URLSearchParams(location.search).has('debugGrid');this.level=generateLevel(config);this.projection=projectBoard(this.level.tiles,bounds);this.pointerDebug=null;}
+  constructor(scene,config,bounds,onSelect){this.scene=scene;this.config=config;this.bounds=bounds;this.onSelect=onSelect;this.tiles=[];this.locked=false;const query=new URLSearchParams(location.search);this.debugEnabled=import.meta.env.DEV&&query.get('debugGrid')==='1';this.level=generateLevel(config);this.projection=projectBoard(this.level.tiles,bounds);this.pointerDebug=null;}
   create(){
     this.scene.input.topOnly=true;this.inputCatcher=this.scene.add.rectangle((this.bounds.left+this.bounds.right)/2,(this.bounds.top+this.bounds.bottom)/2,this.bounds.right-this.bounds.left,this.bounds.bottom-this.bounds.top,0xffffff,.001).setDepth(1).setInteractive();this.inputCatcher.on('pointerup',pointer=>{this.pointerDebug={x:pointer.worldX,y:pointer.worldY};const tile=this.activeTiles.filter(candidate=>candidate.isBlocked&&Phaser.Geom.Rectangle.Contains(candidate.getFaceBounds(),pointer.worldX,pointer.worldY)).sort((a,b)=>b.depth-a.depth)[0];if(tile)this.requestSelection(tile);});this.level.tiles.forEach((data,index)=>{const p=tileScreenPosition(data,this.projection);Object.assign(data,{homeX:p.x,homeY:p.y,alive:true,blockedBy:[],blockReason:'selectable'});const tile=new Tile(this.scene,data,p.x,p.y,this.projection,this.config.materialId).setDepth(this.depthFor(data));tile.on('pointerup',pointer=>{this.pointerDebug={x:pointer.worldX,y:pointer.worldY};this.requestSelection(tile);});tile.flipIn(Math.min(260,index*6));this.tiles.push(tile);});
     this.refreshBlocking();if(this.debugEnabled)this.createDebugOverlay();return this;
@@ -14,7 +14,7 @@ export class BoardManager {
   requestSelection(tile){
     this.refreshBlocking();const reason=this.rejectionReason(tile);
     if(reason){this.scene.events.emit('invalid-selection',{tile,reason});this.updateDebug(`REJECT ${tile?.tileData?.id||'unknown'}: ${reason}`);return false;}
-    this.locked=true;tile.disableInteractive();tile.setSelected(true);getAudioManager(this.scene)?.play('tile_select');this.updateDebug(`ACCEPT ${tile.tileData.id}`);this.onSelect(tile);return true;
+    this.locked=true;tile.disableInteractive();tile.setSelected(true);getAudioManager(this.scene)?.play('tile_select');this.updateDebug(`ACCEPT ${tile.tileData.id}`);this.scene.events.emit('tile-selected',tile);this.onSelect(tile);return true;
   }
   rejectionReason(tile){if(!tile||!this.tiles.includes(tile))return'unknown-tile';if(this.locked)return'input-locked';if(tile.isCollected||tile.tileData.alive===false)return'already-removed';if(tile.isBlocked)return`${tile.tileData.blockReason}:${tile.tileData.blockedBy.join(',')}`;if(!tile.input?.enabled)return'hitbox-disabled';return'';}
   collect(tile){tile.isCollected=true;tile.tileData.alive=false;tile.disableInteractive();this.refreshBlocking();}

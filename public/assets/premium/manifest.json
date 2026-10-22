@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generatedAt": "2026-10-22T01:43:29.721Z",
+  "generatedAt": "2026-10-22T06:45:34.100Z",
   "alpha": true,
   "lighting": "upper-left",
   "assets": [
@@ -120,6 +120,222 @@
       "height": 512,
       "format": "webp",
       "sha256": "5b1695d6aa3b32d09276c6793de1c755098bd22a0f195faa2c82eb2856c8ccfa"
+    },
+    {
+      "id": "sports-soccer",
+      "source": "assets/premium/source/icons/sports-soccer.png",
+      "runtime": "/assets/premium/sports-soccer.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "de004d113cd81e8f8c74a42c78bb48d7a051a34b72c902b8654989ce9f3217c4"
+    },
+    {
+      "id": "sports-basketball",
+      "source": "assets/premium/source/icons/sports-basketball.png",
+      "runtime": "/assets/premium/sports-basketball.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "a3f89b06505c7f42928e14077afa52e50a9da9cd4fb3ff1239d1960eb6af179d"
+    },
+    {
+      "id": "sports-tennis",
+      "source": "assets/premium/source/icons/sports-tennis.png",
+      "runtime": "/assets/premium/sports-tennis.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "b7d4e251680b79f04554e6593b382d1f86790b37a23869518195ed9d8f80b7dd"
+    },
+    {
+      "id": "sports-baseball",
+      "source": "assets/premium/source/icons/sports-baseball.png",
+      "runtime": "/assets/premium/sports-baseball.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "8b2353ccd67f293550705bdf0b5426d1d99f81c86e8b9d384c0209be0b3ee8c7"
+    },
+    {
+      "id": "sports-football",
+      "source": "assets/premium/source/icons/sports-football.png",
+      "runtime": "/assets/premium/sports-football.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "ef460ed8fd679d06b5eb3d198836f3574494d5faa14b1148be45687b71ba0464"
+    },
+    {
+      "id": "sports-trophy",
+      "source": "assets/premium/source/icons/sports-trophy.png",
+      "runtime": "/assets/premium/sports-trophy.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "a6e1d75a78b1cae21a6d8b784bf447198bfbb6615c7b1d7d04183cd410402341"
+    },
+    {
+      "id": "auto-gear",
+      "source": "assets/premium/source/icons/auto-gear.png",
+      "runtime": "/assets/premium/auto-gear.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "4d2ff592c5630e6fe73191c074c58a0e509ff59ac3916801c7cc3ee0b8a22eac"
+    },
+    {
+      "id": "auto-spark-plug",
+      "source": "assets/premium/source/icons/auto-spark-plug.png",
+      "runtime": "/assets/premium/auto-spark-plug.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "eae64dd8c4e2fc9267efa59e47ba17dfbf7992b2c29342e99d2ea92ae43c442b"
+    },
+    {
+      "id": "auto-tire",
+      "source": "assets/premium/source/icons/auto-tire.png",
+      "runtime": "/assets/premium/auto-tire.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "16c624627cc5f84f639c0722f8624e268111cd777e7f0ad7240af4ca3f36692c"
+    },
+    {
+      "id": "auto-piston",
+      "source": "assets/premium/source/icons/auto-piston.png",
+      "runtime": "/assets/premium/auto-piston.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "af4f12045fba5e8e07508254fb5ff956aa2cb7559fa56646f932b3696bb2b99f"
+    },
+    {
+      "id": "auto-steering-wheel",
+      "source": "assets/premium/source/icons/auto-steering-wheel.png",
+      "runtime": "/assets/premium/auto-steering-wheel.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "95f411ff70f8449b3a0a20f5646ae1e5e3f2e23b3108f9fd50f4f6ff2d25d120"
+    },
+    {
+      "id": "auto-brake-disc",
+      "source": "assets/premium/source/icons/auto-brake-disc.png",
+      "runtime": "/assets/premium/auto-brake-disc.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "7e438e2148e76703d39a6e800dd175a68ec36543af248ee4a4d51f435e1be3f5"
+    },
+    {
+      "id": "wild-lion",
+      "source": "assets/premium/source/icons/wild-lion.png",
+      "runtime": "/assets/premium/wild-lion.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "1251374b50bfde3342d90767bbcf0aba5a8b041b459a1145b61f29aa4b6ee5f8"
+    },
+    {
+      "id": "wild-elephant",
+      "source": "assets/premium/source/icons/wild-elephant.png",
+      "runtime": "/assets/premium/wild-elephant.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "026e2cff326ada5d2ae6f95aa82e1f6d263ffdc2e87b56ff39f674745fa99c8d"
+    },
+    {
+      "id": "wild-zebra",
+      "source": "assets/premium/source/icons/wild-zebra.png",
+      "runtime": "/assets/premium/wild-zebra.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "a3a04ca6e5554a1324f2a7400ebdfcf54782a37f514c35815e6384e7fef9c5fe"
+    },
+    {
+      "id": "wild-giraffe",
+      "source": "assets/premium/source/icons/wild-giraffe.png",
+      "runtime": "/assets/premium/wild-giraffe.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "3143cc6729e1d0f3713eb6ff04c657d10cb3c63da833c226544b958138e02f7b"
+    },
+    {
+      "id": "wild-tiger",
+      "source": "assets/premium/source/icons/wild-tiger.png",
+      "runtime": "/assets/premium/wild-tiger.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "aa586cfbb50295cccbb06cf7ecd0f9e76af67811a5bb8ba4831ffe6b17dfb4d1"
+    },
+    {
+      "id": "wild-panda",
+      "source": "assets/premium/source/icons/wild-panda.png",
+      "runtime": "/assets/premium/wild-panda.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "a37ebc4f10b45d1ed3ca8698545d964235da1a3c58fb61927c4f3ab5becd2e82"
+    },
+    {
+      "id": "pet-puppy",
+      "source": "assets/premium/source/icons/pet-puppy.png",
+      "runtime": "/assets/premium/pet-puppy.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "36828145cce6beb4398ef67db39c1a1d98b442a14ffe43fed9b00ad93c980c67"
+    },
+    {
+      "id": "pet-kitten",
+      "source": "assets/premium/source/icons/pet-kitten.png",
+      "runtime": "/assets/premium/pet-kitten.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "b365bc1614d5866da24a86466348ad879ab84a374ed9f168cddce4e39f0d814e"
+    },
+    {
+      "id": "pet-rabbit",
+      "source": "assets/premium/source/icons/pet-rabbit.png",
+      "runtime": "/assets/premium/pet-rabbit.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "960550d003fcb5d204c566e86fa0db833df3084cc64c3acaadc3f21a6279d1b0"
+    },
+    {
+      "id": "pet-hamster",
+      "source": "assets/premium/source/icons/pet-hamster.png",
+      "runtime": "/assets/premium/pet-hamster.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "3dc5715f5de9228814e1dadf98effa10a916bc8de42ceafce50adbb057cf68d1"
+    },
+    {
+      "id": "pet-parrot",
+      "source": "assets/premium/source/icons/pet-parrot.png",
+      "runtime": "/assets/premium/pet-parrot.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "94855a678e7a365c8549c1d08f208f82ed7b2cedd9781c116b2c7bb891a97ff8"
+    },
+    {
+      "id": "pet-goldfish",
+      "source": "assets/premium/source/icons/pet-goldfish.png",
+      "runtime": "/assets/premium/pet-goldfish.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "3df3e0d2caafbe4a21d232fc345e711a509bfd5421f7932f6e311f4a779e4496"
     },
     {
       "id": "tray-four-slot",

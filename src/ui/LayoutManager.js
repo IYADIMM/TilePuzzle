@@ -10,8 +10,8 @@ export function createLayout(width = DESIGN.width, height = DESIGN.height) {
   return {
     width, height, scale, ox, oy, point,
     hud: { ...point(270, 52), top: oy + 18 * scale, bottom: oy + 145 * scale },
-    board: { left: ox + 28 * scale, right: ox + 512 * scale, top: oy + 166 * scale, bottom: oy + 675 * scale },
-    tray: { ...point(270, 728), width: 382 * scale, slotGap: 82 * scale },
+    board: { left: ox + 18 * scale, right: ox + 522 * scale, top: oy + 150 * scale, bottom: oy + 700 * scale },
+    tray: { ...point(270, 748), width: 420 * scale, slotGap: 90 * scale },
     boostersY: oy + 872 * scale,
     safe: { left: ox, right: ox + DESIGN.width * scale, top: oy, bottom: oy + DESIGN.height * scale }
   };
@@ -26,18 +26,19 @@ export function projectBoard(tiles, bounds) {
   const g=TILE_GEOMETRY;
   const rawW = maxCol * g.gridStepX + g.faceWidth + maxLayer * g.layerOffsetX;
   const rawH = maxRow * g.gridStepY + g.faceHeight + maxLayer * Math.abs(g.layerOffsetY);
-  const s = Math.min(1.34, availableW / rawW, availableH / rawH);
-  const tileW = g.faceWidth * s;
-  const tileH = g.faceHeight * s;
-  const stepX = g.gridStepX * s;
-  const stepY = g.gridStepY * s;
-  const layerX = g.layerOffsetX * s;
-  const layerY = g.layerOffsetY * s;
+  const sx = Math.min(1.58, availableW / rawW);
+  const sy = Math.min(1.12, availableH / rawH);
+  const tileW = g.faceWidth * sx;
+  const tileH = g.faceHeight * sy;
+  const stepX = g.gridStepX * sx;
+  const stepY = g.gridStepY * sy;
+  const layerX = g.layerOffsetX * sx;
+  const layerY = g.layerOffsetY * sy;
   const contentW = maxCol * stepX + tileW + maxLayer * layerX;
   const contentH = maxRow * stepY + tileH + maxLayer * Math.abs(layerY);
   const originX = bounds.left + (availableW - contentW) / 2 + tileW / 2;
   const originY = bounds.top + (availableH - contentH) / 2 + tileH / 2 + maxLayer * Math.abs(layerY);
-  return { s, tileW, tileH, stepX, stepY, layerX, layerY, originX, originY, faceAspect:TILE_GEOMETRY.aspectRatio };
+  return { s:Math.min(sx,sy),sx,sy,tileW,tileH,stepX,stepY,layerX,layerY,originX,originY,faceAspect:tileW/tileH };
 }
 
 export function tileScreenPosition(tile, projection) {

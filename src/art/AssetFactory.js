@@ -14,6 +14,7 @@ export class AssetFactory {
 
   static createRuntimeTextures(scene) {
     ensureAllMaterialTextures(scene);
+    if (!scene.textures.exists('bg:premium-felt')) createFeltTexture(scene);
     if (!scene.textures.exists('fx:petal')) createParticle(scene, 'fx:petal', 18, ctx => {
       ctx.fillStyle = '#fff7d6'; ctx.beginPath(); ctx.ellipse(9, 9, 5, 8, .65, 0, Math.PI * 2); ctx.fill();
     });
@@ -24,6 +25,17 @@ export class AssetFactory {
       ctx.fillStyle = '#f5f1e7'; ctx.strokeStyle = '#b9b5ad'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(3, 3); ctx.lineTo(17, 7); ctx.lineTo(11, 18); ctx.closePath(); ctx.fill(); ctx.stroke();
     });
   }
+}
+
+function createFeltTexture(scene){
+  const width=540,height=960,texture=scene.textures.createCanvas('bg:premium-felt',width,height),ctx=texture.context;
+  const radial=ctx.createRadialGradient(width*.5,height*.42,20,width*.5,height*.48,width*.72);
+  radial.addColorStop(0,'#155746');radial.addColorStop(.48,'#0d4438');radial.addColorStop(.82,'#082f28');radial.addColorStop(1,'#031b18');ctx.fillStyle=radial;ctx.fillRect(0,0,width,height);
+  const pixels=ctx.getImageData(0,0,width,height),data=pixels.data;let seed=0x4a414445;
+  for(let y=0;y<height;y++)for(let x=0;x<width;x++){seed=(Math.imul(seed,1664525)+1013904223)>>>0;const noise=((seed>>>24)-128)*.055,index=(y*width+x)*4;data[index]=Math.max(0,Math.min(255,data[index]+noise));data[index+1]=Math.max(0,Math.min(255,data[index+1]+noise));data[index+2]=Math.max(0,Math.min(255,data[index+2]+noise*.7));}
+  ctx.putImageData(pixels,0,0);ctx.globalAlpha=.055;ctx.strokeStyle='#d5efe2';ctx.lineWidth=.35;
+  for(let i=0;i<430;i++){seed=(Math.imul(seed,1664525)+1013904223)>>>0;const x=seed%width;seed=(Math.imul(seed,1664525)+1013904223)>>>0;const y=seed%height;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+3+(seed%6),y+1);ctx.stroke();}
+  texture.refresh();
 }
 
 function createParticle(scene, key, size, draw) {

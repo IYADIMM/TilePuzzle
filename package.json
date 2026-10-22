@@ -17,7 +17,8 @@
     "qa:audio": "node scripts/audio-qa.mjs",
     "qa:audit-reports": "node scripts/generate-validation-reports.mjs && node scripts/economy-report.mjs",
     "qa:evidence": "node scripts/final-evidence.mjs",
-    "qa:acceptance": "npm test && npm run build && npm run qa:audit-reports && npm run qa:gameplay && npm run qa:interaction && npm run qa:tray-visual && npm run qa:victory && npm run qa:audio && npm run qa:leaderboard && npm run qa:premium-art && npm run qa:evidence"
+    "qa:phase2": "node scripts/production-visual-ux-qa.mjs",
+    "qa:acceptance": "npm test && npm run build && npm run qa:audit-reports && npm run qa:gameplay && npm run qa:interaction && npm run qa:tray-visual && npm run qa:victory && npm run qa:audio && npm run qa:leaderboard && npm run qa:premium-art && npm run qa:evidence && npm run qa:phase2"
   },
   "dependencies": {
     "phaser": "^3.90.0"

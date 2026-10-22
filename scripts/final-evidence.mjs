@@ -15,11 +15,13 @@ const report = [];
 
 async function capture(name, url, action, viewport = { width: 390, height: 844 }) {
   const page = await browser.newPage({ viewport, deviceScaleFactor: 1, isMobile: true, hasTouch: true });
+  if(url.includes('screen=game'))await page.addInitScript(()=>{const key='jade-garden-tiles-save-v2',raw=JSON.parse(localStorage.getItem(key)||'{}');raw.version=5;raw.tutorial={completed:true,dismissed:false,completedAt:1};localStorage.setItem(key,JSON.stringify(raw));});
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
   page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
   await page.goto(`http://127.0.0.1:4178/${url}`, { waitUntil: 'domcontentloaded' });
   await page.waitForFunction(()=>window.jadeGame?.isBooted,{timeout:8000});
+  await page.waitForFunction(()=>window.jadeGame?.scene?.getScenes(true).some(scene=>scene.scene.key!=='Boot'),{timeout:8000});
   await page.waitForTimeout(850);
   if (action) await action(page);
   const file = path.join(output, `${name}.png`);
@@ -30,6 +32,7 @@ async function capture(name, url, action, viewport = { width: 390, height: 844 }
 }
 
 const tapSolution = async (page, count = Infinity, pause = 950, fast = false) => {
+  await page.waitForFunction(() => jadeGame.scene.getScene('Game')?.board?.level?.solution?.length > 0, { timeout: 8000 });
   const ids = await page.evaluate(() => jadeGame.scene.getScene('Game').board.level.solution);
   if(fast)await page.evaluate(()=>{jadeGame.scene.getScene('Game').tweens.timeScale=12;});
   for (const id of ids.slice(0, count)) {

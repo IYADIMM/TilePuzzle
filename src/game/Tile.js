@@ -11,16 +11,17 @@ export class Tile extends Phaser.GameObjects.Container {
 
   createVisuals(){
     const {tileW:w,tileH:h}=this.geometry;
-    this.ambientShadow=this.scene.add.ellipse(7,h*.48,w*1.35,h*.3,0x010403,.24);
-    this.contactShadow=this.scene.add.ellipse(4,h*.43,w*1.08,h*.18,0x010302,.52);
+    const lift=Math.max(0,this.tileData.layer||0),shadowAlpha=Math.min(.62,.34+lift*.055);
+    this.ambientShadow=this.scene.add.ellipse(6+lift*1.2,h*.47+lift*.8,w*1.24,h*.25,0x010403,.18+lift*.025);
+    this.contactShadow=this.scene.add.ellipse(3+lift*.8,h*.425+lift*.6,w*1.04,h*.15,0x010302,shadowAlpha);
     this.usesPremiumBody=PREMIUM_TILE_MATERIALS.has(this.materialId)&&this.scene.textures.exists(PREMIUM_TEXTURES.tileBody.key);
-    this.body=this.scene.add.image(0,4,this.usesPremiumBody?PREMIUM_TEXTURES.tileBody.key:tileTextureKey(this.materialId)).setDisplaySize(w*1.28,h*1.25);
+    this.body=this.scene.add.image(0,4,this.usesPremiumBody?PREMIUM_TEXTURES.tileBody.key:tileTextureKey(this.materialId)).setDisplaySize(w*1.18,h*1.2);
     this.pendingGlow=this.scene.add.graphics().fillStyle(0xffd85b,.16).fillRoundedRect(-w*.51,-h*.49,w*1.02,h*.96,Math.min(w,h)*.16).lineStyle(6,0xffd85b,1).strokeRoundedRect(-w*.51,-h*.49,w*1.02,h*.96,Math.min(w,h)*.16).setAlpha(0);
-    const iconSize=Math.min(w*1.18,h*.88);
+    const iconSize=Math.min(w*.86,h*.82);
     this.iconShadow=this.scene.add.image(2,h*.015,iconTextureKey(this.symbolId)).setDisplaySize(iconSize,iconSize).setTint(0x1c251f).setAlpha(.24);
     this.icon=this.scene.add.image(0,-h*.035,iconTextureKey(this.symbolId)).setDisplaySize(iconSize,iconSize);
     this.specular=this.scene.add.graphics().fillStyle(0xffffff,.68).fillEllipse(-w*.22,-h*.33,w*.31,h*.1).fillStyle(0xffffff,.2).fillEllipse(w*.31,h*.17,w*.1,h*.2);
-    this.blockOverlay=this.scene.add.graphics().fillStyle(0x09211c,.40).fillRoundedRect(-w*.5,-h*.5,w,h,h*.13).lineStyle(1.5,0x06130f,.7).strokeRoundedRect(-w*.5,-h*.5,w,h,h*.13).setVisible(false);
+    this.blockOverlay=this.scene.add.graphics().fillStyle(0x08251e,.24).fillRoundedRect(-w*.5,-h*.5,w,h,h*.13).lineStyle(1.5,0x06130f,.46).strokeRoundedRect(-w*.5,-h*.5,w,h,h*.13).setVisible(false);
     this.add([this.ambientShadow,this.contactShadow,this.body,this.pendingGlow,this.iconShadow,this.icon,this.specular,this.blockOverlay]);
     this.setSize(w,h);this.enableFaceInput();
     this.on('pointerdown',()=>{if(!this.isBlocked&&!this.isCollected)this.scene.tweens.add({targets:this,scaleX:.965,scaleY:.965,duration:55,ease:'Quad.Out'});});
@@ -28,7 +29,7 @@ export class Tile extends Phaser.GameObjects.Container {
   }
 
   enableFaceInput(){const {tileW:w,tileH:h}=this.geometry;this.setInteractive(new Phaser.Geom.Rectangle(-w*.5,-h*.5,w,h),Phaser.Geom.Rectangle.Contains);if(this.input)this.input.cursor='pointer';return this;}
-  setBlocked(blocked,reason='selectable'){this.isBlocked=Boolean(blocked);this.blockReason=reason;this.blockOverlay.setVisible(this.isBlocked);this.body.setTint(this.isBlocked?0xb9c2be:0xffffff);this.icon.setTint(this.isBlocked?0x798d84:0xffffff);this.iconShadow.setAlpha(this.isBlocked ? .1 : .24);this.specular.setAlpha(this.isBlocked ? .28 : 1);if(this.isBlocked||this.isCollected)this.disableInteractive();else this.enableFaceInput();return this;}
+  setBlocked(blocked,reason='selectable'){this.isBlocked=Boolean(blocked);this.blockReason=reason;this.blockOverlay.setVisible(this.isBlocked);this.body.setTint(this.isBlocked?0xd9ddd8:0xffffff);this.icon.setTint(this.isBlocked?0xa4b2aa:0xffffff);this.iconShadow.setAlpha(this.isBlocked ? .14 : .24);this.specular.setAlpha(this.isBlocked ? .48 : 1);if(this.isBlocked||this.isCollected)this.disableInteractive();else this.enableFaceInput();return this;}
   setPendingMatch(pending){this.scene.tweens.killTweensOf(this.pendingGlow);if(!pending){this.pendingGlow.setAlpha(0);this.body.setTint(this.isBlocked?0xb9c2be:0xffffff);return;}this.body.setTint(0xffe7a3);this.pendingGlow.setAlpha(.62);this.scene.tweens.add({targets:this.pendingGlow,alpha:1,duration:620,yoyo:true,repeat:-1,ease:'Sine.InOut'});}
   setSelected(selected){if(selected)this.scene.tweens.add({targets:this,scaleX:1.08,scaleY:1.08,duration:75,ease:'Quad.Out'});return this;}
   setSymbol(typeId){const normalized=normalizeTypeId(typeId);if(!normalized)throw new Error(`Tile ${this.tileData.id} requires a stable typeId`);this.typeId=normalized;this.symbolId=normalized;this.tileData.typeId=normalized;this.tileData.symbolId=normalized;this.icon.setTexture(iconTextureKey(normalized));this.iconShadow.setTexture(iconTextureKey(normalized));}

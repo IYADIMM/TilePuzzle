@@ -9,6 +9,10 @@ const jobs=[
   {name:'tile-body',master:'tile-body-master.png',cell:[0,0,1,1],size:[512,640],padding:.025},
   ...['cherries','orange','strawberry','pineapple','watermelon','grapes'].map(id=>({name:`fruit-${id}`,master:`icons/fruit-${id}.png`,cell:[0,0,1,1],size:[512,512],padding:.045})),
   ...['sports','sedan','suv','race','taxi','convertible'].map(id=>({name:`car-${id}`,master:`icons/car-${id}.png`,cell:[0,0,1,1],size:[512,512],padding:.025})),
+  ...['soccer','basketball','tennis','baseball','football','trophy'].map(id=>({name:`sports-${id}`,master:`icons/sports-${id}.png`,cell:[0,0,1,1],size:[512,512],padding:.035})),
+  ...['gear','spark-plug','tire','piston','steering-wheel','brake-disc'].map(id=>({name:`auto-${id}`,master:`icons/auto-${id}.png`,cell:[0,0,1,1],size:[512,512],padding:.035})),
+  ...['lion','elephant','zebra','giraffe','tiger','panda'].map(id=>({name:`wild-${id}`,master:`icons/wild-${id}.png`,cell:[0,0,1,1],size:[512,512],padding:.035})),
+  ...['puppy','kitten','rabbit','hamster','parrot','goldfish'].map(id=>({name:`pet-${id}`,master:`icons/pet-${id}.png`,cell:[0,0,1,1],size:[512,512],padding:.035})),
   {name:'tray-four-slot',master:'tray-master.png',cell:[0,0,1,1],size:[1024,320],padding:.02},
   {name:'button-mahogany',master:'button-master.png',cell:[0,0,1,1],size:[768,256],padding:.025}
 ];

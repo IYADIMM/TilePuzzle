@@ -9,6 +9,7 @@ export const DEFAULT_SAVE=Object.freeze({
   completedLevels:{},claimedRewards:{},queuedChestRewards:[],achievements:{},unlockedThemes:['fruits'],
   boosters:{undo:3,hint:3,shuffle:3},
   prefs:{audio:{...DEFAULT_AUDIO_PREFERENCES},haptics:true,reducedMotion:false},
+  tutorial:{completed:false,dismissed:false,completedAt:null},
   leaderboard:{player:{id:'garden-player',name:'Garden Player',avatar:'jade'},weekly:{},allTime:{},claimedSeasonRewards:{}},
   economy:{ledger:[],inventory:{owned:['tile-classic','tray-mahogany'],equipped:{tile:'tile-classic',tray:'tray-mahogany',celebration:'celebration-gold'}},daily:{lastClaimDay:null,streak:0},revives:{},entitlements:{}},
   storageRecovery:null
@@ -40,7 +41,8 @@ export function migrateSave(raw={}){
     unlockedThemes:[...new Set(raw.unlockedThemes||base.unlockedThemes)],boosters:{...base.boosters,...(raw.boosters||{})},
     leaderboard:{...base.leaderboard,...(raw.leaderboard||{}),player:{...base.leaderboard.player,...(raw.leaderboard?.player||{})},weekly:{...(raw.leaderboard?.weekly||{})},allTime:{...(raw.leaderboard?.allTime||{})},claimedSeasonRewards:{...(raw.leaderboard?.claimedSeasonRewards||{})}},
     economy:{...base.economy,...economy,ledger:[...(economy.ledger||[])],inventory:{...base.economy.inventory,...(economy.inventory||{}),owned:[...new Set(economy.inventory?.owned||base.economy.inventory.owned)],equipped:{...base.economy.inventory.equipped,...(economy.inventory?.equipped||{})}},daily:{...base.economy.daily,...(economy.daily||{})},revives:{...(economy.revives||{})},entitlements:{...(economy.entitlements||{})}},
-    prefs:{audio:normalizeAudioPreferences(raw.prefs?.audio),haptics:raw.prefs?.haptics??base.prefs.haptics,reducedMotion:raw.prefs?.reducedMotion??base.prefs.reducedMotion}
+    prefs:{audio:normalizeAudioPreferences(raw.prefs?.audio),haptics:raw.prefs?.haptics??base.prefs.haptics,reducedMotion:raw.prefs?.reducedMotion??base.prefs.reducedMotion},
+    tutorial:{...base.tutorial,...(raw.tutorial||{})}
   };
 }
 

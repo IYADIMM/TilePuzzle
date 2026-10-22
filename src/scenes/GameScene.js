@@ -14,6 +14,7 @@ import { COMBO_WINDOW_MS } from '../logic/PerformanceRules.js';
 import { commitAdRevive,commitGemRevive,REVIVE_GEM_COST } from '../economy/ReviveService.js';
 import { MockAdProvider } from '../economy/MockProviders.js';
 import { bindSceneAudio } from '../audio/AudioManager.js';
+import { TutorialController } from '../game/TutorialController.js';
 
 export class GameScene extends Phaser.Scene {
   constructor(){super('Game');}
@@ -23,13 +24,12 @@ export class GameScene extends Phaser.Scene {
     this.score=0;this.currentCombo=0;this.bestCombo=0;this.totalTriples=0;this.selectedTileCount=0;this.lastMatchAt=-Infinity;this.displayScore=0;this.boostersUsed=0;this.startedAt=performance.now();this.history=[];this.gameEnded=false;this.victoryEmitted=false;this.reviveUsed=false;this.adProvider=new MockAdProvider();this.modal=new Modal(this);this.reducedMotion=Boolean(this.save.prefs.reducedMotion||matchMedia?.('(prefers-reduced-motion: reduce)').matches);
     this.drawBackground();this.createHud();this.board=new BoardManager(this,this.level,this.layout.board,tile=>this.selectTile(tile)).create();
     this.tray=new SlotManager(this,this.layout,{onAtomicClear:(tiles,result)=>this.smashMatch(tiles,result),onArrived:result=>this.trayArrived(result),onFull:result=>this.lose(result),onSettled:()=>this.afterSettled()});
-    this.createBoosters();this.onInvalid=payload=>this.invalidFeedback(payload);this.events.on('invalid-selection',this.onInvalid);this.events.once('shutdown',()=>this.cleanup());
+    this.createBoosters();this.tutorial=new TutorialController(this);this.onInvalid=payload=>this.invalidFeedback(payload);this.events.on('invalid-selection',this.onInvalid);this.events.once('shutdown',()=>this.cleanup());
   }
 
   drawBackground(){
-    const g=this.add.graphics();g.fillGradientStyle(0x1b654f,0x10513f,0x07382f,0x031e1a,1).fillRect(-300,-400,1140,1760);
-    g.fillStyle(0x000000,.13).fillEllipse(270,418,500,585);
-    for(let i=0;i<190;i++)g.fillStyle(i%4?0xffffff:0x021511,Phaser.Math.FloatBetween(.008,.03)).fillCircle(Phaser.Math.Between(18,522),Phaser.Math.Between(-100,1080),Phaser.Math.Between(1,3));
+    this.add.image(270,480,'bg:premium-felt').setDisplaySize(540,1760);
+    const g=this.add.graphics();g.fillStyle(0x000000,.105).fillEllipse(270,430,528,690);
     g.fillStyle(0x240b04).fillRect(0,-400,20,1760).fillRect(520,-400,20,1760);g.fillGradientStyle(0xbe6b35,0x7c371b,0x391407,0x64270f,1).fillRect(5,-400,11,1760).fillRect(524,-400,11,1760);g.fillStyle(0xffffff,.13).fillRect(7,-400,3,1760).fillRect(527,-400,3,1760);g.fillStyle(THEME.gold,.8).fillRect(16,-400,2,1760).fillRect(522,-400,2,1760);
     drawLeaves(g,18,134,1);drawLeaves(g,522,134,-1);drawLeaves(g,18,785,1);drawLeaves(g,522,785,-1);
   }
@@ -42,7 +42,7 @@ export class GameScene extends Phaser.Scene {
 
   createBoosters(){
     const configs=[['hint',104,'HINT'],['shuffle',270,'SHUFFLE'],['undo',436,'UNDO']];this.boosterButtons={};this.badges={};
-    configs.forEach(([key,x,label])=>{const button=addToolButton(this,x,867,142,label,key,()=>this[key](),this.save.boosters[key]);this.boosterButtons[key]=button;this.badges[key]=button.getData('badgeText');});
+    configs.forEach(([key,x,label])=>{const button=addToolButton(this,x,875,142,label,key,()=>this[key](),this.save.boosters[key]);this.boosterButtons[key]=button;this.badges[key]=button.getData('badgeText');});
   }
 
   snapshot(){return{score:this.score,currentCombo:this.currentCombo,bestCombo:this.bestCombo,totalTriples:this.totalTriples,selectedTileCount:this.selectedTileCount,lastMatchAt:this.lastMatchAt,tray:this.tray.entries.map(entry=>({...entry})),tiles:this.board.tiles.map(tile=>({id:tile.tileData.id,collected:tile.isCollected,alive:tile.tileData.alive,typeId:tile.typeId,x:tile.x,y:tile.y,visible:tile.visible,alpha:tile.alpha,scaleX:tile.scaleX,scaleY:tile.scaleY,depth:tile.depth}))};}
@@ -55,7 +55,7 @@ export class GameScene extends Phaser.Scene {
   afterSettled(){if(this.gameEnded)return;this.board.setLocked(false);this.updateRemaining();if(canCompleteLevel({remainingBoard:this.board.activeTiles.length,trayCount:this.tray.entries.length,busy:this.tray.isBusy,alreadyEmitted:this.victoryEmitted,evidence:this.completionEvidence()}))this.win();}
   smashMatch(){
     const now=this.time.now;this.currentCombo=now-this.lastMatchAt<=COMBO_WINDOW_MS?this.currentCombo+1:1;this.lastMatchAt=now;this.bestCombo=Math.max(this.bestCombo,this.currentCombo);this.totalTriples++;
-    const levelFactor=1+Math.floor((this.levelNumber-1)/6)*.12,gain=Math.round(300*this.currentCombo*levelFactor);this.score+=gain;this.animateScore(this.score);haptic(this.save,[14,18,16]);const x=this.layout.tray.x,y=this.layout.tray.y;this.emitSmashFx(x,y);this.floatCelebration(x,y-65,this.currentCombo>=5?'PERFECT!':this.currentCombo>=3?`COMBO ${this.currentCombo}  +${gain}`:this.currentCombo===2?`GREAT!  +${gain}`:`TRIPLE  +${gain}`);
+    const levelFactor=1+Math.floor((this.levelNumber-1)/6)*.12,gain=Math.round(300*this.currentCombo*levelFactor);this.score+=gain;this.animateScore(this.score);haptic(this.save,[14,18,16]);const x=this.layout.tray.x,y=this.layout.tray.y;this.emitSmashFx(x,y);this.floatCelebration(x,y-65,this.currentCombo>=5?'PERFECT!':this.currentCombo>=3?`COMBO ${this.currentCombo}  +${gain}`:this.currentCombo===2?`GREAT!  +${gain}`:`TRIPLE  +${gain}`);this.events.emit('tutorial-triple');
   }
   trayArrived(result){this.audio?.playPlacement();if(result.didClear){this.audio?.play('tile_match');if(this.currentCombo>=2)this.audio?.play('combo');}}
   animateScore(target){const from=this.displayScore,counter={value:from};this.tweens.add({targets:counter,value:target,duration:this.reducedMotion?80:430,ease:'Cubic.Out',onUpdate:()=>{this.displayScore=Math.round(counter.value);this.scorePill.list.at(-1)?.setText(`SCORE  ${this.displayScore.toLocaleString()}`);}});}
@@ -78,7 +78,7 @@ export class GameScene extends Phaser.Scene {
   win(){if(this.gameEnded||!canCompleteLevel({remainingBoard:this.board.activeTiles.length,trayCount:this.tray.entries.length,busy:this.tray.isBusy,alreadyEmitted:this.victoryEmitted,evidence:this.completionEvidence()}))return false;this.victoryEmitted=true;this.gameEnded=true;this.board.setLocked(true);const seconds=Math.max(1,Math.round((performance.now()-this.startedAt)/1000)),reward=completeLevel(this.save,{level:this.levelNumber,score:this.score,combo:this.bestCombo,totalTriples:this.totalTriples,boostersUsed:this.boostersUsed,seconds});SaveManager.save(this.save);this.audio?.play('level_complete');if(!this.reducedMotion)this.cameras.main.flash(260,255,235,156);this.time.delayedCall(this.reducedMotion?0:320,()=>this.scene.start('Reward',{level:this.levelNumber,score:this.score,combo:this.bestCombo,totalTriples:this.totalTriples,seconds,reward}));return true;}
   confirmHome(){this.modal.show({title:'Leave Level?',kind:'back',body:'Current board progress will be lost.',primary:'KEEP PLAYING',secondary:'LEAVE',onSecondary:()=>this.scene.start('Menu')});}
   pauseGame(){this.board.setLocked(true);const audio=this.save.prefs.audio;this.modal.show({title:'Paused',kind:'pause',body:`Music  ${audio.musicEnabled?'ON':'OFF'}  •  SFX  ${audio.sfxEnabled?'ON':'OFF'}\nHaptics  ${this.save.prefs.haptics?'ON':'OFF'}\nThe garden will wait.`,primary:'RESUME',onPrimary:()=>this.board.setLocked(false),secondary:'AUDIO SETTINGS',onSecondary:()=>this.scene.launch('AudioSettings',{hostKey:'Game'})});}
-  cleanup(){this.events.off('invalid-selection',this.onInvalid);this.tray?.dispose();this.tweens.killAll();}
+  cleanup(){this.events.off('invalid-selection',this.onInvalid);this.tutorial?.destroy();this.tray?.dispose();this.tweens.killAll();}
 }
 
 function haptic(save,pattern){if(save.prefs.haptics&&navigator.vibrate)navigator.vibrate(pattern);}

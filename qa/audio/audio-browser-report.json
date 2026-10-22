@@ -29,15 +29,21 @@
   },
   "synchronized": {
     "currentTrack": "gameplay",
-    "tileSelect": 6,
-    "tilePlaceA": 5,
+    "tileSelect": 3,
+    "tilePlaceA": 3,
     "tilePlaceB": 1,
     "tileMatch": 1,
     "combo": 1,
     "tileBlocked": 1,
     "booster": 1,
     "shuffle": 1,
-    "undo": 1
+    "undo": 1,
+    "attempts": {
+      "tileBlocked": 1,
+      "booster": 1,
+      "shuffle": 1,
+      "undo": 1
+    }
   },
   "mutedGameplay": {
     "accepted": true,
