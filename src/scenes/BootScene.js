@@ -1,11 +1,16 @@
 import Phaser from 'phaser';
 import { AssetFactory } from '../art/AssetFactory.js';
+import { preloadApprovedAudio } from '../audio/AudioManifest.js';
+import { AudioManager } from '../audio/AudioManager.js';
+import { SaveManager } from '../systems/SaveManager.js';
 
 export class BootScene extends Phaser.Scene {
   constructor() { super('Boot'); }
-  preload() { AssetFactory.preload(this); }
+  preload() { AssetFactory.preload(this);preloadApprovedAudio(this); }
   create() {
     AssetFactory.createRuntimeTextures(this);
+    const saved=SaveManager.load(),audioManager=new AudioManager({soundManager:this.sound,persist:preferences=>{const latest=SaveManager.load();latest.prefs.audio=preferences;SaveManager.save(latest);}});
+    audioManager.setPreferences(saved.prefs.audio,{persist:false});this.game.registry.set('audioManager',audioManager);
     const fontLoad = document.fonts
       ? Promise.all([
         document.fonts.load('700 32px Fredoka'),

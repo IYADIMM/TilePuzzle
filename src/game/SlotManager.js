@@ -79,10 +79,12 @@ export class SlotManager {
       const destination=this.state.entries.findIndex(entry=>entry.visualId===newTile.tileData.id);
       await curveTween(this.scene,newTile,this.slotX(destination),this.layout.tray.y,390,()=>!this.destroyed&&transaction===this.transactionId);
       if(this.destroyed||transaction!==this.transactionId)return;
+      this.callbacks.onArrived?.(result,newTile);
     }else{
       const arriving=effectProxies.find(item=>item.tile===newTile),resting=effectProxies.filter(item=>item!==arriving);
       if(arriving)await curveTween(this.scene,arriving.proxy,this.slotX(Math.min(TRAY_CAPACITY-1,result.insertAt)),this.layout.tray.y,390,()=>!this.destroyed&&transaction===this.transactionId,{endScale:.86,fade:false});
       if(this.destroyed||transaction!==this.transactionId)return;
+      this.callbacks.onArrived?.(result,newTile);
       await Promise.all(effectProxies.map(({proxy})=>tween(this.scene,proxy,{alpha:0,scaleX:proxy.scaleX*1.08,scaleY:proxy.scaleY*1.08},resting.length?250:180,'Sine.InOut')));
       effectProxies.forEach(({proxy})=>proxy.destroy(true));
       if(this.destroyed||transaction!==this.transactionId)return;

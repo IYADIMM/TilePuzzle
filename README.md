@@ -1,6 +1,6 @@
 # Jade Garden Tiles
 
-A portrait-first, completely silent Phaser 3 match-three game with Mahjong top/side accessibility, an atomic four-slot tray, 30 deterministic levels, 12 rotating collections, an offline leaderboard, and a mock-only economy preview. Fruit and Cars currently use twelve original premium raster symbols; the remaining sixty symbols retain the procedural fallback pending human visual approval.
+A portrait-first Phaser 3 match-three game with Mahjong top/side accessibility, an atomic four-slot tray, 30 deterministic levels, 12 rotating collections, approved optional audio, an offline leaderboard, and a mock-only economy preview. Fruit and Cars currently use twelve original premium raster symbols; the remaining sixty symbols retain the procedural fallback pending human visual approval.
 
 ## Run and verify
 
@@ -34,6 +34,6 @@ qa/          captures and machine-readable browser regression reports
 
 The third identical tray entry is removed from logical state synchronously before animation or overflow evaluation. A live higher-layer overlap blocks a tile; otherwise, a tile also needs its left or right side free. Input, dimming, solver, hint, and shuffle share this accessibility model. Shuffle is accepted only when the solver confirms the remapped remainder is playable.
 
-The app uses a full-viewport Phaser RESIZE canvas with a 540×960 design camera, felt extension around long/tablet aspect ratios, safe board/tray regions, and CSS notch insets. Fredoka, Poppins and Cairo load before screen layout with a bounded fallback timeout. No Web Audio, Phaser audio playback, media playback, audio timer, or background loop is created.
+The app uses a full-viewport Phaser RESIZE canvas with a 540×960 design camera, felt extension around long/tablet aspect ratios, safe board/tray regions, and CSS notch insets. Fredoka, Poppins and Cairo load before screen layout with a bounded fallback timeout. Approved SFX and two ambient beds are centrally managed with separate persisted Music and SFX controls, quiet defaults, gesture unlock, voice caps, lifecycle recovery, and a fully muted mode.
 
 Economy features are deliberately local mock/test implementations. There are no payment-provider, ad-network, or server-authoritative operations. See `docs/MOCK_ECONOMY.md` and `docs/SAVE_MIGRATION.md` before changing persistence or enabling external services.

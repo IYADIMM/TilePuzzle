@@ -4,12 +4,13 @@ import { getThemeForLevel,iconTextureKey } from '../data/themes.js';
 import { tileTextureKey } from '../art/TileMaterialFactory.js';
 import { addGoldButton,addProgressBar } from '../ui/components.js';
 import { prepareBackdrop } from './MenuScene.js';
+import { bindSceneAudio } from '../audio/AudioManager.js';
 
 export class RewardScene extends Phaser.Scene {
   constructor(){super('Reward');}
   init(data){this.dataIn=data;}
   create(){
-    const d=this.dataIn,theme=getThemeForLevel(d.level);prepareBackdrop(this);
+    const d=this.dataIn,theme=getThemeForLevel(d.level);prepareBackdrop(this,null);const audio=bindSceneAudio(this,null);this.time.delayedCall(2700,()=>{if(this.sys.isActive())audio?.play('star_earned');});
     const glow=this.add.circle(270,168,142,0xf7d66a,.1);this.tweens.add({targets:glow,scale:1.13,alpha:.24,duration:1100,yoyo:true,repeat:-1,ease:'Sine.InOut'});
     this.add.text(270,76,d.reward.stars===3?'PERFECT CLEAR':'GARDEN CLEARED',{...TEXT.title,fontSize:'44px',color:'#ffe08a',stroke:'#4a1c08',strokeThickness:8}).setOrigin(.5);
     for(let i=0;i<3;i++){const star=this.add.text(218+i*52,129,i<d.reward.stars?'★':'☆',{...TEXT.title,fontSize:'42px',color:i<d.reward.stars?'#ffd45c':'#7e684d',stroke:'#6b2d0c',strokeThickness:5}).setOrigin(.5).setScale(.1);this.tweens.add({targets:star,scale:1,duration:390,delay:120+i*150,ease:'Back.Out'});}

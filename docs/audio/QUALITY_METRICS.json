@@ -1,0 +1,114 @@
+[
+  {
+    "file": "tile_place_v2_A.wav",
+    "duration_s": 0.62,
+    "peak_dbfs": -9.2,
+    "rms_dbfs": -25.83,
+    "category": "sound_effect",
+    "status": "candidate_for_user_review"
+  },
+  {
+    "file": "tile_place_v2_B.wav",
+    "duration_s": 0.62,
+    "peak_dbfs": -9.2,
+    "rms_dbfs": -25.24,
+    "category": "sound_effect",
+    "status": "candidate_for_user_review"
+  },
+  {
+    "file": "tile_match.wav",
+    "duration_s": 1.55,
+    "peak_dbfs": -8.9,
+    "rms_dbfs": -24.75,
+    "category": "sound_effect",
+    "status": "candidate_for_user_review"
+  },
+  {
+    "file": "tile_blocked.wav",
+    "duration_s": 0.48,
+    "peak_dbfs": -13.5,
+    "rms_dbfs": -29.35,
+    "category": "sound_effect",
+    "status": "candidate_for_user_review"
+  },
+  {
+    "file": "combo.wav",
+    "duration_s": 1.6,
+    "peak_dbfs": -9.4,
+    "rms_dbfs": -24.04,
+    "category": "sound_effect",
+    "status": "candidate_for_user_review"
+  },
+  {
+    "file": "ui_click.wav",
+    "duration_s": 0.29,
+    "peak_dbfs": -13.3,
+    "rms_dbfs": -30.65,
+    "category": "sound_effect",
+    "status": "candidate_for_user_review"
+  },
+  {
+    "file": "booster.wav",
+    "duration_s": 1.27,
+    "peak_dbfs": -9.8,
+    "rms_dbfs": -25.35,
+    "category": "sound_effect",
+    "status": "candidate_for_user_review"
+  },
+  {
+    "file": "chest_open.wav",
+    "duration_s": 2.05,
+    "peak_dbfs": -9.6,
+    "rms_dbfs": -23.65,
+    "category": "sound_effect",
+    "status": "candidate_for_user_review"
+  },
+  {
+    "file": "level_failed.wav",
+    "duration_s": 1.42,
+    "peak_dbfs": -12.1,
+    "rms_dbfs": -25.08,
+    "category": "sound_effect",
+    "status": "candidate_for_user_review"
+  },
+  {
+    "file": "undo_optional.wav",
+    "duration_s": 0.7,
+    "peak_dbfs": -11.0,
+    "rms_dbfs": -25.52,
+    "category": "sound_effect",
+    "status": "candidate_for_user_review"
+  },
+  {
+    "file": "shuffle_optional.wav",
+    "duration_s": 1.05,
+    "peak_dbfs": -11.0,
+    "rms_dbfs": -26.03,
+    "category": "sound_effect",
+    "status": "candidate_for_user_review"
+  },
+  {
+    "file": "star_earned_optional.wav",
+    "duration_s": 1.15,
+    "peak_dbfs": -10.2,
+    "rms_dbfs": -22.69,
+    "category": "sound_effect",
+    "status": "candidate_for_user_review"
+  },
+  {
+    "file": "music_gameplay_ambient.wav",
+    "duration_s": 54.171,
+    "peak_dbfs": -9.45,
+    "rms_dbfs": -26.0,
+    "category": "music",
+    "status": "candidate_for_user_review"
+  },
+  {
+    "file": "music_menu_ambient.wav",
+    "duration_s": 42.7,
+    "peak_dbfs": -11.34,
+    "rms_dbfs": -26.0,
+    "category": "music",
+    "status": "candidate_for_user_review"
+  }
+]

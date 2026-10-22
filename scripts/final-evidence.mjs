@@ -90,7 +90,7 @@ await capture('12-achievement-reward-screen-390x844', '?screen=collection', asyn
       chestProgress: 3, completedLevels: { 1: { score: 1200, stars: 3, bestTime: 24 } },
       claimedRewards: { 'level:1': true }, achievements: { 'first-clear': { claimed: true, at: Date.now() } },
       unlockedThemes: ['fruits', 'cars', 'sports'], boosters: { undo: 3, hint: 3, shuffle: 3 },
-      prefs: { audioDisabled: true, haptics: false, reducedMotion: false }
+      prefs: { audio: { musicEnabled: false, sfxEnabled: false, musicVolume: .35, sfxVolume: .55 }, haptics: false, reducedMotion: false }
     };
     localStorage.setItem('jade-garden-tiles-save-v2', JSON.stringify(save));
     jadeGame.scene.start('Achievements');
@@ -98,7 +98,7 @@ await capture('12-achievement-reward-screen-390x844', '?screen=collection', asyn
   await page.waitForTimeout(900);
 });
 
-await capture('13-pause-settings-silent-390x844', '?screen=game&level=1', async page => {
+await capture('13-pause-audio-settings-390x844', '?screen=game&level=1', async page => {
   await page.evaluate(() => jadeGame.scene.getScene('Game').pauseGame());
   await page.waitForTimeout(450);
 });

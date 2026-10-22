@@ -5,6 +5,7 @@ import { addGoldButton,addPill,addProgressBar,addIconButton } from '../ui/compon
 import { Modal } from '../ui/Modal.js';
 import { SaveManager } from '../systems/SaveManager.js';
 import { applyDesignCamera } from '../ui/LayoutManager.js';
+import { bindSceneAudio,getAudioManager } from '../audio/AudioManager.js';
 
 export class MenuScene extends Phaser.Scene {
   constructor(){super('Menu');}
@@ -28,14 +29,15 @@ export class MenuScene extends Phaser.Scene {
     const ids=['cherries','blossom','orange'];
     ids.forEach((id,index)=>{const x=166+index*104,y=387+(index===1?-24:10),tile=this.add.container(x,y).setAngle((index-1)*6),shadow=this.add.ellipse(6,61,116,27,0x000000,.35),body=this.add.image(0,0,'tile:mahogany:front').setDisplaySize(114,134),iconShadow=this.add.image(3,3,iconTextureKey(id)).setDisplaySize(85,85).setTint(0x26332d).setAlpha(.2),icon=this.add.image(0,-4,iconTextureKey(id)).setDisplaySize(85,85);tile.add([shadow,body,iconShadow,icon]);this.tweens.add({targets:tile,y:y-8,duration:1450+index*150,yoyo:true,repeat:-1,ease:'Sine.InOut'});});
   }
-  showChest(){const milestone=this.save.queuedChestRewards?.[0],ready=Boolean(milestone);this.modal.show({kind:ready?'reward':'close',title:ready?'Treasure Ready':'Keep Playing',subtitle:ready?milestone.replace('levels:','Levels '):`${5-this.save.chestProgress} more levels`,body:ready?'+150 coins\n+1 Hint booster':'Clear unique levels to fill the treasure trail.',primary:ready?'CLAIM REWARD':'CONTINUE',onPrimary:()=>{if(!ready)return;const key=`chest:${milestone}`;if(this.save.claimedRewards[key])return;this.save.claimedRewards[key]=true;this.save.queuedChestRewards.shift();this.save.coins+=150;this.save.boosters.hint++;SaveManager.save(this.save);this.scene.restart();}});}
-  showSettings(){this.modal.show({kind:'settings',title:'Settings',subtitle:'The game is completely silent',body:`Haptics  ${this.save.prefs.haptics?'ON':'OFF'}\nReduced motion  ${this.save.prefs.reducedMotion?'ON':'OFF'}\nNo music or sound effects are created.`,primary:'TOGGLE HAPTICS',onPrimary:()=>{this.save.prefs.haptics=!this.save.prefs.haptics;SaveManager.save(this.save);this.scene.restart();},secondary:'TOGGLE MOTION',onSecondary:()=>{this.save.prefs.reducedMotion=!this.save.prefs.reducedMotion;SaveManager.save(this.save);this.scene.restart();}});}
+  showChest(){const milestone=this.save.queuedChestRewards?.[0],ready=Boolean(milestone);this.modal.show({kind:ready?'reward':'close',title:ready?'Treasure Ready':'Keep Playing',subtitle:ready?milestone.replace('levels:','Levels '):`${5-this.save.chestProgress} more levels`,body:ready?'+150 coins\n+1 Hint booster':'Clear unique levels to fill the treasure trail.',primary:ready?'CLAIM REWARD':'CONTINUE',onPrimary:()=>{if(!ready)return;const key=`chest:${milestone}`;if(this.save.claimedRewards[key])return;this.save.claimedRewards[key]=true;this.save.queuedChestRewards.shift();this.save.coins+=150;this.save.boosters.hint++;SaveManager.save(this.save);getAudioManager(this)?.play('chest_open');this.scene.restart();}});}
+  showSettings(){this.scene.launch('AudioSettings',{hostKey:'Menu'});}
 }
 
-export function drawBackdrop(scene){
+export function drawBackdrop(scene,music='menu'){
+  if(music)bindSceneAudio(scene,music);
   const g=scene.add.graphics();g.fillGradientStyle(0x21634e,0x10513f,0x07362d,0x031e1a,1).fillRect(-300,-400,1140,1760);
   for(let i=0;i<170;i++)g.fillStyle(i%3?0xffffff:0x021511,Phaser.Math.FloatBetween(.008,.028)).fillCircle(Phaser.Math.Between(12,528),Phaser.Math.Between(-100,1080),Phaser.Math.Between(1,3));
   g.fillStyle(THEME.woodDark).fillRect(0,-400,19,1760).fillRect(521,-400,19,1760);g.fillGradientStyle(0xbe6a35,0x7f381c,0x3a1508,0x682910,1).fillRect(5,-400,10,1760).fillRect(525,-400,10,1760);g.fillStyle(0xffffff,.13).fillRect(7,-400,3,1760).fillRect(527,-400,3,1760);g.fillStyle(THEME.gold,.72).fillRect(15,-400,2,1760).fillRect(523,-400,2,1760);
   for(const [x,y,s] of [[28,115,1],[512,118,-1],[34,820,1],[506,824,-1]]){g.fillStyle(0x1c632e,.75);for(let i=0;i<4;i++)g.fillEllipse(x+s*i*12,y+i*14,30,14);}
 }
-export function prepareBackdrop(scene){applyDesignCamera(scene);drawBackdrop(scene);}
+export function prepareBackdrop(scene,music='menu'){applyDesignCamera(scene);drawBackdrop(scene,music);}

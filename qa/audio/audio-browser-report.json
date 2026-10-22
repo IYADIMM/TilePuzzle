@@ -1,0 +1,67 @@
+{
+  "environment": "headless Chromium browser emulation; no physical speaker or real-device claim",
+  "originals": {
+    "tileSelectSha256": "e12c4e4b761262ec278a65f6eec3ffb41b8c0d0517d1b0995c00121b6e8b573f",
+    "levelCompleteSha256": "a357be041b994207d85c52d8c194e6fd12ae6b5478e188d97cb1863bdfce0916"
+  },
+  "unlock": {
+    "before": "running",
+    "after": "running",
+    "cached": true,
+    "codecs": {
+      "ogg": "probably",
+      "mp3": "probably"
+    }
+  },
+  "settings": {
+    "muted": {
+      "musicEnabled": false,
+      "sfxEnabled": false,
+      "musicVolume": 0.35,
+      "sfxVolume": 0.55
+    },
+    "restored": {
+      "musicEnabled": true,
+      "sfxEnabled": true,
+      "musicVolume": 0.35,
+      "sfxVolume": 0.55
+    }
+  },
+  "synchronized": {
+    "currentTrack": "gameplay",
+    "tileSelect": 6,
+    "tilePlaceA": 5,
+    "tilePlaceB": 1,
+    "tileMatch": 1,
+    "combo": 1,
+    "tileBlocked": 1,
+    "booster": 1,
+    "shuffle": 1,
+    "undo": 1
+  },
+  "mutedGameplay": {
+    "accepted": true,
+    "played": 0,
+    "mutedSkips": 2
+  },
+  "lossCount": 1,
+  "victory": {
+    "pointerEvents": 36,
+    "tileSelect": 36,
+    "tilePlaceA": 29,
+    "tilePlaceB": 7,
+    "tileMatch": 12,
+    "combo": 11,
+    "levelComplete": 1,
+    "starEarned": 1
+  },
+  "screens": [
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\audio\\audio-settings-360x640.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\audio\\audio-settings-390x844.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\audio\\audio-settings-430x932.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\audio\\audio-settings-768x1024.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\audio\\gameplay-audio-sync-390x844.png"
+  ],
+  "errors": [],
+  "passed": true
+}

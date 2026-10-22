@@ -10,6 +10,7 @@ import { RewardScene } from './scenes/RewardScene.js';
 import { IconSheetScene } from './scenes/IconSheetScene.js';
 import { LeaderboardScene } from './scenes/LeaderboardScene.js';
 import { ShopScene } from './scenes/ShopScene.js';
+import { AudioSettingsScene } from './scenes/AudioSettingsScene.js';
 
 const config = {
   type: Phaser.AUTO,
@@ -19,15 +20,13 @@ const config = {
   height: window.innerHeight,
   resolution: Math.min(window.devicePixelRatio || 1, 2),
   render: { antialias: true, roundPixels: true, powerPreference: 'high-performance' },
-  // Hard-disable Phaser's audio manager. This prevents even an idle Web Audio
-  // context from being constructed; the game is visual/haptic-only by design.
-  audio: { noAudio: true },
+  audio: { disableWebAudio: false },
   scale: {
     mode: Phaser.Scale.RESIZE,
     autoCenter: Phaser.Scale.CENTER_BOTH
   },
   input: { activePointers: 2 },
-  scene: [BootScene, MenuScene, LevelSelectScene, CollectionScene, AchievementsScene, LeaderboardScene, ShopScene, GameScene, RewardScene, IconSheetScene]
+  scene: [BootScene, MenuScene, LevelSelectScene, CollectionScene, AchievementsScene, LeaderboardScene, ShopScene, GameScene, RewardScene, IconSheetScene, AudioSettingsScene]
 };
 
 window.jadeGame = new Phaser.Game(config);

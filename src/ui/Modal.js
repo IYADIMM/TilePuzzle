@@ -1,5 +1,6 @@
 import { THEME,TEXT } from '../theme.js';
 import { addGoldButton } from './components.js';
+import { getAudioManager } from '../audio/AudioManager.js';
 
 export class Modal {
   constructor(scene){this.scene=scene;this.root=null;}
@@ -17,7 +18,7 @@ export class Modal {
     const ribbon=s.add.graphics().fillStyle(0x331006).fillTriangle(-185,-116,-216,-92,-182,-70).fillTriangle(185,-116,216,-92,182,-70).fillGradientStyle(0xf5ce62,0xe4a633,0xb96713,0x8e4310,1).fillRoundedRect(-184,-127,368,72,18).lineStyle(3,0x68300b).strokeRoundedRect(-184,-127,368,72,18).fillStyle(0xffffff,.2).fillRoundedRect(-160,-115,320,9,5);
     const glyph=s.add.graphics();drawModalGlyph(glyph,kind,danger?0xff8b77:0xffd657);const titleText=s.add.text(0,-91,title,{...TEXT.title,fontSize:'39px',color:danger?'#fff1dc':'#4c210d',stroke:danger?'#581911':'#fff0a5',strokeThickness:danger?6:3,align:'center'}).setOrigin(.5),subtitleText=s.add.text(0,-24,subtitle,{...TEXT.hud,fontSize:'18px',color:'#f3ce83',align:'center'}).setOrigin(.5),bodyText=s.add.text(0,50,body,{...TEXT.hud,fontSize:'17px',color:'#fff4d8',align:'center',lineSpacing:9,wordWrap:{width:330}}).setOrigin(.5);
     card.add([halo,shadow,outer,inset,ribbon,glyph,titleText,subtitleText,bodyText]);const primaryButton=addGoldButton(s,0,177,286,primary,()=>this.dismiss(onPrimary));card.add(primaryButton);
-    if(secondary){const secondaryButton=s.add.text(0,231,secondary,{...TEXT.hud,fontSize:'15px',color:'#ffe4a3',stroke:'#2e0d04',strokeThickness:3}).setOrigin(.5).setInteractive({useHandCursor:true});secondaryButton.on('pointerup',()=>this.dismiss(onSecondary));card.add(secondaryButton);}
+    if(secondary){const secondaryButton=s.add.text(0,231,secondary,{...TEXT.hud,fontSize:'15px',color:'#ffe4a3',stroke:'#2e0d04',strokeThickness:3}).setOrigin(.5).setInteractive({useHandCursor:true});secondaryButton.on('pointerup',()=>{getAudioManager(s)?.play('ui_click');this.dismiss(onSecondary);});card.add(secondaryButton);}
     root.add([shade,card]);this.root=root;this.card=card;s.tweens.add({targets:shade,alpha:1,duration:140});s.tweens.add({targets:card,alpha:1,scale:1,duration:360,ease:'Back.Out'});s.tweens.add({targets:halo,scale:1.1,alpha:.5,duration:780,yoyo:true,repeat:-1,ease:'Sine.InOut'});return root;
   }
   dismiss(callback){if(!this.root)return;const doomed=this.root;this.root=null;this.scene.tweens.add({targets:this.card,scale:.82,alpha:0,duration:130,ease:'Back.In',onComplete:()=>{doomed.destroy(true);callback?.();}});}

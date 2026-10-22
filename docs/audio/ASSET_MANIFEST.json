@@ -1,0 +1,155 @@
+{
+  "product": "Jade Garden Tiles",
+  "pack_version": "v1 user-approved local audio 2026-10-22",
+  "approval_note": "User approved all locally created effects and music in conversation; both approved ElevenLabs sounds must be supplied separately; rejected original tile_place v1 is excluded.",
+  "elevenlabs_flow_id": "k799Co5X2rLuQ7EGsCku",
+  "missing_required_originals": {
+    "tile_select": "APPROVED original ElevenLabs recording (not included; source remains in ElevenLabs flow)",
+    "level_complete": "APPROVED original ElevenLabs victory chime (not included; source remains in ElevenLabs flow)"
+  },
+  "selected_tile_placement_default": "tile_place_v2_A",
+  "optional_alternate_tile_placement": "tile_place_v2_B",
+  "assets": [
+    {
+      "name": "booster",
+      "event": "booster",
+      "duration_s": 1.27,
+      "ogg": "Assets/OGG/booster.ogg",
+      "ogg_bytes": 12340,
+      "ogg_sha256": "3a389f9c29197b214afef05a4ca38a7dac4883e5322ecc2b720d550d954fe7cc",
+      "mp3": "Assets/MP3/booster.mp3",
+      "mp3_exists": true
+    },
+    {
+      "name": "chest_open",
+      "event": "chest_open",
+      "duration_s": 2.05,
+      "ogg": "Assets/OGG/chest_open.ogg",
+      "ogg_bytes": 17143,
+      "ogg_sha256": "84d9684b7ee9842a488885c2ce1a7aeb68f6e8782283aa3e7016056e76bca06c",
+      "mp3": "Assets/MP3/chest_open.mp3",
+      "mp3_exists": true
+    },
+    {
+      "name": "combo",
+      "event": "combo",
+      "duration_s": 1.6,
+      "ogg": "Assets/OGG/combo.ogg",
+      "ogg_bytes": 12800,
+      "ogg_sha256": "7e03c9599dbd3ebb8d1e27b0c4bd920e370dee5d444a82b8a2ec4a40a95f9b93",
+      "mp3": "Assets/MP3/combo.mp3",
+      "mp3_exists": true
+    },
+    {
+      "name": "level_failed",
+      "event": "level_failed",
+      "duration_s": 1.42,
+      "ogg": "Assets/OGG/level_failed.ogg",
+      "ogg_bytes": 7947,
+      "ogg_sha256": "7897ed8a0c9ce3d70c2d089553bfd689ccd3ba8d26a0d373ec0bf26347095413",
+      "mp3": "Assets/MP3/level_failed.mp3",
+      "mp3_exists": true
+    },
+    {
+      "name": "music_gameplay_ambient",
+      "event": "music_gameplay",
+      "duration_s": 54.171,
+      "ogg": "Assets/OGG/music_gameplay_ambient.ogg",
+      "ogg_bytes": 285062,
+      "ogg_sha256": "d372fb58873218f694702dbbcaaf06dcb172b3aca7a724330ca9fa3571227d44",
+      "mp3": "Assets/MP3/music_gameplay_ambient.mp3",
+      "mp3_exists": true
+    },
+    {
+      "name": "music_menu_ambient",
+      "event": "music_menu",
+      "duration_s": 42.7,
+      "ogg": "Assets/OGG/music_menu_ambient.ogg",
+      "ogg_bytes": 221511,
+      "ogg_sha256": "b17ba24bbb358f478ce2d67c1b059b77690f8dee37c2d184ed22ca2720dd4a15",
+      "mp3": "Assets/MP3/music_menu_ambient.mp3",
+      "mp3_exists": true
+    },
+    {
+      "name": "shuffle_optional",
+      "event": "shuffle_optional",
+      "duration_s": 1.05,
+      "ogg": "Assets/OGG/shuffle_optional.ogg",
+      "ogg_bytes": 11607,
+      "ogg_sha256": "e71e75ca6de0c83079916408e9a92396a424c711d4de6dae866cfa2e5531244a",
+      "mp3": "Assets/MP3/shuffle_optional.mp3",
+      "mp3_exists": true
+    },
+    {
+      "name": "star_earned_optional",
+      "event": "star_earned_optional",
+      "duration_s": 1.15,
+      "ogg": "Assets/OGG/star_earned_optional.ogg",
+      "ogg_bytes": 10124,
+      "ogg_sha256": "a6b1da1e2ea4e4459e0e7c31bff9cd7f69c3a4b12522f20099c84eefeba80cd0",
+      "mp3": "Assets/MP3/star_earned_optional.mp3",
+      "mp3_exists": true
+    },
+    {
+      "name": "tile_blocked",
+      "event": "tile_blocked",
+      "duration_s": 0.48,
+      "ogg": "Assets/OGG/tile_blocked.ogg",
+      "ogg_bytes": 4817,
+      "ogg_sha256": "0832104acf6901b72f33efbd9354d96c99247d16c5c52052868b8e9097f91678",
+      "mp3": "Assets/MP3/tile_blocked.mp3",
+      "mp3_exists": true
+    },
+    {
+      "name": "tile_match",
+      "event": "tile_match",
+      "duration_s": 1.55,
+      "ogg": "Assets/OGG/tile_match.ogg",
+      "ogg_bytes": 12522,
+      "ogg_sha256": "f460220dfd53c9a7c7f33e92c49198779a69c78a514b1c2c2362b4a8a1a412a8",
+      "mp3": "Assets/MP3/tile_match.mp3",
+      "mp3_exists": true
+    },
+    {
+      "name": "tile_place_v2_A",
+      "event": "tile_place (default)",
+      "duration_s": 0.62,
+      "ogg": "Assets/OGG/tile_place_v2_A.ogg",
+      "ogg_bytes": 5901,
+      "ogg_sha256": "4ac10c91aa7bbfbe929691a3820a516bcd3ee9e357245deb5e226a9f796c03b3",
+      "mp3": "Assets/MP3/tile_place_v2_A.mp3",
+      "mp3_exists": true
+    },
+    {
+      "name": "tile_place_v2_B",
+      "event": "tile_place (optional quiet variant; choose A as default)",
+      "duration_s": 0.62,
+      "ogg": "Assets/OGG/tile_place_v2_B.ogg",
+      "ogg_bytes": 5892,
+      "ogg_sha256": "b53bf10f13759a19752be02c2a4b4210a6e5e64458703caaeb7b9c2ed73841c8",
+      "mp3": "Assets/MP3/tile_place_v2_B.mp3",
+      "mp3_exists": true
+    },
+    {
+      "name": "ui_click",
+      "event": "ui_click",
+      "duration_s": 0.29,
+      "ogg": "Assets/OGG/ui_click.ogg",
+      "ogg_bytes": 4613,
+      "ogg_sha256": "bda339e8b4d6fef8d61832f849d1c94c5677d62e14272fc68add54aac0bc40e5",
+      "mp3": "Assets/MP3/ui_click.mp3",
+      "mp3_exists": true
+    },
+    {
+      "name": "undo_optional",
+      "event": "undo_optional",
+      "duration_s": 0.7,
+      "ogg": "Assets/OGG/undo_optional.ogg",
+      "ogg_bytes": 6699,
+      "ogg_sha256": "4570adef0349649f7a04effef13efc509ea316cc62aaf1529ac2d376958894ae",
+      "mp3": "Assets/MP3/undo_optional.mp3",
+      "mp3_exists": true
+    }
+  ],
+  "license_notes": "Offline local sounds generated procedurally; original ElevenLabs recordings require license/plan verification for commercial launch."
+}
