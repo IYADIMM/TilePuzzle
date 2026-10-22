@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "generator": "built-in image_gen",
+  "references": [
+    "Jade_Garden_Codex_Visual_Evidence_Pack/references/01_approved_asset_style.png",
+    "Jade_Garden_Codex_Visual_Evidence_Pack/references/02_approved_gameplay_reference.png"
+  ],
+  "shared": {
+    "style": "Original polished painterly 3D casual-game production sprite",
+    "lighting": "Soft upper-left studio key light, controlled lower-right shadow",
+    "background": "Genuinely transparent alpha",
+    "constraints": "No copied pixels, crop, labels, logos, watermark, or background"
+  },
+  "masters": {
+    "tile-body-master.png": "One icon-free portrait 7:9 glossy ivory Mahjong tile with deep rounded multi-step bevel, thick cream side wall, realistic reflections and ambient occlusion.",
+    "fruits-master.png": "Exactly three separated cohesive fruit symbols: red cherries with leaf, whole orange with leaf, strawberry with all seeds inside the silhouette.",
+    "cars-master.png": "Exactly three separated miniature cars in three-quarter view: red sports coupe, blue luxury sedan, green compact SUV.",
+    "tray-master.png": "One premium mahogany tray with exactly four equal recessed dark wells, layered carved frame and restrained gold inlay.",
+    "button-master.png": "One blank wide mahogany UI button plate with gold trim, deep rounded bevel, lacquer reflection and no text."
+  }
+}

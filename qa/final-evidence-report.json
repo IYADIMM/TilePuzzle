@@ -1,0 +1,223 @@
+{
+  "passed": true,
+  "losing": {
+    "level": 1,
+    "sequence": [
+      "L1-T21",
+      "L1-T22",
+      "L1-T3",
+      "L1-T13"
+    ]
+  },
+  "captures": [
+    {
+      "name": "01-premium-home-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\final-evidence\\01-premium-home-390x844.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "canvas": 1,
+      "activeScenes": [
+        "Menu"
+      ],
+      "errors": []
+    },
+    {
+      "name": "02-fruit-level-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\final-evidence\\02-fruit-level-390x844.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "canvas": 1,
+      "activeScenes": [
+        "Game"
+      ],
+      "errors": []
+    },
+    {
+      "name": "03-car-chrome-level-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\final-evidence\\03-car-chrome-level-390x844.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "canvas": 1,
+      "activeScenes": [
+        "Game"
+      ],
+      "errors": []
+    },
+    {
+      "name": "04-sports-leather-level-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\final-evidence\\04-sports-leather-level-390x844.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "canvas": 1,
+      "activeScenes": [
+        "Game"
+      ],
+      "errors": []
+    },
+    {
+      "name": "05-wild-animal-level-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\final-evidence\\05-wild-animal-level-390x844.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "canvas": 1,
+      "activeScenes": [
+        "Game"
+      ],
+      "errors": []
+    },
+    {
+      "name": "05b-auto-parts-level-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\final-evidence\\05b-auto-parts-level-390x844.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "canvas": 1,
+      "activeScenes": [
+        "Game"
+      ],
+      "errors": []
+    },
+    {
+      "name": "06-soft-fur-material-detail-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\final-evidence\\06-soft-fur-material-detail-390x844.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "canvas": 1,
+      "activeScenes": [
+        "Game"
+      ],
+      "errors": []
+    },
+    {
+      "name": "07-four-slot-collection-tray-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\final-evidence\\07-four-slot-collection-tray-390x844.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "canvas": 1,
+      "activeScenes": [
+        "Game"
+      ],
+      "errors": []
+    },
+    {
+      "name": "07b-pending-pair-highlight-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\final-evidence\\07b-pending-pair-highlight-390x844.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "canvas": 1,
+      "activeScenes": [
+        "Game"
+      ],
+      "errors": []
+    },
+    {
+      "name": "08-successful-triple-smash-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\final-evidence\\08-successful-triple-smash-390x844.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "canvas": 1,
+      "activeScenes": [
+        "Game"
+      ],
+      "errors": []
+    },
+    {
+      "name": "09-tray-cleared-immediately-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\final-evidence\\09-tray-cleared-immediately-390x844.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "canvas": 1,
+      "activeScenes": [
+        "Game"
+      ],
+      "errors": []
+    },
+    {
+      "name": "10-legitimate-tray-full-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\final-evidence\\10-legitimate-tray-full-390x844.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "canvas": 1,
+      "activeScenes": [
+        "Game"
+      ],
+      "errors": []
+    },
+    {
+      "name": "11-level-completion-celebration-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\final-evidence\\11-level-completion-celebration-390x844.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "canvas": 1,
+      "activeScenes": [
+        "Reward"
+      ],
+      "errors": []
+    },
+    {
+      "name": "12-achievement-reward-screen-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\final-evidence\\12-achievement-reward-screen-390x844.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "canvas": 1,
+      "activeScenes": [
+        "Collection",
+        "Achievements"
+      ],
+      "errors": []
+    },
+    {
+      "name": "13-pause-settings-silent-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\final-evidence\\13-pause-settings-silent-390x844.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "canvas": 1,
+      "activeScenes": [
+        "Game"
+      ],
+      "errors": []
+    },
+    {
+      "name": "14-runtime-icon-contact-sheet-768x1024",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\final-evidence\\14-runtime-icon-contact-sheet-768x1024.png",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "canvas": 1,
+      "activeScenes": [
+        "IconSheet"
+      ],
+      "errors": []
+    }
+  ]
+}

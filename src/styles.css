@@ -1,0 +1,90 @@
+:root {
+  font-family: "Fredoka", "Poppins", "Cairo", sans-serif;
+  color: #fff8dd;
+  background: #031512;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+* { box-sizing: border-box; }
+
+html,
+body,
+#game-shell,
+#game {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  min-width: 280px;
+  min-height: 500px;
+  overscroll-behavior: none;
+  touch-action: none;
+  background:
+    radial-gradient(circle at 50% 9%, rgba(112, 209, 160, .24), transparent 33%),
+    radial-gradient(circle at 50% 82%, rgba(224, 161, 57, .1), transparent 38%),
+    linear-gradient(150deg, #174e42 0%, #082d28 48%, #021411 100%);
+}
+
+#game-shell {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  isolation: isolate;
+}
+
+#game-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  opacity: .18;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.62' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E");
+}
+
+#game { display: grid; place-items: center; }
+
+#game canvas {
+  display: block;
+  width: 100vw;
+  height: 100dvh;
+  border-radius: 0;
+  box-shadow: 0 30px 110px rgba(0, 0, 0, .62), 0 0 0 1px rgba(255, 226, 142, .2);
+}
+
+#rotate-message {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  margin: 0;
+  padding: 2rem;
+  place-items: center;
+  text-align: center;
+  color: #fff2c8;
+  background: radial-gradient(circle at center, #175346, #061f1b 70%);
+  font-family: "Fredoka", "Poppins", sans-serif;
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  font-weight: 700;
+}
+
+@media (orientation: landscape) and (max-height: 560px) {
+  #rotate-message { display: grid; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

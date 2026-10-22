@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "pair": {
+    "entries": 2,
+    "sameType": true,
+    "glow": true,
+    "tint": true
+  },
+  "clear": {
+    "entries": 0,
+    "activeVisuals": 0,
+    "combo": 1
+  }
+}

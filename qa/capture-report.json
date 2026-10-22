@@ -1,0 +1,46 @@
+[
+  {
+    "width": 360,
+    "height": 640,
+    "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\screenshots\\game-360x640.png",
+    "canvas": 1,
+    "errors": []
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\screenshots\\game-390x844.png",
+    "canvas": 1,
+    "errors": []
+  },
+  {
+    "width": 430,
+    "height": 932,
+    "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\screenshots\\game-430x932.png",
+    "canvas": 1,
+    "errors": []
+  },
+  {
+    "width": 768,
+    "height": 1024,
+    "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\screenshots\\game-768x1024.png",
+    "canvas": 1,
+    "errors": []
+  },
+  {
+    "name": "cars-level-2",
+    "width": 390,
+    "height": 844,
+    "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\screenshots\\cars-level-2-390x844.png",
+    "canvas": 1,
+    "errors": []
+  },
+  {
+    "name": "collection-gallery",
+    "width": 390,
+    "height": 844,
+    "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\screenshots\\collection-gallery-390x844.png",
+    "canvas": 1,
+    "errors": []
+  }
+]

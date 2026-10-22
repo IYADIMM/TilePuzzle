@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-21T21:15:22.941Z",
+  "alpha": true,
+  "lighting": "upper-left",
+  "assets": [
+    {
+      "id": "tile-body",
+      "source": "assets/premium/source/tile-body-master.png",
+      "runtime": "/assets/premium/tile-body.webp",
+      "width": 512,
+      "height": 640,
+      "format": "webp",
+      "sha256": "2d2ff5625cfd21d9eba6f8cdce4dcae169bf67c404963b554050e65249246a9a"
+    },
+    {
+      "id": "fruit-cherries",
+      "source": "assets/premium/source/fruits-master.png",
+      "runtime": "/assets/premium/fruit-cherries.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "6eef7f1dfc6bf2c7a58aa343718554096bd2e16eefc5a05a14932916ff48f5f1"
+    },
+    {
+      "id": "fruit-orange",
+      "source": "assets/premium/source/fruits-master.png",
+      "runtime": "/assets/premium/fruit-orange.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "43a46f4fea5e77a477291071b7277153d69b154733aa4303f235625527c51a58"
+    },
+    {
+      "id": "fruit-strawberry",
+      "source": "assets/premium/source/fruits-master.png",
+      "runtime": "/assets/premium/fruit-strawberry.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "17e21623885e90f146c5511d92a00546d90d38d035447066ad5308457815073a"
+    },
+    {
+      "id": "car-sports",
+      "source": "assets/premium/source/cars-master.png",
+      "runtime": "/assets/premium/car-sports.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "7e93dbe0468ae5cf5cc7fb91f2c2e8d8d676644b0ec06893e3dc63f69ca06624"
+    },
+    {
+      "id": "car-sedan",
+      "source": "assets/premium/source/cars-master.png",
+      "runtime": "/assets/premium/car-sedan.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "800ca7cfcfd27e26d7ce6bdca481b66ec5fb2ea7595a02dd8e19a7432c906774"
+    },
+    {
+      "id": "car-suv",
+      "source": "assets/premium/source/cars-master.png",
+      "runtime": "/assets/premium/car-suv.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "770db267cf5343dac393eedb8a1ea0a50aebbe9b888214eb40ca1b0b10039723"
+    },
+    {
+      "id": "tray-four-slot",
+      "source": "assets/premium/source/tray-master.png",
+      "runtime": "/assets/premium/tray-four-slot.webp",
+      "width": 1024,
+      "height": 320,
+      "format": "webp",
+      "sha256": "3cd2e222c370c76b66add3a78ce7aac8a51a08fa83cfc4cd6e8a8b10d6360ca5"
+    },
+    {
+      "id": "button-mahogany",
+      "source": "assets/premium/source/button-master.png",
+      "runtime": "/assets/premium/button-mahogany.webp",
+      "width": 768,
+      "height": 256,
+      "format": "webp",
+      "sha256": "c647dddbbcb4c9a58ede34571d3ee030b89c10e5457da8818e95583dde17381a"
+    }
+  ]
+}

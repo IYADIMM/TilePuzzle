@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.vite/
+*.log
+.21st/
+*.zip
+Jade_Garden_Codex_Visual_Evidence_Pack/
+Premium_Themed_Tile_Game_Codex_Pack/
+Tile_Game_Codex_Inputs_READY/
+Premium_Themed_Tile_Game_Codex_Prompt.md
+qa/chrome-profile/
+qa/edge-profile/

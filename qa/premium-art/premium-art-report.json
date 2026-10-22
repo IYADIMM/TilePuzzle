@@ -1,0 +1,55 @@
+{
+  "passed": true,
+  "allLoaded": true,
+  "fruit": {
+    "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\premium-art\\fruit-runtime.png",
+    "runtime": {
+      "keys": {
+        "premium:tile-body": true,
+        "premium:tray-four-slot": true,
+        "premium:button-mahogany": true,
+        "icon:cherries": true,
+        "icon:orange": true,
+        "icon:strawberry": true,
+        "icon:sports-car": true,
+        "icon:vintage-car": true,
+        "icon:suv": true
+      },
+      "premiumBodies": 36,
+      "premiumIconTiles": 18,
+      "trayTexture": "premium:tray-four-slot",
+      "canvas": [
+        390,
+        844
+      ]
+    }
+  },
+  "cars": {
+    "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\premium-art\\cars-runtime.png",
+    "runtime": {
+      "keys": {
+        "premium:tile-body": true,
+        "premium:tray-four-slot": true,
+        "premium:button-mahogany": true,
+        "icon:cherries": true,
+        "icon:orange": true,
+        "icon:strawberry": true,
+        "icon:sports-car": true,
+        "icon:vintage-car": true,
+        "icon:suv": true
+      },
+      "premiumBodies": 36,
+      "premiumIconTiles": 18,
+      "trayTexture": "premium:tray-four-slot",
+      "canvas": [
+        390,
+        844
+      ]
+    }
+  },
+  "home": {
+    "premiumButtonImages": 3
+  },
+  "errors": [],
+  "note": "Visual approval remains pending user review."
+}

@@ -1,0 +1,22 @@
+{
+  "durationMs": 164453,
+  "interactions": [
+    "home",
+    "game",
+    "multiple selections",
+    "triple",
+    "pause",
+    "resume",
+    "legitimate loss",
+    "restart",
+    "complete level",
+    "reward"
+  ],
+  "audit": {
+    "contextConstructions": 0,
+    "mediaPlayCalls": 0,
+    "activeScene": "Menu"
+  },
+  "errors": [],
+  "passed": true
+}

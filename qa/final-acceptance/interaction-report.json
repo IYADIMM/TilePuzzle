@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "kind": "pointer-top",
+      "id": "L1-T22",
+      "accepted": true
+    },
+    {
+      "kind": "pointer-middle",
+      "id": "L1-T32",
+      "accepted": true
+    },
+    {
+      "kind": "pointer-bottom",
+      "id": "L1-T34",
+      "accepted": true
+    },
+    {
+      "kind": "shared-blocker-logic",
+      "debugLevel": 2,
+      "topBlocked": true,
+      "sandwichBlocked": true,
+      "oneSideFree": true,
+      "nineFacePoints": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "lowerSelectable": true
+    }
+  ]
+}

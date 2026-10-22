@@ -1,0 +1,28 @@
+{
+  "name": "jade-garden-tiles",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "test": "node --test tests/*.test.js",
+    "qa:gameplay": "node scripts/gameplay-qa.mjs",
+    "qa:interaction": "node scripts/interaction-qa.mjs",
+    "qa:victory": "node scripts/victory-qa.mjs",
+    "qa:tray-visual": "node scripts/tray-visual-qa.mjs",
+    "qa:premium-art": "node scripts/premium-art-qa.mjs",
+    "qa:leaderboard": "node scripts/leaderboard-qa.mjs",
+    "qa:evidence": "node scripts/final-evidence.mjs",
+    "qa:acceptance": "npm test && npm run build && npm run qa:gameplay && npm run qa:interaction && npm run qa:tray-visual && npm run qa:victory && npm run qa:silence && npm run qa:premium-art && npm run qa:evidence",
+    "qa:silence": "node scripts/silence-qa.mjs"
+  },
+  "dependencies": {
+    "phaser": "^3.90.0"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.64.1",
+    "vite": "^7.1.12"
+  }
+}
