@@ -1,50 +1,46 @@
-const KEY = 'jade-garden-tiles-save-v3';
-const LEGACY_KEYS = ['jade-garden-tiles-save-v2','jade-garden-tiles-save-v1'];
-export const DEFAULT_SAVE = Object.freeze({
-  version: 3, maxUnlockedLevel: 1, lastLevel: 1, coins: 250, xp: 0, stars: 0,
-  lifetimeScore: 0, lifetimeCoinsEarned: 0, totalTriples: 0,
-  chestProgress: 0, completedLevels: {}, claimedRewards: {}, achievements: {}, unlockedThemes: ['fruits'],
-  boosters: { undo: 3, hint: 3, shuffle: 3 },
-  prefs: { audioDisabled: true, haptics: true, reducedMotion: false },
-  leaderboard: { player: { id:'garden-player',name:'Garden Player',avatar:'jade' }, weekly:{}, allTime:{}, claimedSeasonRewards:{} }
+const KEY='jade-garden-tiles-save-v4',BACKUP_KEY='jade-garden-tiles-save-backup-v4';
+const LEGACY_KEYS=['jade-garden-tiles-save-v3','jade-garden-tiles-save-v2','jade-garden-tiles-save-v1'];
+
+export const DEFAULT_SAVE=Object.freeze({
+  version:4,maxUnlockedLevel:1,lastLevel:1,coins:250,gems:20,xp:0,stars:0,
+  lifetimeScore:0,lifetimeCoinsEarned:0,totalTriples:0,chestProgress:0,
+  completedLevels:{},claimedRewards:{},queuedChestRewards:[],achievements:{},unlockedThemes:['fruits'],
+  boosters:{undo:3,hint:3,shuffle:3},
+  prefs:{audioDisabled:true,haptics:true,reducedMotion:false},
+  leaderboard:{player:{id:'garden-player',name:'Garden Player',avatar:'jade'},weekly:{},allTime:{},claimedSeasonRewards:{}},
+  economy:{ledger:[],inventory:{owned:['tile-classic','tray-mahogany'],equipped:{tile:'tile-classic',tray:'tray-mahogany',celebration:'celebration-gold'}},daily:{lastClaimDay:null,streak:0},revives:{},entitlements:{}},
+  storageRecovery:null
 });
 
 export class SaveManager {
-  static load() {
-    try {
-      const raw = JSON.parse(localStorage.getItem(KEY) || LEGACY_KEYS.map(key=>localStorage.getItem(key)).find(Boolean) || '{}');
-      return migrate(raw);
-    } catch { return clone(DEFAULT_SAVE); }
+  static lastError=null;
+  static load(storage=localStorage){
+    const candidates=[KEY,BACKUP_KEY,...LEGACY_KEYS];let sawCorrupt=false;
+    for(const key of candidates){const encoded=safeGet(storage,key);if(!encoded)continue;try{const save=migrateSave(JSON.parse(encoded));if(key!==KEY)save.storageRecovery={recoveredFrom:key,at:Date.now()};return save;}catch(error){sawCorrupt=true;this.lastError=error;}}
+    const fresh=clone(DEFAULT_SAVE);if(sawCorrupt)fresh.storageRecovery={recoveredFrom:null,at:Date.now(),reason:'No valid save copy'};return fresh;
   }
-  static save(data) { localStorage.setItem(KEY, JSON.stringify({ ...data, version: 3 })); }
-  static reset() { localStorage.removeItem(KEY); LEGACY_KEYS.forEach(key=>localStorage.removeItem(key)); return clone(DEFAULT_SAVE); }
+  static save(data,storage=localStorage){
+    try{const current=safeGet(storage,KEY);if(current){JSON.parse(current);storage.setItem(BACKUP_KEY,current);}storage.setItem(KEY,JSON.stringify({...data,version:4,storageRecovery:null}));this.lastError=null;return{ok:true};}
+    catch(error){this.lastError=error;return{ok:false,error:String(error?.message||error)};}
+  }
+  static export(data){return JSON.stringify({...data,version:4},null,2);}
+  static reset(storage=localStorage){[KEY,BACKUP_KEY,...LEGACY_KEYS].forEach(key=>{try{storage.removeItem(key);}catch{}});return clone(DEFAULT_SAVE);}
 }
 
-function migrate(raw) {
-  const base = clone(DEFAULT_SAVE);
-  const legacyLevel = raw.level || raw.maxUnlockedLevel;
-  const legacyPrefs = raw.prefs || {};
-  return {
-    ...base, ...raw, version: 3,
-    maxUnlockedLevel: Math.max(1, legacyLevel || 1), lastLevel: raw.lastLevel || legacyLevel || 1,
-    completedLevels: { ...base.completedLevels, ...(raw.completedLevels || {}) },
-    claimedRewards: { ...base.claimedRewards, ...(raw.claimedRewards || {}) },
-    achievements: { ...base.achievements, ...(raw.achievements || {}) },
-    unlockedThemes: [...new Set(raw.unlockedThemes || base.unlockedThemes)],
-    boosters: { ...base.boosters, ...(raw.boosters || {}) },
-    leaderboard: {
-      ...base.leaderboard, ...(raw.leaderboard || {}),
-      player:{...base.leaderboard.player,...(raw.leaderboard?.player||{})},
-      weekly:{...(raw.leaderboard?.weekly||{})},allTime:{...(raw.leaderboard?.allTime||{})},
-      claimedSeasonRewards:{...(raw.leaderboard?.claimedSeasonRewards||{})}
-    },
-    // Audio is intentionally not a preference anymore. Discard legacy sound/music
-    // keys so an old save cannot resurrect audio infrastructure in a future scene.
-    prefs: {
-      audioDisabled: true,
-      haptics: legacyPrefs.haptics ?? base.prefs.haptics,
-      reducedMotion: legacyPrefs.reducedMotion ?? base.prefs.reducedMotion
-    }
+export function migrateSave(raw={}){
+  const base=clone(DEFAULT_SAVE),completedLevels={...(raw.completedLevels||{})};
+  const derivedStars=Object.values(completedLevels).reduce((sum,record)=>sum+Math.max(0,Math.min(3,Number(record?.stars)||0)),0);
+  const maxUnlockedLevel=Math.max(1,Number(raw.maxUnlockedLevel)||0,Number(raw.level)||0);
+  const economy=raw.economy||{};
+  return{
+    ...base,...raw,version:4,maxUnlockedLevel,lastLevel:Math.max(1,Math.min(30,Number(raw.lastLevel)||maxUnlockedLevel)),stars:derivedStars,
+    completedLevels,claimedRewards:{...(raw.claimedRewards||{})},queuedChestRewards:[...new Set(raw.queuedChestRewards||[])],achievements:{...(raw.achievements||{})},
+    unlockedThemes:[...new Set(raw.unlockedThemes||base.unlockedThemes)],boosters:{...base.boosters,...(raw.boosters||{})},
+    leaderboard:{...base.leaderboard,...(raw.leaderboard||{}),player:{...base.leaderboard.player,...(raw.leaderboard?.player||{})},weekly:{...(raw.leaderboard?.weekly||{})},allTime:{...(raw.leaderboard?.allTime||{})},claimedSeasonRewards:{...(raw.leaderboard?.claimedSeasonRewards||{})}},
+    economy:{...base.economy,...economy,ledger:[...(economy.ledger||[])],inventory:{...base.economy.inventory,...(economy.inventory||{}),owned:[...new Set(economy.inventory?.owned||base.economy.inventory.owned)],equipped:{...base.economy.inventory.equipped,...(economy.inventory?.equipped||{})}},daily:{...base.economy.daily,...(economy.daily||{})},revives:{...(economy.revives||{})},entitlements:{...(economy.entitlements||{})}},
+    prefs:{audioDisabled:true,haptics:raw.prefs?.haptics??base.prefs.haptics,reducedMotion:raw.prefs?.reducedMotion??base.prefs.reducedMotion}
   };
 }
-function clone(value) { return JSON.parse(JSON.stringify(value)); }
+
+function safeGet(storage,key){try{return storage.getItem(key);}catch(error){SaveManager.lastError=error;return null;}}
+function clone(value){return JSON.parse(JSON.stringify(value));}

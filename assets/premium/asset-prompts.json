@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "generator": "built-in image_gen",
   "references": [
     "Jade_Garden_Codex_Visual_Evidence_Pack/references/01_approved_asset_style.png",
@@ -17,5 +17,13 @@
     "cars-master.png": "Exactly three separated miniature cars in three-quarter view: red sports coupe, blue luxury sedan, green compact SUV.",
     "tray-master.png": "One premium mahogany tray with exactly four equal recessed dark wells, layered carved frame and restrained gold inlay.",
     "button-master.png": "One blank wide mahogany UI button plate with gold trim, deep rounded bevel, lacquer reflection and no text."
+  },
+  "individualSprites": {
+    "fruit-pineapple.png": "One complete golden pineapple with layered green crown.",
+    "fruit-watermelon.png": "One whole striped watermelon with red cut wedge and contained seeds.",
+    "fruit-grapes.png": "One compact bunch of glossy purple grapes with vine and leaves.",
+    "car-race.png": "One blue professional race car with white stripes, wing and number 7.",
+    "car-taxi.png": "One yellow city taxi sedan with roof sign and checker stripe.",
+    "car-convertible.png": "One red open-top roadster with folded roof and cream seats."
   }
 }

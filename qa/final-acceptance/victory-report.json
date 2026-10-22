@@ -1,14 +1,17 @@
 {
-  "passed": true,
-  "accepted": 36,
-  "total": 36,
-  "state": {
-    "activeScenes": [
-      "Reward"
-    ],
-    "rewardTitle": "PERFECT CLEAR",
-    "gameActive": false
-  },
+  "kind": "genuine-pointer-playthrough",
+  "forcedWinRejected": true,
+  "pointerEvents": 36,
+  "expectedTiles": 36,
+  "score": 23400,
+  "bestCombo": 12,
+  "totalTriples": 12,
+  "seconds": 14,
+  "stars": 3,
+  "leagueEarned": 1340,
+  "completedLevels": 1,
+  "storedScore": 23400,
   "errors": [],
-  "screenshot": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\final-acceptance\\11-genuine-level-completion-reward.png"
+  "screenshot": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\audit-remediation\\honest-pointer-level-1-completion-390x844.png",
+  "passed": true
 }

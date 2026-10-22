@@ -18,14 +18,15 @@ const RIVALS = Object.freeze([
   ['seed-sid','Seed Sid',270,false],['twig-tia','Twig Tia',140,true],['leaf-lee','Leaf Lee',60,false]
 ]);
 
-export function calculateLeaderboardPoints({ level, stars = 1, seconds = 999, combo = 0, boostersUsed = 0 }) {
+export function calculateLeaderboardPoints({ level, stars = 1, seconds = 999, combo = 0, boostersUsed = 0, score = 0 }) {
   const difficulty = getLevelConfig(level).difficulty;
   const base = 160 + difficulty * 70;
   const starBonus = Math.max(1, Math.min(3, stars)) * 100;
   const speedBonus = Math.round(Math.max(0, Math.min(180, 240 - Math.max(0, seconds))) * 1.2);
   const comboBonus = Math.min(30, Math.max(0, combo)) * 20;
   const cleanBonus = boostersUsed === 0 ? 120 : 0;
-  return base + starBonus + speedBonus + comboBonus + cleanBonus;
+  const scoreBonus=Math.min(300,Math.floor(Math.max(0,score)/100));
+  return base + starBonus + speedBonus + comboBonus + cleanBonus + scoreBonus;
 }
 
 export function getSeasonId(now = Date.now()) {
@@ -68,7 +69,7 @@ export function recordLeaderboardResult(save, result, now = Date.now()) {
   const previousWeekly = state.weekly[seasonId][levelKey]?.points || 0;
   const previousAllTime = state.allTime[levelKey]?.points || 0;
   const rankBefore = getPlayerRank(save, 'weekly', now);
-  const record = { points, stars: result.stars, seconds: result.seconds, combo: result.combo, boostersUsed: result.boostersUsed, updatedAt: now };
+  const record = { points, stars: result.stars, seconds: result.seconds, combo: result.combo, score:result.score, boostersUsed: result.boostersUsed, updatedAt: now };
   if (points > previousWeekly) state.weekly[seasonId][levelKey] = record;
   if (points > previousAllTime) state.allTime[levelKey] = record;
   const weeklyTotal = sumBest(state.weekly[seasonId]), allTimeTotal = sumBest(state.allTime);

@@ -18,7 +18,7 @@ export class RewardScene extends Phaser.Scene {
     this.add.text(270,365,'LEVEL SCORE',{...TEXT.hud,fontSize:'14px',color:'#7e552b',letterSpacing:2}).setOrigin(.5);
     this.scoreText=this.add.text(270,410,'0',{...TEXT.title,fontSize:'45px',color:'#55240d'}).setOrigin(.5);
     const counter={value:0};this.tweens.add({targets:counter,value:d.score,duration:1000,delay:500,ease:'Cubic.Out',onUpdate:()=>this.scoreText.setText(Math.round(counter.value).toLocaleString())});
-    this.add.text(270,467,`Best combo  ×${d.combo}     •     Time  ${d.seconds}s`,{...TEXT.hud,fontSize:'16px',color:'#3f6657'}).setOrigin(.5);
+    this.add.text(270,467,`Best combo  ×${d.combo}  •  ${d.totalTriples} triples  •  ${d.seconds}s`,{...TEXT.hud,fontSize:'14px',color:'#3f6657'}).setOrigin(.5);
     this.add.text(270,505,d.reward.firstClear?`FIRST CLEAR  +${d.reward.coins} COINS`:'BEST SCORE UPDATED',{...TEXT.hud,fontSize:'17px',color:'#a06118',stroke:'#fff2c5',strokeThickness:2}).setOrigin(.5);
     const lb=d.reward.leaderboard;
     this.add.text(270,541,lb.earned?`LEAGUE  +${lb.earned} PTS  •  RANK #${lb.rankAfter}`:'LEAGUE  •  BEST RESULT HOLDS',{...TEXT.hud,fontSize:'15px',color:'#2d765c',stroke:'#fff8dd',strokeThickness:2}).setOrigin(.5);

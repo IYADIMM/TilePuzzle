@@ -11,12 +11,26 @@
         "icon:cherries": true,
         "icon:orange": true,
         "icon:strawberry": true,
+        "icon:pineapple": true,
+        "icon:watermelon": true,
+        "icon:grapes": true,
         "icon:sports-car": true,
         "icon:vintage-car": true,
-        "icon:suv": true
+        "icon:suv": true,
+        "icon:race-car": true,
+        "icon:taxi": true,
+        "icon:convertible": true
       },
       "premiumBodies": 36,
-      "premiumIconTiles": 18,
+      "premiumIconTiles": 36,
+      "boardTypeIds": [
+        "watermelon",
+        "grapes",
+        "cherries",
+        "strawberry",
+        "orange",
+        "pineapple"
+      ],
       "trayTexture": "premium:tray-four-slot",
       "canvas": [
         390,
@@ -34,12 +48,26 @@
         "icon:cherries": true,
         "icon:orange": true,
         "icon:strawberry": true,
+        "icon:pineapple": true,
+        "icon:watermelon": true,
+        "icon:grapes": true,
         "icon:sports-car": true,
         "icon:vintage-car": true,
-        "icon:suv": true
+        "icon:suv": true,
+        "icon:race-car": true,
+        "icon:taxi": true,
+        "icon:convertible": true
       },
       "premiumBodies": 36,
-      "premiumIconTiles": 18,
+      "premiumIconTiles": 36,
+      "boardTypeIds": [
+        "suv",
+        "sports-car",
+        "taxi",
+        "convertible",
+        "vintage-car",
+        "race-car"
+      ],
       "trayTexture": "premium:tray-four-slot",
       "canvas": [
         390,
@@ -48,8 +76,8 @@
     }
   },
   "home": {
-    "premiumButtonImages": 3
+    "premiumButtonImages": 5
   },
   "errors": [],
-  "note": "Visual approval remains pending user review."
+  "note": "Technical asset integration passed. Visual acceptance remains pending user review."
 }

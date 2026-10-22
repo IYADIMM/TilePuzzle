@@ -48,7 +48,7 @@ export class SlotManager {
     this.state=result.state;
     this.visuals.set(tile.tileData.id,tile);
     const clearedTiles=result.cleared.map(entry=>this.visuals.get(entry.visualId)).filter(Boolean);
-    const effectProxies=clearedTiles.map(clearedTile=>this.createEffectProxy(clearedTile));
+    const effectProxies=clearedTiles.map(clearedTile=>({tile:clearedTile,proxy:this.createEffectProxy(clearedTile)}));
     result.cleared.forEach(entry=>this.visuals.delete(entry.visualId));
     // Cleared GameObjects stop being active tray visuals in the same commit.
     // Independent particles provide the smash; no matched tile remains visible
@@ -62,7 +62,7 @@ export class SlotManager {
     this.busy=true;
 
     this.updatePendingHighlights();
-    this.animateCommittedState(tile,clearedTiles,effectProxies,transaction).then(()=>{
+    this.animateCommittedState(tile,clearedTiles,effectProxies,transaction,result).then(()=>{
       if(this.destroyed||transaction!==this.transactionId)return;
       this.busy=false;
       this.callbacks.onSettled?.(result);
@@ -72,7 +72,7 @@ export class SlotManager {
     return {...result,clearedTiles,transaction};
   }
 
-  async animateCommittedState(newTile,cleared,effectProxies,transaction) {
+  async animateCommittedState(newTile,cleared,effectProxies,transaction,result) {
     const newTileCleared=cleared.includes(newTile);
     if(!newTileCleared){
       newTile.setDepth(430).setSelected(false);
@@ -80,8 +80,11 @@ export class SlotManager {
       await curveTween(this.scene,newTile,this.slotX(destination),this.layout.tray.y,390,()=>!this.destroyed&&transaction===this.transactionId);
       if(this.destroyed||transaction!==this.transactionId)return;
     }else{
-      await Promise.all(effectProxies.map((proxy,index)=>curveTween(this.scene,proxy,this.layout.tray.x+(index-1)*5,this.layout.tray.y-3,420,()=>!this.destroyed&&transaction===this.transactionId,{endScale:.72,fade:true})));
-      effectProxies.forEach(proxy=>proxy.destroy(true));
+      const arriving=effectProxies.find(item=>item.tile===newTile),resting=effectProxies.filter(item=>item!==arriving);
+      if(arriving)await curveTween(this.scene,arriving.proxy,this.slotX(Math.min(TRAY_CAPACITY-1,result.insertAt)),this.layout.tray.y,390,()=>!this.destroyed&&transaction===this.transactionId,{endScale:.86,fade:false});
+      if(this.destroyed||transaction!==this.transactionId)return;
+      await Promise.all(effectProxies.map(({proxy})=>tween(this.scene,proxy,{alpha:0,scaleX:proxy.scaleX*1.08,scaleY:proxy.scaleY*1.08},resting.length?250:180,'Sine.InOut')));
+      effectProxies.forEach(({proxy})=>proxy.destroy(true));
       if(this.destroyed||transaction!==this.transactionId)return;
     }
     await Promise.all(this.state.entries.map((entry,index)=>{

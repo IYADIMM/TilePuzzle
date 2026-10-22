@@ -7,16 +7,12 @@ const root=process.cwd(),source=path.join(root,'assets','premium','source'),runt
 await mkdir(runtime,{recursive:true});
 const jobs=[
   {name:'tile-body',master:'tile-body-master.png',cell:[0,0,1,1],size:[512,640],padding:.025},
-  {name:'fruit-cherries',master:'fruits-master.png',cell:[0,0,1/3,1],size:[512,512],padding:.045},
-  {name:'fruit-orange',master:'fruits-master.png',cell:[1/3,0,1/3,1],size:[512,512],padding:.045},
-  {name:'fruit-strawberry',master:'fruits-master.png',cell:[2/3,0,1/3,1],size:[512,512],padding:.045},
-  {name:'car-sports',master:'cars-master.png',cell:[0,0,1/3,1],size:[512,512],padding:.025},
-  {name:'car-sedan',master:'cars-master.png',cell:[1/3,0,1/3,1],size:[512,512],padding:.025},
-  {name:'car-suv',master:'cars-master.png',cell:[2/3,0,1/3,1],size:[512,512],padding:.025},
+  ...['cherries','orange','strawberry','pineapple','watermelon','grapes'].map(id=>({name:`fruit-${id}`,master:`icons/fruit-${id}.png`,cell:[0,0,1,1],size:[512,512],padding:.045})),
+  ...['sports','sedan','suv','race','taxi','convertible'].map(id=>({name:`car-${id}`,master:`icons/car-${id}.png`,cell:[0,0,1,1],size:[512,512],padding:.025})),
   {name:'tray-four-slot',master:'tray-master.png',cell:[0,0,1,1],size:[1024,320],padding:.02},
   {name:'button-mahogany',master:'button-master.png',cell:[0,0,1,1],size:[768,256],padding:.025}
 ];
-const browser=await chromium.launch({executablePath:'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',headless:true,args:['--no-sandbox']});
+const browser=await chromium.launch({executablePath:process.env.PLAYWRIGHT_CHROME_PATH||'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',headless:true,args:['--no-sandbox']});
 const page=await browser.newPage();
 const manifest=[];
 for(const job of jobs){
@@ -32,4 +28,4 @@ for(const job of jobs){
   },{uri:`data:image/png;base64,${input.toString('base64')}`,cell:job.cell,size:job.size,padding:job.padding});
   const buffer=Buffer.from(data.split(',')[1],'base64'),file=`${job.name}.webp`;await writeFile(path.join(runtime,file),buffer);manifest.push({id:job.name,source:`assets/premium/source/${job.master}`,runtime:`/assets/premium/${file}`,width:job.size[0],height:job.size[1],format:'webp',sha256:crypto.createHash('sha256').update(buffer).digest('hex')});
 }
-await browser.close();await writeFile(path.join(runtime,'manifest.json'),JSON.stringify({version:1,generatedAt:new Date().toISOString(),alpha:true,lighting:'upper-left',assets:manifest},null,2));console.log(JSON.stringify({processed:manifest.length,assets:manifest.map(asset=>({id:asset.id,bytes:asset.runtime}))},null,2));
+await browser.close();await writeFile(path.join(runtime,'manifest.json'),JSON.stringify({version:2,generatedAt:new Date().toISOString(),alpha:true,lighting:'upper-left',assets:manifest},null,2));console.log(JSON.stringify({processed:manifest.length,assets:manifest.map(asset=>({id:asset.id,bytes:asset.runtime}))},null,2));

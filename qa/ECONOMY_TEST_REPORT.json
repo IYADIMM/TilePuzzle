@@ -1,0 +1,28 @@
+{
+  "mode": "OFFLINE_MOCK_ONLY",
+  "realMoneyOperations": 0,
+  "adNetworkOperations": 0,
+  "cases": [
+    {
+      "name": "negative-wallet-rejected",
+      "passed": true
+    },
+    {
+      "name": "daily-idempotent",
+      "passed": true
+    },
+    {
+      "name": "owned-item-not-duplicated",
+      "passed": true
+    },
+    {
+      "name": "failed-rollback-not-charged",
+      "passed": true
+    },
+    {
+      "name": "real-money-disabled",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

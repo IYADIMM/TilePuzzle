@@ -1,0 +1,3 @@
+export class MockAdProvider{constructor({available=true}={}){this.available=available;}async requestReward(attemptId){return this.available?{verified:true,id:attemptId,provider:'mock'}:{verified:false,id:attemptId,reason:'unavailable'};}}
+export class MockPurchaseProvider{async purchase(){return{ok:false,reason:'real-money-disabled',mode:'mock-only'};}async restore(){return{ok:true,entitlements:[],mode:'mock-only'};}}
+export class MockEntitlementProvider{has(save,id){return Boolean(save.economy.entitlements[id]);}grantPreview(save,id){save.economy.entitlements[id]={mode:'preview',grantedAt:Date.now()};return{ok:true,id,mode:'preview'};}}

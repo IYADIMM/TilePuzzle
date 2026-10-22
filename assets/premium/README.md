@@ -13,12 +13,12 @@ This pipeline is intentionally separate from the procedural SVG fallback. Approv
 ## Prototype inventory
 
 1. Icon-free glossy ivory rectangular tile body.
-2. Cherries, orange, and strawberry symbols.
-3. Red sports coupe, blue luxury sedan, and green compact SUV symbols.
+2. Cherries, orange, strawberry, pineapple, watermelon, and grapes symbols.
+3. Sports coupe, luxury sedan, SUV, race car, taxi, and convertible symbols.
 4. Mahogany tray with exactly four wells.
 5. Blank matching mahogany/gold button plate.
 
-The fruit and car masters are atlases only at the source stage. Processing extracts each independently generated cell into its own transparent 512×512 runtime sprite. The tile body remains separate from all face icons.
+The original six prototype cells are extracted from the source atlases into standalone native PNG sources. The six added symbols are standalone native transparent PNG renders. Processing handles all twelve through the same manifest-driven path and emits an independent 512×512 WebP for each symbol. The tile body remains separate from every face icon.
 
 ## Rebuild optimized assets
 
@@ -28,8 +28,8 @@ node scripts/process-premium-assets.mjs
 
 The processor:
 
-1. Reads master PNG alpha.
-2. Finds visible-pixel bounds per atlas cell.
+1. Reads each standalone source PNG with alpha.
+2. Finds its visible-pixel bounds.
 3. Preserves aspect ratio and transparent padding.
 4. Resamples with high-quality browser canvas filtering.
 5. Emits WebP sprites at declared target dimensions.
@@ -38,14 +38,14 @@ The processor:
 ## Runtime policy
 
 - Phaser preloads the raster prototypes under stable texture keys.
-- Fruits and cars use the premium tile body plus three premium symbols each.
+- Fruits and cars use the premium tile body plus six premium symbols each.
 - Remaining icons and material themes retain the SVG/canvas fallback until visual approval.
 - Tray and primary buttons use raster sprites globally because their geometry is collection-independent.
 - State, hitboxes, blocking, and matching never depend on image dimensions.
 
 ## Expansion gate
 
-Do not automatically expand this prototype to 72 icons or 12 raster materials. First review `qa/premium-art/fruit-approved-vs-runtime.png` and `qa/premium-art/cars-approved-vs-runtime.png`. After approval, generate one source master per coherent collection/material family, process through this script, and add stable mappings without changing gameplay IDs.
+Do not automatically expand this prototype to 72 icons or 12 raster materials. First review `qa/premium-art/fruit-approved-vs-runtime-audit.png` and `qa/premium-art/cars-approved-vs-runtime-audit.png`. After explicit human approval, generate one source master per coherent collection/material family, process through this script, and add stable mappings without changing gameplay IDs.
 
 ## Editable-source limitation
 

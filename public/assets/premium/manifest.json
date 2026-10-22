@@ -1,6 +1,6 @@
 {
-  "version": 1,
-  "generatedAt": "2026-10-21T21:15:22.941Z",
+  "version": 2,
+  "generatedAt": "2026-10-22T01:43:29.721Z",
   "alpha": true,
   "lighting": "upper-left",
   "assets": [
@@ -15,34 +15,61 @@
     },
     {
       "id": "fruit-cherries",
-      "source": "assets/premium/source/fruits-master.png",
+      "source": "assets/premium/source/icons/fruit-cherries.png",
       "runtime": "/assets/premium/fruit-cherries.webp",
       "width": 512,
       "height": 512,
       "format": "webp",
-      "sha256": "6eef7f1dfc6bf2c7a58aa343718554096bd2e16eefc5a05a14932916ff48f5f1"
+      "sha256": "a83a7178c0999cda45dff8091481f37c1efa7b307c7802fff3387488393842dc"
     },
     {
       "id": "fruit-orange",
-      "source": "assets/premium/source/fruits-master.png",
+      "source": "assets/premium/source/icons/fruit-orange.png",
       "runtime": "/assets/premium/fruit-orange.webp",
       "width": 512,
       "height": 512,
       "format": "webp",
-      "sha256": "43a46f4fea5e77a477291071b7277153d69b154733aa4303f235625527c51a58"
+      "sha256": "b687fc7b42f5b600bfb27c343a67737ca51a4c9c79268f07f3c3c0d00668a68b"
     },
     {
       "id": "fruit-strawberry",
-      "source": "assets/premium/source/fruits-master.png",
+      "source": "assets/premium/source/icons/fruit-strawberry.png",
       "runtime": "/assets/premium/fruit-strawberry.webp",
       "width": 512,
       "height": 512,
       "format": "webp",
-      "sha256": "17e21623885e90f146c5511d92a00546d90d38d035447066ad5308457815073a"
+      "sha256": "a06b974f7ce5a9c0cf43b8be351adafc47ad8f1a0a5e7c60a737432d6c665c0b"
+    },
+    {
+      "id": "fruit-pineapple",
+      "source": "assets/premium/source/icons/fruit-pineapple.png",
+      "runtime": "/assets/premium/fruit-pineapple.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "d62eb6806ef618699687a75b1cd8f2f92c7da067f8abcdc0394d913483acfcb4"
+    },
+    {
+      "id": "fruit-watermelon",
+      "source": "assets/premium/source/icons/fruit-watermelon.png",
+      "runtime": "/assets/premium/fruit-watermelon.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "d7a5c1b40f1ba6b91cd451de5e2838de768b2a9a838545de0be131aad513b9e4"
+    },
+    {
+      "id": "fruit-grapes",
+      "source": "assets/premium/source/icons/fruit-grapes.png",
+      "runtime": "/assets/premium/fruit-grapes.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "d63bb21bb7bfb9dff69ba6d916afc5b48d885b6b566420b0a5d836ec46b40c81"
     },
     {
       "id": "car-sports",
-      "source": "assets/premium/source/cars-master.png",
+      "source": "assets/premium/source/icons/car-sports.png",
       "runtime": "/assets/premium/car-sports.webp",
       "width": 512,
       "height": 512,
@@ -51,7 +78,7 @@
     },
     {
       "id": "car-sedan",
-      "source": "assets/premium/source/cars-master.png",
+      "source": "assets/premium/source/icons/car-sedan.png",
       "runtime": "/assets/premium/car-sedan.webp",
       "width": 512,
       "height": 512,
@@ -60,12 +87,39 @@
     },
     {
       "id": "car-suv",
-      "source": "assets/premium/source/cars-master.png",
+      "source": "assets/premium/source/icons/car-suv.png",
       "runtime": "/assets/premium/car-suv.webp",
       "width": 512,
       "height": 512,
       "format": "webp",
       "sha256": "770db267cf5343dac393eedb8a1ea0a50aebbe9b888214eb40ca1b0b10039723"
+    },
+    {
+      "id": "car-race",
+      "source": "assets/premium/source/icons/car-race.png",
+      "runtime": "/assets/premium/car-race.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "49bfcc762924caaa52d107cda1691f5162bf85e74931a886c23e503170a83a98"
+    },
+    {
+      "id": "car-taxi",
+      "source": "assets/premium/source/icons/car-taxi.png",
+      "runtime": "/assets/premium/car-taxi.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "1afc24a5ffe39bd6792452d09e0a626863a302ea9661816ef667eea969a86cb7"
+    },
+    {
+      "id": "car-convertible",
+      "source": "assets/premium/source/icons/car-convertible.png",
+      "runtime": "/assets/premium/car-convertible.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "5b1695d6aa3b32d09276c6793de1c755098bd22a0f195faa2c82eb2856c8ccfa"
     },
     {
       "id": "tray-four-slot",

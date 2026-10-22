@@ -9,6 +9,8 @@
   "clear": {
     "entries": 0,
     "activeVisuals": 0,
-    "combo": 1
-  }
+    "combo": 1,
+    "totalTriples": 1
+  },
+  "interaction": "genuine-pointer"
 }

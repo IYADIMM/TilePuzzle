@@ -1,34 +1,19 @@
 {
-  "initial": {
-    "mode": "weekly",
+  "scope": "offline-demo-rendering-only",
+  "weekly": {
     "rank": 19,
     "rowCount": 19,
-    "tabs": 3,
-    "sorted": true,
-    "playerPresent": true
+    "sorted": true
   },
   "friends": {
-    "mode": "friends",
     "rank": 8,
-    "rowCount": 8,
-    "playerPresent": true
+    "rowCount": 8
   },
-  "completion": true,
-  "reward": {
-    "earned": 866,
-    "rankBefore": 19,
-    "rankAfter": 14
-  },
-  "ranked": {
-    "rank": 14,
-    "points": 866
-  },
-  "errors": [],
   "screens": [
     "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\leaderboard\\weekly-390x844.png",
     "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\leaderboard\\friends-390x844.png",
-    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\leaderboard\\weekly-after-clear-390x844.png",
     "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\leaderboard\\weekly-430x932.png"
   ],
+  "errors": [],
   "passed": true
 }

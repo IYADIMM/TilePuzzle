@@ -1,34 +1,64 @@
-import { chromium } from 'playwright-core';
-import { spawn } from 'node:child_process';
 import { mkdir,writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { launchQaBrowser,startQaServer,tilePoint,legalTilePoint } from './qa-helpers.mjs';
 
-const root=process.cwd(),out=path.join(root,'qa','final-acceptance');await mkdir(out,{recursive:true});
-const server=process.platform==='win32'?spawn('C:\\Windows\\System32\\cmd.exe',['/d','/s','/c','npm run dev -- --port 4181'],{cwd:root,stdio:'ignore'}):spawn('npm',['run','dev','--','--port','4181'],{cwd:root,stdio:'ignore'});
-await new Promise(resolve=>setTimeout(resolve,2500));
-const browser=await chromium.launch({executablePath:'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',headless:true,args:['--no-sandbox']});
-const checks=[];
+const root=process.cwd(),out=path.join(root,'qa','audit-remediation'),port=4192;
+await mkdir(out,{recursive:true});
+const{command,url}=await startQaServer(root,port),browser=await launchQaBrowser(),checks=[],errors=[];
 
-async function fresh(){const page=await browser.newPage({viewport:{width:390,height:844},deviceScaleFactor:1,isMobile:true,hasTouch:true});await page.goto('http://127.0.0.1:4181/?screen=game&level=1&debugGrid=1',{waitUntil:'networkidle'});await page.waitForFunction(()=>jadeGame.scene.getScene('Game')?.board?.tiles?.length>0);await page.waitForTimeout(900);return page;}
-
-for(const vertical of ['top','middle','bottom']){
-  const page=await fresh();
-  const target=await page.evaluate(vertical=>{const scene=jadeGame.scene.getScene('Game'),selectable=scene.board.selectableTiles.sort((a,b)=>a.y-b.y),tile=vertical==='top'?selectable[0]:vertical==='bottom'?selectable.at(-1):selectable[Math.floor(selectable.length/2)],camera=scene.cameras.main,canvas=scene.game.canvas,rect=canvas.getBoundingClientRect(),screenX=(tile.x-camera.worldView.x)*camera.zoom,screenY=(tile.y-camera.worldView.y)*camera.zoom;return{id:tile.tileData.id,x:rect.left+screenX*(rect.width/canvas.width),y:rect.top+screenY*(rect.height/canvas.height)};},vertical);
-  await page.mouse.click(target.x,target.y);await page.waitForTimeout(90);
-  const accepted=await page.evaluate(id=>jadeGame.scene.getScene('Game').board.tiles.find(tile=>tile.tileData.id===id).isCollected,target.id);
-  checks.push({kind:`pointer-${vertical}`,id:target.id,accepted});await page.close();
+async function open(viewport={width:390,height:844},level=1){
+  const page=await browser.newPage({viewport,isMobile:viewport.width<700,hasTouch:true});
+  page.on('pageerror',error=>errors.push(error.message));
+  await page.goto(`${url}/?screen=game&level=${level}&debugGrid=1`,{waitUntil:'domcontentloaded'});
+  await page.waitForFunction(()=>jadeGame.scene.getScene('Game')?.board?.tiles?.length>0);
+  await page.evaluate(()=>jadeGame.scene.getScene('Game').tweens.timeScale=12);
+  await page.waitForTimeout(300);
+  return page;
 }
 
-const debugPage=await fresh();
-let debugLevel=1;
-for(let level=1;level<=30;level++){
-  if(level>1){await debugPage.goto(`http://127.0.0.1:4181/?screen=game&level=${level}&debugGrid=1`,{waitUntil:'networkidle'});await debugPage.waitForFunction(()=>jadeGame.scene.getScene('Game')?.board?.tiles?.length>0);await debugPage.waitForTimeout(280);}
-  const hasSandwich=await debugPage.evaluate(()=>jadeGame.scene.getScene('Game').board.tiles.some(tile=>tile.tileData.blockReason==='left+right-blocked'));
-  if(hasSandwich){debugLevel=level;break;}
+async function tileHits(page,point){
+  await page.mouse.move(point.x,point.y);
+  return page.evaluate(()=>jadeGame.scene.getScene('Game').input.hitTestPointer(jadeGame.scene.getScene('Game').input.activePointer).filter(item=>item.tileData?.id).map(item=>({id:item.tileData.id,depth:item.depth})).sort((a,b)=>b.depth-a.depth));
 }
-const logic=await debugPage.evaluate(()=>{const s=jadeGame.scene.getScene('Game'),states=s.board.tiles.filter(tile=>!tile.isCollected).map(tile=>({id:tile.tileData.id,y:tile.y,reason:tile.tileData.blockReason,blocked:tile.isBlocked,leftFree:tile.tileData.access.leftFree,rightFree:tile.tileData.access.rightFree,top:tile.tileData.access.top.length})),sample=s.board.selectableTiles[0],w=sample.geometry.tileW,h=sample.geometry.tileH,points=[[-.48,-.48],[0,-.48],[.48,-.48],[-.48,0],[0,0],[.48,0],[-.48,.48],[0,.48],[.48,.48]].map(([x,y])=>sample.input.hitArea.contains(x*w,y*h));return{topBlocked:states.some(v=>v.reason==='top-blocked'),sandwichBlocked:states.some(v=>v.reason==='left+right-blocked'),oneSideFree:states.some(v=>!v.blocked&&(v.leftFree||v.rightFree)),nineFacePoints:points,lowerSelectable:states.some(v=>!v.blocked&&v.y>480),states};});
-await debugPage.screenshot({path:path.join(out,'15-debug-grid-blocker-logic.png')});await debugPage.close();
-checks.push({kind:'shared-blocker-logic',debugLevel,...logic,states:undefined});
-const passed=checks.every(check=>check.kind.startsWith('pointer-')?check.accepted:check.topBlocked&&check.sandwichBlocked&&check.oneSideFree&&check.nineFacePoints.every(Boolean));
-const report={passed,checks};await writeFile(path.join(out,'interaction-report.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));
-await browser.close();server.kill();if(!passed)process.exitCode=1;
+
+try{
+  const offsets=[[-.32,-.32],[0,-.32],[.32,-.32],[-.32,0],[0,0],[.32,0],[-.32,.32],[0,.32],[.32,.32]];
+  for(const[offsetX,offsetY]of offsets){
+    const page=await open(),id=await page.evaluate(()=>jadeGame.scene.getScene('Game').board.level.solution[0]),point=await tilePoint(page,id,offsetX,offsetY),hits=await tileHits(page,point),visiblyTargeted=hits[0]?.id===id;
+    let accepted=null;
+    if(visiblyTargeted){await page.mouse.click(point.x,point.y);await page.waitForTimeout(100);accepted=await page.evaluate(id=>jadeGame.scene.getScene('Game').board.tiles.find(tile=>tile.tileData.id===id).isCollected,id);}
+    checks.push({kind:'face-sample',id,offsetX,offsetY,visiblyTargeted,occludedBy:visiblyTargeted?null:hits[0]?.id??'outside-visible-input',accepted});
+    await page.close();
+  }
+
+  for(const viewport of [{width:360,height:640},{width:390,height:844},{width:430,height:932},{width:768,height:1024}]){
+    const page=await open(viewport),id=await page.evaluate(()=>jadeGame.scene.getScene('Game').board.selectableTiles.sort((a,b)=>b.y-a.y)[0].tileData.id),point=await legalTilePoint(page,id);
+    await page.mouse.click(point.x,point.y);await page.waitForTimeout(100);
+    const accepted=await page.evaluate(id=>jadeGame.scene.getScene('Game').board.tiles.find(tile=>tile.tileData.id===id).isCollected,id),screenshot=path.join(out,`pointer-${viewport.width}x${viewport.height}.png`);
+    await page.screenshot({path:screenshot});checks.push({kind:'responsive-pointer',viewport,id,accepted,screenshot});await page.close();
+  }
+
+  let blockedEvidence=null;
+  const blockedOffsets=[[-.42,-.35],[0,-.35],[.42,-.35],[-.42,0],[0,0],[.42,0],[-.42,.35],[0,.35],[.42,.35]];
+  for(let level=1;level<=30&&!blockedEvidence;level++){
+    const page=await open({width:390,height:844},level),blockedTiles=await page.evaluate(()=>jadeGame.scene.getScene('Game').board.tiles.filter(item=>item.isBlocked).map(item=>({id:item.tileData.id,reason:item.tileData.blockReason})));
+    for(const blocked of blockedTiles){
+      for(const[offsetX,offsetY]of blockedOffsets){
+        const point=await tilePoint(page,blocked.id,offsetX,offsetY),hits=await tileHits(page,point);
+        if(hits.length)continue;
+        const before=await page.evaluate(()=>jadeGame.scene.getScene('Game').selectedTileCount);
+        await page.mouse.click(point.x,point.y);await page.waitForTimeout(100);
+        const rejected=await page.evaluate(({id,before})=>{const scene=jadeGame.scene.getScene('Game'),tile=scene.board.tiles.find(item=>item.tileData.id===id);return!tile.isCollected&&scene.selectedTileCount===before;},{id:blocked.id,before});
+        const screenshot=path.join(out,'blocked-pointer-debug-390x844.png');await page.screenshot({path:screenshot});blockedEvidence={kind:'blocked-pointer',level,...blocked,offsetX,offsetY,rejected,screenshot};break;
+      }
+      if(blockedEvidence)break;
+    }
+    await page.close();
+  }
+  if(blockedEvidence)checks.push(blockedEvidence);
+
+  const faceSamples=checks.filter(check=>check.kind==='face-sample'),visibleSamples=faceSamples.filter(check=>check.visiblyTargeted);
+  const passed=visibleSamples.length>=4&&visibleSamples.every(check=>check.accepted)&&checks.filter(check=>check.kind==='responsive-pointer').every(check=>check.accepted)&&Boolean(blockedEvidence?.rejected)&&errors.length===0;
+  const report={passed,summary:{sampledFacePoints:faceSamples.length,verifiedVisiblePoints:visibleSamples.length,occludedPoints:faceSamples.length-visibleSamples.length,responsiveSizes:4,blockedPointerEvidence:Boolean(blockedEvidence)},checks,errors};
+  await writeFile(path.join(root,'qa','final-acceptance','interaction-report.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));if(!passed)process.exitCode=1;
+}finally{await browser.close();command.kill();}

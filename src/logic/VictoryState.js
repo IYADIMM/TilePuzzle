@@ -1,6 +1,9 @@
-export function canCompleteLevel({ remainingBoard, trayCount, busy, alreadyEmitted = false }) {
+import { isGameplayEvidenceValid } from './PerformanceRules.js';
+
+export function canCompleteLevel({ remainingBoard, trayCount, busy, alreadyEmitted = false, evidence }) {
   return Number(remainingBoard) === 0
     && Number(trayCount) === 0
     && !busy
-    && !alreadyEmitted;
+    && !alreadyEmitted
+    && isGameplayEvidenceValid(evidence||{});
 }

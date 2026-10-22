@@ -1,22 +1,16 @@
-import { chromium } from 'playwright-core';
-import { spawn } from 'node:child_process';
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { launchQaBrowser,legalTilePoint,startQaServer } from './qa-helpers.mjs';
 import { LEVEL_CONFIGS } from '../src/data/levels.js';
 import { generateLevel } from '../src/logic/LevelGenerator.js';
 import { computeBlockedBy } from '../src/logic/LevelSolver.js';
 import { createTrayState, reduceTray } from '../src/logic/SlotState.js';
 
 const root = process.cwd();
-const output = path.join(root, 'qa', 'final-evidence');
+const output = path.join(root, 'qa', 'audit-final-evidence');
 await mkdir(output, { recursive: true });
-const server = startServer(4178);
-await wait(2500);
-const browser = await chromium.launch({
-  executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
-  headless: true,
-  args: ['--no-sandbox']
-});
+const server = await startQaServer(root,4178);
+const browser = await launchQaBrowser();
 const report = [];
 
 async function capture(name, url, action, viewport = { width: 390, height: 844 }) {
@@ -39,11 +33,8 @@ const tapSolution = async (page, count = Infinity, pause = 950, fast = false) =>
   const ids = await page.evaluate(() => jadeGame.scene.getScene('Game').board.level.solution);
   if(fast)await page.evaluate(()=>{jadeGame.scene.getScene('Game').tweens.timeScale=12;});
   for (const id of ids.slice(0, count)) {
-    await page.evaluate(tileId => {
-      const scene = jadeGame.scene.getScene('Game');
-      const tile = scene.board.tiles.find(item => item.tileData.id === tileId);
-      scene.board.requestSelection(tile);
-    }, id);
+    const point=await legalTilePoint(page,id);
+    await page.mouse.click(point.x,point.y);
     if(fast)await page.waitForFunction(()=>{const scene=window.jadeGame?.scene?.getScene('Game');return !scene?.scene?.isActive()||!scene.tray?.isBusy;},{timeout:2400});
     else await page.waitForTimeout(pause);
   }
@@ -67,10 +58,8 @@ await capture('07b-pending-pair-highlight-390x844', '?screen=game&level=1', asyn
 await capture('08-successful-triple-smash-390x844', '?screen=game&level=1', async page => {
   await tapSolution(page, 2);
   const third = await page.evaluate(() => jadeGame.scene.getScene('Game').board.level.solution[2]);
-  await page.evaluate(id => {
-    const scene = jadeGame.scene.getScene('Game');
-    scene.board.requestSelection(scene.board.tiles.find(tile => tile.tileData.id === id));
-  }, third);
+  const point=await legalTilePoint(page,third);
+  await page.mouse.click(point.x,point.y);
   await page.waitForTimeout(55);
 });
 
@@ -82,10 +71,8 @@ await capture('09-tray-cleared-immediately-390x844', '?screen=game&level=1', asy
 const losing = findLosingSequence();
 await capture('10-legitimate-tray-full-390x844', `?screen=game&level=${losing.level}`, async page => {
   for (const id of losing.sequence) {
-    await page.evaluate(tileId => {
-      const scene = jadeGame.scene.getScene('Game');
-      scene.board.requestSelection(scene.board.tiles.find(tile => tile.tileData.id === tileId));
-    }, id);
+    const point=await legalTilePoint(page,id);
+    await page.mouse.click(point.x,point.y);
     await page.waitForTimeout(950);
   }
   await page.waitForTimeout(520);
@@ -117,11 +104,13 @@ await capture('13-pause-settings-silent-390x844', '?screen=game&level=1', async 
 });
 
 await capture('14-runtime-icon-contact-sheet-768x1024', '?screen=icons', null, { width: 768, height: 1024 });
+await capture('15-level-navigation-390x844', '?screen=levels', null);
+await capture('16-mock-economy-shop-390x844', '?screen=shop', null);
 
 await browser.close();
-server.kill();
+server.command.kill();
 const completion=report.find(item=>item.name==='11-level-completion-celebration-390x844');
-const passed = report.length === 16 && report.every(item => item.canvas === 1 && item.errors.length === 0) && completion?.activeScenes.includes('Reward');
+const passed = report.length === 18 && report.every(item => item.canvas === 1 && item.errors.length === 0) && completion?.activeScenes.includes('Reward');
 await writeFile(path.join(root, 'qa', 'final-evidence-report.json'), JSON.stringify({ passed, losing, captures: report }, null, 2));
 console.log(JSON.stringify({ passed, losing, captures: report.map(item => ({ name: item.name, errors: item.errors })) }, null, 2));
 if (!passed) process.exitCode = 1;
@@ -150,9 +139,4 @@ function findLosingSequence() {
   throw new Error('No solver-legal four-unmatched losing sequence found');
 }
 
-function startServer(port) {
-  return process.platform === 'win32'
-    ? spawn('C:\\Windows\\System32\\cmd.exe', ['/d', '/s', '/c', `npm run dev -- --port ${port}`], { cwd: root, stdio: 'ignore' })
-    : spawn('npm', ['run', 'dev', '--', '--port', String(port)], { cwd: root, stdio: 'ignore' });
-}
 function wait(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }

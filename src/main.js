@@ -9,6 +9,7 @@ import { AchievementsScene } from './scenes/AchievementsScene.js';
 import { RewardScene } from './scenes/RewardScene.js';
 import { IconSheetScene } from './scenes/IconSheetScene.js';
 import { LeaderboardScene } from './scenes/LeaderboardScene.js';
+import { ShopScene } from './scenes/ShopScene.js';
 
 const config = {
   type: Phaser.AUTO,
@@ -26,7 +27,7 @@ const config = {
     autoCenter: Phaser.Scale.CENTER_BOTH
   },
   input: { activePointers: 2 },
-  scene: [BootScene, MenuScene, LevelSelectScene, CollectionScene, AchievementsScene, LeaderboardScene, GameScene, RewardScene, IconSheetScene]
+  scene: [BootScene, MenuScene, LevelSelectScene, CollectionScene, AchievementsScene, LeaderboardScene, ShopScene, GameScene, RewardScene, IconSheetScene]
 };
 
 window.jadeGame = new Phaser.Game(config);

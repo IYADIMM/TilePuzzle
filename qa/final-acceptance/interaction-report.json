@@ -1,39 +1,144 @@
 {
   "passed": true,
+  "summary": {
+    "sampledFacePoints": 9,
+    "verifiedVisiblePoints": 4,
+    "occludedPoints": 5,
+    "responsiveSizes": 4,
+    "blockedPointerEvidence": true
+  },
   "checks": [
     {
-      "kind": "pointer-top",
-      "id": "L1-T22",
+      "kind": "face-sample",
+      "id": "L1-T24",
+      "offsetX": -0.32,
+      "offsetY": -0.32,
+      "visiblyTargeted": true,
+      "occludedBy": null,
       "accepted": true
     },
     {
-      "kind": "pointer-middle",
-      "id": "L1-T32",
+      "kind": "face-sample",
+      "id": "L1-T24",
+      "offsetX": 0,
+      "offsetY": -0.32,
+      "visiblyTargeted": true,
+      "occludedBy": null,
       "accepted": true
     },
     {
-      "kind": "pointer-bottom",
-      "id": "L1-T34",
+      "kind": "face-sample",
+      "id": "L1-T24",
+      "offsetX": 0.32,
+      "offsetY": -0.32,
+      "visiblyTargeted": false,
+      "occludedBy": "outside-visible-input",
+      "accepted": null
+    },
+    {
+      "kind": "face-sample",
+      "id": "L1-T24",
+      "offsetX": -0.32,
+      "offsetY": 0,
+      "visiblyTargeted": true,
+      "occludedBy": null,
       "accepted": true
     },
     {
-      "kind": "shared-blocker-logic",
-      "debugLevel": 2,
-      "topBlocked": true,
-      "sandwichBlocked": true,
-      "oneSideFree": true,
-      "nineFacePoints": [
-        true,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true
-      ],
-      "lowerSelectable": true
+      "kind": "face-sample",
+      "id": "L1-T24",
+      "offsetX": 0,
+      "offsetY": 0,
+      "visiblyTargeted": true,
+      "occludedBy": null,
+      "accepted": true
+    },
+    {
+      "kind": "face-sample",
+      "id": "L1-T24",
+      "offsetX": 0.32,
+      "offsetY": 0,
+      "visiblyTargeted": false,
+      "occludedBy": "outside-visible-input",
+      "accepted": null
+    },
+    {
+      "kind": "face-sample",
+      "id": "L1-T24",
+      "offsetX": -0.32,
+      "offsetY": 0.32,
+      "visiblyTargeted": false,
+      "occludedBy": "outside-visible-input",
+      "accepted": null
+    },
+    {
+      "kind": "face-sample",
+      "id": "L1-T24",
+      "offsetX": 0,
+      "offsetY": 0.32,
+      "visiblyTargeted": false,
+      "occludedBy": "outside-visible-input",
+      "accepted": null
+    },
+    {
+      "kind": "face-sample",
+      "id": "L1-T24",
+      "offsetX": 0.32,
+      "offsetY": 0.32,
+      "visiblyTargeted": false,
+      "occludedBy": "outside-visible-input",
+      "accepted": null
+    },
+    {
+      "kind": "responsive-pointer",
+      "viewport": {
+        "width": 360,
+        "height": 640
+      },
+      "id": "L1-T23",
+      "accepted": true,
+      "screenshot": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\audit-remediation\\pointer-360x640.png"
+    },
+    {
+      "kind": "responsive-pointer",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "id": "L1-T23",
+      "accepted": true,
+      "screenshot": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\audit-remediation\\pointer-390x844.png"
+    },
+    {
+      "kind": "responsive-pointer",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "id": "L1-T23",
+      "accepted": true,
+      "screenshot": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\audit-remediation\\pointer-430x932.png"
+    },
+    {
+      "kind": "responsive-pointer",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "id": "L1-T23",
+      "accepted": true,
+      "screenshot": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\audit-remediation\\pointer-768x1024.png"
+    },
+    {
+      "kind": "blocked-pointer",
+      "level": 1,
+      "id": "L1-T0",
+      "reason": "top-blocked",
+      "offsetX": -0.42,
+      "offsetY": -0.35,
+      "rejected": true,
+      "screenshot": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\audit-remediation\\blocked-pointer-debug-390x844.png"
     }
-  ]
+  ],
+  "errors": []
 }
