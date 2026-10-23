@@ -3,6 +3,7 @@ import { createTrayState, reduceTray, TRAY_CAPACITY } from '../logic/SlotState.j
 import { MATCH_SIZE } from '../logic/GameRules.js';
 import { quadraticBezierPoint } from '../logic/MotionMath.js';
 import { PREMIUM_TEXTURES } from '../art/PremiumAssetManifest.js';
+import { trayTileScale } from '../ui/LayoutManager.js';
 export { TRAY_CAPACITY };
 
 export class SlotManager {
@@ -15,6 +16,7 @@ export class SlotManager {
     this.busy = false;
     this.transactionId = 0;
     this.destroyed = false;
+    this.tileScale=trayTileScale(layout,layout.boardProjection?.tileW||88,layout.boardProjection?.tileH||77);
     this.draw();
     scene.events.once('shutdown', () => this.dispose());
   }
@@ -42,6 +44,7 @@ export class SlotManager {
 
   commit(tile) {
     if (this.destroyed || this.busy) return { accepted:false, reason:'busy', state:this.state };
+    this.tileScale=trayTileScale(this.layout,tile.geometry.tileW,tile.geometry.tileH);
     const result=reduceTray(this.state,{type:'INSERT',tile:{visualId:tile.tileData.id,typeId:tile.typeId}});
     if (!result.accepted) return result;
 
@@ -78,23 +81,23 @@ export class SlotManager {
     if(!newTileCleared){
       newTile.setDepth(430).setSelected(false);
       const destination=this.state.entries.findIndex(entry=>entry.visualId===newTile.tileData.id);
-      await curveTween(this.scene,newTile,this.slotX(destination),this.layout.tray.y,390,()=>!this.destroyed&&transaction===this.transactionId);
+      await curveTween(this.scene,newTile,this.slotX(destination),this.layout.tray.y,260,()=>!this.destroyed&&transaction===this.transactionId,{endScale:this.tileScale});
       if(this.destroyed||transaction!==this.transactionId)return;
       this.callbacks.onArrived?.(result,newTile);
     }else{
       const arriving=effectProxies.find(item=>item.tile===newTile),resting=effectProxies.filter(item=>item!==arriving);
-      if(arriving)await curveTween(this.scene,arriving.proxy,this.slotX(Math.min(TRAY_CAPACITY-1,result.insertAt)),this.layout.tray.y,390,()=>!this.destroyed&&transaction===this.transactionId,{endScale:.86,fade:false});
+      if(arriving)await curveTween(this.scene,arriving.proxy,this.slotX(Math.min(TRAY_CAPACITY-1,result.insertAt)),this.layout.tray.y,260,()=>!this.destroyed&&transaction===this.transactionId,{endScale:this.tileScale,fade:false});
       if(this.destroyed||transaction!==this.transactionId)return;
       this.callbacks.onArrived?.(result,newTile);
       const collisionX=effectProxies.reduce((sum,{proxy})=>sum+proxy.x,0)/Math.max(1,effectProxies.length);
-      await Promise.all(effectProxies.map(({proxy},index)=>tween(this.scene,proxy,{x:collisionX+(index?8:-8),y:this.layout.tray.y,angle:index?7:-7,scaleX:proxy.scaleX*1.04,scaleY:proxy.scaleY*1.04},125,'Cubic.In')));
-      await Promise.all(effectProxies.map(({proxy})=>tween(this.scene,proxy,{x:collisionX,alpha:0,angle:0,scaleX:proxy.scaleX*.76,scaleY:proxy.scaleY*.76},220,'Sine.InOut')));
+      await Promise.all(effectProxies.map(({proxy},index)=>tween(this.scene,proxy,{x:collisionX+(index?7:-7),y:this.layout.tray.y,angle:index?5:-5,scaleX:proxy.scaleX*1.025,scaleY:proxy.scaleY*1.025},80,'Cubic.In')));
+      await Promise.all(effectProxies.map(({proxy})=>tween(this.scene,proxy,{x:collisionX,alpha:0,angle:0,scaleX:proxy.scaleX*.82,scaleY:proxy.scaleY*.82},135,'Sine.InOut')));
       effectProxies.forEach(({proxy})=>proxy.destroy(true));
       if(this.destroyed||transaction!==this.transactionId)return;
     }
     await Promise.all(this.state.entries.map((entry,index)=>{
       const tile=this.visuals.get(entry.visualId);
-      return tile?tween(this.scene,tile,{x:this.slotX(index),y:this.layout.tray.y,scaleX:.86,scaleY:.86,angle:0,alpha:1},260,'Sine.InOut'):Promise.resolve();
+      return tile?tween(this.scene,tile,{x:this.slotX(index),y:this.layout.tray.y,scaleX:this.tileScale,scaleY:this.tileScale,angle:0,alpha:1},135,'Sine.InOut'):Promise.resolve();
     }));
   }
 
@@ -125,7 +128,7 @@ export class SlotManager {
       this.visuals.set(entry.visualId,tile);
       tile.isCollected=true;
       tile.setData('trayDetached',false);
-      tile.setVisible(true).setAlpha(1).setScale(.86).setAngle(0).setPosition(this.slotX(index),this.layout.tray.y).setDepth(430+index).disableInteractive();
+      tile.setVisible(true).setAlpha(1).setScale(this.tileScale).setAngle(0).setPosition(this.slotX(index),this.layout.tray.y).setDepth(430+index).disableInteractive();
     });
     this.updatePendingHighlights();
   }
@@ -139,4 +142,4 @@ export class SlotManager {
 }
 
 function tween(scene,target,props,duration,ease){return new Promise(resolve=>{if(!target?.active||!scene?.sys?.isActive()){resolve();return;}scene.tweens.killTweensOf(target);scene.tweens.add({targets:target,...props,duration,ease,onComplete:resolve,onStop:resolve});});}
-function curveTween(scene,target,endX,endY,duration,isCurrent,{endScale=.86,fade=false}={}){return new Promise(resolve=>{if(!target?.active||!scene?.sys?.isActive()){resolve();return;}const startX=target.x,startY=target.y,startScaleX=target.scaleX,startScaleY=target.scaleY,controlX=(startX+endX)/2,controlY=Math.min(startY,endY)-Math.min(120,62+Math.abs(endY-startY)*.12),driver={t:0};const motion=scene.tweens.add({targets:driver,t:1,duration,ease:'Sine.InOut',onUpdate:()=>{if(!isCurrent()){motion.stop();return;}const point=quadraticBezierPoint(startX,startY,controlX,controlY,endX,endY,driver.t);target.setPosition(point.x,point.y);target.setScale(Phaser.Math.Linear(startScaleX,endScale,driver.t),Phaser.Math.Linear(startScaleY,endScale,driver.t));if(fade&&driver.t>.58)target.setAlpha(1-(driver.t-.58)/.42);},onComplete:resolve,onStop:resolve});});}
+function curveTween(scene,target,endX,endY,duration,isCurrent,{endScale=.78,fade=false}={}){return new Promise(resolve=>{if(!target?.active||!scene?.sys?.isActive()){resolve();return;}const startX=target.x,startY=target.y,startScaleX=target.scaleX,startScaleY=target.scaleY,controlX=(startX+endX)/2,controlY=Math.min(startY,endY)-Math.min(120,62+Math.abs(endY-startY)*.12),driver={t:0};const motion=scene.tweens.add({targets:driver,t:1,duration,ease:'Sine.InOut',onUpdate:()=>{if(!isCurrent()){motion.stop();return;}const point=quadraticBezierPoint(startX,startY,controlX,controlY,endX,endY,driver.t);target.setPosition(point.x,point.y);target.setScale(Phaser.Math.Linear(startScaleX,endScale,driver.t),Phaser.Math.Linear(startScaleY,endScale,driver.t));if(fade&&driver.t>.58)target.setAlpha(1-(driver.t-.58)/.42);},onComplete:resolve,onStop:resolve});});}

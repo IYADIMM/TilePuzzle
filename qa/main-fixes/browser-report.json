@@ -1,0 +1,52 @@
+{
+  "generatedAt": "2026-10-23T12:44:38.891Z",
+  "passed": true,
+  "checks": {
+    "freshJourney": {
+      "cards": 2,
+      "mysteries": 1,
+      "spoilers": 0
+    },
+    "level10Journey": {
+      "journeyLength": 11,
+      "mysteries": 1,
+      "last": {
+        "level": 11,
+        "locked": true,
+        "mystery": true
+      }
+    },
+    "routeGate": 10,
+    "pointerAcceptedMs": 90.55,
+    "hintCharge": 2,
+    "shuffle": {
+      "changed": true,
+      "sameMultiset": true,
+      "charge": 2
+    },
+    "abandon": {
+      "attempt": null,
+      "abandoned": 1,
+      "boosters": {
+        "undo": 3,
+        "hint": 3,
+        "shuffle": 3
+      }
+    },
+    "pointer360": true,
+    "pointer430": true,
+    "completedByPointers": true,
+    "rewardScore": 34200
+  },
+  "screenshots": [
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\main-fixes\\01-level-journey-fresh-390x844.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\main-fixes\\02-level-journey-10-plus-mystery-390x844.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\main-fixes\\03-gameplay-large-tiles-390x844.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\main-fixes\\04-tray-fit-one-tile-390x844.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\main-fixes\\05-pause-three-actions-390x844.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\main-fixes\\06-responsive-360x640.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\main-fixes\\06-responsive-430x932.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\main-fixes\\07-real-pointer-level-complete-390x844.png"
+  ],
+  "errors": []
+}

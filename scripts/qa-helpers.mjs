@@ -4,11 +4,11 @@ export async function launchQaBrowser(){const executablePath=process.env.PLAYWRI
 export async function tilePoint(page,id,offsetX=0,offsetY=0){return page.evaluate(({id,offsetX,offsetY})=>{const scene=jadeGame.scene.getScene('Game'),tile=scene.board.tiles.find(item=>item.tileData.id===id),camera=scene.cameras.main,canvas=scene.game.canvas,rect=canvas.getBoundingClientRect(),worldX=tile.x+tile.geometry.tileW*offsetX,worldY=tile.y+tile.geometry.tileH*offsetY,screenX=(worldX-camera.worldView.x)*camera.zoom,screenY=(worldY-camera.worldView.y)*camera.zoom,logicalWidth=scene.scale.gameSize.width,logicalHeight=scene.scale.gameSize.height;return{id,x:rect.left+screenX*(rect.width/logicalWidth),y:rect.top+screenY*(rect.height/logicalHeight)};},{id,offsetX,offsetY});}
 export async function worldPoint(page,sceneKey,worldX,worldY){return page.evaluate(({sceneKey,worldX,worldY})=>{const scene=jadeGame.scene.getScene(sceneKey),camera=scene.cameras.main,canvas=scene.game.canvas,rect=canvas.getBoundingClientRect(),screenX=(worldX-camera.worldView.x)*camera.zoom,screenY=(worldY-camera.worldView.y)*camera.zoom,logicalWidth=scene.scale.gameSize.width,logicalHeight=scene.scale.gameSize.height;return{x:rect.left+screenX*(rect.width/logicalWidth),y:rect.top+screenY*(rect.height/logicalHeight)};},{sceneKey,worldX,worldY});}
 export async function legalTilePoint(page,id){
-  const offsets=[[0,0],[-.28,0],[.28,0],[-.42,0],[.42,0],[0,-.3],[0,.3],[-.35,-.25],[.35,-.25],[-.35,.25],[.35,.25]];
+  const offsets=[[0,0],[-.28,0],[.28,0],[-.42,0],[.42,0],[-.56,0],[.56,0],[0,-.3],[0,.3],[0,-.52],[0,.52],[-.48,-.3],[.48,-.3],[-.48,.3],[.48,.3]];
   for(const [offsetX,offsetY] of offsets){
     const point=await tilePoint(page,id,offsetX,offsetY);
     await page.mouse.move(point.x,point.y);
-    const hits=await page.evaluate(()=>jadeGame.scene.getScene('Game').input.hitTestPointer(jadeGame.scene.getScene('Game').input.activePointer).filter(item=>item.tileData?.id).map(item=>({id:item.tileData.id,depth:item.depth})));
+    const hits=await page.evaluate(()=>{const scene=jadeGame.scene.getScene('Game'),pointer=scene.input.activePointer;return scene.board.activeTiles.filter(item=>Phaser.Geom.Rectangle.Contains(item.getTouchBounds(),pointer.worldX,pointer.worldY)).map(item=>({id:item.tileData.id,depth:item.depth}));});
     const winner=[...hits].sort((a,b)=>b.depth-a.depth)[0];
     if(winner?.id===id)return{...point,offsetX,offsetY,hits};
   }

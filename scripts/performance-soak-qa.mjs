@@ -2,7 +2,7 @@ import {mkdir,writeFile} from 'node:fs/promises';
 import path from 'node:path';
 import {launchQaBrowser,legalTilePoint,startQaServer,worldPoint} from './qa-helpers.mjs';
 
-const root=process.cwd(),out=path.join(root,'qa','performance-soak'),minutes=Math.max(.1,Number(process.env.SOAK_MINUTES)||15),durationMs=minutes*60_000;
+const root=process.cwd(),out=path.join(root,'qa','performance-soak'),minutes=Math.max(.1,Number(process.argv[2]||process.env.SOAK_MINUTES)||15),durationMs=minutes*60_000;
 await mkdir(out,{recursive:true});
 const{command,url}=await startQaServer(root,53210),browser=await launchQaBrowser(),page=await browser.newPage({viewport:{width:390,height:844},deviceScaleFactor:1,isMobile:true,hasTouch:true});
 const errors=[],frameTimes=[],inputLatencyMs=[],sceneReadyMs=[],heapSamples=[],textureCounts=[],displayCounts=[];

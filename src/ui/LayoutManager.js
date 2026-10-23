@@ -26,19 +26,26 @@ export function projectBoard(tiles, bounds) {
   const g=TILE_GEOMETRY;
   const rawW = maxCol * g.gridStepX + g.faceWidth + maxLayer * g.layerOffsetX;
   const rawH = maxRow * g.gridStepY + g.faceHeight + maxLayer * Math.abs(g.layerOffsetY);
-  const sx = Math.min(1.58, availableW / rawW);
-  const sy = Math.min(1.12, availableH / rawH);
-  const tileW = g.faceWidth * sx;
-  const tileH = g.faceHeight * sy;
-  const stepX = g.gridStepX * sx;
+  const s = Math.min(1.56, availableW / rawW);
+  const sx=s;
+  const tileW = g.faceWidth * s;
+  const tileH = g.faceHeight * s;
+  const stepX = g.gridStepX * s;
+  const verticalFixed=tileH+maxLayer*Math.abs(g.layerOffsetY*s);
+  const sy=Math.min(s,Math.max(.72,(availableH-verticalFixed)/Math.max(1,maxRow*g.gridStepY)));
   const stepY = g.gridStepY * sy;
-  const layerX = g.layerOffsetX * sx;
-  const layerY = g.layerOffsetY * sy;
+  const layerX = g.layerOffsetX * s;
+  const layerY = g.layerOffsetY * s;
   const contentW = maxCol * stepX + tileW + maxLayer * layerX;
   const contentH = maxRow * stepY + tileH + maxLayer * Math.abs(layerY);
   const originX = bounds.left + (availableW - contentW) / 2 + tileW / 2;
   const originY = bounds.top + (availableH - contentH) / 2 + tileH / 2 + maxLayer * Math.abs(layerY);
-  return { s:Math.min(sx,sy),sx,sy,tileW,tileH,stepX,stepY,layerX,layerY,originX,originY,faceAspect:tileW/tileH };
+  return { s,sx,sy,tileW,tileH,stepX,stepY,layerX,layerY,originX,originY,faceAspect:tileW/tileH };
+}
+
+export function trayTileScale(layout,tileW,tileH){
+  const interiorW=layout.tray.slotGap*.78-10,interiorH=61;
+  return Math.min(.86,interiorW/(tileW*1.18),interiorH/(tileH*1.2));
 }
 
 export function tileScreenPosition(tile, projection) {

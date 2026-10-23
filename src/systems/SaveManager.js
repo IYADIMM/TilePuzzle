@@ -9,6 +9,7 @@ export const DEFAULT_SAVE=Object.freeze({
   version:5,maxUnlockedLevel:1,lastLevel:1,coins:250,gems:20,xp:0,stars:0,
   lifetimeScore:0,lifetimeCoinsEarned:0,totalMatches:0,totalTriples:0,chestProgress:0,
   rules:{matchSize:MATCH_SIZE,generationVersion:LEVEL_GENERATION_VERSION},activeAttempt:null,
+  attemptStats:{abandoned:0,restarted:0},
   completedLevels:{},claimedRewards:{},queuedChestRewards:[],achievements:{},unlockedThemes:['fruits'],
   boosters:{undo:3,hint:3,shuffle:3},
   prefs:{audio:{...DEFAULT_AUDIO_PREFERENCES},haptics:true,reducedMotion:false},
@@ -48,11 +49,18 @@ export function migrateSave(raw={}){
     leaderboard:{...base.leaderboard,...(raw.leaderboard||{}),player:{...base.leaderboard.player,...(raw.leaderboard?.player||{})},weekly:{...(raw.leaderboard?.weekly||{})},allTime:{...(raw.leaderboard?.allTime||{})},claimedSeasonRewards:{...(raw.leaderboard?.claimedSeasonRewards||{})}},
     economy:{...base.economy,...economy,ledger:[...(economy.ledger||[])],inventory:{...base.economy.inventory,...(economy.inventory||{}),owned:[...new Set(economy.inventory?.owned||base.economy.inventory.owned)],equipped:{...base.economy.inventory.equipped,...(economy.inventory?.equipped||{})}},daily:{...base.economy.daily,...(economy.daily||{})},revives:{...(economy.revives||{})},entitlements:{...(economy.entitlements||{})}},
     prefs:{audio:normalizeAudioPreferences(raw.prefs?.audio),haptics:raw.prefs?.haptics??base.prefs.haptics,reducedMotion:raw.prefs?.reducedMotion??base.prefs.reducedMotion},
-    tutorial:{...base.tutorial,...(raw.tutorial||{})},
+    tutorial:{...base.tutorial,...(raw.tutorial||{})},attemptStats:{...base.attemptStats,...(raw.attemptStats||{})},
     totalMatches:Number(raw.totalMatches)||Number(raw.totalTriples)||0,
     rules:{matchSize:MATCH_SIZE,generationVersion:LEVEL_GENERATION_VERSION},
     activeAttempt:raw.rules?.matchSize===MATCH_SIZE&&raw.rules?.generationVersion===LEVEL_GENERATION_VERSION?(raw.activeAttempt||null):null
   };
+}
+
+export function abandonActiveAttempt(save,reason='leave'){
+  save.attemptStats??={abandoned:0,restarted:0};
+  save.attemptStats[reason==='restart'?'restarted':'abandoned']++;
+  save.activeAttempt=null;
+  return save;
 }
 
 function safeGet(storage,key){try{return storage.getItem(key);}catch(error){SaveManager.lastError=error;return null;}}
