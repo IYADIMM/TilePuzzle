@@ -24,7 +24,7 @@ export class BootScene extends Phaser.Scene {
     ]);
     ready.catch(() => {}).finally(() => {
       const query=new URLSearchParams(location.search);const screen=query.get('screen');
-      this.scene.start(screen==='game'?'Game':screen==='levels'?'LevelSelect':screen==='collection'?'Collection':screen==='leaderboard'?'Leaderboard':screen==='shop'?'Shop':screen==='icons'?'IconSheet':'Menu',{level:Number(query.get('level'))||1});
+      this.scene.start(screen==='game'?'Game':screen==='levels'?'LevelSelect':screen==='collection'?'Collection':screen==='leaderboard'?'Leaderboard':screen==='shop'?'Shop':screen==='icons'?'IconSheet':screen==='styles'?'TileStyleGallery':'Menu',{level:Number(query.get('level'))||1});
     });
   }
 }

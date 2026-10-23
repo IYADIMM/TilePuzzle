@@ -2,8 +2,8 @@
   "passed": true,
   "summary": {
     "sampledFacePoints": 9,
-    "verifiedVisiblePoints": 4,
-    "occludedPoints": 5,
+    "verifiedVisiblePoints": 7,
+    "occludedPoints": 2,
     "expandedRenderedEdges": 4,
     "responsiveSizes": 4,
     "blockedPointerEvidence": true
@@ -59,9 +59,9 @@
       "id": "L1-T26",
       "offsetX": 0.32,
       "offsetY": 0,
-      "visiblyTargeted": false,
-      "occludedBy": "L1-T20",
-      "accepted": null
+      "visiblyTargeted": true,
+      "occludedBy": null,
+      "accepted": true
     },
     {
       "kind": "face-sample",
@@ -77,29 +77,29 @@
       "id": "L1-T26",
       "offsetX": 0,
       "offsetY": 0.32,
-      "visiblyTargeted": false,
-      "occludedBy": "L1-T20",
-      "accepted": null
+      "visiblyTargeted": true,
+      "occludedBy": null,
+      "accepted": true
     },
     {
       "kind": "face-sample",
       "id": "L1-T26",
       "offsetX": 0.32,
       "offsetY": 0.32,
-      "visiblyTargeted": false,
-      "occludedBy": "L1-T20",
-      "accepted": null
+      "visiblyTargeted": true,
+      "occludedBy": null,
+      "accepted": true
     },
     {
       "kind": "expanded-edge-sample",
-      "id": "L1-T6",
+      "id": "L1-T8",
       "offsetX": -0.54,
       "offsetY": 0,
       "accepted": true
     },
     {
       "kind": "expanded-edge-sample",
-      "id": "L1-T6",
+      "id": "L1-T8",
       "offsetX": 0.54,
       "offsetY": 0,
       "accepted": true
@@ -161,10 +161,10 @@
     {
       "kind": "blocked-pointer",
       "level": 1,
-      "id": "L1-T7",
+      "id": "L1-T1",
       "reason": "top-blocked",
-      "offsetX": 0.42,
-      "offsetY": 0,
+      "offsetX": -0.42,
+      "offsetY": -0.35,
       "rejected": true,
       "screenshot": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\audit-remediation\\blocked-pointer-debug-390x844.png"
     }

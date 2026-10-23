@@ -1,43 +1,43 @@
 {
-  "generatedAt": "2026-10-23T11:06:35.141Z",
+  "generatedAt": "2026-10-23T16:30:24.424Z",
   "environment": "desktop-headless-chromium-mobile-viewport",
   "requestedMinutes": 15,
-  "actualMinutes": 15,
-  "completedLevels": 112,
-  "pointerEvents": 4111,
+  "actualMinutes": 15.1,
+  "completedLevels": 120,
+  "pointerEvents": 4400,
   "framePacing": {
-    "samples": 46458,
+    "samples": 46405,
     "medianMs": 16.7,
     "p95Ms": 33.3,
     "p99Ms": 33.5,
-    "maxMs": 99.2,
-    "longFramesOver50ms": 15
+    "maxMs": 449.9,
+    "longFramesOver50ms": 42
   },
   "inputAcknowledgement": {
-    "samples": 4111,
-    "medianMs": 20.36,
-    "p95Ms": 78.98,
-    "p99Ms": 98.91,
-    "maxMs": 152.29
+    "samples": 4400,
+    "medianMs": 13.59,
+    "p95Ms": 80.08,
+    "p99Ms": 105.85,
+    "maxMs": 183.28
   },
   "sceneReady": {
-    "samples": 113,
-    "medianMs": 159,
-    "p95Ms": 213,
-    "maxMs": 7956
+    "samples": 121,
+    "medianMs": 146,
+    "p95Ms": 258,
+    "maxMs": 8337
   },
   "heap": {
     "available": true,
-    "startBytes": 67451720,
-    "endBytes": 60319856,
-    "peakBytes": 176038026
+    "startBytes": 55577447,
+    "endBytes": 65002970,
+    "peakBytes": 188590665
   },
   "textureCount": {
-    "min": 125,
-    "max": 129
+    "min": 200,
+    "max": 201
   },
   "displayObjects": {
-    "min": 0,
+    "min": 23,
     "max": 24
   },
   "errors": [],

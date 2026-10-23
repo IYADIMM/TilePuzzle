@@ -58,7 +58,10 @@ try{
     for(const blocked of blockedTiles){
       for(const[offsetX,offsetY]of blockedOffsets){
         const point=await tilePoint(page,blocked.id,offsetX,offsetY),hits=await tileHits(page,point);
-        if(hits.length)continue;
+        // A full-face hitbox means the blocked tile should be the routed target;
+        // the gameplay accessibility guard must reject it. Skip only points where
+        // a different, higher tile legitimately owns the visible pointer region.
+        if(hits[0]?.id!==blocked.id)continue;
         const before=await page.evaluate(()=>jadeGame.scene.getScene('Game').selectedTileCount);
         await page.mouse.click(point.x,point.y);await page.waitForTimeout(100);
         const rejected=await page.evaluate(({id,before})=>{const scene=jadeGame.scene.getScene('Game'),tile=scene.board.tiles.find(item=>item.tileData.id===id);return!tile.isCollected&&scene.selectedTileCount===before;},{id:blocked.id,before});

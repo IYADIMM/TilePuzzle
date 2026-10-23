@@ -7,7 +7,9 @@ import { computeBlockedBy } from '../src/logic/LevelSolver.js';
 import { createTrayState, reduceTray } from '../src/logic/SlotState.js';
 
 const root = process.cwd();
-const output = path.join(root, 'qa', 'audit-final-evidence');
+// Keep the active-schema evidence isolated from legacy captures. On OneDrive,
+// replacing PNGs that are being indexed can intermittently fail with UNKNOWN.
+const output = path.join(root, 'qa', 'audit-final-evidence-v6');
 await mkdir(output, { recursive: true });
 const server = await startQaServer(root,4178);
 const browser = await launchQaBrowser();
@@ -15,7 +17,7 @@ const report = [];
 
 async function capture(name, url, action, viewport = { width: 390, height: 844 }) {
   const page = await browser.newPage({ viewport, deviceScaleFactor: 1, isMobile: true, hasTouch: true });
-  if(url.includes('screen=game'))await page.addInitScript(()=>{const key='jade-garden-tiles-save-v2',raw=JSON.parse(localStorage.getItem(key)||'{}');raw.version=5;raw.tutorial={completed:true,dismissed:false,completedAt:1};localStorage.setItem(key,JSON.stringify(raw));});
+  if(url.includes('screen=game'))await page.addInitScript(()=>{const key='jade-garden-tiles-save-v5',raw=JSON.parse(localStorage.getItem(key)||'{}');raw.version=6;raw.maxUnlockedLevel=30;raw.tutorial={completed:true,dismissed:false,completedAt:1};localStorage.setItem(key,JSON.stringify(raw));});
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
   page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
@@ -89,13 +91,13 @@ await capture('11-level-completion-celebration-390x844', '?screen=game&level=1',
 await capture('12-achievement-reward-screen-390x844', '?screen=collection', async page => {
   await page.evaluate(() => {
     const save = {
-      version: 2, maxUnlockedLevel: 8, lastLevel: 8, coins: 825, xp: 180, stars: 21,
+      version: 6, maxUnlockedLevel: 8, lastLevel: 8, coins: 825, xp: 180, stars: 21,
       chestProgress: 3, completedLevels: { 1: { score: 1200, stars: 3, bestTime: 24 } },
       claimedRewards: { 'level:1': true }, achievements: { 'first-clear': { claimed: true, at: Date.now() } },
       unlockedThemes: ['fruits', 'cars', 'sports'], boosters: { undo: 3, hint: 3, shuffle: 3 },
       prefs: { audio: { musicEnabled: false, sfxEnabled: false, musicVolume: .35, sfxVolume: .55 }, haptics: false, reducedMotion: false }
     };
-    localStorage.setItem('jade-garden-tiles-save-v2', JSON.stringify(save));
+    localStorage.setItem('jade-garden-tiles-save-v5', JSON.stringify(save));
     jadeGame.scene.start('Achievements');
   });
   await page.waitForTimeout(900);

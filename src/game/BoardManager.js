@@ -5,12 +5,13 @@ import { projectBoard,tileScreenPosition } from '../ui/LayoutManager.js';
 import { Tile } from './Tile.js';
 import { getAudioManager } from '../audio/AudioManager.js';
 import { planHint,planShuffle } from '../logic/BoardActions.js';
+import { createTileSkinResolver } from '../art/TileStyleRegistry.js';
 
 export class BoardManager {
-  constructor(scene,config,bounds,onSelect){this.scene=scene;this.config=config;this.bounds=bounds;this.onSelect=onSelect;this.tiles=[];this.locked=false;this.revision=0;this.actionToken=0;const query=new URLSearchParams(location.search);this.debugEnabled=import.meta.env.DEV&&query.get('debugGrid')==='1';this.level=generateLevel(config);this.projection=projectBoard(this.level.tiles,bounds);this.pointerDebug=null;}
+  constructor(scene,config,bounds,onSelect,styleId='illustrated'){this.scene=scene;this.config=config;this.bounds=bounds;this.onSelect=onSelect;this.tiles=[];this.locked=false;this.revision=0;this.actionToken=0;const query=new URLSearchParams(location.search);this.debugEnabled=import.meta.env.DEV&&query.get('debugGrid')==='1';this.level=generateLevel(config);this.skinResolver=createTileSkinResolver(styleId,this.level.tiles.map(tile=>tile.typeId));this.projection=projectBoard(this.level.tiles,bounds);this.pointerDebug=null;}
   create(){
-    this.scene.input.topOnly=true;this.level.tiles.forEach((data,index)=>{const p=tileScreenPosition(data,this.projection);Object.assign(data,{homeX:p.x,homeY:p.y,alive:true,blockedBy:[],blockReason:'selectable'});const tile=new Tile(this.scene,data,p.x,p.y,this.projection,this.config.materialId).setDepth(this.depthFor(data));tile.flipIn(Math.min(260,index*6));this.tiles.push(tile);});
-    this.pointerHandler=pointer=>this.routePointer(pointer);this.scene.input.on('pointerup',this.pointerHandler);this.scene.events.once('shutdown',()=>this.scene.input.off('pointerup',this.pointerHandler));
+    this.scene.input.topOnly=true;this.level.tiles.forEach((data,index)=>{const p=tileScreenPosition(data,this.projection);Object.assign(data,{homeX:p.x,homeY:p.y,alive:true,blockedBy:[],blockReason:'selectable'});const tile=new Tile(this.scene,data,p.x,p.y,this.projection,this.config.materialId,this.skinResolver).setDepth(this.depthFor(data));tile.flipIn(Math.min(260,index*6));this.tiles.push(tile);});
+    this.pointerHandler=pointer=>this.routePointer(pointer);this.scene.input.on('pointerdown',this.pointerHandler);this.scene.events.once('shutdown',()=>this.scene.input.off('pointerdown',this.pointerHandler));
     this.refreshBlocking();if(this.debugEnabled)this.createDebugOverlay();return this;
   }
   routePointer(pointer){
@@ -28,6 +29,7 @@ export class BoardManager {
   collect(tile){this.revision++;tile.isCollected=true;tile.tileData.alive=false;tile.disableInteractive();this.refreshBlocking();}
   restore(tile){this.revision++;tile.isCollected=false;tile.tileData.alive=true;tile.setVisible(true).setAlpha(1).setScale(1).setAngle(0).setPosition(tile.tileData.homeX,tile.tileData.homeY).setDepth(this.depthFor(tile.tileData));this.refreshBlocking();}
   setLocked(value){this.locked=Boolean(value);}
+  applyStyle(styleId){this.actionToken++;this.skinResolver=createTileSkinResolver(styleId,this.tiles.map(tile=>tile.typeId));this.tiles.forEach(tile=>tile.applySkin(this.skinResolver));this.refreshBlocking();return this.skinResolver.styleId;}
   refreshBlocking(){
     const previouslyBlocked=new Map(this.tiles.map(tile=>[tile.tileData.id,tile.isBlocked])),active=this.activeTiles,aliveIds=new Set(active.map(tile=>tile.tileData.id)),access=computeAccessibility(this.level.tiles,aliveIds);
     active.forEach(tile=>{const details=access.get(tile.tileData.id);tile.tileData.blockedBy=details.blockerIds;tile.tileData.blockReason=details.reason;tile.tileData.access=details;tile.setBlocked(details.blocked,details.reason);if(previouslyBlocked.get(tile.tileData.id)&&!details.blocked){tile.revealGlint();this.scene.events.emit('tile-exposed',tile);}});

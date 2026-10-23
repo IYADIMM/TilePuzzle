@@ -11,6 +11,7 @@ import { IconSheetScene } from './scenes/IconSheetScene.js';
 import { LeaderboardScene } from './scenes/LeaderboardScene.js';
 import { ShopScene } from './scenes/ShopScene.js';
 import { AudioSettingsScene } from './scenes/AudioSettingsScene.js';
+import { TileStyleGalleryScene } from './scenes/TileStyleGalleryScene.js';
 
 const config = {
   type: Phaser.AUTO,
@@ -19,14 +20,14 @@ const config = {
   width: window.innerWidth,
   height: window.innerHeight,
   resolution: Math.min(window.devicePixelRatio || 1, 2),
-  render: { antialias: true, roundPixels: true, powerPreference: 'high-performance' },
+  render: { antialias: true, roundPixels: false, powerPreference: 'high-performance' },
   audio: { disableWebAudio: false },
   scale: {
     mode: Phaser.Scale.RESIZE,
     autoCenter: Phaser.Scale.CENTER_BOTH
   },
   input: { activePointers: 2 },
-  scene: [BootScene, MenuScene, LevelSelectScene, CollectionScene, AchievementsScene, LeaderboardScene, ShopScene, GameScene, RewardScene, IconSheetScene, AudioSettingsScene]
+  scene: [BootScene, MenuScene, LevelSelectScene, CollectionScene, AchievementsScene, LeaderboardScene, ShopScene, GameScene, RewardScene, IconSheetScene, AudioSettingsScene, TileStyleGalleryScene]
 };
 
 window.jadeGame = new Phaser.Game(config);

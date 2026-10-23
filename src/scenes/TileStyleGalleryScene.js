@@ -1,0 +1,19 @@
+import Phaser from 'phaser';
+import { TEXT } from '../theme.js';
+import { SaveManager } from '../systems/SaveManager.js';
+import { TILE_STYLES,TILE_STYLE_IDS,classicTextureKey,normalizeTileStyle } from '../art/TileStyleRegistry.js';
+import { iconTextureKey } from '../data/themes.js';
+import { addGoldButton,addIconButton,makeInteractive } from '../ui/components.js';
+import { prepareBackdrop } from './MenuScene.js';
+import { PREMIUM_MATERIALS,PREMIUM_TEXTURES } from '../art/PremiumAssetManifest.js';
+
+export class TileStyleGalleryScene extends Phaser.Scene{
+  constructor(){super('TileStyleGallery');}
+  init(data={}){this.hostKey=data.hostKey||'Menu';this.returnKey=data.returnKey||this.hostKey;}
+  create(){this.save=SaveManager.load();prepareBackdrop(this,null);this.add.rectangle(270,480,540,960,0x031a15,.42).setInteractive();addIconButton(this,48,52,'‹',()=>this.close(),'Back');this.add.text(270,54,'TILE STYLE GALLERY',{...TEXT.title,fontSize:'34px',color:'#fff1c9',stroke:'#3a1308',strokeThickness:6}).setOrigin(.5);this.add.text(270,91,'ONE CAMPAIGN  •  TWO PREMIUM LOOKS',{...TEXT.hud,fontSize:'11px',color:'#d7e7df',letterSpacing:1.5}).setOrigin(.5);this.drawCard(TILE_STYLES[0],270,304);this.drawCard(TILE_STYLES[1],270,635);this.add.text(270,885,'Style changes artwork only. Your board, tray and rewards stay exactly the same.',{...TEXT.hud,fontSize:'11px',align:'center',color:'#bed2c9',wordWrap:{width:430}}).setOrigin(.5);}
+  drawCard(style,x,y){const selected=normalizeTileStyle(this.save.prefs.tileStyle)===style.id,root=this.add.container(x,y),w=454,h=278;const panel=this.add.graphics().fillStyle(0x020d0a,.52).fillRoundedRect(-w/2+4,-h/2+8,w,h,30).fillGradientStyle(selected?0x376e42:0x25483a,0x17372d,0x09251f,0x071b17,1).fillRoundedRect(-w/2,-h/2,w,h,30).lineStyle(5,selected?0xffd86a:0x8c5a28,.95).strokeRoundedRect(-w/2,-h/2,w,h,30).lineStyle(2,selected?0xffffbd:0x5b9b7c,.65).strokeRoundedRect(-w/2+9,-h/2+9,w-18,h-18,23).fillStyle(0xffffff,.07).fillRoundedRect(-w/2+24,-h/2+16,w-48,13,7);root.add(panel);
+    this.addPreviewTiles(root,style.id);const title=this.add.text(0,63,style.title.toUpperCase(),{...TEXT.title,fontSize:'27px',color:selected?'#ffe176':'#fff0cb',stroke:'#2e1007',strokeThickness:5}).setOrigin(.5),desc=this.add.text(0,98,style.description,{...TEXT.hud,fontSize:'12px',align:'center',color:'#d8e6df',wordWrap:{width:380}}).setOrigin(.5),state=this.add.text(0,126,selected?'✓  EQUIPPED':'TAP TO EQUIP',{...TEXT.hud,fontSize:'13px',color:selected?'#ffdb61':'#9edfc0',letterSpacing:1.4}).setOrigin(.5);root.add([title,desc,state]).setSize(w,h);makeInteractive(root,()=>this.select(style.id));}
+  addPreviewTiles(root,styleId){const keys=styleId===TILE_STYLE_IDS.CLASSIC?[classicTextureKey(0),classicTextureKey(13),classicTextureKey(31)]:[iconTextureKey('cherries'),iconTextureKey('blossom'),iconTextureKey('orange')];keys.forEach((key,index)=>{const x=-112+index*112,y=-45+(index===1?-10:4),container=this.add.container(x,y).setAngle((index-1)*4),shadow=this.add.ellipse(5,48,94,20,0x000000,.36),body=this.add.image(0,0,styleId===TILE_STYLE_IDS.CLASSIC?PREMIUM_TEXTURES.tileBody.key:PREMIUM_MATERIALS.mahogany.key).setDisplaySize(92,116),icon=this.add.image(0,-4,key).setDisplaySize(70,70);container.add([shadow,body,icon]);root.add(container);});}
+  select(styleId){const normalized=normalizeTileStyle(styleId);if(this.save.prefs.tileStyle===normalized)return;this.save.prefs.tileStyle=normalized;SaveManager.save(this.save);const host=this.scene.get(this.hostKey);host?.applyTileStyle?.(normalized);this.scene.restart({hostKey:this.hostKey,returnKey:this.returnKey});}
+  close(){const host=this.scene.get(this.hostKey);if(this.hostKey==='Game')host?.board?.setLocked(false);this.scene.stop();}
+}

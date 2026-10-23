@@ -23,10 +23,11 @@ export class AudioSettingsScene extends Phaser.Scene {
     addGoldButton(this,270,412,310,audio.musicEnabled?'MUSIC  ON':'MUSIC  OFF',()=>this.change(save=>save.prefs.audio.musicEnabled=!save.prefs.audio.musicEnabled));
     this.volumeRow('MUSIC VOLUME',488,audio.musicVolume,delta=>this.change(save=>save.prefs.audio.musicVolume=clampStep(save.prefs.audio.musicVolume,delta)));
     addGoldButton(this,270,584,310,`HAPTICS  ${this.save.prefs.haptics?'ON':'OFF'}`,()=>this.change(save=>save.prefs.haptics=!save.prefs.haptics));
-    addGoldButton(this,270,660,310,`REDUCED MOTION  ${this.save.prefs.reducedMotion?'ON':'OFF'}`,()=>this.change(save=>save.prefs.reducedMotion=!save.prefs.reducedMotion));
-    const silent=isAudioFullyMuted(audio);addGoldButton(this,270,744,350,silent?'RESTORE SOUND':'MUTE ALL AUDIO',()=>this.change(save=>{const mute=!isAudioFullyMuted(save.prefs.audio);save.prefs.audio.sfxEnabled=!mute;save.prefs.audio.musicEnabled=!mute;}));
-    this.add.text(270,797,'Music and sound effects can be controlled independently.',{...TEXT.hud,fontSize:'11px',color:'#bbd2c7'}).setOrigin(.5);
-    addGoldButton(this,270,850,230,'DONE',()=>this.close());
+    addGoldButton(this,270,650,310,`REDUCED MOTION  ${this.save.prefs.reducedMotion?'ON':'OFF'}`,()=>this.change(save=>save.prefs.reducedMotion=!save.prefs.reducedMotion));
+    addGoldButton(this,270,718,310,'TILE STYLE GALLERY',()=>this.scene.launch('TileStyleGallery',{hostKey:this.hostKey,returnKey:'AudioSettings'}));
+    const silent=isAudioFullyMuted(audio);addGoldButton(this,270,786,350,silent?'RESTORE SOUND':'MUTE ALL AUDIO',()=>this.change(save=>{const mute=!isAudioFullyMuted(save.prefs.audio);save.prefs.audio.sfxEnabled=!mute;save.prefs.audio.musicEnabled=!mute;}));
+    this.add.text(270,829,'Music and sound effects can be controlled independently.',{...TEXT.hud,fontSize:'11px',color:'#bbd2c7'}).setOrigin(.5);
+    addGoldButton(this,270,868,230,'DONE',()=>this.close());
   }
   volumeRow(label,y,value,onChange){
     this.add.text(270,y-25,`${label}  •  ${Math.round(value*100)}%`,{...TEXT.hud,fontSize:'14px',color:'#fff0c7'}).setOrigin(.5);

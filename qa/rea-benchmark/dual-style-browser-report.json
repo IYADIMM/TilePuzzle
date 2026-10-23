@@ -1,0 +1,116 @@
+{
+  "generatedAt": "2026-10-23T18:11:26.650Z",
+  "passed": true,
+  "checks": {
+    "galleryCards": true,
+    "illustrated-360": {
+      "style": "illustrated",
+      "classicKeys": 0,
+      "total": 36,
+      "faceAspect": 0.7777777777777777,
+      "trayCapacity": true
+    },
+    "illustrated-390": {
+      "style": "illustrated",
+      "classicKeys": 0,
+      "total": 36,
+      "faceAspect": 0.7777777777777777,
+      "trayCapacity": true
+    },
+    "illustrated-430": {
+      "style": "illustrated",
+      "classicKeys": 0,
+      "total": 36,
+      "faceAspect": 0.7777777777777777,
+      "trayCapacity": true
+    },
+    "illustrated-768": {
+      "style": "illustrated",
+      "classicKeys": 0,
+      "total": 36,
+      "faceAspect": 0.7777777777777777,
+      "trayCapacity": true
+    },
+    "classic-360": {
+      "style": "classic",
+      "classicKeys": 36,
+      "total": 36,
+      "faceAspect": 0.7777777777777777,
+      "trayCapacity": true
+    },
+    "classic-390": {
+      "style": "classic",
+      "classicKeys": 36,
+      "total": 36,
+      "faceAspect": 0.7777777777777777,
+      "trayCapacity": true
+    },
+    "classic-430": {
+      "style": "classic",
+      "classicKeys": 36,
+      "total": 36,
+      "faceAspect": 0.7777777777777777,
+      "trayCapacity": true
+    },
+    "classic-768": {
+      "style": "classic",
+      "classicKeys": 36,
+      "total": 36,
+      "faceAspect": 0.7777777777777777,
+      "trayCapacity": true
+    },
+    "pointer-center": {
+      "accepted": true,
+      "ackMs": 179.14
+    },
+    "pointer-side": {
+      "accepted": true,
+      "ackMs": 133.27
+    },
+    "pointer-lower": {
+      "accepted": true,
+      "ackMs": 126.89
+    },
+    "liveSwitch": {
+      "sameLogical": true,
+      "before": {
+        "tray": [
+          {
+            "visualId": "L1-T26",
+            "typeId": "orange"
+          }
+        ],
+        "remaining": 35,
+        "score": 0
+      },
+      "after": {
+        "tray": [
+          {
+            "visualId": "L1-T26",
+            "typeId": "orange"
+          }
+        ],
+        "remaining": 35,
+        "score": 0,
+        "allClassic": true
+      }
+    },
+    "pairCleared": true,
+    "shuffleCharged": true
+  },
+  "screenshots": [
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\rea-benchmark\\screenshots\\00-style-gallery-390x844.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\rea-benchmark\\screenshots\\illustrated-level-1-360x640.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\rea-benchmark\\screenshots\\illustrated-level-1-390x844.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\rea-benchmark\\screenshots\\illustrated-level-1-430x932.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\rea-benchmark\\screenshots\\illustrated-level-1-768x1024.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\rea-benchmark\\screenshots\\classic-level-1-360x640.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\rea-benchmark\\screenshots\\classic-level-1-390x844.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\rea-benchmark\\screenshots\\classic-level-1-430x932.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\rea-benchmark\\screenshots\\classic-level-1-768x1024.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\rea-benchmark\\screenshots\\live-switch-with-tray-classic-390x844.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\rea-benchmark\\screenshots\\classic-pair-collision-frame-390x844.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\rea-benchmark\\screenshots\\classic-shuffle-motion-frame-390x844.png"
+  ],
+  "errors": []
+}

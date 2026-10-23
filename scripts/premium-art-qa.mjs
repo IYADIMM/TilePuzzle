@@ -23,7 +23,7 @@ const collections=[
 async function captureCollection(item){
   const page=await browser.newPage({viewport:{width:390,height:844},deviceScaleFactor:1,isMobile:true,hasTouch:true});
   page.on('pageerror',error=>errors.push(`${item.id}: ${error.message}`));
-  await page.addInitScript(()=>localStorage.setItem('jade-garden-tiles-save-v2',JSON.stringify({version:5,maxUnlockedLevel:30,lastLevel:1,coins:250,gems:0,xp:0,stars:0,completedLevels:{},claimedRewards:{},queuedChestRewards:[],achievements:{},unlockedThemes:['fruits'],boosters:{undo:3,hint:3,shuffle:3},tutorial:{completed:true,dismissed:false,completedAt:1},prefs:{audio:{musicEnabled:false,sfxEnabled:false,musicVolume:.18,sfxVolume:.42},haptics:false,reducedMotion:true}})));
+  await page.addInitScript(()=>localStorage.setItem('jade-garden-tiles-save-v5',JSON.stringify({version:6,maxUnlockedLevel:30,lastLevel:1,coins:250,gems:0,xp:0,stars:0,completedLevels:{},claimedRewards:{},queuedChestRewards:[],achievements:{},unlockedThemes:['fruits'],boosters:{undo:3,hint:3,shuffle:3},tutorial:{completed:true,dismissed:false,completedAt:1},prefs:{audio:{musicEnabled:false,sfxEnabled:false,musicVolume:.18,sfxVolume:.42},haptics:false,reducedMotion:true}})));
   await page.goto(`${url}/?screen=game&level=${item.level}`,{waitUntil:'domcontentloaded'});
   await page.waitForFunction(()=>{const board=jadeGame.scene.getScene('Game')?.board;return board?.tiles?.length>0&&board.tiles.every(tile=>tile.scaleX>.94&&tile.icon.visible);},{timeout:8000});
   await page.waitForTimeout(180);

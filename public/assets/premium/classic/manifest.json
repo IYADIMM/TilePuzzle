@@ -1,0 +1,991 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-23T16:01:33.161Z",
+  "master": "assets/premium/source/classic/classic-mahjong-master.png",
+  "generator": "built-in image generation + deterministic alpha crop/composite",
+  "lighting": "upper-left",
+  "palette": [
+    "lacquer-red",
+    "jade-green",
+    "deep-navy",
+    "warm-gold"
+  ],
+  "faceCount": 36,
+  "renderCount": 72,
+  "faces": [
+    {
+      "id": "circle-1",
+      "source": "assets/premium/source/classic/faces/circle-1.png",
+      "sha256": "ad642d43172252b61fb1869841e13b26d28bb29bfdc212f65503c30dabd28f54"
+    },
+    {
+      "id": "circle-2",
+      "source": "assets/premium/source/classic/faces/circle-2.png",
+      "sha256": "68bb573d27837d7c4d0b1e44c51031cdd1f89127070873cfca6526c5de1804df"
+    },
+    {
+      "id": "circle-3",
+      "source": "assets/premium/source/classic/faces/circle-3.png",
+      "sha256": "f6996f7e7d9f3a1de6bc8e679285ca37a800b4afc3271092894527d935d54d47"
+    },
+    {
+      "id": "circle-4",
+      "source": "assets/premium/source/classic/faces/circle-4.png",
+      "sha256": "b1940eb41bc7d5fd887e74740ce711842dcf866d0a7be8b8c7a38d07dc4513a4"
+    },
+    {
+      "id": "circle-5",
+      "source": "assets/premium/source/classic/faces/circle-5.png",
+      "sha256": "a5a30b928978ba36ef0cf233204e3b1fab099ac30dfd4758b30b83698059aa34"
+    },
+    {
+      "id": "circle-6",
+      "source": "assets/premium/source/classic/faces/circle-6.png",
+      "sha256": "d0f2b5db7247334336b8afbf77e130d98e443c84a9918aa3434527c3734d4ec0"
+    },
+    {
+      "id": "circle-7",
+      "source": "assets/premium/source/classic/faces/circle-7.png",
+      "sha256": "95823771dce025ed73fda9565830b2f52f6f2d294d6069a2c74e0a627d5f6eee"
+    },
+    {
+      "id": "circle-8",
+      "source": "assets/premium/source/classic/faces/circle-8.png",
+      "sha256": "daeaaa3f1217607eec9ada95a65f257c4ffe0e4e47b7f7071a81fa10de805e36"
+    },
+    {
+      "id": "circle-9",
+      "source": "assets/premium/source/classic/faces/circle-9.png",
+      "sha256": "01e3a98721b0c61a8f968017f62f4dc9c5f48e53aae542f53e495f80f2920fe1"
+    },
+    {
+      "id": "bamboo-1",
+      "source": "assets/premium/source/classic/faces/bamboo-1.png",
+      "sha256": "7d56728ea5d639825d006cc6f2f295b69fc70216985c1051e352f17bb8542081"
+    },
+    {
+      "id": "bamboo-2",
+      "source": "assets/premium/source/classic/faces/bamboo-2.png",
+      "sha256": "d8654ebbedd4d21aaf6570fc75a7ac4e3ed7fef1bb2ab291d2caef772fdbb8b4"
+    },
+    {
+      "id": "bamboo-3",
+      "source": "assets/premium/source/classic/faces/bamboo-3.png",
+      "sha256": "e5988c72c488c27938a79eee1cf5499297f665d65fce9253646985caf8231403"
+    },
+    {
+      "id": "bamboo-4",
+      "source": "assets/premium/source/classic/faces/bamboo-4.png",
+      "sha256": "292ea39b39f4b3328cca001101fe618c2afbc084c247b46f0cccb3cfd1083a38"
+    },
+    {
+      "id": "bamboo-5",
+      "source": "assets/premium/source/classic/faces/bamboo-5.png",
+      "sha256": "184aa37557726bfd090d36a2cf75cd3f4c633a990892e082fa48eb5c657885fd"
+    },
+    {
+      "id": "bamboo-6",
+      "source": "assets/premium/source/classic/faces/bamboo-6.png",
+      "sha256": "1ab5436e68fb7c24686457e9fcbab335eac975c705804a2826f0509be89e4cde"
+    },
+    {
+      "id": "bamboo-7",
+      "source": "assets/premium/source/classic/faces/bamboo-7.png",
+      "sha256": "98054fd9a64129914465451aeabb7081e6b09c6f9f6671b5ba0660ede0448b6b"
+    },
+    {
+      "id": "bamboo-8",
+      "source": "assets/premium/source/classic/faces/bamboo-8.png",
+      "sha256": "930502ddc44fb6d1731f400b6afd50b326d553d5d613bdf38fdcef5f89884552"
+    },
+    {
+      "id": "bamboo-9",
+      "source": "assets/premium/source/classic/faces/bamboo-9.png",
+      "sha256": "c7b33e6f71e4dcde2e46eeb77e4e04be8cd815c42bf0805200007f01e0167ab7"
+    },
+    {
+      "id": "character-1",
+      "source": "assets/premium/source/classic/faces/character-1.png",
+      "sha256": "02940398d59b5f8f52c0961881ff3a256d172d5def222376be221d78197e27f9"
+    },
+    {
+      "id": "character-2",
+      "source": "assets/premium/source/classic/faces/character-2.png",
+      "sha256": "037d64cb4e8903263a176a153a672ea731920541deaaea8400672fb84b359058"
+    },
+    {
+      "id": "character-3",
+      "source": "assets/premium/source/classic/faces/character-3.png",
+      "sha256": "e187a8ce7a2eed4c07be205b54e3c83e6642d8a6c43463d99a3e7c4b62099374"
+    },
+    {
+      "id": "character-4",
+      "source": "assets/premium/source/classic/faces/character-4.png",
+      "sha256": "809ba18775c7f0eb686078f11b363e4de7dd7bb6ee17e320e8307f166e095be1"
+    },
+    {
+      "id": "character-5",
+      "source": "assets/premium/source/classic/faces/character-5.png",
+      "sha256": "7f367b5b5a9492d443c53639647eb77fdea6b664fc6c1a74d6ef1b9979f22642"
+    },
+    {
+      "id": "character-6",
+      "source": "assets/premium/source/classic/faces/character-6.png",
+      "sha256": "af61dd4f6c32fc43fed49ba1173496e0962fb10f19b9b452867162605860e636"
+    },
+    {
+      "id": "character-7",
+      "source": "assets/premium/source/classic/faces/character-7.png",
+      "sha256": "276cac5f6a88aa4b09f94446b9201e16c24a66da1abfb3017ad35fc3509747ef"
+    },
+    {
+      "id": "character-8",
+      "source": "assets/premium/source/classic/faces/character-8.png",
+      "sha256": "d53bb19edb088775a64affa5bf15317baa3153042257ab1f998744427b90fb21"
+    },
+    {
+      "id": "character-9",
+      "source": "assets/premium/source/classic/faces/character-9.png",
+      "sha256": "96439d080a83f7f92a91d7592f8c06d71c3b7a75051e0164a8bc1a1d197bcb37"
+    },
+    {
+      "id": "wind-east",
+      "source": "assets/premium/source/classic/faces/wind-east.png",
+      "sha256": "d9e2a859545c6563fbed1aa5b48143d5a4d7a418aab42e64c58a6da7a04de7f1"
+    },
+    {
+      "id": "wind-south",
+      "source": "assets/premium/source/classic/faces/wind-south.png",
+      "sha256": "32ebd0e372e4298cf16da8a9c3f5f1205ef3235d620dd2d27711a3d665de552b"
+    },
+    {
+      "id": "wind-west",
+      "source": "assets/premium/source/classic/faces/wind-west.png",
+      "sha256": "cd8d263598d60031fe1a82ba983864dc25d2ffd148a7d59707038d8701c7dfcb"
+    },
+    {
+      "id": "wind-north",
+      "source": "assets/premium/source/classic/faces/wind-north.png",
+      "sha256": "d0cc3a06687003646f2c46623b810cfe814cfe802a6041c6feb608b68f98a006"
+    },
+    {
+      "id": "dragon-red",
+      "source": "assets/premium/source/classic/faces/dragon-red.png",
+      "sha256": "b3ee67d9b896c43fa6af7c2eb716433ad5b3ee7cb33f809497923546046e77f7"
+    },
+    {
+      "id": "dragon-green",
+      "source": "assets/premium/source/classic/faces/dragon-green.png",
+      "sha256": "0137e11a5d59eccea14e86d967cba85e89e9882c4ee509854647d2383a099606"
+    },
+    {
+      "id": "dragon-white",
+      "source": "assets/premium/source/classic/faces/dragon-white.png",
+      "sha256": "34623e75c24f878767689983f967c4d9caab6a23fef73534c5de414ae1e6ca06"
+    },
+    {
+      "id": "flower-plum",
+      "source": "assets/premium/source/classic/faces/flower-plum.png",
+      "sha256": "1c1aaa1212f3b0b3adc3fe5a069f76dcfcabb042981077866ebde82bb6cd75dc"
+    },
+    {
+      "id": "flower-chrysanthemum",
+      "source": "assets/premium/source/classic/faces/flower-chrysanthemum.png",
+      "sha256": "ea039ea2ef0fb39673aadcf59de258ee64f90e6a798aec9e5343a5939d2ccadb"
+    }
+  ],
+  "assets": [
+    {
+      "id": "classic-000",
+      "faceId": "circle-1",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/circle-1.png",
+      "runtime": "/assets/premium/classic/classic-000.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "869eb8ac9c8fcd29815d9d1fbb374f7138b18b90a77b40b32956600e6df96098"
+    },
+    {
+      "id": "classic-001",
+      "faceId": "circle-2",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/circle-2.png",
+      "runtime": "/assets/premium/classic/classic-001.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "3719af664072d3ca249089f36577c1a378df7ea6c100d996a96deb2099ee13fa"
+    },
+    {
+      "id": "classic-002",
+      "faceId": "circle-3",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/circle-3.png",
+      "runtime": "/assets/premium/classic/classic-002.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "354ed35ec9daf02749f2292e3e0da315ee5ded82ab7c92914b2427e553284688"
+    },
+    {
+      "id": "classic-003",
+      "faceId": "circle-4",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/circle-4.png",
+      "runtime": "/assets/premium/classic/classic-003.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "fca228f5d815eafb862359385d0033e099f26e392724784f66b30179fb0dd264"
+    },
+    {
+      "id": "classic-004",
+      "faceId": "circle-5",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/circle-5.png",
+      "runtime": "/assets/premium/classic/classic-004.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "b5310434e3174b29eb997f2169ade08d2def3e6d3d4dab5774f05c05cc634aae"
+    },
+    {
+      "id": "classic-005",
+      "faceId": "circle-6",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/circle-6.png",
+      "runtime": "/assets/premium/classic/classic-005.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "8c221f46f75a3488f439513c796b54deaa7df5c581aae69758f92b2da8f389c5"
+    },
+    {
+      "id": "classic-006",
+      "faceId": "circle-7",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/circle-7.png",
+      "runtime": "/assets/premium/classic/classic-006.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "25c89c4de3df880d211bb13613d213c14d04321c8b3a6592a6b0ec27e643caba"
+    },
+    {
+      "id": "classic-007",
+      "faceId": "circle-8",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/circle-8.png",
+      "runtime": "/assets/premium/classic/classic-007.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "188d443dbf811bf8866c5a406f586878651ffadc3c8d4128f33a2d9b57ad15a8"
+    },
+    {
+      "id": "classic-008",
+      "faceId": "circle-9",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/circle-9.png",
+      "runtime": "/assets/premium/classic/classic-008.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "3b3156a131f10352037f8a3c84f7dfdaf847eb23dd326e4f0b18d9d03a239c65"
+    },
+    {
+      "id": "classic-009",
+      "faceId": "bamboo-1",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/bamboo-1.png",
+      "runtime": "/assets/premium/classic/classic-009.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "e53200d7c7bfb8993aade12a6b9ff4ece4dbbfa07b715443ebfca6c25a7fdad0"
+    },
+    {
+      "id": "classic-010",
+      "faceId": "bamboo-2",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/bamboo-2.png",
+      "runtime": "/assets/premium/classic/classic-010.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "5ede2aa6841e55762fbddec716e6e2d440ba9825c0822a87fc030a42ee587047"
+    },
+    {
+      "id": "classic-011",
+      "faceId": "bamboo-3",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/bamboo-3.png",
+      "runtime": "/assets/premium/classic/classic-011.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "14c7c8f5c01784634926b70e837da499faa2710d0834f0ca20150bbe94c28959"
+    },
+    {
+      "id": "classic-012",
+      "faceId": "bamboo-4",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/bamboo-4.png",
+      "runtime": "/assets/premium/classic/classic-012.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "4e7f5e3754c220d4510418b384ac0205945a3a509c171a5eed556b91bc2c682c"
+    },
+    {
+      "id": "classic-013",
+      "faceId": "bamboo-5",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/bamboo-5.png",
+      "runtime": "/assets/premium/classic/classic-013.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "39148b6e6ccd02e9393b75edd94f842e2cf681c34e00be7b59163939e2ceb656"
+    },
+    {
+      "id": "classic-014",
+      "faceId": "bamboo-6",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/bamboo-6.png",
+      "runtime": "/assets/premium/classic/classic-014.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "bfacb3d0e2b20aa46a7340edde544b0ea2e93eecb4ab17fa96e90ad6d6f7c842"
+    },
+    {
+      "id": "classic-015",
+      "faceId": "bamboo-7",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/bamboo-7.png",
+      "runtime": "/assets/premium/classic/classic-015.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "87a8cae52f24efde3e41dea11699efa6a1731b9391756d40e8d9cd78f5e6594a"
+    },
+    {
+      "id": "classic-016",
+      "faceId": "bamboo-8",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/bamboo-8.png",
+      "runtime": "/assets/premium/classic/classic-016.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "13335b363a9d8a52b4e602f5c8cc32349a18ffd84f6fafa7ce7897b1754d0e5d"
+    },
+    {
+      "id": "classic-017",
+      "faceId": "bamboo-9",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/bamboo-9.png",
+      "runtime": "/assets/premium/classic/classic-017.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "9fd51115ddf13e78147e41e94824f4e1b208bd88c6395229177fe65147321de4"
+    },
+    {
+      "id": "classic-018",
+      "faceId": "character-1",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/character-1.png",
+      "runtime": "/assets/premium/classic/classic-018.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "f32ea13ab816c7ef990eadb42a97db7478d883f9e9900b508636085a929b00f3"
+    },
+    {
+      "id": "classic-019",
+      "faceId": "character-2",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/character-2.png",
+      "runtime": "/assets/premium/classic/classic-019.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "7b4ca2a34c12a66278b51285c65f91329270c07c10d1d985e747f4968ea69ae2"
+    },
+    {
+      "id": "classic-020",
+      "faceId": "character-3",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/character-3.png",
+      "runtime": "/assets/premium/classic/classic-020.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "c34a4d36d8eec2625b23b6699feeb339261b70cd7f2ddde4e309e5a8cdd01166"
+    },
+    {
+      "id": "classic-021",
+      "faceId": "character-4",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/character-4.png",
+      "runtime": "/assets/premium/classic/classic-021.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "fb9a9478160128a5928149cde99ac57820f35443950406c443236b09b1b1bb37"
+    },
+    {
+      "id": "classic-022",
+      "faceId": "character-5",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/character-5.png",
+      "runtime": "/assets/premium/classic/classic-022.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "1d6a1959651c24a442bf436fff90ce37cb281f3a4f779a18c3b1663f3fb0a61e"
+    },
+    {
+      "id": "classic-023",
+      "faceId": "character-6",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/character-6.png",
+      "runtime": "/assets/premium/classic/classic-023.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "29c636fef30aa344533392e7fdd79a698a6b5fe8ceb92ebf53c0bb2347be3ca3"
+    },
+    {
+      "id": "classic-024",
+      "faceId": "character-7",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/character-7.png",
+      "runtime": "/assets/premium/classic/classic-024.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "0791e2511dc50a733886e136f5fd42e714ccb7fa20f52fa26c70c03fd91d6de0"
+    },
+    {
+      "id": "classic-025",
+      "faceId": "character-8",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/character-8.png",
+      "runtime": "/assets/premium/classic/classic-025.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "a85ae3c3c7956e77426545392c5ab835146203e309cc7099c76da27a2e642bd2"
+    },
+    {
+      "id": "classic-026",
+      "faceId": "character-9",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/character-9.png",
+      "runtime": "/assets/premium/classic/classic-026.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "49da4881566d349f1b7789e64d8cd9dcbda55c1e839e46eb93955c1b9cedf517"
+    },
+    {
+      "id": "classic-027",
+      "faceId": "wind-east",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/wind-east.png",
+      "runtime": "/assets/premium/classic/classic-027.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "cdfe83895016fcb9e53d28959ef68f8e26e124074a830e1d4c2f71a26b9b8180"
+    },
+    {
+      "id": "classic-028",
+      "faceId": "wind-south",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/wind-south.png",
+      "runtime": "/assets/premium/classic/classic-028.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "ef88a73ab8cb194cdcd5954c3704f6d3394b07940fb2a165f89da3906be64e89"
+    },
+    {
+      "id": "classic-029",
+      "faceId": "wind-west",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/wind-west.png",
+      "runtime": "/assets/premium/classic/classic-029.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "afcdcddc3dd95812f2cad85a206524415929c8b4135614b6ec06c8b16f9b5aa2"
+    },
+    {
+      "id": "classic-030",
+      "faceId": "wind-north",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/wind-north.png",
+      "runtime": "/assets/premium/classic/classic-030.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "6f2f7d8a18b4a04871ecb6054a8860e56fa6e1e567167d4bfe4a6c9af71bfef1"
+    },
+    {
+      "id": "classic-031",
+      "faceId": "dragon-red",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/dragon-red.png",
+      "runtime": "/assets/premium/classic/classic-031.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "31e3908ba5989b1826bf42e17a571196e4d68a82f3f5cdfed36c0b321fa76a50"
+    },
+    {
+      "id": "classic-032",
+      "faceId": "dragon-green",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/dragon-green.png",
+      "runtime": "/assets/premium/classic/classic-032.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "a5d8e8881175710c37d8a9ce667ea186e68a63286eaf4b86f8200fd54b336996"
+    },
+    {
+      "id": "classic-033",
+      "faceId": "dragon-white",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/dragon-white.png",
+      "runtime": "/assets/premium/classic/classic-033.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "beb0d4c9447cd8555c796cc4209e8cc8bc54f6c51ab52aa295d66f70bcfe4803"
+    },
+    {
+      "id": "classic-034",
+      "faceId": "flower-plum",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/flower-plum.png",
+      "runtime": "/assets/premium/classic/classic-034.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "032511e169d2bfb969f5ea0e760bd47d578dca60e8ddbe525766e579c9272299"
+    },
+    {
+      "id": "classic-035",
+      "faceId": "flower-chrysanthemum",
+      "variant": 0,
+      "source": "assets/premium/source/classic/faces/flower-chrysanthemum.png",
+      "runtime": "/assets/premium/classic/classic-035.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "d4207a12ac998d9f7768720073040bfa6837b5d8f2c3350b78f213743acbc9c4"
+    },
+    {
+      "id": "classic-036",
+      "faceId": "circle-1",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/circle-1.png",
+      "runtime": "/assets/premium/classic/classic-036.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "3448f9407d30ddb9878e82acc52a668f0c48136cd283fcd376f59d75692c444d"
+    },
+    {
+      "id": "classic-037",
+      "faceId": "circle-2",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/circle-2.png",
+      "runtime": "/assets/premium/classic/classic-037.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "f68943099ec9a215f64db2f30741050212002c7da78e6304cfe7af53957c4c03"
+    },
+    {
+      "id": "classic-038",
+      "faceId": "circle-3",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/circle-3.png",
+      "runtime": "/assets/premium/classic/classic-038.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "db55af068f1983369fe162084f6892903c5da33f9d513357fc514fa98bf0b531"
+    },
+    {
+      "id": "classic-039",
+      "faceId": "circle-4",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/circle-4.png",
+      "runtime": "/assets/premium/classic/classic-039.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "d40d6720654748204a8ab8d5db0ce9b781c5e821343312ae1fc6ac43727a4051"
+    },
+    {
+      "id": "classic-040",
+      "faceId": "circle-5",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/circle-5.png",
+      "runtime": "/assets/premium/classic/classic-040.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "94e8594d86b2fe3397e35bd9b77d927767cd0273afdd4f4d507bdbec6cbc7cc2"
+    },
+    {
+      "id": "classic-041",
+      "faceId": "circle-6",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/circle-6.png",
+      "runtime": "/assets/premium/classic/classic-041.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "dc8926e9349a22f281e29ebe5627a33635a56ef0c112c0a84eb4b5f8025f356c"
+    },
+    {
+      "id": "classic-042",
+      "faceId": "circle-7",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/circle-7.png",
+      "runtime": "/assets/premium/classic/classic-042.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "f9d643962b1548fba37dd6fe2c24b1b82074f623ace2d2caa79efc19eac98764"
+    },
+    {
+      "id": "classic-043",
+      "faceId": "circle-8",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/circle-8.png",
+      "runtime": "/assets/premium/classic/classic-043.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "3d0729d4fc96f48daf0aad1ff335e6bdf9b55bf55ff2325bfe8aa433ce7428d3"
+    },
+    {
+      "id": "classic-044",
+      "faceId": "circle-9",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/circle-9.png",
+      "runtime": "/assets/premium/classic/classic-044.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "009468cc0f9eb993fc370b3e8c83825e1e158637ea757ce39514a809db2e367d"
+    },
+    {
+      "id": "classic-045",
+      "faceId": "bamboo-1",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/bamboo-1.png",
+      "runtime": "/assets/premium/classic/classic-045.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "53e648c6c47d45449431b0bfc9bcc4cabd3639ef0a1821975c4665864c43f27a"
+    },
+    {
+      "id": "classic-046",
+      "faceId": "bamboo-2",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/bamboo-2.png",
+      "runtime": "/assets/premium/classic/classic-046.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "4ad6a638e0a6929447ea8c1a1090b9c1a3d05754bf88c4ad75675e53ab714cbe"
+    },
+    {
+      "id": "classic-047",
+      "faceId": "bamboo-3",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/bamboo-3.png",
+      "runtime": "/assets/premium/classic/classic-047.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "26cbb294629129108d69d2c548605ab56d832664140f8f90e40756e94f46a5a9"
+    },
+    {
+      "id": "classic-048",
+      "faceId": "bamboo-4",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/bamboo-4.png",
+      "runtime": "/assets/premium/classic/classic-048.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "450423186065a6577e95a59ba6afdfc15fc723f39435276da99ea799c830e283"
+    },
+    {
+      "id": "classic-049",
+      "faceId": "bamboo-5",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/bamboo-5.png",
+      "runtime": "/assets/premium/classic/classic-049.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "5889cba789ad4e004d925be509fd12c15af40f4c986ea34994c8b3b4fbd1c90f"
+    },
+    {
+      "id": "classic-050",
+      "faceId": "bamboo-6",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/bamboo-6.png",
+      "runtime": "/assets/premium/classic/classic-050.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "ab0a9050b0b5d5ee3afc43c388195dff9a2f529af40aa31cadd91dd1cc88b29a"
+    },
+    {
+      "id": "classic-051",
+      "faceId": "bamboo-7",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/bamboo-7.png",
+      "runtime": "/assets/premium/classic/classic-051.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "89e8fa4b25178dd4f51d61c98eefb3b1862138cd53563583cdd05f977a1f75a5"
+    },
+    {
+      "id": "classic-052",
+      "faceId": "bamboo-8",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/bamboo-8.png",
+      "runtime": "/assets/premium/classic/classic-052.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "353e2b9afa6cd4e07e47c45a6fe1d1541dd17fd5421bf2a0d3b4e8ea1d37e442"
+    },
+    {
+      "id": "classic-053",
+      "faceId": "bamboo-9",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/bamboo-9.png",
+      "runtime": "/assets/premium/classic/classic-053.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "df3da406caef0be874173f3d64919eea55351e86095721b8c23082dd8834629d"
+    },
+    {
+      "id": "classic-054",
+      "faceId": "character-1",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/character-1.png",
+      "runtime": "/assets/premium/classic/classic-054.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "15d719ee64b2755333d129eb02cc53529baab96cb14f5443b444a03bc2bd8a34"
+    },
+    {
+      "id": "classic-055",
+      "faceId": "character-2",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/character-2.png",
+      "runtime": "/assets/premium/classic/classic-055.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "be59ff0afb18f79a51c8c5007f64c1e7becea1d45725dafa5b7a10104425d191"
+    },
+    {
+      "id": "classic-056",
+      "faceId": "character-3",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/character-3.png",
+      "runtime": "/assets/premium/classic/classic-056.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "790f8b371c7966393c6a4fa4f896c684a7e54596446c11ebd5f945ec2684215a"
+    },
+    {
+      "id": "classic-057",
+      "faceId": "character-4",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/character-4.png",
+      "runtime": "/assets/premium/classic/classic-057.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "6e3b4622017c08573c856a56dcfee16bc0070de3465e50f218e8b116fa355dad"
+    },
+    {
+      "id": "classic-058",
+      "faceId": "character-5",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/character-5.png",
+      "runtime": "/assets/premium/classic/classic-058.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "1ba1d26962abcbb2110822776ec88afaca0228b01715d47e3578a11ba4e0a92c"
+    },
+    {
+      "id": "classic-059",
+      "faceId": "character-6",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/character-6.png",
+      "runtime": "/assets/premium/classic/classic-059.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "1eac88d1c9c3c2139659e7d01fda6c1d3b00a0003c1d6bcd9f1a69e53e69dc8b"
+    },
+    {
+      "id": "classic-060",
+      "faceId": "character-7",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/character-7.png",
+      "runtime": "/assets/premium/classic/classic-060.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "6fa79218e4f7c819eb8180462aec30082c8819bbda6d4aa3b78e53f1ed458e9a"
+    },
+    {
+      "id": "classic-061",
+      "faceId": "character-8",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/character-8.png",
+      "runtime": "/assets/premium/classic/classic-061.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "25443f46c981fc6ecae7e3de0478b68a18f3ab01fc8302feb2856ff578086679"
+    },
+    {
+      "id": "classic-062",
+      "faceId": "character-9",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/character-9.png",
+      "runtime": "/assets/premium/classic/classic-062.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "4bafe661d5f2eddce2fbd767daa96b56d89bca7a4ceda54b6ff4c4033695fc41"
+    },
+    {
+      "id": "classic-063",
+      "faceId": "wind-east",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/wind-east.png",
+      "runtime": "/assets/premium/classic/classic-063.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "4376de2569b3a17be78c09f0efa6f54040ebbf7e62bede68d3a7cc58f46383f8"
+    },
+    {
+      "id": "classic-064",
+      "faceId": "wind-south",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/wind-south.png",
+      "runtime": "/assets/premium/classic/classic-064.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "67e542df71a47d93536946c94a8c18693b2f77fbd2e4e6b6d004c1807b59e9b1"
+    },
+    {
+      "id": "classic-065",
+      "faceId": "wind-west",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/wind-west.png",
+      "runtime": "/assets/premium/classic/classic-065.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "651b707ede8b625c98b66ca6889f8b14b5a480dfed2f4aba928e87d2aedd11fe"
+    },
+    {
+      "id": "classic-066",
+      "faceId": "wind-north",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/wind-north.png",
+      "runtime": "/assets/premium/classic/classic-066.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "759c445706b6198d84264248b2a3dd9eeb8a44e637725146318bbebf5673ddb2"
+    },
+    {
+      "id": "classic-067",
+      "faceId": "dragon-red",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/dragon-red.png",
+      "runtime": "/assets/premium/classic/classic-067.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "ed0bbf5564814dc0bc3043a32774313aee99c2e238f4e62a2a786e433e1786f9"
+    },
+    {
+      "id": "classic-068",
+      "faceId": "dragon-green",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/dragon-green.png",
+      "runtime": "/assets/premium/classic/classic-068.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "d044bad289938b19f2f79e59675307b44cc178239689402901b55e30404607a4"
+    },
+    {
+      "id": "classic-069",
+      "faceId": "dragon-white",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/dragon-white.png",
+      "runtime": "/assets/premium/classic/classic-069.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "9aaaf093ae410ea2b5ff719c064a751728005465d8a91c6bdaba4dfb06efe096"
+    },
+    {
+      "id": "classic-070",
+      "faceId": "flower-plum",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/flower-plum.png",
+      "runtime": "/assets/premium/classic/classic-070.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "8193af19bc903ee4271fa7e22bb8515a1c95f3304d35d5bad6b249724b3fe6b6"
+    },
+    {
+      "id": "classic-071",
+      "faceId": "flower-chrysanthemum",
+      "variant": 1,
+      "source": "assets/premium/source/classic/faces/flower-chrysanthemum.png",
+      "runtime": "/assets/premium/classic/classic-071.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "0aff97765a90ca56338e003c8a58d15225c7fbf33ebe29f294873b475ba769b6"
+    }
+  ]
+}

@@ -7,6 +7,7 @@ import { SaveManager } from '../systems/SaveManager.js';
 import { applyDesignCamera } from '../ui/LayoutManager.js';
 import { bindSceneAudio,getAudioManager } from '../audio/AudioManager.js';
 import { PREMIUM_MATERIALS } from '../art/PremiumAssetManifest.js';
+import { createTileSkinResolver } from '../art/TileStyleRegistry.js';
 
 export class MenuScene extends Phaser.Scene {
   constructor(){super('Menu');}
@@ -19,6 +20,7 @@ export class MenuScene extends Phaser.Scene {
     this.add.text(270,193,'T I L E S',{...TEXT.hud,fontSize:'25px',color:'#f5c84e',letterSpacing:11,stroke:'#421708',strokeThickness:4}).setOrigin(.5);
     this.add.text(270,226,'A PREMIUM MATCH GARDEN',{...TEXT.hud,fontSize:'11px',color:'#d4e4dc',letterSpacing:3}).setOrigin(.5);
     this.drawHeroTiles();
+    addPill(this,270,274,236,'TILE STYLES','',()=>this.scene.launch('TileStyleGallery',{hostKey:'Menu'}));
     const playLevel=this.save.activeAttempt?.level||this.save.lastLevel;
     addGoldButton(this,270,559,326,`${this.save.activeAttempt?'RESUME':'PLAY'}  •  LEVEL ${playLevel}`,()=>this.scene.start('Game',{level:playLevel}),'');
     addGoldButton(this,170,638,182,'LEVELS',()=>this.scene.start('LevelSelect'));addGoldButton(this,370,638,182,'COLLECTION',()=>this.scene.start('Collection'));
@@ -28,11 +30,12 @@ export class MenuScene extends Phaser.Scene {
     this.add.text(270,878,'MATCH TWO  •  GROW YOUR LOCAL GARDEN RECORD',{...TEXT.hud,fontSize:'11px',color:'#bdd2c8',letterSpacing:1.1}).setOrigin(.5);
   }
   drawHeroTiles(){
-    const ids=['cherries','blossom','orange'];
-    ids.forEach((id,index)=>{const x=166+index*104,y=387+(index===1?-24:10),tile=this.add.container(x,y).setAngle((index-1)*6),shadow=this.add.ellipse(6,61,116,27,0x000000,.35),body=this.add.image(0,0,PREMIUM_MATERIALS.mahogany.key).setDisplaySize(114,142),iconShadow=this.add.image(3,3,iconTextureKey(id)).setDisplaySize(85,85).setTint(0x26332d).setAlpha(.2),icon=this.add.image(0,-4,iconTextureKey(id)).setDisplaySize(85,85);tile.add([shadow,body,iconShadow,icon]);this.tweens.add({targets:tile,y:y-8,duration:1450+index*150,yoyo:true,repeat:-1,ease:'Sine.InOut'});});
+    const ids=['cherries','blossom','orange'],resolver=createTileSkinResolver(this.save.prefs.tileStyle,ids);
+    ids.forEach((id,index)=>{const x=166+index*104,y=387+(index===1?-24:10),tile=this.add.container(x,y).setAngle((index-1)*6),shadow=this.add.ellipse(6,61,116,27,0x000000,.35),body=this.add.image(0,0,resolver.bodyTextureKey('mahogany')).setDisplaySize(114,142),iconShadow=this.add.image(3,3,resolver.textureKey(id)).setDisplaySize(85,85).setTint(0x26332d).setAlpha(.2),icon=this.add.image(0,-4,resolver.textureKey(id)).setDisplaySize(85,85);tile.add([shadow,body,iconShadow,icon]);this.tweens.add({targets:tile,y:y-8,duration:1450+index*150,yoyo:true,repeat:-1,ease:'Sine.InOut'});});
   }
   showChest(){const milestone=this.save.queuedChestRewards?.[0],ready=Boolean(milestone);this.modal.show({kind:ready?'reward':'close',title:ready?'Treasure Ready':'Keep Playing',subtitle:ready?milestone.replace('levels:','Levels '):`${5-this.save.chestProgress} more levels`,body:ready?'+150 coins\n+1 Hint booster':'Clear unique levels to fill the treasure trail.',primary:ready?'CLAIM REWARD':'CONTINUE',onPrimary:()=>{if(!ready)return;const key=`chest:${milestone}`;if(this.save.claimedRewards[key])return;this.save.claimedRewards[key]=true;this.save.queuedChestRewards.shift();this.save.coins+=150;this.save.boosters.hint++;SaveManager.save(this.save);getAudioManager(this)?.play('chest_open');this.scene.restart();}});}
   showSettings(){this.scene.launch('AudioSettings',{hostKey:'Menu'});}
+  applyTileStyle(){this.scene.restart();}
 }
 
 export function drawBackdrop(scene,music='menu'){
