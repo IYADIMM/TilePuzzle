@@ -12,6 +12,8 @@ try{
   const resumePage=await newPage();
   await resumePage.goto(`${url}/?screen=game&level=1`,{waitUntil:'domcontentloaded'});
   await resumePage.waitForFunction(()=>jadeGame.scene.getScene('Game')?.board?.tiles?.length===36);
+  await resumePage.evaluate(()=>jadeGame.scene.getScene('Game').tweens.timeScale=10);
+  await resumePage.waitForFunction(()=>jadeGame.scene.getScene('Game').board.tiles.every(tile=>tile.scaleX>.94&&tile.scaleY>.94&&tile.alpha>.94&&tile.icon.visible),{timeout:8000});
   const first=await resumePage.evaluate(()=>jadeGame.scene.getScene('Game').board.level.solution[0]);
   const firstPoint=await legalTilePoint(resumePage,first);await resumePage.mouse.click(firstPoint.x,firstPoint.y);
   await resumePage.waitForFunction(()=>{const s=jadeGame.scene.getScene('Game');return!s.tray.isBusy&&s.tray.entries.length===1;});
@@ -20,7 +22,7 @@ try{
   const afterReload=await resumePage.evaluate(()=>{const s=jadeGame.scene.getScene('Game'),save=JSON.parse(localStorage.getItem('jade-garden-tiles-save-v5'));return{active:s.board.activeTiles.length,tray:s.tray.entries.map(e=>e.typeId),selected:s.selectedTileCount,undo:save.boosters.undo};});
   await resumePage.screenshot({path:path.join(out,'01-resumed-checkpoint-390x844.png')});await resumePage.close();
 
-  const revivePage=await newPage();await revivePage.goto(`${url}/?screen=game&level=2`,{waitUntil:'domcontentloaded'});await revivePage.waitForFunction(()=>jadeGame.scene.getScene('Game')?.board?.tiles?.length===36);await revivePage.evaluate(()=>jadeGame.scene.getScene('Game').tweens.timeScale=10);
+  const revivePage=await newPage();await revivePage.goto(`${url}/?screen=game&level=2`,{waitUntil:'domcontentloaded'});await revivePage.waitForFunction(()=>jadeGame.scene.getScene('Game')?.board?.tiles?.length===36);await revivePage.evaluate(()=>jadeGame.scene.getScene('Game').tweens.timeScale=10);await revivePage.waitForFunction(()=>jadeGame.scene.getScene('Game').board.tiles.every(tile=>tile.scaleX>.94&&tile.scaleY>.94&&tile.alpha>.94&&tile.icon.visible),{timeout:8000});
   const taps=[];
   for(let index=0;index<4;index++){
     await revivePage.waitForFunction(()=>{const s=jadeGame.scene.getScene('Game');return!s.tray.isBusy&&!s.board.locked;});

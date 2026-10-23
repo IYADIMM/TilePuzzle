@@ -13,7 +13,7 @@ These are actual running-game captures. References define direction only; no ref
 - [Genuine pointer completion](genuine-pointer-level-complete-390x844.png)
 - [Blocker debug view](debug-blocker-logic-390x844.png)
 
-## Six reference-backed collections
+## Twelve production raster collections
 
 - [Fruit Garden](gameplay-fruit-390x844.png)
 - [Dream Garage](gameplay-cars-390x844.png)
@@ -21,6 +21,12 @@ These are actual running-game captures. References define direction only; no ref
 - [Master Garage](gameplay-auto-parts-390x844.png)
 - [Wild Safari](gameplay-wild-animals-390x844.png)
 - [Cozy Companions](gameplay-pets-390x844.png)
+- [Sweet Patisserie](gameplay-desserts-390x844.png)
+- [Blooming Garden](gameplay-flowers-390x844.png)
+- [Coral Cove](gameplay-ocean-life-390x844.png)
+- [Music Lounge](gameplay-music-390x844.png)
+- [World Journey](gameplay-travel-390x844.png)
+- [Cosmic Voyage](gameplay-space-390x844.png)
 
 ## Responsive layouts
 

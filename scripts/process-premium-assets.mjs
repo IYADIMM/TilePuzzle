@@ -7,12 +7,19 @@ const root=process.cwd(),source=path.join(root,'assets','premium','source'),runt
 await mkdir(runtime,{recursive:true});
 const jobs=[
   {name:'tile-body',master:'tile-body-master.png',cell:[0,0,1,1],size:[512,640],padding:.025},
+  ...['mahogany','naturalWood','chrome','brushedSteel','clearGlass','frostedGlass','ceramic','leather','fabric','fur','stone','decorativeMetal'].map(id=>({name:`tile-material-${id}`,master:`materials/tile-${id}.png`,cell:[0,0,1,1],size:[512,640],padding:.025})),
   ...['cherries','orange','strawberry','pineapple','watermelon','grapes'].map(id=>({name:`fruit-${id}`,master:`icons/fruit-${id}.png`,cell:[0,0,1,1],size:[512,512],padding:.045})),
   ...['sports','sedan','suv','race','taxi','convertible'].map(id=>({name:`car-${id}`,master:`icons/car-${id}.png`,cell:[0,0,1,1],size:[512,512],padding:.025})),
   ...['soccer','basketball','tennis','baseball','football','trophy'].map(id=>({name:`sports-${id}`,master:`icons/sports-${id}.png`,cell:[0,0,1,1],size:[512,512],padding:.035})),
   ...['gear','spark-plug','tire','piston','steering-wheel','brake-disc'].map(id=>({name:`auto-${id}`,master:`icons/auto-${id}.png`,cell:[0,0,1,1],size:[512,512],padding:.035})),
   ...['lion','elephant','zebra','giraffe','tiger','panda'].map(id=>({name:`wild-${id}`,master:`icons/wild-${id}.png`,cell:[0,0,1,1],size:[512,512],padding:.035})),
   ...['puppy','kitten','rabbit','hamster','parrot','goldfish'].map(id=>({name:`pet-${id}`,master:`icons/pet-${id}.png`,cell:[0,0,1,1],size:[512,512],padding:.035})),
+  ...['cupcake','donut','ice-cream','macaron','cake','cookie'].map(id=>({name:`dessert-${id}`,master:`icons/dessert-${id}.png`,cell:[0,0,1,1],size:[512,512],padding:.035})),
+  ...['blossom','sunflower','tulip','rose','daisy','lavender'].map(id=>({name:`flower-${id}`,master:`icons/flower-${id}.png`,cell:[0,0,1,1],size:[512,512],padding:.035})),
+  ...['dolphin','turtle','seahorse','starfish','octopus','tropical-fish'].map(id=>({name:`ocean-${id}`,master:`icons/ocean-${id}.png`,cell:[0,0,1,1],size:[512,512],padding:.035})),
+  ...['guitar','piano','drum','saxophone','headphones','microphone'].map(id=>({name:`music-${id}`,master:`icons/music-${id}.png`,cell:[0,0,1,1],size:[512,512],padding:.035})),
+  ...['airplane','suitcase','camera','compass','passport','globe'].map(id=>({name:`travel-${id}`,master:`icons/travel-${id}.png`,cell:[0,0,1,1],size:[512,512],padding:.035})),
+  ...['rocket','planet','moon','astronaut','comet','satellite'].map(id=>({name:`space-${id}`,master:`icons/space-${id}.png`,cell:[0,0,1,1],size:[512,512],padding:.035})),
   {name:'tray-four-slot',master:'tray-master.png',cell:[0,0,1,1],size:[1024,320],padding:.02},
   {name:'button-mahogany',master:'button-master.png',cell:[0,0,1,1],size:[768,256],padding:.025}
 ];

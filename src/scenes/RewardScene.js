@@ -6,6 +6,7 @@ import { addGoldButton,addProgressBar } from '../ui/components.js';
 import { prepareBackdrop } from './MenuScene.js';
 import { bindSceneAudio } from '../audio/AudioManager.js';
 import { LEVEL_COUNT } from '../data/levels.js';
+import { PREMIUM_MATERIALS } from '../art/PremiumAssetManifest.js';
 
 export class RewardScene extends Phaser.Scene {
   constructor(){super('Reward');}
@@ -15,7 +16,7 @@ export class RewardScene extends Phaser.Scene {
     const glow=this.add.circle(270,168,142,0xf7d66a,.1);this.tweens.add({targets:glow,scale:1.13,alpha:.24,duration:1100,yoyo:true,repeat:-1,ease:'Sine.InOut'});
     this.add.text(270,76,d.reward.stars===3?'PERFECT CLEAR':'GARDEN CLEARED',{...TEXT.title,fontSize:'44px',color:'#ffe08a',stroke:'#4a1c08',strokeThickness:8}).setOrigin(.5);
     for(let i=0;i<3;i++){const star=this.add.text(218+i*52,129,i<d.reward.stars?'★':'☆',{...TEXT.title,fontSize:'42px',color:i<d.reward.stars?'#ffd45c':'#7e684d',stroke:'#6b2d0c',strokeThickness:5}).setOrigin(.5).setScale(.1);this.tweens.add({targets:star,scale:1,duration:390,delay:120+i*150,ease:'Back.Out'});}
-    theme.iconIds.slice(0,3).forEach((id,i)=>{const x=184+i*86,tile=this.add.image(x,232,tileTextureKey(theme.materialId)).setDisplaySize(68,87),icon=this.add.image(x,229,iconTextureKey(id)).setDisplaySize(52,52),tileScale={x:tile.scaleX,y:tile.scaleY},iconScale={x:icon.scaleX,y:icon.scaleY};tile.setScale(tileScale.x*.1,tileScale.y*.1);icon.setScale(iconScale.x*.1,iconScale.y*.1);this.tweens.add({targets:tile,scaleX:tileScale.x,scaleY:tileScale.y,duration:430,delay:520+i*100,ease:'Back.Out'});this.tweens.add({targets:icon,scaleX:iconScale.x,scaleY:iconScale.y,duration:430,delay:520+i*100,ease:'Back.Out'});});
+    theme.iconIds.slice(0,3).forEach((id,i)=>{const x=184+i*86,tile=this.add.image(x,232,PREMIUM_MATERIALS[theme.materialId]?.key||tileTextureKey(theme.materialId)).setDisplaySize(68,87),icon=this.add.image(x,229,iconTextureKey(id)).setDisplaySize(52,52),tileScale={x:tile.scaleX,y:tile.scaleY},iconScale={x:icon.scaleX,y:icon.scaleY};tile.setScale(tileScale.x*.1,tileScale.y*.1);icon.setScale(iconScale.x*.1,iconScale.y*.1);this.tweens.add({targets:tile,scaleX:tileScale.x,scaleY:tileScale.y,duration:430,delay:520+i*100,ease:'Back.Out'});this.tweens.add({targets:icon,scaleX:iconScale.x,scaleY:iconScale.y,duration:430,delay:520+i*100,ease:'Back.Out'});});
     this.add.graphics().fillStyle(0x020e0b,.62).fillRoundedRect(58,313,432,329,32).fillGradientStyle(0x154f40,0x103d33,0x082820,0x0b3329,1).fillRoundedRect(62,305,416,326,29).lineStyle(8,0x3b1609).strokeRoundedRect(62,305,416,326,29).lineStyle(4,0xe0ad42).strokeRoundedRect(72,315,396,306,22).fillStyle(0xffffff,.1).fillRoundedRect(86,326,368,15,7);
     this.add.text(270,365,'LEVEL SCORE',{...TEXT.hud,fontSize:'15px',color:'#cfe8db',letterSpacing:2}).setOrigin(.5);
     this.scoreText=this.add.text(270,414,'0',{...TEXT.title,fontSize:'58px',color:'#ffe584',stroke:'#351306',strokeThickness:7}).setOrigin(.5);

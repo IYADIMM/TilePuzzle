@@ -30,7 +30,7 @@
   "synchronized": {
     "currentTrack": "gameplay",
     "tileSelect": 5,
-    "tilePlaceA": 4,
+    "tilePlaceA": 5,
     "tilePlaceB": 1,
     "tileMatch": 1,
     "combo": 1,

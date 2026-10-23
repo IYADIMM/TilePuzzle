@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "generator": "built-in image_gen",
   "references": [
     "Jade_Garden_Codex_Visual_Evidence_Pack/references/01_approved_asset_style.png",
@@ -31,5 +31,31 @@
     "auto-parts-master-v2.png": "Six isolated premium auto-part symbols in a 3x2 transparent grid: gear, spark plug, tire, piston, steering wheel, brake disc.",
     "wild-animals-master-v2.png": "Six isolated premium wildlife symbols in a 3x2 transparent grid: lion, elephant, zebra, giraffe, tiger, panda.",
     "pets-master-v2.png": "Six isolated premium pet symbols in a 3x2 transparent grid: puppy, kitten, rabbit, hamster, parrot, goldfish."
+  },
+  "productionExpansion": {
+    "sharedIconPrompt": "One individually generated transparent collectible icon matching the glossy painterly 3D casual-game rendering, saturated color, smooth dimensional materials, crisp colored edge accents and upper-left studio highlights of the approved native sprites. Center one complete subject at roughly 80% of the square canvas. No tile body, text, border or scene.",
+    "collections": {
+      "desserts": "Cupcake, donut, ice cream, macaron, cake and cookie; generated as six separate original transparent masters.",
+      "flowers": "Blossom, sunflower, tulip, rose, daisy and lavender; generated as six separate original transparent masters.",
+      "ocean-life": "Dolphin, turtle, seahorse, starfish, octopus and tropical fish; generated as six separate original transparent masters.",
+      "music": "Guitar, piano, drum, saxophone, headphones and microphone; generated as six separate original transparent masters.",
+      "travel": "Airplane, suitcase, camera, compass, passport and globe; generated as six separate original transparent masters.",
+      "space": "Rocket, planet, moon, astronaut, comet and satellite; generated as six separate original transparent masters."
+    },
+    "sharedMaterialPrompt": "Preserve the approved blank 7:9 glossy warm-ivory tile face and geometry; change only the thick sidewall and thin rim to the named realistic material. Transparent background, no icon, text, scene or floor shadow.",
+    "materials": {
+      "mahogany": "Deep polished mahogany with fine grain and restrained gold rim.",
+      "naturalWood": "Light natural maple with honey grain and cream rim.",
+      "chrome": "Mirror chrome with controlled cool reflections.",
+      "brushedSteel": "Satin brushed steel with fine horizontal grain.",
+      "clearGlass": "Clear aqua glass with refraction and pale cyan edge.",
+      "frostedGlass": "Frosted pearl-lilac glass with subsurface haze.",
+      "ceramic": "Glazed turquoise ceramic with pearlescent variation.",
+      "leather": "Cognac leather with fine grain and precise stitching.",
+      "fabric": "Quilted plum velvet with tiny diamond stitching.",
+      "fur": "Short tidy golden-tan safari fur on the sidewall only.",
+      "stone": "Polished warm-gray garden stone with subtle mineral flecks.",
+      "decorativeMetal": "Iridescent teal-violet-rose metal with restrained gold rim."
+    }
   }
 }

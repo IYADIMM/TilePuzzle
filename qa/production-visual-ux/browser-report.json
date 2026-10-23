@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-10-23T01:54:25.827Z",
+  "generatedAt": "2026-10-23T03:19:54.826Z",
   "passed": true,
   "visualAcceptance": "PENDING_USER_REVIEW",
   "commercialReadiness": "INTERNAL_ALPHA",
   "performance": {
-    "fps": 30,
-    "averageFrameMs": 33.88,
-    "maxFrameMs": 50.1,
-    "textureCount": 113,
+    "fps": 42,
+    "averageFrameMs": 23.97,
+    "maxFrameMs": 36.2,
+    "textureCount": 125,
     "canvas": [
       390,
       844
@@ -173,6 +173,108 @@
       "selectable": 11
     },
     {
+      "name": "gameplay-desserts-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\production-visual-ux\\gameplay-desserts-390x844.png",
+      "theme": "desserts",
+      "tileCount": 36,
+      "premiumIcons": 36,
+      "premiumBodies": 36,
+      "tile": [
+        88,
+        76
+      ],
+      "span": [
+        379,
+        461
+      ],
+      "selectable": 9
+    },
+    {
+      "name": "gameplay-flowers-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\production-visual-ux\\gameplay-flowers-390x844.png",
+      "theme": "flowers",
+      "tileCount": 36,
+      "premiumIcons": 36,
+      "premiumBodies": 36,
+      "tile": [
+        88,
+        76
+      ],
+      "span": [
+        379,
+        461
+      ],
+      "selectable": 8
+    },
+    {
+      "name": "gameplay-ocean-life-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\production-visual-ux\\gameplay-ocean-life-390x844.png",
+      "theme": "ocean-life",
+      "tileCount": 36,
+      "premiumIcons": 36,
+      "premiumBodies": 36,
+      "tile": [
+        88,
+        76
+      ],
+      "span": [
+        379,
+        461
+      ],
+      "selectable": 11
+    },
+    {
+      "name": "gameplay-music-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\production-visual-ux\\gameplay-music-390x844.png",
+      "theme": "music",
+      "tileCount": 36,
+      "premiumIcons": 36,
+      "premiumBodies": 36,
+      "tile": [
+        88,
+        76
+      ],
+      "span": [
+        379,
+        461
+      ],
+      "selectable": 13
+    },
+    {
+      "name": "gameplay-travel-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\production-visual-ux\\gameplay-travel-390x844.png",
+      "theme": "travel",
+      "tileCount": 36,
+      "premiumIcons": 36,
+      "premiumBodies": 36,
+      "tile": [
+        88,
+        76
+      ],
+      "span": [
+        379,
+        461
+      ],
+      "selectable": 10
+    },
+    {
+      "name": "gameplay-space-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\production-visual-ux\\gameplay-space-390x844.png",
+      "theme": "space",
+      "tileCount": 36,
+      "premiumIcons": 36,
+      "premiumBodies": 36,
+      "tile": [
+        88,
+        76
+      ],
+      "span": [
+        379,
+        461
+      ],
+      "selectable": 13
+    },
+    {
       "name": "responsive-fruit-360x640",
       "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\production-visual-ux\\responsive-fruit-360x640.png",
       "viewport": {
@@ -246,8 +348,7 @@
   ],
   "errors": [],
   "limitations": [
-    "Six remaining collections still use procedural icon fallbacks.",
-    "Material-specific raster tile bodies are not yet produced for all 12 materials.",
-    "Visual approval belongs to the user and is not inferred from automated checks."
+    "Visual approval belongs to the user and is not inferred from automated checks.",
+    "Physical Samsung A-Series validation is still required."
   ]
 }

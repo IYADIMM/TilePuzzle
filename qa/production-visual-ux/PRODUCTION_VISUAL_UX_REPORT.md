@@ -6,7 +6,7 @@ Starting point: verified audio integration commit `171a83b` (parent audit remedi
 
 ## Outcome
 
-Phase 2 is implemented as an internal-alpha checkpoint. The live Phaser game now uses a taller and wider board projection, an extended felt backdrop for modern tall phones, clearer selectable/blocked separation, a concise real-state tutorial, truthful local records, corrected shop labeling, stronger reward hierarchy, and 24 new original transparent raster symbols. Together with the existing Fruit and Cars sets, six complete collections now use 36 production-candidate raster icons in the actual runtime.
+Phase 2 plus the production-art expansion is implemented as an internal-alpha checkpoint. The live Phaser game uses a taller and wider board projection, an extended felt backdrop for modern tall phones, clearer selectable/blocked separation, a concise real-state tutorial, truthful local records, corrected shop labeling, stronger reward hierarchy, all 72 original transparent raster symbols, and twelve material-specific raster tile bodies in the actual runtime.
 
 Automated integration and browser checks do not constitute visual approval. The supplied collection sheets remain directional references only.
 
@@ -18,8 +18,8 @@ Automated integration and browser checks do not constitute visual approval. The 
 | New local branch; no push/merge | `codex/production-visual-ux-v1` | Git branch/status | Passed |
 | Larger portrait board | Board region expanded; anisotropic safe projection produces ~88×76 px tiles and ~379×461–466 px board spans at 390×844 | `browser-report.json`; responsive screenshots | Passed |
 | Felt, depth, readable layers | Reusable textured emerald felt; full tall-phone extension; layer-aware contact shadows; brighter active tiles and restrained blocked dimming | Six live gameplay captures | Passed, visual review pending |
-| Premium first six collections | 36 native PNG sources and 36 optimized WebPs loaded through stable runtime IDs | `premium-art-report.json`; `ASSET_MANIFEST.csv` | Passed technically; user approval pending |
-| First 20 fully premium | Levels 7–12 and 19–20 still use six procedural collections | `LEVELS_30_VALIDATION.json` | Incomplete |
+| Premium twelve collections | 72 native PNG sources and 72 optimized WebPs loaded through stable runtime IDs | `premium-art-report.json`; `ASSET_MANIFEST.csv` | Passed technically; user approval pending |
+| First 20 fully premium | All themes in levels 1–20 use native raster icons and native raster material bodies | `LEVELS_1000_VALIDATION.json` | Passed technically; user approval pending |
 | First-time tutorial | Five concise steps driven by actual selection, invalid-selection, exposure, and atomic-triple events; saved completion/dismissal | tutorial screenshot; migration test | Passed |
 | Truthful records | Removed player-facing simulated standings/ranks; shows device-local best records only | leaderboard browser QA | Passed |
 | Shop truthfulness | Explicit internal test catalog and no-real-money copy; unreachable preview purchase UI removed | shop screenshot; economy report | Passed |
@@ -39,5 +39,5 @@ Automated integration and browser checks do not constitute visual approval. The 
 
 ## Unfinished work and release assessment
 
-The build is not commercially publishable yet. Six collections (Desserts, Flowers, Ocean Life, Music, Travel, Space) still use procedural art; all 12 material-specific raster bodies are unfinished; device-lab Android profiling and human visual acceptance remain outstanding. Phase 2 is therefore classified `INTERNAL_ALPHA`, not production-ready.
+The build is not commercially publishable yet. Native raster coverage is technically complete, but device-lab Android profiling and human visual acceptance remain outstanding. The build is therefore classified `INTERNAL_ALPHA`, not production-ready.
 

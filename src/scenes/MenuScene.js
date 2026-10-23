@@ -6,6 +6,7 @@ import { Modal } from '../ui/Modal.js';
 import { SaveManager } from '../systems/SaveManager.js';
 import { applyDesignCamera } from '../ui/LayoutManager.js';
 import { bindSceneAudio,getAudioManager } from '../audio/AudioManager.js';
+import { PREMIUM_MATERIALS } from '../art/PremiumAssetManifest.js';
 
 export class MenuScene extends Phaser.Scene {
   constructor(){super('Menu');}
@@ -28,7 +29,7 @@ export class MenuScene extends Phaser.Scene {
   }
   drawHeroTiles(){
     const ids=['cherries','blossom','orange'];
-    ids.forEach((id,index)=>{const x=166+index*104,y=387+(index===1?-24:10),tile=this.add.container(x,y).setAngle((index-1)*6),shadow=this.add.ellipse(6,61,116,27,0x000000,.35),body=this.add.image(0,0,'tile:mahogany:front').setDisplaySize(114,134),iconShadow=this.add.image(3,3,iconTextureKey(id)).setDisplaySize(85,85).setTint(0x26332d).setAlpha(.2),icon=this.add.image(0,-4,iconTextureKey(id)).setDisplaySize(85,85);tile.add([shadow,body,iconShadow,icon]);this.tweens.add({targets:tile,y:y-8,duration:1450+index*150,yoyo:true,repeat:-1,ease:'Sine.InOut'});});
+    ids.forEach((id,index)=>{const x=166+index*104,y=387+(index===1?-24:10),tile=this.add.container(x,y).setAngle((index-1)*6),shadow=this.add.ellipse(6,61,116,27,0x000000,.35),body=this.add.image(0,0,PREMIUM_MATERIALS.mahogany.key).setDisplaySize(114,142),iconShadow=this.add.image(3,3,iconTextureKey(id)).setDisplaySize(85,85).setTint(0x26332d).setAlpha(.2),icon=this.add.image(0,-4,iconTextureKey(id)).setDisplaySize(85,85);tile.add([shadow,body,iconShadow,icon]);this.tweens.add({targets:tile,y:y-8,duration:1450+index*150,yoyo:true,repeat:-1,ease:'Sine.InOut'});});
   }
   showChest(){const milestone=this.save.queuedChestRewards?.[0],ready=Boolean(milestone);this.modal.show({kind:ready?'reward':'close',title:ready?'Treasure Ready':'Keep Playing',subtitle:ready?milestone.replace('levels:','Levels '):`${5-this.save.chestProgress} more levels`,body:ready?'+150 coins\n+1 Hint booster':'Clear unique levels to fill the treasure trail.',primary:ready?'CLAIM REWARD':'CONTINUE',onPrimary:()=>{if(!ready)return;const key=`chest:${milestone}`;if(this.save.claimedRewards[key])return;this.save.claimedRewards[key]=true;this.save.queuedChestRewards.shift();this.save.coins+=150;this.save.boosters.hint++;SaveManager.save(this.save);getAudioManager(this)?.play('chest_open');this.scene.restart();}});}
   showSettings(){this.scene.launch('AudioSettings',{hostKey:'Menu'});}

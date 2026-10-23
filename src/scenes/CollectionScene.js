@@ -11,7 +11,7 @@ export class CollectionScene extends Phaser.Scene {
   create(){
     this.save=SaveManager.load();drawBackdrop(this);addIconButton(this,48,48,'‹',()=>this.scene.start('Menu'));
     this.add.text(270,50,'COLLECTIONS',{...TEXT.title,fontSize:'34px'}).setOrigin(.5);
-    this.add.text(270,88,'72 vector treasures • 12 tactile materials',{...TEXT.hud,fontSize:'12px',color:'#bed7cb'}).setOrigin(.5);
+    this.add.text(270,88,'72 painted treasures • 12 tactile materials',{...TEXT.hud,fontSize:'12px',color:'#bed7cb'}).setOrigin(.5);
     THEMES.forEach((theme,i)=>this.card(theme,i));
     const earned=ACHIEVEMENTS.filter(a=>this.save.achievements[a.id]).length;
     addGoldButton(this,270,887,300,`ACHIEVEMENTS  ${earned} / ${ACHIEVEMENTS.length}`,()=>this.scene.start('Achievements'));

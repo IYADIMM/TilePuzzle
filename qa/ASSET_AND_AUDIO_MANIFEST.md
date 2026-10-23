@@ -2,10 +2,10 @@
 
 ## Raster game art
 
-- 36 optimized transparent WebP collection icons have retained PNG source masters: fruits, cars, sports, auto parts, wild animals and pets.
+- All 72 collection icons have individual editable transparent PNG source masters and optimized 512×512 WebP runtime assets.
 - Shared premium ivory tile, mahogany tray and mahogany button raster assets are loaded by Phaser.
-- 36 icons in desserts, flowers, ocean life, music, travel and space remain procedural fallbacks.
-- Material treatments rotate through all twelve themes, but twelve independent native raster tile-body masters are not yet complete.
+- Twelve independent 512×640 native raster tile bodies cover mahogany, natural wood, chrome, brushed steel, clear glass, frosted glass, ceramic, leather, fabric, fur, stone and decorative metal while preserving the ivory playing face.
+- Procedural SVG and Canvas art remains only as a defensive loading fallback; normal runtime coverage is 72/72 icons and 12/12 material bodies.
 - New original brand asset: `public/assets/brand/jade-garden-app-icon-1024.png` (built-in image-generation pipeline; no reference pixels cropped or reused).
 - Android adaptive foreground: `public/assets/brand/jade-garden-adaptive-foreground-1024.png` (transparent, no outer frame; native packaging background color is `#07352c`).
 - iOS/PWA opaque master: `public/assets/brand/jade-garden-ios-opaque-1024.png` (full-bleed emerald felt, no transparency).

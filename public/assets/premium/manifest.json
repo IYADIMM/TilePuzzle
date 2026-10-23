@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generatedAt": "2026-10-22T06:45:34.100Z",
+  "generatedAt": "2026-10-23T02:53:46.941Z",
   "alpha": true,
   "lighting": "upper-left",
   "assets": [
@@ -12,6 +12,114 @@
       "height": 640,
       "format": "webp",
       "sha256": "2d2ff5625cfd21d9eba6f8cdce4dcae169bf67c404963b554050e65249246a9a"
+    },
+    {
+      "id": "tile-material-mahogany",
+      "source": "assets/premium/source/materials/tile-mahogany.png",
+      "runtime": "/assets/premium/tile-material-mahogany.webp",
+      "width": 512,
+      "height": 640,
+      "format": "webp",
+      "sha256": "4fba8a243fa470265e7a5bc038fac19d354a41cd8f789c72315e000ea04ce7c2"
+    },
+    {
+      "id": "tile-material-naturalWood",
+      "source": "assets/premium/source/materials/tile-naturalWood.png",
+      "runtime": "/assets/premium/tile-material-naturalWood.webp",
+      "width": 512,
+      "height": 640,
+      "format": "webp",
+      "sha256": "7032c9e5149c86d0685215e09e093cc91c2ebaed64115b56c85cb8a0e910addc"
+    },
+    {
+      "id": "tile-material-chrome",
+      "source": "assets/premium/source/materials/tile-chrome.png",
+      "runtime": "/assets/premium/tile-material-chrome.webp",
+      "width": 512,
+      "height": 640,
+      "format": "webp",
+      "sha256": "2ffe976eb7e35601d436ca7e9923657675eaf85276039b0477548a2daf7b8082"
+    },
+    {
+      "id": "tile-material-brushedSteel",
+      "source": "assets/premium/source/materials/tile-brushedSteel.png",
+      "runtime": "/assets/premium/tile-material-brushedSteel.webp",
+      "width": 512,
+      "height": 640,
+      "format": "webp",
+      "sha256": "e94bf8d62df85788b64a5e6a749f192fa97d7c36f10a657514418869550961cb"
+    },
+    {
+      "id": "tile-material-clearGlass",
+      "source": "assets/premium/source/materials/tile-clearGlass.png",
+      "runtime": "/assets/premium/tile-material-clearGlass.webp",
+      "width": 512,
+      "height": 640,
+      "format": "webp",
+      "sha256": "20aa0d0e95eb64584815f833fb8815aa7e51bb3c4287edbb9ef2468076674a85"
+    },
+    {
+      "id": "tile-material-frostedGlass",
+      "source": "assets/premium/source/materials/tile-frostedGlass.png",
+      "runtime": "/assets/premium/tile-material-frostedGlass.webp",
+      "width": 512,
+      "height": 640,
+      "format": "webp",
+      "sha256": "b41e8f53e4cd815eb10be48983043a67ac61eb5130301dd708772939a22643a4"
+    },
+    {
+      "id": "tile-material-ceramic",
+      "source": "assets/premium/source/materials/tile-ceramic.png",
+      "runtime": "/assets/premium/tile-material-ceramic.webp",
+      "width": 512,
+      "height": 640,
+      "format": "webp",
+      "sha256": "900d0966104fdccf4836d6557aa8ec78daea551ce51bc74e46f3b675add18aa7"
+    },
+    {
+      "id": "tile-material-leather",
+      "source": "assets/premium/source/materials/tile-leather.png",
+      "runtime": "/assets/premium/tile-material-leather.webp",
+      "width": 512,
+      "height": 640,
+      "format": "webp",
+      "sha256": "bf222422f1996a561a2827b05bc1938c97f65172147292d4918c615adddb2398"
+    },
+    {
+      "id": "tile-material-fabric",
+      "source": "assets/premium/source/materials/tile-fabric.png",
+      "runtime": "/assets/premium/tile-material-fabric.webp",
+      "width": 512,
+      "height": 640,
+      "format": "webp",
+      "sha256": "90286a19743b2d937ad4032a9f5d7a7e885c30fb568673acfb8bd1a775df9af1"
+    },
+    {
+      "id": "tile-material-fur",
+      "source": "assets/premium/source/materials/tile-fur.png",
+      "runtime": "/assets/premium/tile-material-fur.webp",
+      "width": 512,
+      "height": 640,
+      "format": "webp",
+      "sha256": "e34b04b4641aa27822667db5a87dbe6138890ba5d8ed49bbc371b9a385747a42"
+    },
+    {
+      "id": "tile-material-stone",
+      "source": "assets/premium/source/materials/tile-stone.png",
+      "runtime": "/assets/premium/tile-material-stone.webp",
+      "width": 512,
+      "height": 640,
+      "format": "webp",
+      "sha256": "44c9746618f74776b547bb0a75f5a4851054f3f5f560a430dad287474d58a5bf"
+    },
+    {
+      "id": "tile-material-decorativeMetal",
+      "source": "assets/premium/source/materials/tile-decorativeMetal.png",
+      "runtime": "/assets/premium/tile-material-decorativeMetal.webp",
+      "width": 512,
+      "height": 640,
+      "format": "webp",
+      "sha256": "faa6e450f4822ca83f239ddae084d0ff76f019c21e44050583d9827ff608f14c"
     },
     {
       "id": "fruit-cherries",
@@ -336,6 +444,330 @@
       "height": 512,
       "format": "webp",
       "sha256": "3df3e0d2caafbe4a21d232fc345e711a509bfd5421f7932f6e311f4a779e4496"
+    },
+    {
+      "id": "dessert-cupcake",
+      "source": "assets/premium/source/icons/dessert-cupcake.png",
+      "runtime": "/assets/premium/dessert-cupcake.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "bedf8eb7663c3573d84eef5aca55242ac2369a34635e884393bc552ba5b9abdf"
+    },
+    {
+      "id": "dessert-donut",
+      "source": "assets/premium/source/icons/dessert-donut.png",
+      "runtime": "/assets/premium/dessert-donut.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "bf8145fe9dd6953546a64e0b08446e2613f31074718d0d1d629b0b17bdf166a2"
+    },
+    {
+      "id": "dessert-ice-cream",
+      "source": "assets/premium/source/icons/dessert-ice-cream.png",
+      "runtime": "/assets/premium/dessert-ice-cream.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "1ff663cb0da0e4dca8fc3ede94f23d0733aee0585710d3efa3ede5fdca30e1b8"
+    },
+    {
+      "id": "dessert-macaron",
+      "source": "assets/premium/source/icons/dessert-macaron.png",
+      "runtime": "/assets/premium/dessert-macaron.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "4dd960778fd30fd6062b97395577e217bc43168dec97efa5764a0a24e94d4879"
+    },
+    {
+      "id": "dessert-cake",
+      "source": "assets/premium/source/icons/dessert-cake.png",
+      "runtime": "/assets/premium/dessert-cake.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "58b6d4c0e864d976a3b9b8b9f441b3cd9cf64da7f4f07fc13716592eb8971a5e"
+    },
+    {
+      "id": "dessert-cookie",
+      "source": "assets/premium/source/icons/dessert-cookie.png",
+      "runtime": "/assets/premium/dessert-cookie.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "02c283f2ccd0fa1bc329bd318a5919ac334ee7f05f7432b6841bb0c97bae55d7"
+    },
+    {
+      "id": "flower-blossom",
+      "source": "assets/premium/source/icons/flower-blossom.png",
+      "runtime": "/assets/premium/flower-blossom.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "984a5083e4f49b1e734864a6be2f42ff532cdc1248d0c3d022972c9a49af3cb6"
+    },
+    {
+      "id": "flower-sunflower",
+      "source": "assets/premium/source/icons/flower-sunflower.png",
+      "runtime": "/assets/premium/flower-sunflower.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "e6bd857ca190ca1ecb375dbfb209295f481c6c42a492e4e8a42283e87b7e853c"
+    },
+    {
+      "id": "flower-tulip",
+      "source": "assets/premium/source/icons/flower-tulip.png",
+      "runtime": "/assets/premium/flower-tulip.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "d4d2ebfaf30faa079b082d499cc07a8dacdc3b0142ca2c232e9c9d650a96ea84"
+    },
+    {
+      "id": "flower-rose",
+      "source": "assets/premium/source/icons/flower-rose.png",
+      "runtime": "/assets/premium/flower-rose.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "4185ab96b34dbc73f8fdbdcd73537afef54cf302f1fc0ba588444ab8ce301f91"
+    },
+    {
+      "id": "flower-daisy",
+      "source": "assets/premium/source/icons/flower-daisy.png",
+      "runtime": "/assets/premium/flower-daisy.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "a2feea5e8768556caffc96e32b9b2cd8763c154547efc0b0bd54dcf3504385e0"
+    },
+    {
+      "id": "flower-lavender",
+      "source": "assets/premium/source/icons/flower-lavender.png",
+      "runtime": "/assets/premium/flower-lavender.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "25f21f7ecd11d96808be6111d522f689e7538f6663fdcb55c4c88ba243ec1866"
+    },
+    {
+      "id": "ocean-dolphin",
+      "source": "assets/premium/source/icons/ocean-dolphin.png",
+      "runtime": "/assets/premium/ocean-dolphin.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "9b885d94e05239de1e7bdb321adce29f3ce1f7b512f37e451d1843ec5bc7dd39"
+    },
+    {
+      "id": "ocean-turtle",
+      "source": "assets/premium/source/icons/ocean-turtle.png",
+      "runtime": "/assets/premium/ocean-turtle.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "fab65213704aa8910f5d81538b48d3fd9aca31ed26693b1fc881a4d63298d79c"
+    },
+    {
+      "id": "ocean-seahorse",
+      "source": "assets/premium/source/icons/ocean-seahorse.png",
+      "runtime": "/assets/premium/ocean-seahorse.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "090694884c2c8169a243cd38692335d5eeec00574ca27bd7556bcc7b51352abc"
+    },
+    {
+      "id": "ocean-starfish",
+      "source": "assets/premium/source/icons/ocean-starfish.png",
+      "runtime": "/assets/premium/ocean-starfish.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "65c9115b755ca221df184b758b689296c696c1157dbd3cb67279fbe0ca0dd78f"
+    },
+    {
+      "id": "ocean-octopus",
+      "source": "assets/premium/source/icons/ocean-octopus.png",
+      "runtime": "/assets/premium/ocean-octopus.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "9473910dc8e5ba4c9f2832f0f134b45beab2242777492911c5c9d4ebc787b448"
+    },
+    {
+      "id": "ocean-tropical-fish",
+      "source": "assets/premium/source/icons/ocean-tropical-fish.png",
+      "runtime": "/assets/premium/ocean-tropical-fish.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "0d3c34be86b649424a7334d37c0fc1887ced3cb1656f3b83f9b11bb67c9f395d"
+    },
+    {
+      "id": "music-guitar",
+      "source": "assets/premium/source/icons/music-guitar.png",
+      "runtime": "/assets/premium/music-guitar.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "fc8aae17253058330581ad575ef03c3ecb4609703bf16ab23f87204274c34cc6"
+    },
+    {
+      "id": "music-piano",
+      "source": "assets/premium/source/icons/music-piano.png",
+      "runtime": "/assets/premium/music-piano.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "bd5bb26d95148ed71731ea93e279863f2c8ab4f377e0a637a05071950d9d9963"
+    },
+    {
+      "id": "music-drum",
+      "source": "assets/premium/source/icons/music-drum.png",
+      "runtime": "/assets/premium/music-drum.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "a1396faf6d0fccc0bdea181408bcad9e4695351d2310b22493c1fc1fc6725435"
+    },
+    {
+      "id": "music-saxophone",
+      "source": "assets/premium/source/icons/music-saxophone.png",
+      "runtime": "/assets/premium/music-saxophone.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "425aadaf7d6d12f43fba5c5ae3023bd8e1fe920f81f358ffd1806299e19eae90"
+    },
+    {
+      "id": "music-headphones",
+      "source": "assets/premium/source/icons/music-headphones.png",
+      "runtime": "/assets/premium/music-headphones.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "967ae34a0a39b214196710ca507765649188b8fe1a3b2a539885dfaa7062c3c2"
+    },
+    {
+      "id": "music-microphone",
+      "source": "assets/premium/source/icons/music-microphone.png",
+      "runtime": "/assets/premium/music-microphone.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "837ca733e736783cf6e3d28bf691be7d64b14f0e4b42140ac48206717dc563ac"
+    },
+    {
+      "id": "travel-airplane",
+      "source": "assets/premium/source/icons/travel-airplane.png",
+      "runtime": "/assets/premium/travel-airplane.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "27134a028da3f0d3288379edfea0c6e61e74650157da6692a91c2961017eb293"
+    },
+    {
+      "id": "travel-suitcase",
+      "source": "assets/premium/source/icons/travel-suitcase.png",
+      "runtime": "/assets/premium/travel-suitcase.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "5c870a0076583e4aaec6950ed970d417586e8e8c2e1faf3832060866073538fa"
+    },
+    {
+      "id": "travel-camera",
+      "source": "assets/premium/source/icons/travel-camera.png",
+      "runtime": "/assets/premium/travel-camera.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "ebf4218dd7793022480021503070d8d0cc7daf8b855e11ac87f9e6fa1acc3cef"
+    },
+    {
+      "id": "travel-compass",
+      "source": "assets/premium/source/icons/travel-compass.png",
+      "runtime": "/assets/premium/travel-compass.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "000947bfa3a22a1a4831e1f6dbfbc6f81bf0078e522c5c20ff0efbd83408f029"
+    },
+    {
+      "id": "travel-passport",
+      "source": "assets/premium/source/icons/travel-passport.png",
+      "runtime": "/assets/premium/travel-passport.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "bfa9ad172aa53c509c64c739e7feebc1584ff16b50bfbc0850dea18cf0241963"
+    },
+    {
+      "id": "travel-globe",
+      "source": "assets/premium/source/icons/travel-globe.png",
+      "runtime": "/assets/premium/travel-globe.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "571e5de12423d83698b8574f8235242994055003a7ab3ab1991339f8d4d4b9f6"
+    },
+    {
+      "id": "space-rocket",
+      "source": "assets/premium/source/icons/space-rocket.png",
+      "runtime": "/assets/premium/space-rocket.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "32dc458fccc39d05193830a2fa1e410bc6399c870bd64b8a7f443688a0beb663"
+    },
+    {
+      "id": "space-planet",
+      "source": "assets/premium/source/icons/space-planet.png",
+      "runtime": "/assets/premium/space-planet.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "bb155840672a2d162fb95f763eebb1384f14e0d18245d70ebcffeedcc85c76af"
+    },
+    {
+      "id": "space-moon",
+      "source": "assets/premium/source/icons/space-moon.png",
+      "runtime": "/assets/premium/space-moon.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "9b51d22ef96e36ffc6cdce37361ed03c3cb2160ecbe299690326a638189551b1"
+    },
+    {
+      "id": "space-astronaut",
+      "source": "assets/premium/source/icons/space-astronaut.png",
+      "runtime": "/assets/premium/space-astronaut.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "c0ea8792bec23ca84f30b921e24b556091b0f28cda106876a87f3efef6cc1b72"
+    },
+    {
+      "id": "space-comet",
+      "source": "assets/premium/source/icons/space-comet.png",
+      "runtime": "/assets/premium/space-comet.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "470ea8eb5fe2a157c0c7f5a1a3d3be73893c1f81f9fa88b227d82c20a44aba8f"
+    },
+    {
+      "id": "space-satellite",
+      "source": "assets/premium/source/icons/space-satellite.png",
+      "runtime": "/assets/premium/space-satellite.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
+      "sha256": "ae3aa27b3a74a1391988f2524404992e8afc78435e0045e653b3273f03a8e54d"
     },
     {
       "id": "tray-four-slot",

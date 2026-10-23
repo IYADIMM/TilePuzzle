@@ -12,7 +12,8 @@ async function open(viewport={width:390,height:844},level=1){
   await page.goto(`${url}/?screen=game&level=${level}&debugGrid=1`,{waitUntil:'domcontentloaded'});
   await page.waitForFunction(()=>jadeGame.scene.getScene('Game')?.board?.tiles?.length>0);
   await page.evaluate(()=>jadeGame.scene.getScene('Game').tweens.timeScale=12);
-  await page.waitForTimeout(300);
+  await page.waitForFunction(()=>jadeGame.scene.getScene('Game').board.tiles.every(tile=>tile.scaleX>.94&&tile.scaleY>.94&&tile.alpha>.94&&tile.icon.visible),{timeout:8000});
+  await page.waitForTimeout(120);
   return page;
 }
 

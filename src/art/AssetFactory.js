@@ -1,7 +1,7 @@
 import { allIconIds, createIconSvg, svgDataUri } from './SvgIconLibrary.js';
 import { ensureAllMaterialTextures } from './TileMaterialFactory.js';
 import { iconTextureKey } from '../data/themes.js';
-import { PREMIUM_ICONS,PREMIUM_TEXTURES } from './PremiumAssetManifest.js';
+import { PREMIUM_ICONS,PREMIUM_MATERIALS,PREMIUM_TEXTURES } from './PremiumAssetManifest.js';
 
 export class AssetFactory {
   static preload(scene) {
@@ -10,6 +10,7 @@ export class AssetFactory {
       else scene.load.svg(iconTextureKey(iconId), svgDataUri(createIconSvg(iconId)), { width: 256, height: 256 });
     });
     Object.values(PREMIUM_TEXTURES).forEach(asset=>scene.load.image(asset.key,asset.url));
+    Object.values(PREMIUM_MATERIALS).forEach(asset=>scene.load.image(asset.key,asset.url));
   }
 
   static createRuntimeTextures(scene) {

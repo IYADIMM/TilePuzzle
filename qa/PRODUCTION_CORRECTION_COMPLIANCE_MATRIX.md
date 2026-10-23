@@ -27,10 +27,10 @@ The later Critical Gameplay Correction Add-on supersedes the older match-three l
 | Approved audio preserved, no new clash sound | Passed | Audio hashes unchanged; audio browser report passed |
 | Original branded install icon | Passed technically | Store master, transparent Android adaptive foreground, opaque iOS/PWA master and manifests under `public/assets/brand/` |
 | Shop individual previews and honest inventory | Passed | Tile, tray, celebration and three booster previews replace T/C/B badges; Owned/Equipped/Available and booster counts use saved inventory; mock-only label retained |
-| Premium raster coverage for all 72 icons | Incomplete | 36 native raster icons; 36 procedural fallbacks |
-| Unique native raster body for 12 materials | Incomplete | Shared premium ivory body/procedural material treatments remain |
+| Premium raster coverage for all 72 icons | Passed technically | 72 PNG source masters, 72 optimized WebPs, zero normal-runtime SVG fallbacks; twelve live collection captures |
+| Unique native raster body for 12 materials | Passed technically | 12 PNG source masters and optimized material WebPs selected per theme |
 | Affordable Samsung A-Series performance | Not verified | Headless desktop Chromium only; physical Android profiling still required |
 | Visual approval | Pending user review | Technical integration does not grant visual acceptance |
 | Store/ads/Supabase/real payments | Intentionally absent | Offline mock economy only |
 
-Production readiness remains **internal alpha**, not store-ready, because half the icon catalog and material bodies remain below the declared raster-art gate and no physical Android performance pass has been run.
+Production readiness remains **internal alpha**, not store-ready, because artwork still requires user visual approval and no physical Android performance pass has been run.

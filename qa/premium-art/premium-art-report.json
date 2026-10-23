@@ -152,6 +152,150 @@
           844
         ]
       }
+    },
+    {
+      "level": 7,
+      "id": "desserts",
+      "liveFile": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\premium-art\\desserts-runtime.png",
+      "comparisonFile": null,
+      "runtime": {
+        "typeIds": [
+          "cake",
+          "macaron",
+          "cupcake",
+          "cookie",
+          "ice-cream",
+          "donut"
+        ],
+        "premiumBodies": 36,
+        "premiumIcons": 36,
+        "tileCount": 36,
+        "trayTexture": "premium:tray-four-slot",
+        "canvas": [
+          390,
+          844
+        ]
+      }
+    },
+    {
+      "level": 8,
+      "id": "flowers",
+      "liveFile": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\premium-art\\flowers-runtime.png",
+      "comparisonFile": null,
+      "runtime": {
+        "typeIds": [
+          "sunflower",
+          "rose",
+          "blossom",
+          "lavender",
+          "tulip",
+          "daisy"
+        ],
+        "premiumBodies": 36,
+        "premiumIcons": 36,
+        "tileCount": 36,
+        "trayTexture": "premium:tray-four-slot",
+        "canvas": [
+          390,
+          844
+        ]
+      }
+    },
+    {
+      "level": 9,
+      "id": "ocean-life",
+      "liveFile": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\premium-art\\ocean-life-runtime.png",
+      "comparisonFile": null,
+      "runtime": {
+        "typeIds": [
+          "dolphin",
+          "tropical-fish",
+          "seahorse",
+          "octopus",
+          "turtle",
+          "starfish"
+        ],
+        "premiumBodies": 36,
+        "premiumIcons": 36,
+        "tileCount": 36,
+        "trayTexture": "premium:tray-four-slot",
+        "canvas": [
+          390,
+          844
+        ]
+      }
+    },
+    {
+      "level": 10,
+      "id": "music",
+      "liveFile": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\premium-art\\music-runtime.png",
+      "comparisonFile": null,
+      "runtime": {
+        "typeIds": [
+          "guitar",
+          "drum",
+          "microphone",
+          "piano",
+          "headphones",
+          "saxophone"
+        ],
+        "premiumBodies": 36,
+        "premiumIcons": 36,
+        "tileCount": 36,
+        "trayTexture": "premium:tray-four-slot",
+        "canvas": [
+          390,
+          844
+        ]
+      }
+    },
+    {
+      "level": 11,
+      "id": "travel",
+      "liveFile": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\premium-art\\travel-runtime.png",
+      "comparisonFile": null,
+      "runtime": {
+        "typeIds": [
+          "suitcase",
+          "passport",
+          "airplane",
+          "camera",
+          "compass",
+          "globe"
+        ],
+        "premiumBodies": 36,
+        "premiumIcons": 36,
+        "tileCount": 36,
+        "trayTexture": "premium:tray-four-slot",
+        "canvas": [
+          390,
+          844
+        ]
+      }
+    },
+    {
+      "level": 12,
+      "id": "space",
+      "liveFile": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\premium-art\\space-runtime.png",
+      "comparisonFile": null,
+      "runtime": {
+        "typeIds": [
+          "rocket",
+          "satellite",
+          "moon",
+          "comet",
+          "planet",
+          "astronaut"
+        ],
+        "premiumBodies": 36,
+        "premiumIcons": 36,
+        "tileCount": 36,
+        "trayTexture": "premium:tray-four-slot",
+        "canvas": [
+          390,
+          844
+        ]
+      }
     }
   ],
   "errors": [],
