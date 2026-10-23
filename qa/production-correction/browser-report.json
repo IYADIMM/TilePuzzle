@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-23T17:58:40.831Z",
+  "generatedAt": "2026-10-23T19:51:23.852Z",
   "rules": {
     "matchSize": 2,
     "trayCapacity": 4
@@ -52,9 +52,9 @@
   },
   "performance": {
     "sampleFrames": 85,
-    "averageMs": 35.680000000000014,
-    "p95Ms": 50,
-    "maxMs": 66.79999999999927
+    "averageMs": 17.25294117647059,
+    "p95Ms": 16.900000000000546,
+    "maxMs": 33.400000000000546
   },
   "errors": [],
   "passed": true

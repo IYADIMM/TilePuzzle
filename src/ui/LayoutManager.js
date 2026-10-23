@@ -1,4 +1,5 @@
 import { TILE_GEOMETRY } from '../game/TileGeometry.js';
+import { TILE_BODY_VISIBLE_BOUNDS,TRAY_ASSET_GEOMETRY } from '../art/PremiumAssetManifest.js';
 export const DESIGN = Object.freeze({ width: 540, height: 960 });
 export function applyDesignCamera(scene){const w=scene.scale.width,h=scene.scale.height,zoom=Math.min(w/DESIGN.width,h/DESIGN.height);scene.cameras.main.setZoom(zoom).centerOn(DESIGN.width/2,DESIGN.height/2).setBackgroundColor('#0a382f');return zoom;}
 
@@ -10,9 +11,9 @@ export function createLayout(width = DESIGN.width, height = DESIGN.height) {
   return {
     width, height, scale, ox, oy, point,
     hud: { ...point(270, 52), top: oy + 18 * scale, bottom: oy + 145 * scale },
-    board: { left: ox + 18 * scale, right: ox + 522 * scale, top: oy + 150 * scale, bottom: oy + 700 * scale },
-    tray: { ...point(270, 748), width: 420 * scale, slotGap: 90 * scale },
-    boostersY: oy + 872 * scale,
+    board: { left: ox + 18 * scale, right: ox + 522 * scale, top: oy + 140 * scale, bottom: oy + 672 * scale },
+    tray: { ...point(270, 766), width: 420 * scale, slotGap: 90 * scale },
+    boostersY: oy + 885 * scale,
     safe: { left: ox, right: ox + DESIGN.width * scale, top: oy, bottom: oy + DESIGN.height * scale }
   };
 }
@@ -44,8 +45,21 @@ export function projectBoard(tiles, bounds) {
 }
 
 export function trayTileScale(layout,tileW,tileH){
-  const interiorW=layout.tray.slotGap*.78-10,interiorH=61;
-  return Math.min(.86,interiorW/(tileW*1.18),interiorH/(tileH*1.2));
+  const slot=traySlotRect(layout,0),body=TILE_BODY_VISIBLE_BOUNDS;
+  const visibleW=tileW*1.18*((body.right-body.left+1)/body.textureWidth);
+  const visibleH=tileH*1.2*((body.bottom-body.top+1)/body.textureHeight);
+  return Math.min(.9,slot.width/visibleW,slot.height/visibleH);
+}
+
+export function trayFrameRect(layout){
+  const width=layout.tray.width+28,height=width*TRAY_ASSET_GEOMETRY.textureHeight/TRAY_ASSET_GEOMETRY.textureWidth;
+  return{x:layout.tray.x-width/2,y:layout.tray.y-height/2,width,height};
+}
+
+export function traySlotRect(layout,index){
+  const frame=trayFrameRect(layout),source=TRAY_ASSET_GEOMETRY.slotInteriors[Math.max(0,Math.min(3,index))],inset=TRAY_ASSET_GEOMETRY.safeInset;
+  const sx=frame.width/TRAY_ASSET_GEOMETRY.textureWidth,sy=frame.height/TRAY_ASSET_GEOMETRY.textureHeight;
+  return{x:frame.x+(source.left+inset.x)*sx,y:frame.y+(source.top+inset.y)*sy,width:(source.right-source.left-inset.x*2)*sx,height:(source.bottom-source.top-inset.y*2)*sy};
 }
 
 export function tileScreenPosition(tile, projection) {

@@ -2,6 +2,7 @@ import { DEFAULT_AUDIO_PREFERENCES,normalizeAudioPreferences } from '../audio/Au
 import { LEVEL_COUNT } from '../data/levels.js';
 import { LEVEL_GENERATION_VERSION,MATCH_SIZE } from '../logic/GameRules.js';
 import { normalizeTileStyle,TILE_STYLE_IDS,TILE_STYLE_VERSION } from '../art/TileStyleRegistry.js';
+import { defaultSaveStorage } from '../qa/DevQaProfile.js';
 
 const KEY='jade-garden-tiles-save-v5',BACKUP_KEY='jade-garden-tiles-save-backup-v5';
 const LEGACY_KEYS=['jade-garden-tiles-save-v4','jade-garden-tiles-save-backup-v4','jade-garden-tiles-save-v3','jade-garden-tiles-save-v2','jade-garden-tiles-save-v1'];
@@ -22,17 +23,17 @@ export const DEFAULT_SAVE=Object.freeze({
 
 export class SaveManager {
   static lastError=null;
-  static load(storage=localStorage){
+  static load(storage){storage??=defaultSaveStorage();
     const candidates=[KEY,BACKUP_KEY,...LEGACY_KEYS];let sawCorrupt=false;
     for(const key of candidates){const encoded=safeGet(storage,key);if(!encoded)continue;try{const save=migrateSave(JSON.parse(encoded));if(key!==KEY)save.storageRecovery={recoveredFrom:key,at:Date.now()};return save;}catch(error){sawCorrupt=true;this.lastError=error;}}
     const fresh=clone(DEFAULT_SAVE);if(sawCorrupt)fresh.storageRecovery={recoveredFrom:null,at:Date.now(),reason:'No valid save copy'};return fresh;
   }
-  static save(data,storage=localStorage){
+  static save(data,storage){storage??=defaultSaveStorage();
     try{const current=safeGet(storage,KEY);if(current){JSON.parse(current);storage.setItem(BACKUP_KEY,current);}storage.setItem(KEY,JSON.stringify({...data,version:6,storageRecovery:null}));this.lastError=null;return{ok:true};}
     catch(error){this.lastError=error;return{ok:false,error:String(error?.message||error)};}
   }
   static export(data){return JSON.stringify({...data,version:6},null,2);}
-  static reset(storage=localStorage){[KEY,BACKUP_KEY,...LEGACY_KEYS].forEach(key=>{try{storage.removeItem(key);}catch{}});return clone(DEFAULT_SAVE);}
+  static reset(storage){storage??=defaultSaveStorage();[KEY,BACKUP_KEY,...LEGACY_KEYS].forEach(key=>{try{storage.removeItem(key);}catch{}});return clone(DEFAULT_SAVE);}
 }
 
 export function migrateSave(raw={}){

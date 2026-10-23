@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-23T18:11:26.650Z",
+  "generatedAt": "2026-10-23T23:16:03.500Z",
   "passed": true,
   "checks": {
     "galleryCards": true,
@@ -61,15 +61,15 @@
     },
     "pointer-center": {
       "accepted": true,
-      "ackMs": 179.14
+      "ackMs": 67.17
     },
     "pointer-side": {
       "accepted": true,
-      "ackMs": 133.27
+      "ackMs": 84.37
     },
     "pointer-lower": {
       "accepted": true,
-      "ackMs": 126.89
+      "ackMs": 62.16
     },
     "liveSwitch": {
       "sameLogical": true,

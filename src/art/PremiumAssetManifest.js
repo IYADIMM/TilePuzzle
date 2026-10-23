@@ -4,6 +4,24 @@ export const PREMIUM_TEXTURES=Object.freeze({
   button:{key:'premium:button-mahogany',url:'/assets/premium/button-mahogany.webp'}
 });
 
+// Measurements are expressed in the optimized runtime textures. Keeping these
+// beside the manifest makes board, tray and QA use the same source of truth.
+export const TILE_BODY_VISIBLE_BOUNDS=Object.freeze({
+  textureWidth:512,textureHeight:640,left:19,top:13,right:492,bottom:626
+});
+
+export const TRAY_ASSET_GEOMETRY=Object.freeze({
+  textureWidth:1024,textureHeight:400,
+  visibleBounds:Object.freeze({left:8,top:8,right:1015,bottom:391}),
+  slotInteriors:Object.freeze([
+    Object.freeze({left:64,top:94,right:265,bottom:282}),
+    Object.freeze({left:300,top:94,right:492,bottom:282}),
+    Object.freeze({left:528,top:94,right:720,bottom:282}),
+    Object.freeze({left:757,top:94,right:958,bottom:282})
+  ]),
+  safeInset:Object.freeze({x:10,y:12})
+});
+
 export const PREMIUM_ICONS=Object.freeze({
   cherries:'/assets/premium/fruit-cherries.webp',
   orange:'/assets/premium/fruit-orange.webp',

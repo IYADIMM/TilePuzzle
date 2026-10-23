@@ -2,8 +2,8 @@ import Phaser from 'phaser';
 import { createTrayState, reduceTray, TRAY_CAPACITY } from '../logic/SlotState.js';
 import { MATCH_SIZE } from '../logic/GameRules.js';
 import { quadraticBezierPoint } from '../logic/MotionMath.js';
-import { PREMIUM_TEXTURES } from '../art/PremiumAssetManifest.js';
-import { trayTileScale } from '../ui/LayoutManager.js';
+import { PREMIUM_TEXTURES,TILE_BODY_VISIBLE_BOUNDS } from '../art/PremiumAssetManifest.js';
+import { trayFrameRect,traySlotRect,trayTileScale } from '../ui/LayoutManager.js';
 export { TRAY_CAPACITY };
 
 export class SlotManager {
@@ -24,7 +24,8 @@ export class SlotManager {
   draw() {
     const { x, y, width, slotGap } = this.layout.tray;
     if(this.scene.textures.exists(PREMIUM_TEXTURES.tray.key)){
-      this.frame=this.scene.add.image(x,y-8,PREMIUM_TEXTURES.tray.key).setDisplaySize(width+28,128).setDepth(400);
+      const frame=trayFrameRect(this.layout);
+      this.frame=this.scene.add.image(x,y,PREMIUM_TEXTURES.tray.key).setDisplaySize(frame.width,frame.height).setDepth(400);
       return;
     }
     this.frame = this.scene.add.graphics().setDepth(400);
@@ -79,25 +80,26 @@ export class SlotManager {
   async animateCommittedState(newTile,cleared,effectProxies,transaction,result) {
     const newTileCleared=cleared.includes(newTile);
     if(!newTileCleared){
+      newTile.setTrayPresentation(true);
       newTile.setDepth(430).setSelected(false);
       const destination=this.state.entries.findIndex(entry=>entry.visualId===newTile.tileData.id);
-      await curveTween(this.scene,newTile,this.slotX(destination),this.layout.tray.y,260,()=>!this.destroyed&&transaction===this.transactionId,{endScale:this.tileScale});
+      await curveTween(this.scene,newTile,this.slotX(destination),this.slotY(destination),280,()=>!this.destroyed&&transaction===this.transactionId,{endScale:this.tileScale});
       if(this.destroyed||transaction!==this.transactionId)return;
       this.callbacks.onArrived?.(result,newTile);
     }else{
       const arriving=effectProxies.find(item=>item.tile===newTile),resting=effectProxies.filter(item=>item!==arriving);
-      if(arriving)await curveTween(this.scene,arriving.proxy,this.slotX(Math.min(TRAY_CAPACITY-1,result.insertAt)),this.layout.tray.y,260,()=>!this.destroyed&&transaction===this.transactionId,{endScale:this.tileScale,fade:false});
+      if(arriving)await curveTween(this.scene,arriving.proxy,this.slotX(Math.min(TRAY_CAPACITY-1,result.insertAt)),this.slotY(Math.min(TRAY_CAPACITY-1,result.insertAt)),280,()=>!this.destroyed&&transaction===this.transactionId,{endScale:this.tileScale,fade:false});
       if(this.destroyed||transaction!==this.transactionId)return;
       this.callbacks.onArrived?.(result,newTile);
       const collisionX=effectProxies.reduce((sum,{proxy})=>sum+proxy.x,0)/Math.max(1,effectProxies.length);
-      await Promise.all(effectProxies.map(({proxy},index)=>tween(this.scene,proxy,{x:collisionX+(index?7:-7),y:this.layout.tray.y,angle:index?5:-5,scaleX:proxy.scaleX*1.025,scaleY:proxy.scaleY*1.025},80,'Cubic.In')));
+      await Promise.all(effectProxies.map(({proxy},index)=>tween(this.scene,proxy,{x:collisionX+(index?7:-7),y:this.slotY(0),angle:index?5:-5,scaleX:proxy.scaleX*1.025,scaleY:proxy.scaleY*1.025},80,'Cubic.In')));
       await Promise.all(effectProxies.map(({proxy})=>tween(this.scene,proxy,{x:collisionX,alpha:0,angle:0,scaleX:proxy.scaleX*.82,scaleY:proxy.scaleY*.82},135,'Sine.InOut')));
       effectProxies.forEach(({proxy})=>proxy.destroy(true));
       if(this.destroyed||transaction!==this.transactionId)return;
     }
     await Promise.all(this.state.entries.map((entry,index)=>{
       const tile=this.visuals.get(entry.visualId);
-      return tile?tween(this.scene,tile,{x:this.slotX(index),y:this.layout.tray.y,scaleX:this.tileScale,scaleY:this.tileScale,angle:0,alpha:1},135,'Sine.InOut'):Promise.resolve();
+      return tile?tween(this.scene,tile,{x:this.slotX(index),y:this.slotY(index),scaleX:this.tileScale,scaleY:this.tileScale,angle:0,alpha:1},150,'Sine.InOut'):Promise.resolve();
     }));
   }
 
@@ -111,7 +113,7 @@ export class SlotManager {
     this.transactionId++;
     this.busy=false;
     const returned=this.state.entries.map(entry=>this.visuals.get(entry.visualId)).filter(Boolean);
-    returned.forEach(tile=>{this.scene.tweens.killTweensOf(tile);tile.setPendingMatch(false);tile.setData('trayDetached',false);restoreTile(tile);});
+    returned.forEach(tile=>{this.scene.tweens.killTweensOf(tile);tile.setPendingMatch(false);tile.setTrayPresentation(false);tile.setData('trayDetached',false);restoreTile(tile);});
     this.state=createTrayState();
     this.visuals.clear();
     return returned;
@@ -128,13 +130,16 @@ export class SlotManager {
       this.visuals.set(entry.visualId,tile);
       tile.isCollected=true;
       tile.setData('trayDetached',false);
-      tile.setVisible(true).setAlpha(1).setScale(this.tileScale).setAngle(0).setPosition(this.slotX(index),this.layout.tray.y).setDepth(430+index).disableInteractive();
+      tile.setTrayPresentation(true);tile.setVisible(true).setAlpha(1).setScale(this.tileScale).setAngle(0).setPosition(this.slotX(index),this.slotY(index)).setDepth(430+index).disableInteractive();
     });
     this.updatePendingHighlights();
   }
 
   dispose(){this.destroyed=true;this.transactionId++;this.busy=false;this.callbacks={};}
-  slotX(index){return this.layout.tray.x-1.5*this.layout.tray.slotGap+index*this.layout.tray.slotGap;}
+  slotX(index){const slot=traySlotRect(this.layout,index);return slot.x+slot.width/2;}
+  slotY(index){const slot=traySlotRect(this.layout,index),b=TILE_BODY_VISIBLE_BOUNDS,tileH=this.layout.boardProjection?.tileH||77,localCenter=4+tileH*1.2*(((b.top+b.bottom+1)/2)/b.textureHeight-.5);return slot.y+slot.height/2-localCenter*this.tileScale;}
+  slotRect(index){return traySlotRect(this.layout,index);}
+  visibleBodyRect(tile){const b=TILE_BODY_VISIBLE_BOUNDS,scaleX=tile.scaleX,scaleY=tile.scaleY,left=tile.x+scaleX*(tile.body.x-tile.body.displayWidth/2+tile.body.displayWidth*b.left/b.textureWidth),top=tile.y+scaleY*(tile.body.y-tile.body.displayHeight/2+tile.body.displayHeight*b.top/b.textureHeight);return{x:left,y:top,width:scaleX*tile.body.displayWidth*(b.right-b.left+1)/b.textureWidth,height:scaleY*tile.body.displayHeight*(b.bottom-b.top+1)/b.textureHeight};}
   get entries(){return this.state.entries;}
   get slots(){return this.state.entries.map(entry=>this.visuals.get(entry.visualId)).filter(Boolean);}
   get types(){return this.state.entries.map(entry=>entry.typeId);}

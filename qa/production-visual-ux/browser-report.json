@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-23T18:22:27.378Z",
+  "generatedAt": "2026-10-23T19:58:05.158Z",
   "passed": true,
   "visualAcceptance": "PENDING_USER_REVIEW",
   "commercialReadiness": "INTERNAL_ALPHA",
   "performance": {
-    "fps": 25,
-    "averageFrameMs": 39.75,
-    "maxFrameMs": 50.1,
+    "fps": 60,
+    "averageFrameMs": 16.67,
+    "maxFrameMs": 16.9,
     "textureCount": 197,
     "canvas": [
       390,
@@ -19,34 +19,34 @@
       {
         "id": "L1-T26",
         "x": 231,
-        "y": 246
+        "y": 238
       },
       {
         "id": "L1-T31",
         "x": 96,
-        "y": 310
+        "y": 298
       },
       {
         "id": "L1-T28",
         "x": 163,
-        "y": 334
+        "y": 323
       }
     ],
     "last": [
       {
         "id": "L1-T1",
         "x": 58,
-        "y": 540
+        "y": 520
       },
       {
         "id": "L1-T11",
         "x": 193,
-        "y": 408
+        "y": 393
       },
       {
         "id": "L1-T8",
         "x": 193,
-        "y": 540
+        "y": 520
       }
     ]
   },
@@ -66,7 +66,7 @@
     "saved": {
       "score": 34200,
       "stars": 3,
-      "bestTime": 17
+      "bestTime": 7
     }
   },
   "captures": [
@@ -83,7 +83,7 @@
       ],
       "span": [
         374,
-        428
+        410
       ],
       "selectable": 13
     },
@@ -100,7 +100,7 @@
       ],
       "span": [
         374,
-        428
+        410
       ],
       "selectable": 12
     },
@@ -117,7 +117,7 @@
       ],
       "span": [
         374,
-        428
+        410
       ],
       "selectable": 13
     },
@@ -134,7 +134,7 @@
       ],
       "span": [
         374,
-        419
+        401
       ],
       "selectable": 9
     },
@@ -151,7 +151,7 @@
       ],
       "span": [
         374,
-        419
+        401
       ],
       "selectable": 10
     },
@@ -168,7 +168,7 @@
       ],
       "span": [
         374,
-        419
+        401
       ],
       "selectable": 11
     },
@@ -185,7 +185,7 @@
       ],
       "span": [
         374,
-        419
+        401
       ],
       "selectable": 9
     },
@@ -202,7 +202,7 @@
       ],
       "span": [
         374,
-        419
+        401
       ],
       "selectable": 8
     },
@@ -219,7 +219,7 @@
       ],
       "span": [
         374,
-        419
+        401
       ],
       "selectable": 11
     },
@@ -236,7 +236,7 @@
       ],
       "span": [
         374,
-        419
+        401
       ],
       "selectable": 13
     },
@@ -253,7 +253,7 @@
       ],
       "span": [
         374,
-        419
+        401
       ],
       "selectable": 10
     },
@@ -270,7 +270,7 @@
       ],
       "span": [
         374,
-        419
+        401
       ],
       "selectable": 13
     },
@@ -342,7 +342,7 @@
       "saved": {
         "score": 34200,
         "stars": 3,
-        "bestTime": 17
+        "bestTime": 7
       }
     }
   ],

@@ -16,12 +16,13 @@ import { MockAdProvider } from '../economy/MockProviders.js';
 import { bindSceneAudio } from '../audio/AudioManager.js';
 import { TutorialController } from '../game/TutorialController.js';
 import { clampPlayableLevel } from '../logic/LevelNavigation.js';
+import { applyDevQaScenario,isDevQaMode } from '../qa/DevQaProfile.js';
 
 export class GameScene extends Phaser.Scene {
   constructor(){super('Game');}
   init(data){this.requestedLevel=Math.max(1,Math.min(LEVEL_COUNT,Number(data.level)||1));this.forceNewAttempt=Boolean(data.newAttempt);this.devLevelOverride=Boolean(import.meta.env.DEV&&new URLSearchParams(location.search).get('qaUnlock')==='1');}
   create(){
-    applyDesignCamera(this);this.save=SaveManager.load();this.levelNumber=clampPlayableLevel(this.requestedLevel,this.save.maxUnlockedLevel,LEVEL_COUNT,{allowDevOverride:this.devLevelOverride});this.audio=bindSceneAudio(this,'gameplay');this.level=getLevelConfig(this.levelNumber);this.theme=getTheme(this.level.themeId);this.layout=createLayout(540,960);
+    applyDesignCamera(this);this.qaMode=isDevQaMode();const query=new URLSearchParams(location.search);this.save=applyDevQaScenario(SaveManager.load(),query.get('qaScenario')||'boosters');if(this.qaMode)SaveManager.save(this.save);this.levelNumber=clampPlayableLevel(this.requestedLevel,this.save.maxUnlockedLevel,LEVEL_COUNT,{allowDevOverride:this.devLevelOverride||this.qaMode});this.audio=bindSceneAudio(this,'gameplay');this.level=getLevelConfig(this.levelNumber);this.theme=getTheme(this.level.themeId);this.layout=createLayout(540,960);
     this.score=0;this.currentCombo=0;this.bestCombo=0;this.totalMatches=0;this.selectedTileCount=0;this.lastMatchAt=-Infinity;this.displayScore=0;this.boostersUsed=0;this.boosterCooldowns={};this.startedAt=performance.now();this.history=[];this.gameEnded=false;this.victoryEmitted=false;this.reviveUsed=false;this.adProvider=new MockAdProvider();this.modal=new Modal(this);this.reducedMotion=Boolean(this.save.prefs.reducedMotion||matchMedia?.('(prefers-reduced-motion: reduce)').matches);
     this.drawBackground();this.createHud();this.board=new BoardManager(this,this.level,this.layout.board,tile=>this.selectTile(tile),this.save.prefs.tileStyle).create();this.layout.boardProjection=this.board.projection;
     this.tray=new SlotManager(this,this.layout,{onAtomicClear:(tiles,result)=>this.smashMatch(tiles,result),onArrived:result=>this.trayArrived(result),onFull:result=>this.lose(result),onSettled:()=>this.afterSettled()});
@@ -43,7 +44,7 @@ export class GameScene extends Phaser.Scene {
 
   createBoosters(){
     const configs=[['hint',104,'HINT'],['shuffle',270,'SHUFFLE'],['undo',436,'UNDO']];this.boosterButtons={};this.badges={};
-    configs.forEach(([key,x,label])=>{const button=addToolButton(this,x,875,142,label,key,()=>this[key](),this.save.boosters[key]);this.boosterButtons[key]=button;this.badges[key]=button.getData('badgeText');});
+    configs.forEach(([key,x,label])=>{const button=addToolButton(this,x,this.layout.boostersY,142,label,key,()=>this[key](),this.save.boosters[key]);this.boosterButtons[key]=button;this.badges[key]=button.getData('badgeText');});
   }
 
   snapshot(){return{score:this.score,currentCombo:this.currentCombo,bestCombo:this.bestCombo,totalMatches:this.totalMatches,selectedTileCount:this.selectedTileCount,lastMatchAgeMs:Number.isFinite(this.lastMatchAt)?Math.max(0,this.time.now-this.lastMatchAt):null,tray:this.tray.entries.map(entry=>({...entry})),tiles:this.board.tiles.map(tile=>({id:tile.tileData.id,collected:tile.isCollected,alive:tile.tileData.alive,typeId:tile.typeId,x:tile.x,y:tile.y,visible:tile.visible,alpha:tile.alpha,scaleX:tile.scaleX,scaleY:tile.scaleY,depth:tile.depth}))};}

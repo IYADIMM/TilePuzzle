@@ -1,17 +1,57 @@
 {
   "version": 2,
-  "generatedAt": "2026-10-23T02:53:46.941Z",
+  "generatedAt": "2026-10-23T19:40:17.309Z",
   "alpha": true,
   "lighting": "upper-left",
+  "tileBodyVisibleBounds": {
+    "left": 19,
+    "top": 13,
+    "right": 492,
+    "bottom": 626
+  },
+  "trayGeometry": {
+    "textureWidth": 1024,
+    "textureHeight": 400,
+    "slotInteriors": [
+      [
+        64,
+        94,
+        265,
+        282
+      ],
+      [
+        300,
+        94,
+        492,
+        282
+      ],
+      [
+        528,
+        94,
+        720,
+        282
+      ],
+      [
+        757,
+        94,
+        958,
+        282
+      ]
+    ],
+    "safeInset": [
+      10,
+      12
+    ]
+  },
   "assets": [
     {
       "id": "tile-body",
-      "source": "assets/premium/source/tile-body-master.png",
+      "source": "assets/premium/source/tile-body-master-v2.png",
       "runtime": "/assets/premium/tile-body.webp",
       "width": 512,
       "height": 640,
       "format": "webp",
-      "sha256": "2d2ff5625cfd21d9eba6f8cdce4dcae169bf67c404963b554050e65249246a9a"
+      "sha256": "c2b8a2386fe8a2744daf7f824d311c83f5d90e8b8233deaf810f80087e00dafc"
     },
     {
       "id": "tile-material-mahogany",
@@ -771,12 +811,12 @@
     },
     {
       "id": "tray-four-slot",
-      "source": "assets/premium/source/tray-master.png",
+      "source": "assets/premium/source/tray-master-v2.png",
       "runtime": "/assets/premium/tray-four-slot.webp",
       "width": 1024,
-      "height": 320,
+      "height": 400,
       "format": "webp",
-      "sha256": "3cd2e222c370c76b66add3a78ce7aac8a51a08fa83cfc4cd6e8a8b10d6360ca5"
+      "sha256": "6824308d971a13185e9b4876b3d0588899f50ad5d9ae7ab276c54da696db3405"
     },
     {
       "id": "button-mahogany",

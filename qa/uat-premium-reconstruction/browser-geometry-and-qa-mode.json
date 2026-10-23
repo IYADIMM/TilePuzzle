@@ -1,0 +1,2003 @@
+{
+  "generatedAt": "2026-10-23T19:45:32.397Z",
+  "passed": true,
+  "geometry": [
+    {
+      "style": "illustrated",
+      "viewport": {
+        "width": 360,
+        "height": 640
+      },
+      "count": 1,
+      "tiles": [
+        {
+          "index": 0,
+          "slot": {
+            "x": 78.375,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 91.49178598896127,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "style": "illustrated",
+      "viewport": {
+        "width": 360,
+        "height": 640
+      },
+      "count": 2,
+      "tiles": [
+        {
+          "index": 0,
+          "slot": {
+            "x": 78.375,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 91.49178598896127,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 1,
+          "slot": {
+            "x": 181.625,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 192.77303598896128,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "style": "illustrated",
+      "viewport": {
+        "width": 360,
+        "height": 640
+      },
+      "count": 3,
+      "tiles": [
+        {
+          "index": 0,
+          "slot": {
+            "x": 78.375,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 91.49178598896127,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 1,
+          "slot": {
+            "x": 181.625,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 192.77303598896128,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 2,
+          "slot": {
+            "x": 281.375,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 292.5230359889613,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "style": "illustrated",
+      "viewport": {
+        "width": 360,
+        "height": 640
+      },
+      "count": 4,
+      "tiles": [
+        {
+          "index": 0,
+          "slot": {
+            "x": 78.375,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 91.49178598896127,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 1,
+          "slot": {
+            "x": 181.625,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 192.77303598896128,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 2,
+          "slot": {
+            "x": 281.375,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 292.5230359889613,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 3,
+          "slot": {
+            "x": 381.5625,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 394.6792859889613,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "style": "illustrated",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "count": 1,
+      "tiles": [
+        {
+          "index": 0,
+          "slot": {
+            "x": 78.375,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 91.49178598896127,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "style": "illustrated",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "count": 2,
+      "tiles": [
+        {
+          "index": 0,
+          "slot": {
+            "x": 78.375,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 91.49178598896127,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 1,
+          "slot": {
+            "x": 181.625,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 192.77303598896128,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "style": "illustrated",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "count": 3,
+      "tiles": [
+        {
+          "index": 0,
+          "slot": {
+            "x": 78.375,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 91.49178598896127,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 1,
+          "slot": {
+            "x": 181.625,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 192.77303598896128,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 2,
+          "slot": {
+            "x": 281.375,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 292.5230359889613,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "style": "illustrated",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "count": 4,
+      "tiles": [
+        {
+          "index": 0,
+          "slot": {
+            "x": 78.375,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 91.49178598896127,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 1,
+          "slot": {
+            "x": 181.625,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 192.77303598896128,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 2,
+          "slot": {
+            "x": 281.375,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 292.5230359889613,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 3,
+          "slot": {
+            "x": 381.5625,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 394.6792859889613,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "style": "illustrated",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "count": 1,
+      "tiles": [
+        {
+          "index": 0,
+          "slot": {
+            "x": 78.375,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 91.49178598896127,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "style": "illustrated",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "count": 2,
+      "tiles": [
+        {
+          "index": 0,
+          "slot": {
+            "x": 78.375,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 91.49178598896127,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 1,
+          "slot": {
+            "x": 181.625,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 192.77303598896128,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "style": "illustrated",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "count": 3,
+      "tiles": [
+        {
+          "index": 0,
+          "slot": {
+            "x": 78.375,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 91.49178598896127,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 1,
+          "slot": {
+            "x": 181.625,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 192.77303598896128,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 2,
+          "slot": {
+            "x": 281.375,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 292.5230359889613,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "style": "illustrated",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "count": 4,
+      "tiles": [
+        {
+          "index": 0,
+          "slot": {
+            "x": 78.375,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 91.49178598896127,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 1,
+          "slot": {
+            "x": 181.625,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 192.77303598896128,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 2,
+          "slot": {
+            "x": 281.375,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 292.5230359889613,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 3,
+          "slot": {
+            "x": 381.5625,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 394.6792859889613,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "style": "illustrated",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "count": 1,
+      "tiles": [
+        {
+          "index": 0,
+          "slot": {
+            "x": 78.375,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 91.49178598896127,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "style": "illustrated",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "count": 2,
+      "tiles": [
+        {
+          "index": 0,
+          "slot": {
+            "x": 78.375,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 91.49178598896127,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 1,
+          "slot": {
+            "x": 181.625,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 192.77303598896128,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "style": "illustrated",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "count": 3,
+      "tiles": [
+        {
+          "index": 0,
+          "slot": {
+            "x": 78.375,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 91.49178598896127,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 1,
+          "slot": {
+            "x": 181.625,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 192.77303598896128,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 2,
+          "slot": {
+            "x": 281.375,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 292.5230359889613,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "style": "illustrated",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "count": 4,
+      "tiles": [
+        {
+          "index": 0,
+          "slot": {
+            "x": 78.375,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 91.49178598896127,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 1,
+          "slot": {
+            "x": 181.625,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 192.77303598896128,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 2,
+          "slot": {
+            "x": 281.375,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 292.5230359889613,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 3,
+          "slot": {
+            "x": 381.5625,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 394.6792859889613,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "style": "classic",
+      "viewport": {
+        "width": 360,
+        "height": 640
+      },
+      "count": 1,
+      "tiles": [
+        {
+          "index": 0,
+          "slot": {
+            "x": 78.375,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 91.49178598896127,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "style": "classic",
+      "viewport": {
+        "width": 360,
+        "height": 640
+      },
+      "count": 2,
+      "tiles": [
+        {
+          "index": 0,
+          "slot": {
+            "x": 78.375,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 91.49178598896127,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 1,
+          "slot": {
+            "x": 181.625,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 192.77303598896128,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "style": "classic",
+      "viewport": {
+        "width": 360,
+        "height": 640
+      },
+      "count": 3,
+      "tiles": [
+        {
+          "index": 0,
+          "slot": {
+            "x": 78.375,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 91.49178598896127,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 1,
+          "slot": {
+            "x": 181.625,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 192.77303598896128,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 2,
+          "slot": {
+            "x": 281.375,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 292.5230359889613,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "style": "classic",
+      "viewport": {
+        "width": 360,
+        "height": 640
+      },
+      "count": 4,
+      "tiles": [
+        {
+          "index": 0,
+          "slot": {
+            "x": 78.375,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 91.49178598896127,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 1,
+          "slot": {
+            "x": 181.625,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 192.77303598896128,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 2,
+          "slot": {
+            "x": 281.375,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 292.5230359889613,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 3,
+          "slot": {
+            "x": 381.5625,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 394.6792859889613,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "style": "classic",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "count": 1,
+      "tiles": [
+        {
+          "index": 0,
+          "slot": {
+            "x": 78.375,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 91.49178598896127,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "style": "classic",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "count": 2,
+      "tiles": [
+        {
+          "index": 0,
+          "slot": {
+            "x": 78.375,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 91.49178598896127,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 1,
+          "slot": {
+            "x": 181.625,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 192.77303598896128,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "style": "classic",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "count": 3,
+      "tiles": [
+        {
+          "index": 0,
+          "slot": {
+            "x": 78.375,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 91.49178598896127,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 1,
+          "slot": {
+            "x": 181.625,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 192.77303598896128,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 2,
+          "slot": {
+            "x": 281.375,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 292.5230359889613,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "style": "classic",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "count": 4,
+      "tiles": [
+        {
+          "index": 0,
+          "slot": {
+            "x": 78.375,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 91.49178598896127,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 1,
+          "slot": {
+            "x": 181.625,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 192.77303598896128,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 2,
+          "slot": {
+            "x": 281.375,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 292.5230359889613,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 3,
+          "slot": {
+            "x": 381.5625,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 394.6792859889613,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "style": "classic",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "count": 1,
+      "tiles": [
+        {
+          "index": 0,
+          "slot": {
+            "x": 78.375,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 91.49178598896127,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "style": "classic",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "count": 2,
+      "tiles": [
+        {
+          "index": 0,
+          "slot": {
+            "x": 78.375,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 91.49178598896127,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 1,
+          "slot": {
+            "x": 181.625,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 192.77303598896128,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "style": "classic",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "count": 3,
+      "tiles": [
+        {
+          "index": 0,
+          "slot": {
+            "x": 78.375,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 91.49178598896127,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 1,
+          "slot": {
+            "x": 181.625,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 192.77303598896128,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 2,
+          "slot": {
+            "x": 281.375,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 292.5230359889613,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "style": "classic",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "count": 4,
+      "tiles": [
+        {
+          "index": 0,
+          "slot": {
+            "x": 78.375,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 91.49178598896127,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 1,
+          "slot": {
+            "x": 181.625,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 192.77303598896128,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 2,
+          "slot": {
+            "x": 281.375,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 292.5230359889613,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 3,
+          "slot": {
+            "x": 381.5625,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 394.6792859889613,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "style": "classic",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "count": 1,
+      "tiles": [
+        {
+          "index": 0,
+          "slot": {
+            "x": 78.375,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 91.49178598896127,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "style": "classic",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "count": 2,
+      "tiles": [
+        {
+          "index": 0,
+          "slot": {
+            "x": 78.375,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 91.49178598896127,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 1,
+          "slot": {
+            "x": 181.625,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 192.77303598896128,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "style": "classic",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "count": 3,
+      "tiles": [
+        {
+          "index": 0,
+          "slot": {
+            "x": 78.375,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 91.49178598896127,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 1,
+          "slot": {
+            "x": 181.625,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 192.77303598896128,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 2,
+          "slot": {
+            "x": 281.375,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 292.5230359889613,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "style": "classic",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "count": 4,
+      "tiles": [
+        {
+          "index": 0,
+          "slot": {
+            "x": 78.375,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 91.49178598896127,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 1,
+          "slot": {
+            "x": 181.625,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 192.77303598896128,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 2,
+          "slot": {
+            "x": 281.375,
+            "y": 724.875,
+            "width": 75.25,
+            "height": 71.75
+          },
+          "body": {
+            "x": 292.5230359889613,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        },
+        {
+          "index": 3,
+          "slot": {
+            "x": 381.5625,
+            "y": 724.875,
+            "width": 79.1875,
+            "height": 71.75
+          },
+          "body": {
+            "x": 394.6792859889613,
+            "y": 724.875,
+            "width": 52.95392802207746,
+            "height": 71.75000000000001
+          },
+          "centerDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "inside": true
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "isolation": {
+    "qa": {
+      "undo": 99,
+      "hint": 99,
+      "shuffle": 99
+    },
+    "productionSentinel": "untouched",
+    "productionSave": null,
+    "qaSave": true
+  },
+  "screenshots": [
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\uat-premium-reconstruction\\screenshots\\illustrated-tray-1-360x640.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\uat-premium-reconstruction\\screenshots\\illustrated-tray-2-360x640.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\uat-premium-reconstruction\\screenshots\\illustrated-tray-3-360x640.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\uat-premium-reconstruction\\screenshots\\illustrated-tray-4-360x640.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\uat-premium-reconstruction\\screenshots\\illustrated-tray-1-390x844.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\uat-premium-reconstruction\\screenshots\\illustrated-tray-2-390x844.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\uat-premium-reconstruction\\screenshots\\illustrated-tray-3-390x844.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\uat-premium-reconstruction\\screenshots\\illustrated-tray-4-390x844.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\uat-premium-reconstruction\\screenshots\\illustrated-tray-1-430x932.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\uat-premium-reconstruction\\screenshots\\illustrated-tray-2-430x932.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\uat-premium-reconstruction\\screenshots\\illustrated-tray-3-430x932.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\uat-premium-reconstruction\\screenshots\\illustrated-tray-4-430x932.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\uat-premium-reconstruction\\screenshots\\illustrated-tray-1-768x1024.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\uat-premium-reconstruction\\screenshots\\illustrated-tray-2-768x1024.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\uat-premium-reconstruction\\screenshots\\illustrated-tray-3-768x1024.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\uat-premium-reconstruction\\screenshots\\illustrated-tray-4-768x1024.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\uat-premium-reconstruction\\screenshots\\classic-tray-1-360x640.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\uat-premium-reconstruction\\screenshots\\classic-tray-2-360x640.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\uat-premium-reconstruction\\screenshots\\classic-tray-3-360x640.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\uat-premium-reconstruction\\screenshots\\classic-tray-4-360x640.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\uat-premium-reconstruction\\screenshots\\classic-tray-1-390x844.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\uat-premium-reconstruction\\screenshots\\classic-tray-2-390x844.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\uat-premium-reconstruction\\screenshots\\classic-tray-3-390x844.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\uat-premium-reconstruction\\screenshots\\classic-tray-4-390x844.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\uat-premium-reconstruction\\screenshots\\classic-tray-1-430x932.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\uat-premium-reconstruction\\screenshots\\classic-tray-2-430x932.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\uat-premium-reconstruction\\screenshots\\classic-tray-3-430x932.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\uat-premium-reconstruction\\screenshots\\classic-tray-4-430x932.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\uat-premium-reconstruction\\screenshots\\classic-tray-1-768x1024.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\uat-premium-reconstruction\\screenshots\\classic-tray-2-768x1024.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\uat-premium-reconstruction\\screenshots\\classic-tray-3-768x1024.png",
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\uat-premium-reconstruction\\screenshots\\classic-tray-4-768x1024.png"
+  ],
+  "errors": []
+}
