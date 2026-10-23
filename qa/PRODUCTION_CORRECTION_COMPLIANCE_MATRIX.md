@@ -25,7 +25,8 @@ The later Critical Gameplay Correction Add-on supersedes the older match-three l
 | Pause to main menu | Passed | Save-and-leave confirmation and resumable attempt |
 | Match-two scoring, tutorial, reward copy | Passed | Runtime and unit evidence |
 | Approved audio preserved, no new clash sound | Passed | Audio hashes unchanged; audio browser report passed |
-| Original branded install icon | Passed technically | `public/assets/brand/jade-garden-app-icon-1024.png` and web manifest |
+| Original branded install icon | Passed technically | Store master, transparent Android adaptive foreground, opaque iOS/PWA master and manifests under `public/assets/brand/` |
+| Shop individual previews and honest inventory | Passed | Tile, tray, celebration and three booster previews replace T/C/B badges; Owned/Equipped/Available and booster counts use saved inventory; mock-only label retained |
 | Premium raster coverage for all 72 icons | Incomplete | 36 native raster icons; 36 procedural fallbacks |
 | Unique native raster body for 12 materials | Incomplete | Shared premium ivory body/procedural material treatments remain |
 | Affordable Samsung A-Series performance | Not verified | Headless desktop Chromium only; physical Android profiling still required |

@@ -7,6 +7,8 @@
 - 36 icons in desserts, flowers, ocean life, music, travel and space remain procedural fallbacks.
 - Material treatments rotate through all twelve themes, but twelve independent native raster tile-body masters are not yet complete.
 - New original brand asset: `public/assets/brand/jade-garden-app-icon-1024.png` (built-in image-generation pipeline; no reference pixels cropped or reused).
+- Android adaptive foreground: `public/assets/brand/jade-garden-adaptive-foreground-1024.png` (transparent, no outer frame; native packaging background color is `#07352c`).
+- iOS/PWA opaque master: `public/assets/brand/jade-garden-ios-opaque-1024.png` (full-bleed emerald felt, no transparency).
 - Install metadata: `public/manifest.webmanifest`.
 
 Machine-readable inventory: `qa/ASSET_INVENTORY.json` and `public/assets/premium/manifest.json`.
@@ -22,4 +24,4 @@ Evidence: `qa/audio/audio-browser-report.json`. Playback was verified through br
 
 ## App icon generation record
 
-Built-in image generation was used with a square logo-brand prompt specifying one glossy ivory tile, a jade leaf emblem, emerald felt, mahogany depth, warm gold trim, upper-left studio lighting, no text and no copyrighted game imagery. Final workspace path is listed above.
+Built-in image generation was used with a square logo-brand prompt specifying one glossy ivory tile, a jade leaf emblem, emerald felt, mahogany depth, warm gold trim, upper-left studio lighting, no text and no copyrighted game imagery. Two derived production masters were then created through the same image pipeline: (1) a transparent adaptive foreground retaining only the centered tile and leaf with mask-safe padding, and (2) an opaque iOS/PWA square with full-bleed emerald felt and no platform-inappropriate outer frame. Final workspace paths are listed above. The original generated files remain preserved under the Codex generated-images directory.

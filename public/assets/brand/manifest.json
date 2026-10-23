@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "backgroundColor": "#07352c",
+  "assets": [
+    {
+      "id": "store-master",
+      "path": "/assets/brand/jade-garden-app-icon-1024.png",
+      "dimensions": "1024x1024",
+      "alpha": true,
+      "use": "store artwork master and web favicon"
+    },
+    {
+      "id": "android-adaptive-foreground",
+      "path": "/assets/brand/jade-garden-adaptive-foreground-1024.png",
+      "dimensions": "1024x1024",
+      "alpha": true,
+      "use": "maskable PWA icon and future Android adaptive foreground"
+    },
+    {
+      "id": "ios-opaque-master",
+      "path": "/assets/brand/jade-garden-ios-opaque-1024.png",
+      "dimensions": "1024x1024",
+      "alpha": false,
+      "use": "Apple touch icon, PWA any-purpose icon and future iOS export source"
+    }
+  ],
+  "provenance": "Original generated artwork; no pixels cropped from reference sheets. Prompt record: qa/ASSET_AND_AUDIO_MANIFEST.md"
+}

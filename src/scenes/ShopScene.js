@@ -1,12 +1,13 @@
 import Phaser from 'phaser';
 import { TEXT } from '../theme.js';
 import { prepareBackdrop } from './MenuScene.js';
-import { addGoldButton,addIconButton,addPill,makeInteractive } from '../ui/components.js';
+import { addGoldButton,addIconButton,addPill,drawGlyph,makeInteractive } from '../ui/components.js';
 import { Modal } from '../ui/Modal.js';
 import { SaveManager } from '../systems/SaveManager.js';
 import { DAILY_REWARDS,ECONOMY_CATALOG } from '../economy/EconomyCatalog.js';
 import { claimDailyReward } from '../economy/DailyRewardService.js';
 import { equipItem,purchaseCatalogItem } from '../economy/InventoryService.js';
+import { PREMIUM_TEXTURES } from '../art/PremiumAssetManifest.js';
 
 export class ShopScene extends Phaser.Scene{
   constructor(){super('Shop');}
@@ -23,8 +24,22 @@ export class ShopScene extends Phaser.Scene{
   addItem(item,index){
     const y=315+index*79,root=this.add.container(270,y),g=this.add.graphics(),owned=this.save.economy.inventory.owned.includes(item.id),equipped=this.save.economy.inventory.equipped[item.kind]===item.id;
     g.fillStyle(0x020100,.4).fillRoundedRect(-222,-31,448,67,17).fillStyle(0x103a2f,.97).fillRoundedRect(-224,-35,448,66,17).lineStyle(2,equipped?0x73e2aa:0xd69c37,.9).strokeRoundedRect(-224,-35,448,66,17);
-    const glyph=this.add.circle(-184,-2,22,item.kind==='booster'?0xb96b27:0x2c7a61).setStrokeStyle(3,0xe8b64d),initial=this.add.text(-184,-2,item.kind[0].toUpperCase(),{...TEXT.title,fontSize:'19px',color:'#fff1c7',stroke:'#2a1006',strokeThickness:2}).setOrigin(.5),name=this.add.text(-148,-11,item.name,{...TEXT.hud,fontSize:'14px',color:'#fff1cf'}).setOrigin(0,.5),kind=this.add.text(-148,13,item.kind.toUpperCase(),{...TEXT.hud,fontSize:'10px',color:'#9fc5b4'}).setOrigin(0,.5),action=this.add.text(193,-1,equipped?'EQUIPPED':owned?'EQUIP':`${item.price} ${item.currency==='gems'?'GEMS':'COINS'}`,{...TEXT.hud,fontSize:'12px',color:equipped?'#8df0b8':'#ffd66b'}).setOrigin(1,.5);
-    root.add([g,glyph,initial,name,kind,action]).setSize(448,70).setData('item-id',item.id);makeInteractive(root,()=>this.useItem(item,owned));
+    const preview=this.createItemPreview(item,-184,-2),name=this.add.text(-148,-11,item.name,{...TEXT.hud,fontSize:'14px',color:'#fff1cf'}).setOrigin(0,.5),kind=this.add.text(-148,13,this.itemStatus(item,owned,equipped),{...TEXT.hud,fontSize:'10px',color:equipped?'#8df0b8':'#9fc5b4'}).setOrigin(0,.5),action=this.add.text(193,-1,equipped?'EQUIPPED':owned?'EQUIP':`${item.price} ${item.currency==='gems'?'GEMS':'COINS'}`,{...TEXT.hud,fontSize:'12px',color:equipped?'#8df0b8':'#ffd66b'}).setOrigin(1,.5);
+    root.add([g,preview,name,kind,action]).setSize(448,70).setData('item-id',item.id).setData('preview-kind',item.booster||item.kind);makeInteractive(root,()=>this.useItem(item,owned));
+  }
+  itemStatus(item,owned,equipped){if(item.kind==='booster')return `BOOSTER  •  OWNED ${this.save.boosters[item.booster]||0}`;if(equipped)return `${item.kind.toUpperCase()}  •  EQUIPPED`;return `${item.kind.toUpperCase()}  •  ${owned?'OWNED':'AVAILABLE'}`;}
+  createItemPreview(item,x,y){
+    const root=this.add.container(x,y),halo=this.add.circle(0,0,24,item.kind==='booster'?0x783619:0x164f40,.95).setStrokeStyle(2,0xe8b64d);root.add(halo);
+    if(item.id==='tile-jade'&&this.textures.exists(PREMIUM_TEXTURES.tileBody.key)){
+      const tile=this.add.image(0,1,PREMIUM_TEXTURES.tileBody.key).setDisplaySize(38,46),leaf=this.add.graphics();leaf.fillStyle(0x76c944).fillEllipse(-3,-2,11,19).fillStyle(0x2f8d3f).fillEllipse(5,2,10,17).lineStyle(2,0xe8d66b).lineBetween(-7,8,8,-7);root.add([tile,leaf]);
+    }else if(item.id==='tray-lotus'&&this.textures.exists(PREMIUM_TEXTURES.tray.key)){
+      const tray=this.add.image(0,3,PREMIUM_TEXTURES.tray.key).setDisplaySize(48,19),lotus=this.add.graphics();lotus.fillStyle(0xf08bae).fillEllipse(-6,-7,9,14).fillEllipse(6,-7,9,14).fillStyle(0xffc6d8).fillEllipse(0,-10,9,16).fillStyle(0xf2c64e).fillCircle(0,-5,3);root.add([tray,lotus]);
+    }else if(item.id==='celebration-petals'){
+      const petals=this.add.graphics();for(let i=0;i<6;i++){const a=i*Math.PI/3,px=Math.cos(a)*11,py=Math.sin(a)*11;petals.fillStyle(i%2?0xf6b2cc:0xf2d16b).fillEllipse(px,py,9,15);}petals.fillStyle(0xffe27b).fillCircle(0,0,5);root.add(petals);
+    }else{
+      const glyph=this.add.graphics(),kind=item.booster||item.kind;drawGlyph(glyph,kind,0xffdc67);root.add(glyph);
+    }
+    return root;
   }
   useItem(item,owned){
     const result=owned&&item.kind!=='booster'?equipItem(this.save,item.id):purchaseCatalogItem(this.save,item.id,`shop:${item.id}:${Date.now()}`);

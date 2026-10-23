@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-22T20:29:10.597Z",
+  "generatedAt": "2026-10-23T01:54:25.827Z",
   "passed": true,
   "visualAcceptance": "PENDING_USER_REVIEW",
   "commercialReadiness": "INTERNAL_ALPHA",
   "performance": {
-    "fps": 43,
-    "averageFrameMs": 23.1,
-    "maxFrameMs": 33.4,
+    "fps": 30,
+    "averageFrameMs": 33.88,
+    "maxFrameMs": 50.1,
     "textureCount": 113,
     "canvas": [
       390,

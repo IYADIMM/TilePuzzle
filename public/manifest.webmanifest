@@ -9,10 +9,16 @@
   "theme_color": "#123f35",
   "icons": [
     {
-      "src": "/assets/brand/jade-garden-app-icon-1024.png",
+      "src": "/assets/brand/jade-garden-ios-opaque-1024.png",
       "sizes": "1024x1024",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/brand/jade-garden-adaptive-foreground-1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }
