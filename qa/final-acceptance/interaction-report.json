@@ -10,7 +10,7 @@
   "checks": [
     {
       "kind": "face-sample",
-      "id": "L1-T24",
+      "id": "L1-T26",
       "offsetX": -0.32,
       "offsetY": -0.32,
       "visiblyTargeted": true,
@@ -19,7 +19,7 @@
     },
     {
       "kind": "face-sample",
-      "id": "L1-T24",
+      "id": "L1-T26",
       "offsetX": 0,
       "offsetY": -0.32,
       "visiblyTargeted": true,
@@ -28,7 +28,7 @@
     },
     {
       "kind": "face-sample",
-      "id": "L1-T24",
+      "id": "L1-T26",
       "offsetX": 0.32,
       "offsetY": -0.32,
       "visiblyTargeted": false,
@@ -37,7 +37,7 @@
     },
     {
       "kind": "face-sample",
-      "id": "L1-T24",
+      "id": "L1-T26",
       "offsetX": -0.32,
       "offsetY": 0,
       "visiblyTargeted": true,
@@ -46,7 +46,7 @@
     },
     {
       "kind": "face-sample",
-      "id": "L1-T24",
+      "id": "L1-T26",
       "offsetX": 0,
       "offsetY": 0,
       "visiblyTargeted": true,
@@ -55,7 +55,7 @@
     },
     {
       "kind": "face-sample",
-      "id": "L1-T24",
+      "id": "L1-T26",
       "offsetX": 0.32,
       "offsetY": 0,
       "visiblyTargeted": false,
@@ -64,7 +64,7 @@
     },
     {
       "kind": "face-sample",
-      "id": "L1-T24",
+      "id": "L1-T26",
       "offsetX": -0.32,
       "offsetY": 0.32,
       "visiblyTargeted": false,
@@ -73,7 +73,7 @@
     },
     {
       "kind": "face-sample",
-      "id": "L1-T24",
+      "id": "L1-T26",
       "offsetX": 0,
       "offsetY": 0.32,
       "visiblyTargeted": false,
@@ -82,7 +82,7 @@
     },
     {
       "kind": "face-sample",
-      "id": "L1-T24",
+      "id": "L1-T26",
       "offsetX": 0.32,
       "offsetY": 0.32,
       "visiblyTargeted": false,
@@ -95,7 +95,7 @@
         "width": 360,
         "height": 640
       },
-      "id": "L1-T23",
+      "id": "L1-T8",
       "accepted": true,
       "screenshot": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\audit-remediation\\pointer-360x640.png"
     },
@@ -105,7 +105,7 @@
         "width": 390,
         "height": 844
       },
-      "id": "L1-T23",
+      "id": "L1-T8",
       "accepted": true,
       "screenshot": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\audit-remediation\\pointer-390x844.png"
     },
@@ -115,7 +115,7 @@
         "width": 430,
         "height": 932
       },
-      "id": "L1-T23",
+      "id": "L1-T8",
       "accepted": true,
       "screenshot": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\audit-remediation\\pointer-430x932.png"
     },
@@ -125,7 +125,7 @@
         "width": 768,
         "height": 1024
       },
-      "id": "L1-T23",
+      "id": "L1-T8",
       "accepted": true,
       "screenshot": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\audit-remediation\\pointer-768x1024.png"
     },

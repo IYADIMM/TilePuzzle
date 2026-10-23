@@ -54,20 +54,20 @@ await capture('06-soft-fur-material-detail-390x844', '?screen=game&level=5&debug
 await capture('07-four-slot-collection-tray-390x844', '?screen=game&level=1', null);
 
 await capture('07b-pending-pair-highlight-390x844', '?screen=game&level=1', async page => {
-  await tapSolution(page, 2);
+  await tapSolution(page, 1);
   await page.waitForTimeout(160);
 });
 
-await capture('08-successful-triple-smash-390x844', '?screen=game&level=1', async page => {
-  await tapSolution(page, 2);
-  const third = await page.evaluate(() => jadeGame.scene.getScene('Game').board.level.solution[2]);
-  const point=await legalTilePoint(page,third);
+await capture('08-successful-pair-clash-390x844', '?screen=game&level=1', async page => {
+  await tapSolution(page, 1);
+  const second = await page.evaluate(() => jadeGame.scene.getScene('Game').board.level.solution[1]);
+  const point=await legalTilePoint(page,second);
   await page.mouse.click(point.x,point.y);
   await page.waitForTimeout(55);
 });
 
 await capture('09-tray-cleared-immediately-390x844', '?screen=game&level=1', async page => {
-  await tapSolution(page, 3);
+  await tapSolution(page, 2);
   await page.waitForTimeout(180);
 });
 

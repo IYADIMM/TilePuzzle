@@ -1,11 +1,14 @@
 import { THEMES, getThemeForLevel } from './themes.js';
+import { LEVEL_GENERATION_VERSION } from '../logic/GameRules.js';
 
-const SHAPES = ['tower', 'diamond', 'hourglass', 'bridge', 'lantern', 'fan'];
-const COUNTS = [36,36,39,39,42,42,45,45,48,48,51,51,54,54,57,57,60,60,60,60,60,60,60,60,60,60,60,60,60,60];
+const SHAPES = ['tower', 'diamond', 'hourglass', 'bridge', 'lantern', 'fan', 'heart', 'butterfly', 'flower', 'star', 'bear', 'car'];
+const LEVEL_TOTAL = 1000;
 
-export const LEVEL_CONFIGS = Object.freeze(COUNTS.map((tileCount, index) => {
+export const LEVEL_CONFIGS = Object.freeze(Array.from({length:LEVEL_TOTAL},(_,index) => {
   const level = index + 1;
   const theme = getThemeForLevel(level);
+  const tier=Math.floor(index/20);
+  const tileCount=Math.min(60,36+Math.min(12,tier)*2);
   return Object.freeze({
     level,
     name: `${theme.name} ${Math.floor(index / THEMES.length) + 1}`,
@@ -18,6 +21,7 @@ export const LEVEL_CONFIGS = Object.freeze(COUNTS.map((tileCount, index) => {
     difficulty: Math.min(5, 1 + Math.floor(index / 6)),
     seed: 5107 + level * 7919,
     rewardId: `${theme.rewardId}-${level}`
+    ,generationVersion:LEVEL_GENERATION_VERSION
   });
 }));
 

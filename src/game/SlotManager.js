@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import { createTrayState, reduceTray, TRAY_CAPACITY } from '../logic/SlotState.js';
+import { MATCH_SIZE } from '../logic/GameRules.js';
 import { quadraticBezierPoint } from '../logic/MotionMath.js';
 import { PREMIUM_TEXTURES } from '../art/PremiumAssetManifest.js';
 export { TRAY_CAPACITY };
@@ -85,7 +86,9 @@ export class SlotManager {
       if(arriving)await curveTween(this.scene,arriving.proxy,this.slotX(Math.min(TRAY_CAPACITY-1,result.insertAt)),this.layout.tray.y,390,()=>!this.destroyed&&transaction===this.transactionId,{endScale:.86,fade:false});
       if(this.destroyed||transaction!==this.transactionId)return;
       this.callbacks.onArrived?.(result,newTile);
-      await Promise.all(effectProxies.map(({proxy})=>tween(this.scene,proxy,{alpha:0,scaleX:proxy.scaleX*1.08,scaleY:proxy.scaleY*1.08},resting.length?250:180,'Sine.InOut')));
+      const collisionX=effectProxies.reduce((sum,{proxy})=>sum+proxy.x,0)/Math.max(1,effectProxies.length);
+      await Promise.all(effectProxies.map(({proxy},index)=>tween(this.scene,proxy,{x:collisionX+(index?8:-8),y:this.layout.tray.y,angle:index?7:-7,scaleX:proxy.scaleX*1.04,scaleY:proxy.scaleY*1.04},125,'Cubic.In')));
+      await Promise.all(effectProxies.map(({proxy})=>tween(this.scene,proxy,{x:collisionX,alpha:0,angle:0,scaleX:proxy.scaleX*.76,scaleY:proxy.scaleY*.76},220,'Sine.InOut')));
       effectProxies.forEach(({proxy})=>proxy.destroy(true));
       if(this.destroyed||transaction!==this.transactionId)return;
     }
@@ -99,7 +102,17 @@ export class SlotManager {
     const body=this.scene.add.image(0,4,tile.body.texture.key).setDisplaySize(tile.body.displayWidth,tile.body.displayHeight),icon=this.scene.add.image(0,-tile.geometry.tileH*.035,tile.icon.texture.key).setDisplaySize(tile.icon.displayWidth,tile.icon.displayHeight),proxy=this.scene.add.container(tile.x,tile.y,[body,icon]).setDepth(980).setScale(tile.scaleX,tile.scaleY);return proxy;
   }
 
-  updatePendingHighlights(){const counts=this.state.entries.reduce((out,entry)=>(out[entry.typeId]=(out[entry.typeId]||0)+1,out),{});for(const [visualId,tile] of this.visuals)tile.setPendingMatch(counts[this.state.entries.find(entry=>entry.visualId===visualId)?.typeId]===2);}
+  updatePendingHighlights(){const counts=this.state.entries.reduce((out,entry)=>(out[entry.typeId]=(out[entry.typeId]||0)+1,out),{});for(const [visualId,tile] of this.visuals)tile.setPendingMatch(counts[this.state.entries.find(entry=>entry.visualId===visualId)?.typeId]===MATCH_SIZE-1);}
+
+  drainToBoard(restoreTile){
+    this.transactionId++;
+    this.busy=false;
+    const returned=this.state.entries.map(entry=>this.visuals.get(entry.visualId)).filter(Boolean);
+    returned.forEach(tile=>{this.scene.tweens.killTweensOf(tile);tile.setPendingMatch(false);tile.setData('trayDetached',false);restoreTile(tile);});
+    this.state=createTrayState();
+    this.visuals.clear();
+    return returned;
+  }
 
   restore(entries,tileById) {
     this.transactionId++;

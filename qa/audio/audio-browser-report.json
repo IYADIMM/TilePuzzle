@@ -29,8 +29,8 @@
   },
   "synchronized": {
     "currentTrack": "gameplay",
-    "tileSelect": 3,
-    "tilePlaceA": 3,
+    "tileSelect": 5,
+    "tilePlaceA": 4,
     "tilePlaceB": 1,
     "tileMatch": 1,
     "combo": 1,
@@ -56,8 +56,8 @@
     "tileSelect": 36,
     "tilePlaceA": 29,
     "tilePlaceB": 7,
-    "tileMatch": 12,
-    "combo": 11,
+    "tileMatch": 14,
+    "combo": 12,
     "levelComplete": 1,
     "starEarned": 1
   },

@@ -5,8 +5,7 @@
     "capacity": 4,
     "blockedRejected": true,
     "solution": [
-      "L1-T24",
-      "L1-T22",
+      "L1-T26",
       "L1-T31"
     ]
   },
@@ -18,18 +17,17 @@
     "activeTrayVisuals": 0,
     "matchedVisible": 0
   },
-  "afterTriple": {
-    "active": 33,
+  "afterPair": {
+    "active": 34,
     "tray": 0,
     "combo": 1,
     "ended": false,
-    "hiddenMatched": 3
+    "hiddenMatched": 2
   },
   "afterUndo": {
-    "active": 34,
-    "tray": 2,
+    "active": 35,
+    "tray": 1,
     "types": [
-      "orange",
       "orange"
     ],
     "ended": false,

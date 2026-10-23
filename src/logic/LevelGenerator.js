@@ -1,7 +1,9 @@
 import { getTheme } from '../data/themes.js';
 import { solveLevel,computeAccessibility } from './LevelSolver.js';
+import { MATCH_SIZE,isValidLevelInventory } from './GameRules.js';
 
 export function generateLevel(config) {
+  if(!isValidLevelInventory(config.tileCount))throw new Error(`Level ${config.level} tileCount must be divisible by MATCH_SIZE (${MATCH_SIZE})`);
   const theme = getTheme(config.themeId);
   const rng = mulberry32(config.seed);
   for (let attempt = 0; attempt < 5; attempt++) {
@@ -40,8 +42,8 @@ function allocateLayerCounts(total, layers) {
   let remaining = total;
   return weights.map((weight, index) => {
     if (index === weights.length - 1) return remaining;
-    const future = (weights.length - index - 1) * 3;
-    const value = Math.max(3, Math.min(remaining - future, Math.round(total * weight / 3) * 3));
+    const future = (weights.length - index - 1) * MATCH_SIZE;
+    const value = Math.max(MATCH_SIZE, Math.min(remaining - future, Math.round(total * weight / MATCH_SIZE) * MATCH_SIZE));
     remaining -= value;
     return value;
   });
@@ -51,7 +53,7 @@ function assignSolvableSymbols(positions, iconIds, rng, level) {
   const tiles=positions.map((position,index)=>({id:`L${level}-T${index}`,typeId:'pending',symbolId:'pending',...position,position:{row:position.row,col:position.col},alive:true,blockedBy:[]}));
   const solution=buildMahjongRemovalOrder(tiles,rng);
   let groupIndex=level%iconIds.length;
-  for(let index=0;index<solution.length;index+=3){const typeId=iconIds[groupIndex++%iconIds.length];solution.slice(index,index+3).forEach(id=>{const tile=tiles.find(item=>item.id===id);tile.typeId=typeId;tile.symbolId=typeId;});}
+  for(let index=0;index<solution.length;index+=MATCH_SIZE){const typeId=iconIds[groupIndex++%iconIds.length];solution.slice(index,index+MATCH_SIZE).forEach(id=>{const tile=tiles.find(item=>item.id===id);tile.typeId=typeId;tile.symbolId=typeId;});}
   return { tiles, solution };
 }
 
@@ -61,7 +63,7 @@ function fallbackLevel(config, theme) {
   const tiles = [];
   const solution = [];
   for (let i = 0; i < config.tileCount; i++) {
-    const typeId = theme.iconIds[Math.floor(i / 3) % theme.iconIds.length];
+    const typeId = theme.iconIds[Math.floor(i / MATCH_SIZE) % theme.iconIds.length];
     const tile = { id: `L${config.level}-F${i}`, typeId, symbolId: typeId, layer: 0, row: Math.floor(i / 5) * 2, col: (i % 5) * 2, position: { row: Math.floor(i / 5) * 2, col: (i % 5) * 2 }, alive: true, blockedBy: [] };
     tiles.push(tile);
   }
@@ -75,6 +77,13 @@ function shapeAllows(id, row, col, rows, cols) {
   if (id === 'bridge') return row % 3 !== 1 || col === 0 || col === cols-1;
   if (id === 'lantern') return row > 0 && row < rows-1 ? true : col > 0 && col < cols-1;
   if (id === 'fan') return row >= Math.abs(col-(cols-1)/2);
+  const nx=cols<=1?0:(col/(cols-1))*2-1,ny=rows<=1?0:(row/(rows-1))*2-1;
+  if(id==='heart')return ((nx*.9)**2+(ny*.88-Math.sqrt(Math.abs(nx))*.58)**2)<1.02;
+  if(id==='butterfly')return Math.abs(nx)<.22||((Math.abs(nx)-.5)**2+(ny*.82)**2)<.34;
+  if(id==='flower'){const angle=Math.atan2(ny,nx)*5,radius=Math.hypot(nx,ny);return radius<.36||radius<.8+.18*Math.cos(angle);}
+  if(id==='star'){const angle=Math.atan2(ny,nx)*5,radius=Math.hypot(nx,ny);return radius<.55+.25*Math.cos(angle);}
+  if(id==='bear')return (ny>.05&&Math.abs(nx)<.72)||(ny<=.15&&nx*nx+(ny+.28)**2<.72)||(ny<-.45&&Math.abs(nx)>.45);
+  if(id==='car')return (ny>.05&&ny<.65&&Math.abs(nx)<.92)||(ny<=.12&&ny>-.42&&Math.abs(nx)<.56)||(ny>.5&&Math.abs(nx)>.48);
   return true;
 }
 

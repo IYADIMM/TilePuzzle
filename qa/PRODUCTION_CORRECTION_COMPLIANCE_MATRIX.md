@@ -1,0 +1,35 @@
+# Production Correction Compliance Matrix
+
+Generated: 2026-10-23. Branch: `codex/jade-production-correction-premium-parity`.
+
+The later Critical Gameplay Correction Add-on supersedes the older match-three lock. The implemented rule is match-two with exactly four tray slots.
+
+| Requirement | Status | Evidence |
+|---|---|---|
+| One authoritative match size | Passed | `src/logic/GameRules.js`; `MATCH_SIZE = 2` |
+| Atomic pair clear before loss | Passed | `src/logic/SlotState.js`; 66 unit tests; `qa/gameplay-report.json` |
+| Four unmatched tiles lose | Passed | Genuine pointer defeat in `qa/production-correction/browser-report.json` |
+| Four-slot tray remains fixed | Passed | `TRAY_CAPACITY = 4`; reducer and browser checks |
+| Immutable transaction and detached visuals | Passed | Frozen reducer output; zero active tray visuals after clear |
+| Mahjong top/side accessibility | Passed | Solver/input share `computeAccessibility`; interaction report |
+| Pair-aware generator and solver | Passed | 1,000/1,000 validated in `levels-1000-validation.json` |
+| Recognizable rotating silhouettes | Passed technically | Twelve deterministic layout IDs including heart, butterfly, flower, star, bear and car |
+| Hint prefers completing held pair | Passed | Solver priority weights matching tray type; hint requests two moves |
+| Visible Shuffle motion | Passed | Revalidated shuffle plus staggered tile motion |
+| Undo exact gameplay snapshot | Passed | Pair-clear Undo browser QA and immutable snapshot tests |
+| Undo inventory never refills | Passed | Save round-trip regression retains count 1; failed Undo does not charge |
+| Revive empties tray and restores all four | Passed | Genuine loss/revive browser scenario; score and match count preserved |
+| Crash/reload checkpoint | Passed | One-tile tray/board state restored exactly after page reload |
+| Old match-three attempts invalidated safely | Passed | Permanent progress retained; only incompatible active attempt cleared |
+| Treasure 5/5 migration | Passed | Missing unclaimed milestone reconstructed once; claimed milestones not requeued |
+| Pause to main menu | Passed | Save-and-leave confirmation and resumable attempt |
+| Match-two scoring, tutorial, reward copy | Passed | Runtime and unit evidence |
+| Approved audio preserved, no new clash sound | Passed | Audio hashes unchanged; audio browser report passed |
+| Original branded install icon | Passed technically | `public/assets/brand/jade-garden-app-icon-1024.png` and web manifest |
+| Premium raster coverage for all 72 icons | Incomplete | 36 native raster icons; 36 procedural fallbacks |
+| Unique native raster body for 12 materials | Incomplete | Shared premium ivory body/procedural material treatments remain |
+| Affordable Samsung A-Series performance | Not verified | Headless desktop Chromium only; physical Android profiling still required |
+| Visual approval | Pending user review | Technical integration does not grant visual acceptance |
+| Store/ads/Supabase/real payments | Intentionally absent | Offline mock economy only |
+
+Production readiness remains **internal alpha**, not store-ready, because half the icon catalog and material bodies remain below the declared raster-art gate and no physical Android performance pass has been run.

@@ -3,10 +3,10 @@
   "losing": {
     "level": 1,
     "sequence": [
-      "L1-T21",
-      "L1-T22",
-      "L1-T3",
-      "L1-T13"
+      "L1-T6",
+      "L1-T8",
+      "L1-T16",
+      "L1-T23"
     ]
   },
   "captures": [
@@ -128,8 +128,8 @@
       "errors": []
     },
     {
-      "name": "08-successful-triple-smash-390x844",
-      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\audit-final-evidence\\08-successful-triple-smash-390x844.png",
+      "name": "08-successful-pair-clash-390x844",
+      "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\audit-final-evidence\\08-successful-pair-clash-390x844.png",
       "viewport": {
         "width": 390,
         "height": 844

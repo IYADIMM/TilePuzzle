@@ -1,0 +1,61 @@
+{
+  "generatedAt": "2026-10-23T01:50:13.064Z",
+  "rules": {
+    "matchSize": 2,
+    "trayCapacity": 4
+  },
+  "checkpoint": {
+    "beforeReload": {
+      "active": 35,
+      "tray": [
+        "orange"
+      ],
+      "selected": 1,
+      "undo": 3,
+      "checkpoint": "active"
+    },
+    "afterReload": {
+      "active": 35,
+      "tray": [
+        "orange"
+      ],
+      "selected": 1,
+      "undo": 3
+    },
+    "passed": true
+  },
+  "revive": {
+    "taps": [
+      "L2-T22",
+      "L2-T5",
+      "L2-T23",
+      "L2-T6"
+    ],
+    "beforeRevive": {
+      "active": 32,
+      "tray": 4,
+      "score": 0,
+      "totalMatches": 0,
+      "gems": 20
+    },
+    "afterRevive": {
+      "active": 36,
+      "tray": 0,
+      "visuals": 0,
+      "score": 0,
+      "totalMatches": 0,
+      "gems": 15,
+      "checkpoint": "active",
+      "reviveUsed": true
+    },
+    "passed": true
+  },
+  "performance": {
+    "sampleFrames": 85,
+    "averageMs": 16.663529411764703,
+    "p95Ms": 16.800000000000182,
+    "maxMs": 16.800000000000182
+  },
+  "errors": [],
+  "passed": true
+}

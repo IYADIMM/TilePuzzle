@@ -11,12 +11,12 @@
       "comparisonFile": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\premium-art\\fruit-direction-vs-runtime.png",
       "runtime": {
         "typeIds": [
-          "watermelon",
+          "pineapple",
           "grapes",
-          "cherries",
           "strawberry",
-          "orange",
-          "pineapple"
+          "watermelon",
+          "cherries",
+          "orange"
         ],
         "premiumBodies": 36,
         "premiumIcons": 36,
@@ -36,12 +36,12 @@
       "comparisonFile": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\premium-art\\cars-direction-vs-runtime.png",
       "runtime": {
         "typeIds": [
-          "suv",
-          "sports-car",
-          "taxi",
           "convertible",
+          "suv",
+          "race-car",
           "vintage-car",
-          "race-car"
+          "taxi",
+          "sports-car"
         ],
         "premiumBodies": 36,
         "premiumIcons": 36,
@@ -61,16 +61,16 @@
       "comparisonFile": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\premium-art\\sports-direction-vs-runtime.png",
       "runtime": {
         "typeIds": [
-          "baseball",
-          "basketball",
-          "trophy",
           "tennis",
+          "basketball",
+          "football",
           "soccer",
-          "football"
+          "trophy",
+          "baseball"
         ],
-        "premiumBodies": 39,
-        "premiumIcons": 39,
-        "tileCount": 39,
+        "premiumBodies": 36,
+        "premiumIcons": 36,
+        "tileCount": 36,
         "trayTexture": "premium:tray-four-slot",
         "canvas": [
           390,
@@ -86,16 +86,16 @@
       "comparisonFile": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\premium-art\\auto-parts-direction-vs-runtime.png",
       "runtime": {
         "typeIds": [
-          "tire",
-          "steering-wheel",
-          "brake-disc",
           "gear",
           "spark-plug",
-          "piston"
+          "piston",
+          "tire",
+          "steering-wheel",
+          "brake-disc"
         ],
-        "premiumBodies": 39,
-        "premiumIcons": 39,
-        "tileCount": 39,
+        "premiumBodies": 36,
+        "premiumIcons": 36,
+        "tileCount": 36,
         "trayTexture": "premium:tray-four-slot",
         "canvas": [
           390,
@@ -111,16 +111,16 @@
       "comparisonFile": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\premium-art\\wild-animals-direction-vs-runtime.png",
       "runtime": {
         "typeIds": [
-          "lion",
-          "panda",
           "tiger",
-          "zebra",
+          "elephant",
+          "lion",
           "giraffe",
-          "elephant"
+          "panda",
+          "zebra"
         ],
-        "premiumBodies": 42,
-        "premiumIcons": 42,
-        "tileCount": 42,
+        "premiumBodies": 36,
+        "premiumIcons": 36,
+        "tileCount": 36,
         "trayTexture": "premium:tray-four-slot",
         "canvas": [
           390,
@@ -137,15 +137,15 @@
       "runtime": {
         "typeIds": [
           "parrot",
-          "kitten",
-          "goldfish",
           "rabbit",
+          "hamster",
+          "goldfish",
           "puppy",
-          "hamster"
+          "kitten"
         ],
-        "premiumBodies": 42,
-        "premiumIcons": 42,
-        "tileCount": 42,
+        "premiumBodies": 36,
+        "premiumIcons": 36,
+        "tileCount": 36,
         "trayTexture": "premium:tray-four-slot",
         "canvas": [
           390,

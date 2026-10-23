@@ -1,12 +1,13 @@
 import { getLevelConfig } from '../data/levels.js';
+import { MATCH_SIZE } from './GameRules.js';
 
 export const COMBO_WINDOW_MS = 8000;
 
 export function performanceTargets(level) {
-  const config=getLevelConfig(level),triples=config.tileCount/3,levelFactor=1+Math.floor((config.level-1)/6)*.12;
-  const baseScore=Math.round(triples*300*levelFactor);
-  const parSeconds=Math.round(72+triples*7+config.layers*10);
-  return Object.freeze({triples,baseScore,threeStarScore:Math.round(baseScore*1.5),twoStarScore:Math.round(baseScore*.9),parSeconds});
+  const config=getLevelConfig(level),matches=config.tileCount/MATCH_SIZE,levelFactor=1+Math.floor((config.level-1)/20)*.08;
+  const baseScore=Math.round(matches*200*levelFactor);
+  const parSeconds=Math.round(58+matches*5+config.layers*9);
+  return Object.freeze({matches,baseScore,threeStarScore:Math.round(baseScore*1.5),twoStarScore:Math.round(baseScore*.9),parSeconds});
 }
 
 export function calculateStarRating({level,score=0,seconds=Infinity}) {
@@ -16,7 +17,7 @@ export function calculateStarRating({level,score=0,seconds=Infinity}) {
   return 1;
 }
 
-export function isGameplayEvidenceValid({levelTileCount,selectedTileCount,resolvedTrioCount,score}) {
-  const tileCount=Number(levelTileCount),selected=Number(selectedTileCount),triples=Number(resolvedTrioCount);
-  return tileCount>0&&tileCount%3===0&&selected===tileCount&&triples===tileCount/3&&Number(score)>0;
+export function isGameplayEvidenceValid({levelTileCount,selectedTileCount,resolvedMatchCount,resolvedTrioCount,score}) {
+  const tileCount=Number(levelTileCount),selected=Number(selectedTileCount),matches=Number(resolvedMatchCount??resolvedTrioCount);
+  return tileCount>0&&tileCount%MATCH_SIZE===0&&selected===tileCount&&matches===tileCount/MATCH_SIZE&&Number(score)>0;
 }

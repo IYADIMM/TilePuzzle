@@ -1,4 +1,5 @@
-export const TRAY_CAPACITY = 4;
+import { MATCH_SIZE, TRAY_CAPACITY } from './GameRules.js';
+export { MATCH_SIZE, TRAY_CAPACITY };
 
 export function normalizeTypeId(value) {
   return String(value ?? '').trim().toLowerCase();
@@ -30,7 +31,7 @@ export function reduceTray(state, action) {
 
   // Authoritative match resolution happens here, before any renderer or callback can observe occupancy.
   const matching = entries.filter(entry => entry.typeId === typeId);
-  const cleared = matching.length >= 3 ? matching.slice(0, 3) : [];
+  const cleared = matching.length >= MATCH_SIZE ? matching.slice(0, MATCH_SIZE) : [];
   const clearedIds = new Set(cleared.map(entry => entry.visualId));
   const resolvedEntries = cleared.length ? entries.filter(entry => !clearedIds.has(entry.visualId)) : entries;
   const nextState = createTrayState(resolvedEntries);
@@ -41,7 +42,7 @@ export function reduceTray(state, action) {
     inserted,
     insertAt,
     cleared: Object.freeze(cleared),
-    didClear: cleared.length === 3,
+    didClear: cleared.length === MATCH_SIZE,
     full: nextState.entries.length === TRAY_CAPACITY
   });
 }

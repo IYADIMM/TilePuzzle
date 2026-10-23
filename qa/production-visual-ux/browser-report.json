@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-22T19:54:00.043Z",
+  "generatedAt": "2026-10-22T20:29:10.597Z",
   "passed": true,
   "visualAcceptance": "PENDING_USER_REVIEW",
   "commercialReadiness": "INTERNAL_ALPHA",
   "performance": {
-    "fps": 61,
-    "averageFrameMs": 16.66,
-    "maxFrameMs": 16.8,
+    "fps": 43,
+    "averageFrameMs": 23.1,
+    "maxFrameMs": 33.4,
     "textureCount": 113,
     "canvas": [
       390,
@@ -17,36 +17,36 @@
     "count": 36,
     "first": [
       {
-        "id": "L1-T24",
-        "x": 300,
-        "y": 235
-      },
-      {
-        "id": "L1-T22",
-        "x": 95,
+        "id": "L1-T26",
+        "x": 232,
         "y": 235
       },
       {
         "id": "L1-T31",
-        "x": 232,
-        "y": 284
+        "x": 95,
+        "y": 315
+      },
+      {
+        "id": "L1-T28",
+        "x": 163,
+        "y": 332
       }
     ],
     "last": [
       {
+        "id": "L1-T1",
+        "x": 56,
+        "y": 553
+      },
+      {
         "id": "L1-T11",
         "x": 193,
-        "y": 392
+        "y": 408
       },
       {
         "id": "L1-T8",
         "x": 193,
         "y": 553
-      },
-      {
-        "id": "L1-T18",
-        "x": 193,
-        "y": 457
       }
     ]
   },
@@ -55,7 +55,8 @@
     "labels": 36,
     "reasons": [
       "top-blocked",
-      "selectable"
+      "selectable",
+      "left+right-blocked"
     ]
   },
   "rewardFacts": {
@@ -84,7 +85,7 @@
         379,
         466
       ],
-      "selectable": 15
+      "selectable": 13
     },
     {
       "name": "gameplay-cars-390x844",
@@ -101,15 +102,15 @@
         379,
         466
       ],
-      "selectable": 14
+      "selectable": 12
     },
     {
       "name": "gameplay-sports-390x844",
       "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\production-visual-ux\\gameplay-sports-390x844.png",
       "theme": "sports",
-      "tileCount": 39,
-      "premiumIcons": 39,
-      "premiumBodies": 39,
+      "tileCount": 36,
+      "premiumIcons": 36,
+      "premiumBodies": 36,
       "tile": [
         88,
         77
@@ -124,9 +125,9 @@
       "name": "gameplay-auto-parts-390x844",
       "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\production-visual-ux\\gameplay-auto-parts-390x844.png",
       "theme": "auto-parts",
-      "tileCount": 39,
-      "premiumIcons": 39,
-      "premiumBodies": 39,
+      "tileCount": 36,
+      "premiumIcons": 36,
+      "premiumBodies": 36,
       "tile": [
         88,
         76
@@ -135,15 +136,15 @@
         379,
         461
       ],
-      "selectable": 11
+      "selectable": 9
     },
     {
       "name": "gameplay-wild-animals-390x844",
       "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\production-visual-ux\\gameplay-wild-animals-390x844.png",
       "theme": "wild-animals",
-      "tileCount": 42,
-      "premiumIcons": 42,
-      "premiumBodies": 42,
+      "tileCount": 36,
+      "premiumIcons": 36,
+      "premiumBodies": 36,
       "tile": [
         88,
         76
@@ -158,9 +159,9 @@
       "name": "gameplay-pets-390x844",
       "file": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\production-visual-ux\\gameplay-pets-390x844.png",
       "theme": "pets",
-      "tileCount": 42,
-      "premiumIcons": 42,
-      "premiumBodies": 42,
+      "tileCount": 36,
+      "premiumIcons": 36,
+      "premiumBodies": 36,
       "tile": [
         88,
         76
@@ -226,7 +227,8 @@
       "labels": 36,
       "reasons": [
         "top-blocked",
-        "selectable"
+        "selectable",
+        "left+right-blocked"
       ]
     },
     {

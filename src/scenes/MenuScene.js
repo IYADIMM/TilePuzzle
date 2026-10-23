@@ -18,12 +18,13 @@ export class MenuScene extends Phaser.Scene {
     this.add.text(270,193,'T I L E S',{...TEXT.hud,fontSize:'25px',color:'#f5c84e',letterSpacing:11,stroke:'#421708',strokeThickness:4}).setOrigin(.5);
     this.add.text(270,226,'A PREMIUM MATCH GARDEN',{...TEXT.hud,fontSize:'11px',color:'#d4e4dc',letterSpacing:3}).setOrigin(.5);
     this.drawHeroTiles();
-    addGoldButton(this,270,559,326,`PLAY  •  LEVEL ${this.save.lastLevel}`,()=>this.scene.start('Game',{level:this.save.lastLevel}),'');
+    const playLevel=this.save.activeAttempt?.level||this.save.lastLevel;
+    addGoldButton(this,270,559,326,`${this.save.activeAttempt?'RESUME':'PLAY'}  •  LEVEL ${playLevel}`,()=>this.scene.start('Game',{level:playLevel}),'');
     addGoldButton(this,170,638,182,'LEVELS',()=>this.scene.start('LevelSelect'));addGoldButton(this,370,638,182,'COLLECTION',()=>this.scene.start('Collection'));
     addGoldButton(this,164,717,190,'MY RECORDS',()=>this.scene.start('Leaderboard'));addGoldButton(this,382,717,170,'TEST SHOP',()=>this.scene.start('Shop'));
     const pending=this.save.queuedChestRewards?.length||0;this.add.text(270,773,pending?`TREASURE READY  •  ${pending} QUEUED`:'TREASURE TRAIL',{...TEXT.hud,fontSize:'15px',color:'#f6cc55',letterSpacing:2,stroke:'#2f1007',strokeThickness:3}).setOrigin(.5);
     addProgressBar(this,240,810,300,pending?1:this.save.chestProgress/5,pending?'CLAIM READY':`${this.save.chestProgress} / 5`);addIconButton(this,435,810,'play',()=>this.showChest(),'Treasure');
-    this.add.text(270,878,'MATCH THREE  •  GROW YOUR LOCAL GARDEN RECORD',{...TEXT.hud,fontSize:'11px',color:'#bdd2c8',letterSpacing:1.1}).setOrigin(.5);
+    this.add.text(270,878,'MATCH TWO  •  GROW YOUR LOCAL GARDEN RECORD',{...TEXT.hud,fontSize:'11px',color:'#bdd2c8',letterSpacing:1.1}).setOrigin(.5);
   }
   drawHeroTiles(){
     const ids=['cherries','blossom','orange'];

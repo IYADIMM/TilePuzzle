@@ -1,0 +1,18 @@
+{
+  "name": "Jade Garden Tiles",
+  "short_name": "Jade Tiles",
+  "description": "A premium layered match-two garden puzzle.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#07352c",
+  "theme_color": "#123f35",
+  "icons": [
+    {
+      "src": "/assets/brand/jade-garden-app-icon-1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
