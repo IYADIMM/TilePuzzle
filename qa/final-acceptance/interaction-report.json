@@ -4,6 +4,7 @@
     "sampledFacePoints": 9,
     "verifiedVisiblePoints": 4,
     "occludedPoints": 5,
+    "expandedRenderedEdges": 4,
     "responsiveSizes": 4,
     "blockedPointerEvidence": true
   },
@@ -32,7 +33,7 @@
       "offsetX": 0.32,
       "offsetY": -0.32,
       "visiblyTargeted": false,
-      "occludedBy": "outside-visible-input",
+      "occludedBy": "L1-T20",
       "accepted": null
     },
     {
@@ -59,7 +60,7 @@
       "offsetX": 0.32,
       "offsetY": 0,
       "visiblyTargeted": false,
-      "occludedBy": "outside-visible-input",
+      "occludedBy": "L1-T20",
       "accepted": null
     },
     {
@@ -68,7 +69,7 @@
       "offsetX": -0.32,
       "offsetY": 0.32,
       "visiblyTargeted": false,
-      "occludedBy": "outside-visible-input",
+      "occludedBy": "L1-T12",
       "accepted": null
     },
     {
@@ -77,7 +78,7 @@
       "offsetX": 0,
       "offsetY": 0.32,
       "visiblyTargeted": false,
-      "occludedBy": "outside-visible-input",
+      "occludedBy": "L1-T20",
       "accepted": null
     },
     {
@@ -86,8 +87,36 @@
       "offsetX": 0.32,
       "offsetY": 0.32,
       "visiblyTargeted": false,
-      "occludedBy": "outside-visible-input",
+      "occludedBy": "L1-T20",
       "accepted": null
+    },
+    {
+      "kind": "expanded-edge-sample",
+      "id": "L1-T6",
+      "offsetX": -0.54,
+      "offsetY": 0,
+      "accepted": true
+    },
+    {
+      "kind": "expanded-edge-sample",
+      "id": "L1-T6",
+      "offsetX": 0.54,
+      "offsetY": 0,
+      "accepted": true
+    },
+    {
+      "kind": "expanded-edge-sample",
+      "id": "L1-T6",
+      "offsetX": 0,
+      "offsetY": -0.54,
+      "accepted": true
+    },
+    {
+      "kind": "expanded-edge-sample",
+      "id": "L1-T8",
+      "offsetX": 0,
+      "offsetY": 0.54,
+      "accepted": true
     },
     {
       "kind": "responsive-pointer",
@@ -132,10 +161,10 @@
     {
       "kind": "blocked-pointer",
       "level": 1,
-      "id": "L1-T0",
+      "id": "L1-T7",
       "reason": "top-blocked",
-      "offsetX": -0.42,
-      "offsetY": -0.35,
+      "offsetX": 0.42,
+      "offsetY": 0,
       "rejected": true,
       "screenshot": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\audit-remediation\\blocked-pointer-debug-390x844.png"
     }

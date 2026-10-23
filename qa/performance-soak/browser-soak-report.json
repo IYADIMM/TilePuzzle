@@ -1,0 +1,46 @@
+{
+  "generatedAt": "2026-10-23T07:43:20.415Z",
+  "environment": "desktop-headless-chromium-mobile-viewport",
+  "requestedMinutes": 15,
+  "actualMinutes": 15,
+  "completedLevels": 71,
+  "pointerEvents": 2631,
+  "framePacing": {
+    "samples": 32310,
+    "medianMs": 16.8,
+    "p95Ms": 50,
+    "p99Ms": 50.1,
+    "maxMs": 133.4,
+    "longFramesOver50ms": 901
+  },
+  "inputAcknowledgement": {
+    "samples": 2631,
+    "medianMs": 70.21,
+    "p95Ms": 140.09,
+    "p99Ms": 157.39,
+    "maxMs": 216.31
+  },
+  "sceneReady": {
+    "samples": 72,
+    "medianMs": 287,
+    "p95Ms": 410,
+    "maxMs": 20019
+  },
+  "heap": {
+    "available": true,
+    "startBytes": 56609694,
+    "endBytes": 60712935,
+    "peakBytes": 165924048
+  },
+  "textureCount": {
+    "min": 125,
+    "max": 129
+  },
+  "displayObjects": {
+    "min": 0,
+    "max": 24
+  },
+  "errors": [],
+  "physicalAndroidValidated": false,
+  "passed": true
+}

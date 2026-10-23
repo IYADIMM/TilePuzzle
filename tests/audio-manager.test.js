@@ -10,12 +10,22 @@ test('audio preferences normalize mute and volume paths',()=>{
 });
 
 test('approved event plays once at cautious mixed volume and persists settings',()=>{
-  let now=100,persisted;const sound=new FakeSoundManager(),audio=new AudioManager({soundManager:sound,now:()=>now,persist:value=>persisted=value});
+  let now=100,persisted;const sound=new FakeSoundManager(),audio=new AudioManager({soundManager:sound,now:()=>now,random:()=>.99,persist:value=>persisted=value});
   audio.setPreferences({sfxVolume:.5,musicVolume:.25});
   const result=audio.play('tile_select');
   assert.equal(result.played,true);assert.equal(result.key,AUDIO_KEYS.tileSelect);assert.equal(sound.voices[0].volume,.17);assert.equal(persisted.sfxVolume,.5);
   now+=10;assert.equal(audio.play('tile_select').reason,'debounced');
   result.voice.emit('complete');assert.equal(audio.snapshot().voiceCount,0);
+});
+
+test('selection and victory variants use every available take without immediate repeats',()=>{
+  let now=0;const sound=new FakeSoundManager(),audio=new AudioManager({soundManager:sound,now:()=>now,random:()=>.99});
+  const selection=[];for(let index=0;index<7;index++){now+=100;selection.push(audio.play('tile_select').key);sound.voices.at(-1).emit('complete');}
+  const victories=[];for(let index=0;index<7;index++){now+=2000;victories.push(audio.play('level_complete').key);sound.voices.at(-1).emit('complete');}
+  assert.equal(new Set(selection.slice(0,3)).size,3);assert.equal(new Set(victories.slice(0,3)).size,3);
+  assert.ok(selection.every((key,index)=>index===0||key!==selection[index-1]));
+  assert.ok(victories.every((key,index)=>index===0||key!==victories[index-1]));
+  assert.ok(selection.includes(AUDIO_KEYS.tileSelect));assert.ok(victories.includes(AUDIO_KEYS.levelComplete));
 });
 
 test('muted and missing audio fail gracefully without fabricated playback',()=>{

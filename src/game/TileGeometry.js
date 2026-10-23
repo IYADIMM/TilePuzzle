@@ -36,3 +36,10 @@ export function overlapSize(a, b) {
     y: Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top)
   };
 }
+
+export function renderedTouchSize(tileWidth, tileHeight) {
+  return {
+    width: Math.max(tileWidth * 1.18, tileWidth + 12),
+    height: Math.max(tileHeight * 1.2, tileHeight + 12)
+  };
+}

@@ -10,7 +10,8 @@
     "cached": true,
     "codecs": {
       "ogg": "probably",
-      "mp3": "probably"
+      "mp3": "probably",
+      "wav": "probably"
     }
   },
   "settings": {
@@ -30,12 +31,12 @@
   "synchronized": {
     "currentTrack": "gameplay",
     "tileSelect": 5,
-    "tilePlaceA": 5,
+    "tilePlaceA": 4,
     "tilePlaceB": 1,
     "tileMatch": 1,
     "combo": 1,
     "tileBlocked": 1,
-    "booster": 1,
+    "booster": 0,
     "shuffle": 1,
     "undo": 1,
     "attempts": {
@@ -56,10 +57,53 @@
     "tileSelect": 36,
     "tilePlaceA": 29,
     "tilePlaceB": 7,
-    "tileMatch": 14,
-    "combo": 12,
+    "tileMatch": 15,
+    "combo": 13,
     "levelComplete": 1,
-    "starEarned": 1
+    "starEarned": 1,
+    "variantKeys": {
+      "tileSelect": [
+        "audio:tile-select",
+        "audio:tile-select-b",
+        "audio:tile-select-c",
+        "audio:tile-select",
+        "audio:tile-select-c",
+        "audio:tile-select-b",
+        "audio:tile-select",
+        "audio:tile-select-b",
+        "audio:tile-select-c",
+        "audio:tile-select",
+        "audio:tile-select-c",
+        "audio:tile-select-b",
+        "audio:tile-select-c",
+        "audio:tile-select",
+        "audio:tile-select-b",
+        "audio:tile-select-c",
+        "audio:tile-select",
+        "audio:tile-select-b",
+        "audio:tile-select-c",
+        "audio:tile-select",
+        "audio:tile-select-b",
+        "audio:tile-select-c",
+        "audio:tile-select-b",
+        "audio:tile-select",
+        "audio:tile-select-c",
+        "audio:tile-select",
+        "audio:tile-select-b",
+        "audio:tile-select",
+        "audio:tile-select-c",
+        "audio:tile-select-b",
+        "audio:tile-select",
+        "audio:tile-select-c",
+        "audio:tile-select-b",
+        "audio:tile-select",
+        "audio:tile-select-b",
+        "audio:tile-select-c"
+      ],
+      "levelComplete": [
+        "audio:level-complete-c"
+      ]
+    }
   },
   "screens": [
     "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\audio\\audio-settings-360x640.png",

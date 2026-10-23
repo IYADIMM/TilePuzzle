@@ -20,7 +20,7 @@ Automated integration and browser checks do not constitute visual approval. The 
 | Felt, depth, readable layers | Reusable textured emerald felt; full tall-phone extension; layer-aware contact shadows; brighter active tiles and restrained blocked dimming | Six live gameplay captures | Passed, visual review pending |
 | Premium twelve collections | 72 native PNG sources and 72 optimized WebPs loaded through stable runtime IDs | `premium-art-report.json`; `ASSET_MANIFEST.csv` | Passed technically; user approval pending |
 | First 20 fully premium | All themes in levels 1–20 use native raster icons and native raster material bodies | `LEVELS_1000_VALIDATION.json` | Passed technically; user approval pending |
-| First-time tutorial | Five concise steps driven by actual selection, invalid-selection, exposure, and atomic-triple events; saved completion/dismissal | tutorial screenshot; migration test | Passed |
+| First-time tutorial | Five concise steps driven by actual selection, invalid-selection, exposure, and atomic-pair events; saved completion/dismissal | tutorial screenshot; migration test | Passed |
 | Truthful records | Removed player-facing simulated standings/ranks; shows device-local best records only | leaderboard browser QA | Passed |
 | Shop truthfulness | Explicit internal test catalog and no-real-money copy; unreachable preview purchase UI removed | shop screenshot; economy report | Passed |
 | Completion redesign | Larger score, clear reward deltas, local league wording, staged stars and collection tiles | genuine pointer completion screenshot | Passed |
@@ -33,9 +33,10 @@ Automated integration and browser checks do not constitute visual approval. The 
 ## Performance and interaction evidence
 
 - Genuine browser run: 36 accepted pointer interactions and a real Reward scene transition.
-- Headless desktop sample: 49 FPS, 20.33 ms average frame, 33.4 ms maximum frame, 113 loaded textures at 390×844. This is a diagnostic desktop sample, not a Galaxy A-series certification.
-- All 30 deterministic levels remain solver verified and grid aligned.
-- Exact four-slot tray and synchronous atomic triple resolution remain unchanged.
+- Headless desktop capture sample: 42 FPS, 23.97 ms average frame, 36.2 ms maximum frame, 125 loaded textures at 390×844. This is a diagnostic desktop sample, not a Galaxy A-series certification.
+- All 1,000 deterministic configurations remain solver verified and grid aligned.
+- Exact four-slot tray and synchronous atomic pair resolution remain unchanged.
+- The rendered-body pointer router now covers all four visible tile edges, including artwork that extends beyond the nominal board region, while preserving topmost-tile and blocked-tile rejection.
 
 ## Unfinished work and release assessment
 

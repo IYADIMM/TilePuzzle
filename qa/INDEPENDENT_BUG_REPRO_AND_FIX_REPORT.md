@@ -11,13 +11,15 @@
 - Undo inventory is stored outside gameplay snapshots. A persistent count of 1 remains 1 through migration and reload; Undo does not refund itself.
 - Pause now exposes a confirmed save-and-leave path. Restart explicitly discards only the active attempt.
 - Shuffle now has visible staggered motion after solver validation. Hint search prioritizes the held symbol and returns the next two solver moves.
+- Web hit testing no longer uses the smaller ivory-face rectangle while rendering a larger tile body. A scene-level router evaluates the complete rendered body, chooses the uppermost visual tile, applies the authoritative blocking rule, and accepts the lowest visible edge even when it extends beyond the nominal board layout rectangle.
 
 ## Proof
 
-- 66/66 unit tests passed.
+- 70/70 unit tests passed.
 - Genuine pointer match-two/Undo report: `qa/gameplay-report.json`.
 - Genuine pointer loss, paid mock revive and reload report: `qa/production-correction/browser-report.json`.
 - Full 36-pointer victory: `qa/QA_REAL_GAMEPLAY_REPORT.json`.
+- Expanded-edge pointer proof at left, right, top and bottom plus four responsive portrait sizes: `qa/final-acceptance/interaction-report.json`.
 - 1,000 deterministic puzzles: `qa/production-correction/levels-1000-validation.json`.
 
 ## Remaining defects / risks

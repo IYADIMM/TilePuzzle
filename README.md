@@ -1,6 +1,6 @@
 # Jade Garden Tiles
 
-A portrait-first Phaser 3 match-three game with Mahjong top/side accessibility, an atomic four-slot tray, 30 deterministic levels, 12 rotating collections, approved optional audio, private on-device records, and a mock-only economy catalog. The six reference-backed collections (Fruit, Cars, Sports, Auto Parts, Wild Animals, and Pets) use 36 original premium raster symbols. The remaining 36 symbols retain the procedural fallback pending production artwork and human visual approval.
+A portrait-first Phaser 3 match-two game with Mahjong top/side accessibility, an atomic four-slot tray, 1,000 deterministic configurations, 12 rotating collections, approved optional audio, private on-device records, and a mock-only economy catalog. Selection and completion cues each rotate through three no-repeat variations while retaining the approved originals unchanged. All 72 symbols and all 12 tile materials use original high-resolution raster sources with optimized WebP runtime assets. Technical integration is complete; human visual/audio approval and physical Android profiling remain separate release gates.
 
 ## Run and verify
 
@@ -25,14 +25,14 @@ src/
   game/      Tile visual, BoardManager, atomic SlotManager
   logic/     pure tray reducer, accessibility, generator, solver, scoring rules
   scenes/    boot, home, levels, game, test shop, local records, rewards
-  systems/   resilient save migration and progression (no audio runtime)
+  systems/   resilient save migration, progression, and device-local records
   ui/        responsive projection, reusable controls and animated modal
 tests/       tray invariants, solver/occlusion, progression and layout
 scripts/     reproducible Playwright screenshot and gameplay QA
 qa/          captures and machine-readable browser regression reports
 ```
 
-The third identical tray entry is removed from logical state synchronously before animation or overflow evaluation. A live higher-layer overlap blocks a tile; otherwise, a tile also needs its left or right side free. Input, dimming, solver, hint, and shuffle share this accessibility model. Shuffle is accepted only when the solver confirms the remapped remainder is playable.
+The second identical tray entry is removed from logical state synchronously before animation or overflow evaluation. A live higher-layer overlap blocks a tile; otherwise, a tile also needs its left or right side free. Input, dimming, solver, hint, and shuffle share this accessibility model. Shuffle is accepted only when the solver confirms the remapped remainder is playable. Pointer routing uses the complete rendered tile body, selects the visually uppermost tile, and rejects it when the shared accessibility model says it is blocked.
 
 The app uses a full-viewport Phaser RESIZE canvas with a 540×960 design camera, felt extension around long/tablet aspect ratios, safe board/tray regions, and CSS notch insets. Fredoka, Poppins and Cairo load before screen layout with a bounded fallback timeout. Approved SFX and two ambient beds are centrally managed with separate persisted Music and SFX controls, quiet defaults, gesture unlock, voice caps, lifecycle recovery, and a fully muted mode.
 

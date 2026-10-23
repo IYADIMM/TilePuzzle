@@ -31,3 +31,7 @@ Use a mathematical curve driven by a tweened scalar. The state can commit instan
 ## Visual evidence should be curated
 
 Keep approved references and rejected builds explicitly labeled. Generate evidence from the current runtime at representative devices, add a runtime asset contact sheet, and state visual limitations honestly rather than claiming subjective approval.
+
+## Rendered bounds and interaction bounds must agree
+
+The tile body was rendered 18–20% larger than its face hit rectangle, and the board router also rejected the lowest visible strip outside its nominal layout region. This produced taps that looked valid but were ignored. Route pointer releases once at board scope, select the uppermost rendered-body candidate, and then apply the same accessibility oracle used by the solver. Test the four outer rendered edges—not only the center or logical face—and include the lowest board row.

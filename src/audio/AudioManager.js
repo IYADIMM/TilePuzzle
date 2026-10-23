@@ -2,8 +2,8 @@ import { MUSIC_TRACKS,SFX_EVENTS } from './AudioManifest.js';
 import { normalizeAudioPreferences } from './AudioPreferences.js';
 
 export class AudioManager {
-  constructor({soundManager=null,now=()=>performance.now(),persist=()=>{}}={}){
-    this.sound=soundManager;this.now=now;this.persist=persist;this.preferences=normalizeAudioPreferences();this.scene=null;this.activeVoices=new Map();this.lastPlayed=new Map();this.currentMusic=null;this.currentTrack=null;this.pendingTrack=null;this.interrupted=false;this.placementCount=0;this.destroyed=false;this.audit=[];this.lifecycleInstalled=false;
+  constructor({soundManager=null,now=()=>performance.now(),random=Math.random,persist=()=>{}}={}){
+    this.sound=soundManager;this.now=now;this.random=random;this.persist=persist;this.preferences=normalizeAudioPreferences();this.scene=null;this.activeVoices=new Map();this.lastPlayed=new Map();this.lastVariant=new Map();this.variantBags=new Map();this.currentMusic=null;this.currentTrack=null;this.pendingTrack=null;this.interrupted=false;this.placementCount=0;this.destroyed=false;this.audit=[];this.lifecycleInstalled=false;
   }
 
   setSoundManager(soundManager){this.sound=soundManager;return this;}
@@ -44,18 +44,19 @@ export class AudioManager {
     if(now-last<rule.debounceMs)return this.failure(event,'debounced');
     const active=this.activeVoices.get(event)||new Set();
     if(active.size>=rule.maxVoices||this.voiceCount()>=7)return this.failure(event,'voice-cap');
-    if(!this.canUse(rule.key))return this.failure(event,'missing-or-unavailable');
+    const key=this.selectSfxKey(event,rule);
+    if(!key)return this.failure(event,'missing-or-unavailable');
     let voice;
     try{
-      voice=this.sound.add(rule.key,{volume:rule.baseVolume*this.preferences.sfxVolume});
+      voice=this.sound.add(key,{volume:rule.baseVolume*this.preferences.sfxVolume});
       const played=voice?.play?.();
       if(played===false){voice?.destroy?.();return this.failure(event,'play-rejected');}
     }catch(error){voice?.destroy?.();return this.failure(event,'play-error',{message:String(error?.message||error)});}
     this.lastPlayed.set(event,now);active.add(voice);this.activeVoices.set(event,active);
     const cleanup=()=>{active.delete(voice);voice?.destroy?.();if(!active.size)this.activeVoices.delete(event);};
     voice.once?.('complete',cleanup);voice.once?.('stop',cleanup);voice.once?.('destroy',()=>active.delete(voice));
-    this.record(event,'played',{key:rule.key,volume:rule.baseVolume*this.preferences.sfxVolume});
-    return{played:true,event,key:rule.key,voice};
+    this.record(event,'played',{key,variantIndex:(rule.keys||[rule.key]).indexOf(key),volume:rule.baseVolume*this.preferences.sfxVolume});
+    return{played:true,event,key,voice};
   }
 
   playPlacement(){this.placementCount++;return this.play(this.placementCount%5===0?'tile_place_b':'tile_place_a');}
@@ -85,6 +86,18 @@ export class AudioManager {
     game?.events?.on?.('blur',()=>this.pauseForInterruption());game?.events?.on?.('focus',()=>this.resumeAfterInterruption());
   }
   canUse(key){if(!this.sound?.add)return false;const cache=this.sound?.game?.cache?.audio;if(cache?.exists)return cache.exists(key);if(cache?.has)return cache.has(key);return true;}
+  selectSfxKey(event,rule){
+    const available=(rule.keys||[rule.key]).filter(key=>this.canUse(key));
+    if(available.length<2)return available[0]||null;
+    let bag=this.variantBags.get(event)?.filter(key=>available.includes(key))||[];
+    if(!bag.length){
+      bag=[...available];
+      for(let index=bag.length-1;index>0;index--){const swap=Math.floor(this.random()*(index+1));[bag[index],bag[swap]]=[bag[swap],bag[index]];}
+      const last=this.lastVariant.get(event);
+      if(bag[0]===last){const swap=bag.findIndex(key=>key!==last);[bag[0],bag[swap]]=[bag[swap],bag[0]];}
+    }
+    const key=bag.shift();this.variantBags.set(event,bag);this.lastVariant.set(event,key);return key;
+  }
   voiceCount(){let count=0;for(const voices of this.activeVoices.values())count+=voices.size;return count;}
   musicTarget(track){return(MUSIC_TRACKS[track]?.baseVolume||0)*this.preferences.musicVolume;}
   fade(target,volume,duration,onComplete){if(!target){onComplete?.();return;}if(this.scene?.tweens&&this.scene.sys?.isActive?.())this.scene.tweens.add({targets:target,volume,duration,ease:'Sine.InOut',onComplete});else{this.setInstanceVolume(target,volume);onComplete?.();}}

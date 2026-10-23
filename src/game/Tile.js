@@ -3,6 +3,7 @@ import { iconTextureKey } from '../data/themes.js';
 import { tileTextureKey } from '../art/TileMaterialFactory.js';
 import { normalizeTypeId } from '../logic/SlotState.js';
 import { PREMIUM_MATERIALS,PREMIUM_TEXTURES,PREMIUM_TILE_MATERIALS } from '../art/PremiumAssetManifest.js';
+import { renderedTouchSize } from './TileGeometry.js';
 
 export class Tile extends Phaser.GameObjects.Container {
   constructor(scene,data,x,y,geometry,materialId){
@@ -29,7 +30,8 @@ export class Tile extends Phaser.GameObjects.Container {
     this.on('pointerout',()=>{if(!this.isCollected)this.scene.tweens.add({targets:this,scaleX:1,scaleY:1,duration:75,ease:'Quad.Out'});});
   }
 
-  enableFaceInput(){const {tileW:w,tileH:h}=this.geometry;this.setInteractive(new Phaser.Geom.Rectangle(-w*.5,-h*.5,w,h),Phaser.Geom.Rectangle.Contains);if(this.input)this.input.cursor='pointer';return this;}
+  getTouchSize(){return renderedTouchSize(this.geometry.tileW,this.geometry.tileH);}
+  enableFaceInput(){const{width,height}=this.getTouchSize();this.setInteractive(new Phaser.Geom.Rectangle(-width*.5,-height*.5,width,height),Phaser.Geom.Rectangle.Contains);if(this.input)this.input.cursor='pointer';return this;}
   setBlocked(blocked,reason='selectable'){this.isBlocked=Boolean(blocked);this.blockReason=reason;this.blockOverlay.setVisible(this.isBlocked);this.body.setTint(this.isBlocked?0xd9ddd8:0xffffff);this.icon.setTint(this.isBlocked?0xa4b2aa:0xffffff);this.iconShadow.setAlpha(this.isBlocked ? .14 : .24);this.specular.setAlpha(this.isBlocked ? .48 : 1);if(this.isBlocked||this.isCollected)this.disableInteractive();else this.enableFaceInput();return this;}
   setPendingMatch(pending){this.scene.tweens.killTweensOf(this.pendingGlow);if(!pending){this.pendingGlow.setAlpha(0);this.body.setTint(this.isBlocked?0xb9c2be:0xffffff);return;}this.body.setTint(0xffe7a3);this.pendingGlow.setAlpha(.62);this.scene.tweens.add({targets:this.pendingGlow,alpha:1,duration:620,yoyo:true,repeat:-1,ease:'Sine.InOut'});}
   setSelected(selected){if(selected)this.scene.tweens.add({targets:this,scaleX:1.08,scaleY:1.08,duration:75,ease:'Quad.Out'});return this;}
@@ -38,4 +40,5 @@ export class Tile extends Phaser.GameObjects.Container {
   revealGlint(){this.specular.setX(-this.geometry.tileW*.18).setAlpha(1);this.scene.tweens.add({targets:this.specular,x:this.geometry.tileW*.35,alpha:.2,duration:330,ease:'Cubic.Out',onComplete:()=>this.specular.setX(0)});}
   flipIn(delay=0){this.body.setTexture(this.usesPremiumBody?this.premiumBodyKey:tileTextureKey(this.materialId,true));this.icon.setVisible(false);this.iconShadow.setVisible(false);this.setScale(.84,1).setAlpha(0);this.scene.tweens.add({targets:this,scaleX:.04,alpha:1,duration:110,delay,ease:'Sine.In',onComplete:()=>{this.body.setTexture(this.usesPremiumBody?this.premiumBodyKey:tileTextureKey(this.materialId));this.icon.setVisible(true);this.iconShadow.setVisible(true);this.scene.tweens.add({targets:this,scaleX:1,scaleY:1,duration:160,ease:'Back.Out'});}});}
   getFaceBounds(){const {tileW:w,tileH:h}=this.geometry;return new Phaser.Geom.Rectangle(this.x-w*.5,this.y-h*.5,w,h);}
+  getTouchBounds(){const{width,height}=this.getTouchSize();return new Phaser.Geom.Rectangle(this.x-width*.5,this.y-height*.5,width,height);}
 }
