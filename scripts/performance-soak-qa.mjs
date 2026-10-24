@@ -6,6 +6,7 @@ const root=process.cwd(),out=path.join(root,'qa','performance-soak'),minutes=Mat
 await mkdir(out,{recursive:true});
 const{command,url}=await startQaServer(root,53210),browser=await launchQaBrowser(),page=await browser.newPage({viewport:{width:390,height:844},deviceScaleFactor:1,isMobile:true,hasTouch:true});
 const errors=[],frameTimes=[],inputLatencyMs=[],sceneReadyMs=[],heapSamples=[],textureCounts=[],displayCounts=[];
+async function retryIo(work){for(let attempt=0;attempt<6;attempt++){try{return await work();}catch(error){if(attempt===5)throw error;await new Promise(resolve=>setTimeout(resolve,250*(attempt+1)));}}}
 page.on('pageerror',error=>errors.push(error.message));page.on('console',message=>{if(message.type()==='error'&&!message.text().includes('favicon'))errors.push(message.text());});
 await page.addInitScript(()=>{if(!localStorage.getItem('jade-soak-initialized')){localStorage.clear();localStorage.setItem('jade-soak-initialized','1');}});
 let completedLevels=0,pointerEvents=0,level=1,startedAt=0,deadline=0;
@@ -51,5 +52,5 @@ try{
   }
   const report={generatedAt:new Date().toISOString(),environment:'desktop-headless-chromium-mobile-viewport',requestedMinutes:minutes,actualMinutes:Number(((Date.now()-startedAt)/60000).toFixed(2)),completedLevels,pointerEvents,framePacing:{samples:frameTimes.length,medianMs:Number(percentile(frameTimes,.5).toFixed(2)),p95Ms:Number(percentile(frameTimes,.95).toFixed(2)),p99Ms:Number(percentile(frameTimes,.99).toFixed(2)),maxMs:Number(Math.max(0,...frameTimes).toFixed(2)),longFramesOver50ms:frameTimes.filter(value=>value>50).length},inputAcknowledgement:{samples:inputLatencyMs.length,medianMs:Number(percentile(inputLatencyMs,.5).toFixed(2)),p95Ms:Number(percentile(inputLatencyMs,.95).toFixed(2)),p99Ms:Number(percentile(inputLatencyMs,.99).toFixed(2)),maxMs:Number(Math.max(0,...inputLatencyMs).toFixed(2))},sceneReady:{samples:sceneReadyMs.length,medianMs:Number(percentile(sceneReadyMs,.5).toFixed(2)),p95Ms:Number(percentile(sceneReadyMs,.95).toFixed(2)),maxMs:Math.max(0,...sceneReadyMs)},heap:{available:heapSamples.length>0,startBytes:heapSamples[0]||null,endBytes:heapSamples.at(-1)||null,peakBytes:heapSamples.length?Math.max(...heapSamples):null},textureCount:{min:Math.min(...textureCounts),max:Math.max(...textureCounts)},displayObjects:{min:Math.min(...displayCounts),max:Math.max(...displayCounts)},errors,physicalAndroidValidated:false};
   report.passed=completedLevels>0&&pointerEvents>0&&errors.length===0&&report.framePacing.p99Ms<100;
-  await writeFile(path.join(out,'browser-soak-report.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));if(!report.passed)process.exitCode=1;
+  await retryIo(()=>writeFile(path.join(out,'browser-soak-report.json'),JSON.stringify(report,null,2)));console.log(JSON.stringify(report,null,2));if(!report.passed)process.exitCode=1;
 }finally{await browser.close();command.kill();}

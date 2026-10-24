@@ -19,6 +19,7 @@ const collections=[
   {level:11,id:'travel'},
   {level:12,id:'space'}
 ];
+async function retryIo(work){for(let attempt=0;attempt<6;attempt++){try{return await work();}catch(error){if(attempt===5)throw error;await new Promise(resolve=>setTimeout(resolve,250*(attempt+1)));}}}
 
 async function captureCollection(item){
   const page=await browser.newPage({viewport:{width:390,height:844},deviceScaleFactor:1,isMobile:true,hasTouch:true});
@@ -28,17 +29,17 @@ async function captureCollection(item){
   await page.waitForFunction(()=>{const board=jadeGame.scene.getScene('Game')?.board;return board?.tiles?.length>0&&board.tiles.every(tile=>tile.scaleX>.94&&tile.icon.visible);},{timeout:8000});
   await page.waitForTimeout(180);
   const runtime=await page.evaluate(()=>{const s=jadeGame.scene.getScene('Game'),typeIds=[...new Set(s.board.tiles.map(tile=>tile.typeId))];return{typeIds,premiumBodies:s.board.tiles.filter(tile=>tile.usesPremiumBody).length,premiumIcons:s.board.tiles.filter(tile=>tile.icon.texture.key===`icon:${tile.typeId}`).length,tileCount:s.board.tiles.length,trayTexture:s.tray.frame.texture?.key,canvas:[s.game.canvas.width,s.game.canvas.height]};});
-  const liveFile=path.join(out,`${item.id}-runtime.png`);await page.screenshot({path:liveFile});await page.close();
+  const liveFile=path.join(out,`${item.id}-runtime.png`);await retryIo(()=>page.screenshot({path:liveFile}));await page.close();
   if(!item.reference)return{...item,liveFile,comparisonFile:null,runtime};
   const reference=await readFile(path.join(root,'docs','phase2','source-pack','References',item.reference)),live=await readFile(liveFile),data=buffer=>`data:image/png;base64,${buffer.toString('base64')}`;
   const compare=await browser.newPage({viewport:{width:1100,height:900},deviceScaleFactor:1});
   await compare.setContent(`<style>*{box-sizing:border-box}body{margin:0;padding:24px;background:#05281f;color:#fff1c9;font:700 18px Arial}h1{color:#ffd35f;margin:0 0 16px}.grid{display:grid;grid-template-columns:1fr 390px;gap:20px;height:805px}.card{background:#021712;border:3px solid #c7942d;border-radius:18px;padding:12px;display:flex;flex-direction:column}.live{border-color:#62d29a}.card h2{text-align:center;font-size:17px;margin:0 0 8px}.card img{width:100%;height:100%;min-height:0;object-fit:contain}</style><h1>${item.id.toUpperCase()} — DIRECTION VS LIVE PHASER</h1><div class="grid"><div class="card"><h2>SUPPLIED CONCEPT DIRECTION — NOT A SPRITE</h2><img src="${data(reference)}"></div><div class="card live"><h2>ACTUAL RUNTIME</h2><img src="${data(live)}"></div></div>`,{waitUntil:'load'});
-  const comparisonFile=path.join(out,`${item.id}-direction-vs-runtime.png`);await compare.screenshot({path:comparisonFile,fullPage:true});await compare.close();
+  const comparisonFile=path.join(out,`${item.id}-direction-vs-runtime.png`);await retryIo(()=>compare.screenshot({path:comparisonFile,fullPage:true}));await compare.close();
   return{...item,liveFile,comparisonFile,runtime};
 }
 
 const results=[];for(const item of collections)results.push(await captureCollection(item));
 const passed=results.every(item=>item.runtime.premiumBodies===item.runtime.tileCount&&item.runtime.premiumIcons===item.runtime.tileCount&&item.runtime.typeIds.length===6&&item.runtime.trayTexture==='premium:tray-four-slot')&&errors.length===0;
 const report={passed,technicalIntegration:'PASSED',visualAcceptance:'PENDING_USER_REVIEW',collections:results,errors,note:'This verifies runtime use, dimensions, and transparency pipeline. It does not grant visual approval.'};
-await writeFile(path.join(out,'premium-art-report.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));
+await retryIo(()=>writeFile(path.join(out,'premium-art-report.json'),JSON.stringify(report,null,2)));console.log(JSON.stringify(report,null,2));
 await browser.close();command.kill();if(!passed)process.exitCode=1;

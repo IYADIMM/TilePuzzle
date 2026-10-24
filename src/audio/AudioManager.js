@@ -3,7 +3,7 @@ import { normalizeAudioPreferences } from './AudioPreferences.js';
 
 export class AudioManager {
   constructor({soundManager=null,now=()=>performance.now(),random=Math.random,persist=()=>{}}={}){
-    this.sound=soundManager;this.now=now;this.random=random;this.persist=persist;this.preferences=normalizeAudioPreferences();this.scene=null;this.activeVoices=new Map();this.lastPlayed=new Map();this.lastVariant=new Map();this.variantBags=new Map();this.currentMusic=null;this.currentTrack=null;this.pendingTrack=null;this.interrupted=false;this.placementCount=0;this.destroyed=false;this.audit=[];this.lifecycleInstalled=false;
+    this.sound=soundManager;this.now=now;this.random=random;this.persist=persist;this.preferences=normalizeAudioPreferences();this.scene=null;this.activeVoices=new Map();this.lastPlayed=new Map();this.lastVariant=new Map();this.variantBags=new Map();this.currentMusic=null;this.currentTrack=null;this.pendingTrack=null;this.musicFades=new Map();this.boundScenes=new WeakSet();this.interrupted=false;this.placementCount=0;this.destroyed=false;this.audit=[];this.lifecycleInstalled=false;
   }
 
   setSoundManager(soundManager){this.sound=soundManager;return this;}
@@ -20,6 +20,7 @@ export class AudioManager {
 
   bindScene(scene,{music=null}={}){
     this.scene=scene;this.sound ||= scene?.sound||scene?.game?.sound;
+    if(scene&&!this.boundScenes.has(scene)){this.boundScenes.add(scene);scene.events?.once?.('shutdown',()=>this.finishSceneFades(scene));}
     scene?.input?.once?.('pointerdown',()=>this.unlock());
     if(!this.lifecycleInstalled)this.installLifecycle(scene?.game);
     if(music)this.playMusic(music);
@@ -76,7 +77,7 @@ export class AudioManager {
 
   pauseForInterruption(){if(this.currentMusic?.isPlaying){this.currentMusic.pause?.();this.interrupted=true;}this.record('lifecycle','paused');}
   async resumeAfterInterruption(){if(!this.interrupted)return false;this.interrupted=false;const unlocked=await this.unlock();if(unlocked&&this.preferences.musicEnabled)this.currentMusic?.resume?.();this.record('lifecycle','resumed',{unlocked});return unlocked;}
-  stopAll(){for(const voices of this.activeVoices.values())for(const voice of voices){voice.stop?.();voice.destroy?.();}this.activeVoices.clear();if(this.currentMusic){this.currentMusic.stop?.();this.currentMusic.destroy?.();}this.currentMusic=null;this.currentTrack=null;}
+  stopAll(){for(const fade of [...this.musicFades.values()])fade.finish();this.musicFades.clear();for(const voices of this.activeVoices.values())for(const voice of voices){voice.stop?.();voice.destroy?.();}this.activeVoices.clear();if(this.currentMusic){this.currentMusic.stop?.();this.currentMusic.destroy?.();}this.currentMusic=null;this.currentTrack=null;}
   destroy(){this.destroyed=true;this.stopAll();}
   snapshot(){return{preferences:{...this.preferences},currentTrack:this.currentTrack,pendingTrack:this.pendingTrack,voiceCount:this.voiceCount(),contextState:this.sound?.context?.state||'unavailable',events:this.audit.map(event=>({...event}))};}
 
@@ -100,7 +101,8 @@ export class AudioManager {
   }
   voiceCount(){let count=0;for(const voices of this.activeVoices.values())count+=voices.size;return count;}
   musicTarget(track){return(MUSIC_TRACKS[track]?.baseVolume||0)*this.preferences.musicVolume;}
-  fade(target,volume,duration,onComplete){if(!target){onComplete?.();return;}if(this.scene?.tweens&&this.scene.sys?.isActive?.())this.scene.tweens.add({targets:target,volume,duration,ease:'Sine.InOut',onComplete});else{this.setInstanceVolume(target,volume);onComplete?.();}}
+  fade(target,volume,duration,onComplete){if(!target){onComplete?.();return;}this.musicFades.get(target)?.finish();const owner=this.scene;let finished=false;const finish=()=>{if(finished)return;finished=true;this.setInstanceVolume(target,volume);this.musicFades.delete(target);onComplete?.();};this.musicFades.set(target,{owner,finish});if(owner?.tweens&&owner.sys?.isActive?.())owner.tweens.add({targets:target,volume,duration,ease:'Sine.InOut',onComplete:finish,onStop:finish});else finish();}
+  finishSceneFades(scene){for(const fade of [...this.musicFades.values()])if(fade.owner===scene)fade.finish();if(this.scene===scene)this.scene=null;}
   setInstanceVolume(instance,volume){if(instance?.setVolume)instance.setVolume(volume);else if(instance)instance.volume=volume;}
   failure(event,reason,extra={}){this.record(event,'skipped',{reason,...extra});return{played:false,event,reason,...extra};}
   record(event,status,detail={}){this.audit.push({event,status,at:this.now(),...detail});if(this.audit.length>240)this.audit.splice(0,this.audit.length-240);}

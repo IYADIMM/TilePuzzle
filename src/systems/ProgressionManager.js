@@ -17,6 +17,8 @@ export function completeLevel(save, { level, score, combo, totalMatches = 0, tot
   const stars = calculateStarRating({level,score,seconds});
   const prior = save.completedLevels[level] || {};
   const starDelta=Math.max(0,stars-(prior.stars||0));
+  const isNewBestScore=firstClear||score>(prior.score||0);
+  const isNewBestTime=firstClear||!prior.bestTime||(seconds>0&&seconds<prior.bestTime);
   save.completedLevels[level] = { score: Math.max(score, prior.score || 0), stars: Math.max(stars, prior.stars || 0), bestTime: prior.bestTime ? Math.min(seconds, prior.bestTime) : seconds };
   save.maxUnlockedLevel = Math.max(save.maxUnlockedLevel, Math.min(LEVEL_COUNT, level + 1));
   save.lastLevel = Math.min(LEVEL_COUNT, level + 1);
@@ -37,7 +39,7 @@ export function completeLevel(save, { level, score, combo, totalMatches = 0, tot
   save.lifetimeScore=(save.lifetimeScore||0)+score;
   save.lifetimeCoinsEarned=(save.lifetimeCoinsEarned||0)+Math.max(0,save.coins-coinsBefore);
   save.totalMatches=(save.totalMatches||0)+Math.max(0,totalMatches||totalTriples);
-  return { firstClear, stars, starDelta, coins, unlockedAchievements, leaderboard };
+  return { firstClear, stars, starDelta, coins, isNewBestScore, isNewBestTime, newStars:starDelta, unlockedAchievements, leaderboard };
 }
 
 export function evaluateAchievements(save, combo = 0) {

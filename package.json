@@ -24,8 +24,10 @@
     "art:classic": "node scripts/process-classic-mahjong-assets.mjs",
     "qa:dual-style": "node scripts/rea-dual-style-qa.mjs",
     "qa:uat-premium": "node scripts/uat-premium-reconstruction-qa.mjs",
+    "qa:deep-audit": "node scripts/deep-audit-qa.mjs",
     "qa:levels1000": "node scripts/validate-1000-levels.mjs",
-    "qa:acceptance": "npm test && npm run build && npm run qa:audit-reports && npm run qa:levels1000 && npm run qa:gameplay && npm run qa:interaction && npm run qa:tray-visual && npm run qa:victory && npm run qa:correction && npm run qa:audio && npm run qa:leaderboard && npm run qa:premium-art && npm run qa:evidence && npm run qa:phase2"
+    "qa:acceptance": "npm test && npm run build && npm run qa:audit-reports && npm run qa:levels1000 && npm run qa:gameplay && npm run qa:interaction && npm run qa:tray-visual && npm run qa:victory && npm run qa:correction && npm run qa:deep-audit && npm run qa:audio && npm run qa:leaderboard && npm run qa:premium-art && npm run qa:evidence && npm run qa:phase2 && npm run qa:dual-style && npm run qa:uat-premium",
+    "qa:release": "npm run qa:acceptance && npm run qa:soak"
   },
   "dependencies": {
     "phaser": "^3.90.0"

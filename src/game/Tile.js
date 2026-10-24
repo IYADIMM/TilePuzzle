@@ -1,7 +1,6 @@
 import Phaser from 'phaser';
-import { tileTextureKey } from '../art/TileMaterialFactory.js';
 import { normalizeTypeId } from '../logic/SlotState.js';
-import { PREMIUM_MATERIALS,PREMIUM_TEXTURES,PREMIUM_TILE_MATERIALS } from '../art/PremiumAssetManifest.js';
+import { PREMIUM_MATERIALS,PREMIUM_TEXTURES } from '../art/PremiumAssetManifest.js';
 import { renderedTouchSize } from './TileGeometry.js';
 
 export class Tile extends Phaser.GameObjects.Container {
@@ -15,8 +14,9 @@ export class Tile extends Phaser.GameObjects.Container {
     this.ambientShadow=this.scene.add.ellipse(6+lift*1.2,h*.47+lift*.8,w*1.24,h*.25,0x010403,.18+lift*.025);
     this.contactShadow=this.scene.add.ellipse(3+lift*.8,h*.425+lift*.6,w*1.04,h*.15,0x010302,shadowAlpha);
     this.premiumBodyKey=this.skinResolver?.bodyTextureKey(this.materialId)||PREMIUM_MATERIALS[this.materialId]?.key||PREMIUM_TEXTURES.tileBody.key;
-    this.usesPremiumBody=PREMIUM_TILE_MATERIALS.has(this.materialId)&&this.scene.textures.exists(this.premiumBodyKey);
-    this.body=this.scene.add.image(0,4,this.usesPremiumBody?this.premiumBodyKey:tileTextureKey(this.materialId)).setDisplaySize(w*1.18,h*1.2);
+    if(!this.scene.textures.exists(this.premiumBodyKey))throw new Error(`Missing premium tile material: ${this.materialId}`);
+    this.usesPremiumBody=true;
+    this.body=this.scene.add.image(0,4,this.premiumBodyKey).setDisplaySize(w*1.18,h*1.2);
     this.pendingGlow=this.scene.add.graphics().fillStyle(0xffd85b,.16).fillRoundedRect(-w*.51,-h*.49,w*1.02,h*.96,Math.min(w,h)*.16).lineStyle(6,0xffd85b,1).strokeRoundedRect(-w*.51,-h*.49,w*1.02,h*.96,Math.min(w,h)*.16).setAlpha(0);
     const iconSize=Math.min(w*(this.skinResolver?.styleId==='classic'?.94:.9),h*.84);
     const symbolKey=this.skinResolver.textureKey(this.symbolId);
@@ -34,13 +34,14 @@ export class Tile extends Phaser.GameObjects.Container {
   enableFaceInput(){const{width,height}=this.getTouchSize();this.setInteractive(new Phaser.Geom.Rectangle(-width*.5,-height*.5,width,height),Phaser.Geom.Rectangle.Contains);if(this.input)this.input.cursor='pointer';return this;}
   setBlocked(blocked,reason='selectable'){this.isBlocked=Boolean(blocked);this.blockReason=reason;this.blockOverlay.setVisible(this.isBlocked);this.body.setTint(this.isBlocked?0xd9ddd8:0xffffff);this.icon.setTint(this.isBlocked?0xa4b2aa:0xffffff);this.iconShadow.setAlpha(this.isBlocked ? .14 : .24);this.specular.setAlpha(this.isBlocked ? .48 : 1);if(this.isBlocked||this.isCollected)this.disableInteractive();else this.enableFaceInput();return this;}
   setPendingMatch(pending){this.scene.tweens.killTweensOf(this.pendingGlow);if(!pending){this.pendingGlow.setAlpha(0);this.body.setTint(this.isBlocked?0xb9c2be:0xffffff);return;}this.body.setTint(0xffe7a3);this.pendingGlow.setAlpha(.62);this.scene.tweens.add({targets:this.pendingGlow,alpha:1,duration:620,yoyo:true,repeat:-1,ease:'Sine.InOut'});}
-  setSelected(selected){if(selected)this.scene.tweens.add({targets:this,scaleX:1.08,scaleY:1.08,duration:75,ease:'Quad.Out'});return this;}
+  setSelected(selected){if(selected){this.finishIntro();this.scene.tweens.killTweensOf(this);this.scene.tweens.add({targets:this,scaleX:1.08,scaleY:1.08,duration:75,ease:'Quad.Out'});}return this;}
   setTrayPresentation(inTray){this.ambientShadow.setVisible(!inTray);this.contactShadow.setVisible(!inTray);this.blockOverlay.setVisible(!inTray&&this.isBlocked);return this;}
   setSymbol(typeId){const normalized=normalizeTypeId(typeId);if(!normalized)throw new Error(`Tile ${this.tileData.id} requires a stable typeId`);this.typeId=normalized;this.symbolId=normalized;this.tileData.typeId=normalized;this.tileData.symbolId=normalized;const key=this.skinResolver.textureKey(normalized);this.icon.setTexture(key);this.iconShadow.setTexture(key);}
-  applySkin(skinResolver){this.skinResolver=skinResolver;this.premiumBodyKey=skinResolver.bodyTextureKey(this.materialId);this.usesPremiumBody=this.scene.textures.exists(this.premiumBodyKey);this.body.setTexture(this.usesPremiumBody?this.premiumBodyKey:tileTextureKey(this.materialId));const size=Math.min(this.geometry.tileW*(skinResolver.styleId==='classic'?.94:.9),this.geometry.tileH*.84);this.icon.setDisplaySize(size,size);this.iconShadow.setDisplaySize(size,size);this.setSymbol(this.typeId);return this;}
+  applySkin(skinResolver){this.skinResolver=skinResolver;this.premiumBodyKey=skinResolver.bodyTextureKey(this.materialId);if(!this.scene.textures.exists(this.premiumBodyKey))throw new Error(`Missing premium tile material: ${this.materialId}`);this.usesPremiumBody=true;this.body.setTexture(this.premiumBodyKey);const size=Math.min(this.geometry.tileW*(skinResolver.styleId==='classic'?.94:.9),this.geometry.tileH*.84);this.icon.setDisplaySize(size,size);this.iconShadow.setDisplaySize(size,size);this.setSymbol(this.typeId);return this;}
   pulseHint(){this.scene.tweens.killTweensOf(this);this.scene.tweens.add({targets:this,scaleX:1.12,scaleY:1.12,duration:175,yoyo:true,repeat:2,ease:'Sine.InOut'});}
   revealGlint(){this.specular.setX(-this.geometry.tileW*.18).setAlpha(1);this.scene.tweens.add({targets:this.specular,x:this.geometry.tileW*.35,alpha:.2,duration:330,ease:'Cubic.Out',onComplete:()=>this.specular.setX(0)});}
-  flipIn(delay=0){this.body.setTexture(this.usesPremiumBody?this.premiumBodyKey:tileTextureKey(this.materialId,true));this.icon.setVisible(false);this.iconShadow.setVisible(false);this.setScale(.84,1).setAlpha(0);this.scene.tweens.add({targets:this,scaleX:.04,alpha:1,duration:110,delay,ease:'Sine.In',onComplete:()=>{this.body.setTexture(this.usesPremiumBody?this.premiumBodyKey:tileTextureKey(this.materialId));this.icon.setVisible(true);this.iconShadow.setVisible(true);this.scene.tweens.add({targets:this,scaleX:1,scaleY:1,duration:160,ease:'Back.Out'});}});}
+  flipIn(delay=0){this.finishIntro();this.body.setTexture(this.premiumBodyKey);this.icon.setVisible(false);this.iconShadow.setVisible(false);this.setScale(.84,1).setAlpha(0);this.introTween=this.scene.tweens.add({targets:this,scaleX:.04,alpha:1,duration:110,delay,ease:'Sine.In',onComplete:()=>{this.introTween=null;if(this.isCollected)return;this.body.setTexture(this.premiumBodyKey);this.icon.setVisible(true);this.iconShadow.setVisible(true);this.introReturnTween=this.scene.tweens.add({targets:this,scaleX:1,scaleY:1,duration:160,ease:'Back.Out',onComplete:()=>{this.introReturnTween=null;}});}});}
+  finishIntro(){this.introTween?.stop?.();this.introReturnTween?.stop?.();this.introTween=null;this.introReturnTween=null;this.body?.setTexture?.(this.premiumBodyKey);this.icon?.setVisible?.(true);this.iconShadow?.setVisible?.(true);this.setAlpha(1).setScale(1);return this;}
   getFaceBounds(){const {tileW:w,tileH:h}=this.geometry;return new Phaser.Geom.Rectangle(this.x-w*.5,this.y-h*.5,w,h);}
   getTouchBounds(){const{width,height}=this.getTouchSize();return new Phaser.Geom.Rectangle(this.x-width*.5,this.y-height*.5,width,height);}
 }

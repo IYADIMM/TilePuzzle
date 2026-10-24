@@ -3,6 +3,7 @@ import { AssetFactory } from '../art/AssetFactory.js';
 import { preloadApprovedAudio } from '../audio/AudioManifest.js';
 import { AudioManager } from '../audio/AudioManager.js';
 import { SaveManager } from '../systems/SaveManager.js';
+import { normalizeLevelNumber } from '../data/levels.js';
 
 export class BootScene extends Phaser.Scene {
   constructor() { super('Boot'); }
@@ -24,7 +25,13 @@ export class BootScene extends Phaser.Scene {
     ]);
     ready.catch(() => {}).finally(() => {
       const query=new URLSearchParams(location.search);const screen=query.get('screen');
-      this.scene.start(screen==='game'?'Game':screen==='levels'?'LevelSelect':screen==='collection'?'Collection':screen==='leaderboard'?'Leaderboard':screen==='shop'?'Shop':screen==='icons'?'IconSheet':screen==='styles'?'TileStyleGallery':'Menu',{level:Number(query.get('level'))||1});
+      if(screen==='styles'){
+        this.scene.start('Menu');
+        this.scene.launch('TileStyleGallery',{hostKey:'Menu'});
+        return;
+      }
+      const route=screen==='game'?'Game':screen==='levels'?'LevelSelect':screen==='collection'?'Collection':screen==='leaderboard'?'Leaderboard':screen==='shop'?'Shop':import.meta.env.DEV&&screen==='icons'?'IconSheet':'Menu';
+      this.scene.start(route,{level:normalizeLevelNumber(query.get('level'))});
     });
   }
 }

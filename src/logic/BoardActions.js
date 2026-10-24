@@ -1,11 +1,12 @@
 import { solveLevel } from './LevelSolver.js';
 
-export function planHint(tiles,trayEntries=[],maxNodes=24000){
-  const solved=solveLevel(tiles,trayEntries,[],maxNodes);
+export function planHint(tiles,trayEntries=[],maxNodes=24000,knownSolution=[]){
+  const solved=solveLevel(tiles,trayEntries,knownSolution,maxNodes);
   if(!solved.solved||!solved.sequence.length)return{ok:false,reason:solved.nodes>=maxNodes?'budget-exhausted':'no-solution',nodes:solved.nodes};
-  const heldCounts=trayEntries.reduce((map,entry)=>(map.set(entry.typeId,(map.get(entry.typeId)||0)+1),map),new Map());
-  const firstCompleter=solved.sequence.find(id=>heldCounts.get(tiles.find(tile=>tile.id===id)?.typeId)>0);
-  return{ok:true,tileId:firstCompleter||solved.sequence[0],nodes:solved.nodes,sequence:solved.sequence};
+  // A hint is only trustworthy when it is the verified first step of the
+  // returned continuation. Picking a visually attractive later step can
+  // violate the solver ordering or point at a tile that is still blocked.
+  return{ok:true,tileId:solved.sequence[0],nodes:solved.nodes,sequence:solved.sequence};
 }
 
 export function planShuffle(tiles,trayEntries=[],candidateOrders=[],maxNodes=24000){

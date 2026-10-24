@@ -1,21 +1,24 @@
 {
-  "generatedAt": "2026-10-23T19:49:05.356Z",
-  "generationVersion": 2,
+  "generatedAt": "2026-10-24T04:15:57.680Z",
+  "generationVersion": 4,
   "matchSize": 2,
   "levels": 1000,
-  "elapsedMs": 11759,
+  "uniqueFingerprints": 1000,
+  "duplicateFingerprints": [],
+  "fallbackCount": 0,
+  "elapsedMs": 8381,
   "shapeCounts": {
-    "tower": 84,
-    "diamond": 84,
-    "hourglass": 84,
-    "bridge": 84,
+    "tower": 83,
+    "diamond": 83,
+    "hourglass": 83,
+    "bridge": 83,
     "lantern": 83,
     "fan": 83,
     "heart": 83,
-    "butterfly": 83,
-    "flower": 83,
-    "star": 83,
-    "bear": 83,
+    "butterfly": 84,
+    "flower": 84,
+    "star": 84,
+    "bear": 84,
     "car": 83
   },
   "themeCounts": {
@@ -32,6 +35,273 @@
     "travel": 83,
     "space": 83
   },
+  "themeShapeCounts": {
+    "fruits": {
+      "tower": 7,
+      "fan": 7,
+      "bear": 7,
+      "bridge": 7,
+      "flower": 7,
+      "diamond": 7,
+      "heart": 7,
+      "car": 7,
+      "lantern": 7,
+      "star": 7,
+      "hourglass": 7,
+      "butterfly": 7
+    },
+    "cars": {
+      "diamond": 7,
+      "heart": 7,
+      "car": 7,
+      "lantern": 7,
+      "star": 7,
+      "hourglass": 7,
+      "butterfly": 7,
+      "tower": 7,
+      "fan": 7,
+      "bear": 7,
+      "bridge": 7,
+      "flower": 7
+    },
+    "sports": {
+      "hourglass": 7,
+      "butterfly": 7,
+      "tower": 7,
+      "fan": 7,
+      "bear": 7,
+      "bridge": 7,
+      "flower": 7,
+      "diamond": 7,
+      "heart": 7,
+      "car": 7,
+      "lantern": 7,
+      "star": 7
+    },
+    "auto-parts": {
+      "bridge": 7,
+      "flower": 7,
+      "diamond": 7,
+      "heart": 7,
+      "car": 7,
+      "lantern": 7,
+      "star": 7,
+      "hourglass": 7,
+      "butterfly": 7,
+      "tower": 7,
+      "fan": 7,
+      "bear": 7
+    },
+    "wild-animals": {
+      "lantern": 7,
+      "star": 7,
+      "hourglass": 7,
+      "butterfly": 7,
+      "tower": 7,
+      "fan": 7,
+      "bear": 7,
+      "bridge": 7,
+      "flower": 7,
+      "diamond": 7,
+      "heart": 7,
+      "car": 6
+    },
+    "pets": {
+      "fan": 7,
+      "bear": 7,
+      "bridge": 7,
+      "flower": 7,
+      "diamond": 7,
+      "heart": 7,
+      "car": 7,
+      "lantern": 7,
+      "star": 7,
+      "hourglass": 7,
+      "butterfly": 7,
+      "tower": 6
+    },
+    "desserts": {
+      "heart": 7,
+      "car": 7,
+      "lantern": 7,
+      "star": 7,
+      "hourglass": 7,
+      "butterfly": 7,
+      "tower": 7,
+      "fan": 7,
+      "bear": 7,
+      "bridge": 7,
+      "flower": 7,
+      "diamond": 6
+    },
+    "flowers": {
+      "butterfly": 7,
+      "tower": 7,
+      "fan": 7,
+      "bear": 7,
+      "bridge": 7,
+      "flower": 7,
+      "diamond": 7,
+      "heart": 7,
+      "car": 7,
+      "lantern": 7,
+      "star": 7,
+      "hourglass": 6
+    },
+    "ocean-life": {
+      "flower": 7,
+      "diamond": 7,
+      "heart": 7,
+      "car": 7,
+      "lantern": 7,
+      "star": 7,
+      "hourglass": 7,
+      "butterfly": 7,
+      "tower": 7,
+      "fan": 7,
+      "bear": 7,
+      "bridge": 6
+    },
+    "music": {
+      "star": 7,
+      "hourglass": 7,
+      "butterfly": 7,
+      "tower": 7,
+      "fan": 7,
+      "bear": 7,
+      "bridge": 7,
+      "flower": 7,
+      "diamond": 7,
+      "heart": 7,
+      "car": 7,
+      "lantern": 6
+    },
+    "travel": {
+      "bear": 7,
+      "bridge": 7,
+      "flower": 7,
+      "diamond": 7,
+      "heart": 7,
+      "car": 7,
+      "lantern": 7,
+      "star": 7,
+      "hourglass": 7,
+      "butterfly": 7,
+      "tower": 7,
+      "fan": 6
+    },
+    "space": {
+      "car": 7,
+      "lantern": 7,
+      "star": 7,
+      "hourglass": 7,
+      "butterfly": 7,
+      "tower": 7,
+      "fan": 7,
+      "bear": 7,
+      "bridge": 7,
+      "flower": 7,
+      "diamond": 7,
+      "heart": 6
+    }
+  },
+  "independentSolverSamples": [
+    {
+      "level": 1,
+      "solved": true,
+      "nodes": 37,
+      "source": "search"
+    },
+    {
+      "level": 25,
+      "solved": true,
+      "nodes": 39,
+      "source": "search"
+    },
+    {
+      "level": 100,
+      "solved": true,
+      "nodes": 45,
+      "source": "search"
+    },
+    {
+      "level": 241,
+      "solved": true,
+      "nodes": 61,
+      "source": "search"
+    },
+    {
+      "level": 500,
+      "solved": true,
+      "nodes": 61,
+      "source": "search"
+    },
+    {
+      "level": 750,
+      "solved": true,
+      "nodes": 61,
+      "source": "search"
+    },
+    {
+      "level": 999,
+      "solved": true,
+      "nodes": 61,
+      "source": "search"
+    },
+    {
+      "level": 1000,
+      "solved": true,
+      "nodes": 61,
+      "source": "search"
+    }
+  ],
+  "difficultySummary": [
+    {
+      "declared": 1,
+      "levels": 6,
+      "tileCountMin": 36,
+      "tileCountMax": 36,
+      "initialSelectableMin": 8,
+      "initialSelectableMax": 14,
+      "initialSelectableAverage": 11
+    },
+    {
+      "declared": 2,
+      "levels": 6,
+      "tileCountMin": 36,
+      "tileCountMax": 36,
+      "initialSelectableMin": 7,
+      "initialSelectableMax": 10,
+      "initialSelectableAverage": 8
+    },
+    {
+      "declared": 3,
+      "levels": 6,
+      "tileCountMin": 36,
+      "tileCountMax": 36,
+      "initialSelectableMin": 5,
+      "initialSelectableMax": 10,
+      "initialSelectableAverage": 6
+    },
+    {
+      "declared": 4,
+      "levels": 6,
+      "tileCountMin": 36,
+      "tileCountMax": 38,
+      "initialSelectableMin": 5,
+      "initialSelectableMax": 9,
+      "initialSelectableAverage": 6.5
+    },
+    {
+      "declared": 5,
+      "levels": 976,
+      "tileCountMin": 38,
+      "tileCountMax": 60,
+      "initialSelectableMin": 4,
+      "initialSelectableMax": 10,
+      "initialSelectableAverage": 6.4
+    }
+  ],
   "failures": [],
   "passed": true
 }

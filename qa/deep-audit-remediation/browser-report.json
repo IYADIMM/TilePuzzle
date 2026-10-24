@@ -1,0 +1,75 @@
+{
+  "generatedAt": "2026-10-24T04:19:53.852Z",
+  "passed": true,
+  "checks": {
+    "earlyTap": {
+      "tapDelayMs": 80,
+      "entryId": "L1-T33",
+      "scaleX": 0.5548750119868471,
+      "scaleY": 0.5548750119868471,
+      "alpha": 1,
+      "visible": true,
+      "passed": true
+    },
+    "undoReload": {
+      "activeTilesRestored": 1,
+      "activeAfterUndo": 36,
+      "activeAfterReload": 36,
+      "trayAfterUndo": [],
+      "trayAfterReload": [],
+      "historyAfterUndo": 0,
+      "historyAfterReload": 0,
+      "inventoryAfterReload": 2,
+      "passed": true
+    },
+    "shuffleReload": {
+      "changed": true,
+      "sameAfterReload": true,
+      "inventoryAfterReload": 2,
+      "checkpointTileCount": 36,
+      "passed": true
+    },
+    "pauseClock": {
+      "elapsedBefore": 463.8999999910593,
+      "elapsedPaused": 520.5999999940395,
+      "elapsedResumed": 912.5999999940395,
+      "pausedGrowth": 56.70000000298023,
+      "resumedGrowth": 392,
+      "passed": true
+    },
+    "classicReward": {
+      "textures": [
+        "bg:premium-felt",
+        "1c17bac1-3312-4062-8406-e5c19984e53d",
+        "0cb1bf81-f291-49ae-8626-b722e3abcda7",
+        "31bcced3-d65a-44dd-b941-45aca810a13f",
+        "333ef299-28ff-4794-b8fa-d3872204f097",
+        "premium:tile-body",
+        "classic:000",
+        "premium:tile-body",
+        "classic:001",
+        "premium:tile-body",
+        "classic:002",
+        "85c94cfc-c9f6-4dd2-a81c-225dcd3ff790",
+        "ae10ec14-ab47-40cb-8b64-879211741df3",
+        "45bf09d7-4f17-4bf5-8b2b-1996c529f4c7",
+        "d848cbb3-52f5-4db4-82bd-defb75ae2973",
+        "d28f0e1e-3e14-40b8-905f-52fef0b9f982",
+        "60e11e21-d42b-462b-93f0-e12ecfcec573"
+      ],
+      "passed": true
+    },
+    "standaloneStyles": {
+      "menuActive": true,
+      "galleryActive": true,
+      "passed": true
+    },
+    "canonicalLevelRoute": {
+      "requested": "1.5",
+      "actual": 1,
+      "passed": true
+    }
+  },
+  "errors": [],
+  "physicalAndroidValidated": false
+}

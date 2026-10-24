@@ -15,7 +15,8 @@ export const LEVEL_CONFIGS = Object.freeze(Array.from({length:LEVEL_TOTAL},(_,in
     themeId: theme.id,
     materialId: theme.materialId,
     iconIds: theme.iconIds,
-    layoutId: SHAPES[index % SHAPES.length],
+    // Keep collection and silhouette cadences independent across chapters.
+    layoutId: SHAPES[(index + Math.floor(index / THEMES.length) * 5) % SHAPES.length],
     tileCount,
     layers: level < 4 ? 2 : level < 13 ? 3 : level < 25 ? 4 : 5,
     difficulty: Math.min(5, 1 + Math.floor(index / 6)),
@@ -26,8 +27,13 @@ export const LEVEL_CONFIGS = Object.freeze(Array.from({length:LEVEL_TOTAL},(_,in
 }));
 
 export function getLevelConfig(level = 1) {
-  const safe = Math.max(1, Math.min(LEVEL_CONFIGS.length, Number(level) || 1));
+  const safe = normalizeLevelNumber(level,LEVEL_CONFIGS.length);
   return LEVEL_CONFIGS[safe - 1];
+}
+
+export function normalizeLevelNumber(value,total=LEVEL_CONFIGS.length) {
+  const numeric=Number(value),integer=Number.isFinite(numeric)?Math.trunc(numeric):1;
+  return Math.max(1,Math.min(Math.max(1,Math.trunc(Number(total))||1),integer||1));
 }
 
 export const LEVEL_COUNT = LEVEL_CONFIGS.length;

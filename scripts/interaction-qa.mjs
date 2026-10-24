@@ -26,10 +26,10 @@ async function tileHits(page,point){
 try{
   const offsets=[[-.32,-.32],[0,-.32],[.32,-.32],[-.32,0],[0,0],[.32,0],[-.32,.32],[0,.32],[.32,.32]];
   for(const[offsetX,offsetY]of offsets){
-    const page=await open(),id=await page.evaluate(()=>jadeGame.scene.getScene('Game').board.level.solution[0]),point=await tilePoint(page,id,offsetX,offsetY),hits=await tileHits(page,point),visiblyTargeted=hits[0]?.id===id;
+    const page=await open(),id=await page.evaluate(({offsetX,offsetY})=>{const scene=jadeGame.scene.getScene('Game');return scene.board.selectableTiles.map(tile=>{const x=tile.x+tile.geometry.tileW*offsetX,y=tile.y+tile.geometry.tileH*offsetY,winner=scene.board.activeTiles.filter(candidate=>Phaser.Geom.Rectangle.Contains(candidate.getTouchBounds(),x,y)).sort((a,b)=>b.depth-a.depth)[0];return{id:tile.tileData.id,winner:winner?.tileData.id};}).find(item=>item.id===item.winner)?.id||null;},{offsetX,offsetY}),point=id?await tilePoint(page,id,offsetX,offsetY):null,hits=point?await tileHits(page,point):[],visiblyTargeted=Boolean(id&&hits[0]?.id===id);
     let accepted=null;
     if(visiblyTargeted){await page.mouse.click(point.x,point.y);await page.waitForTimeout(100);accepted=await page.evaluate(id=>jadeGame.scene.getScene('Game').board.tiles.find(tile=>tile.tileData.id===id).isCollected,id);}
-    checks.push({kind:'face-sample',id,offsetX,offsetY,visiblyTargeted,occludedBy:visiblyTargeted?null:hits[0]?.id??'outside-visible-input',accepted});
+    checks.push({kind:'face-sample',id,offsetX,offsetY,visiblyTargeted,occludedBy:visiblyTargeted?null:hits[0]?.id??'no-visible-selectable-sample',accepted});
     await page.close();
   }
 

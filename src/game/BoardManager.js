@@ -37,7 +37,8 @@ export class BoardManager {
   }
   async hint(trayEntries=[]){
     const token=++this.actionToken,revision=this.revision,logical=this.activeTiles.map(tile=>({...tile.tileData,alive:true}));
-    const plan=await defer(()=>planHint(logical,trayEntries,24000));
+    const activeIds=new Set(logical.map(tile=>tile.id)),known=this.level.solution.filter(id=>activeIds.has(id));
+    const plan=await defer(()=>planHint(logical,trayEntries,24000,known));
     if(token!==this.actionToken||revision!==this.revision)return{ok:false,reason:'stale'};
     if(!plan.ok)return plan;
     const tile=this.tiles.find(candidate=>candidate.tileData.id===plan.tileId);
@@ -58,8 +59,8 @@ export class BoardManager {
     const used=new Set(),moves=old.map((typeId,index)=>{const destination=assignment.findIndex((candidate,j)=>candidate===typeId&&!used.has(j));used.add(destination);return{source:active[index],destination:active[destination]};});
     const reduced=Boolean(this.scene.reducedMotion),proxies=moves.map(({source})=>this.scene.add.image(source.x,source.y,source.icon.texture.key).setDisplaySize(source.icon.displayWidth,source.icon.displayHeight).setDepth(1700));
     active.forEach(tile=>{tile.icon.setAlpha(0);tile.iconShadow.setAlpha(0);});
-    await Promise.all(proxies.map((proxy,index)=>new Promise(resolve=>this.scene.tweens.add({targets:proxy,x:moves[index].destination.x,y:moves[index].destination.y,alpha:reduced?0:1,duration:reduced?90:260,delay:reduced?0:(index%6)*12,ease:'Sine.InOut',onComplete:resolve,onStop:resolve}))));
-    proxies.forEach(proxy=>proxy.destroy());if(token===this.actionToken)active.forEach(tile=>{tile.icon.setAlpha(1);tile.iconShadow.setAlpha(tile.isBlocked?.14:.24);});
+    try{await Promise.all(proxies.map((proxy,index)=>new Promise(resolve=>this.scene.tweens.add({targets:proxy,x:moves[index].destination.x,y:moves[index].destination.y,alpha:reduced?0:1,duration:reduced?90:260,delay:reduced?0:(index%6)*12,ease:'Sine.InOut',onComplete:resolve,onStop:resolve}))));}
+    finally{proxies.forEach(proxy=>proxy.destroy());active.filter(tile=>tile?.active).forEach(tile=>{tile.icon.setAlpha(1);tile.iconShadow.setAlpha(tile.isBlocked?.14:.24);});}
   }
   createDebugOverlay(){this.debugGraphics=this.scene.add.graphics().setDepth(1900);this.debugLabel=this.scene.add.text(24,154,'DEBUG',{fontFamily:'monospace',fontSize:'11px',color:'#9effcf',backgroundColor:'#041b16',padding:{x:6,y:4}}).setDepth(1901);this.debugTileLabels=this.tiles.map(tile=>this.scene.add.text(tile.x,tile.y,`${tile.tileData.id}\nL${tile.tileData.layer}`,{fontFamily:'monospace',fontSize:'8px',align:'center',color:'#ffffff',backgroundColor:'#00100bbb'}).setOrigin(.5).setDepth(1901));this.redrawDebug();}
   redrawDebug(){if(!this.debugGraphics)return;this.debugGraphics.clear().lineStyle(1,0x71f5c0,.72).strokeRect(this.bounds.left,this.bounds.top,this.bounds.right-this.bounds.left,this.bounds.bottom-this.bounds.top);this.tiles.forEach((tile,index)=>{const face=tile.getFaceBounds(),touch=tile.getTouchBounds(),blocked=tile.isBlocked;this.debugGraphics.lineStyle(1,0xffd85b,.72).strokeRect(touch.x,touch.y,touch.width,touch.height).lineStyle(2,blocked?0xff785f:0x71f5c0,.9).strokeRect(face.x,face.y,face.width,face.height);const access=tile.tileData.access;this.debugTileLabels[index]?.setPosition(tile.x,tile.y).setText(`${tile.tileData.id}\n${blocked?tile.tileData.blockReason:'SELECTABLE'}\nL:${access?.left?.length||0} R:${access?.right?.length||0} T:${access?.top?.length||0}`).setVisible(!tile.isCollected);});if(this.pointerDebug)this.debugGraphics.fillStyle(0xffff66,1).fillCircle(this.pointerDebug.x,this.pointerDebug.y,5);}

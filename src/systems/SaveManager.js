@@ -25,11 +25,11 @@ export class SaveManager {
   static lastError=null;
   static load(storage){storage??=defaultSaveStorage();
     const candidates=[KEY,BACKUP_KEY,...LEGACY_KEYS];let sawCorrupt=false;
-    for(const key of candidates){const encoded=safeGet(storage,key);if(!encoded)continue;try{const save=migrateSave(JSON.parse(encoded));if(key!==KEY)save.storageRecovery={recoveredFrom:key,at:Date.now()};return save;}catch(error){sawCorrupt=true;this.lastError=error;}}
+    for(const key of candidates){const encoded=safeGet(storage,key);if(!encoded)continue;try{const save=migrateSave(JSON.parse(encoded));if(key!==KEY){save.storageRecovery={recoveredFrom:key,at:Date.now()};repairPrimary(storage,save);}return save;}catch(error){sawCorrupt=true;this.lastError=error;}}
     const fresh=clone(DEFAULT_SAVE);if(sawCorrupt)fresh.storageRecovery={recoveredFrom:null,at:Date.now(),reason:'No valid save copy'};return fresh;
   }
   static save(data,storage){storage??=defaultSaveStorage();
-    try{const current=safeGet(storage,KEY);if(current){JSON.parse(current);storage.setItem(BACKUP_KEY,current);}storage.setItem(KEY,JSON.stringify({...data,version:6,storageRecovery:null}));this.lastError=null;return{ok:true};}
+    try{const current=safeGet(storage,KEY),encoded=JSON.stringify({...data,version:6,storageRecovery:null});if(current&&isValidEncodedSave(current))storage.setItem(BACKUP_KEY,current);storage.setItem(KEY,encoded);if(safeGet(storage,KEY)!==encoded)throw new Error('Save verification failed');this.lastError=null;return{ok:true};}
     catch(error){this.lastError=error;return{ok:false,error:String(error?.message||error)};}
   }
   static export(data){return JSON.stringify({...data,version:6},null,2);}
@@ -66,4 +66,6 @@ export function abandonActiveAttempt(save,reason='leave'){
 }
 
 function safeGet(storage,key){try{return storage.getItem(key);}catch(error){SaveManager.lastError=error;return null;}}
+function isValidEncodedSave(encoded){try{migrateSave(JSON.parse(encoded));return true;}catch{return false;}}
+function repairPrimary(storage,save){try{const encoded=JSON.stringify({...save,version:6});storage.setItem(KEY,encoded);if(safeGet(storage,KEY)!==encoded)throw new Error('Recovered save verification failed');SaveManager.lastError=null;return true;}catch(error){SaveManager.lastError=error;return false;}}
 function clone(value){return JSON.parse(JSON.stringify(value));}

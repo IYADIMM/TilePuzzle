@@ -55,6 +55,12 @@ test('suspended context unlocks on user gesture and silent fallback remains play
   const unavailable=new AudioManager({soundManager:null});assert.equal(unavailable.play('ui_click').reason,'missing-or-unavailable');
 });
 
+test('scene shutdown finalizes crossfades and destroys the replaced music voice',()=>{
+  const sound=new FakeSoundManager(),shutdown=[];
+  const scene={sound,game:{sound},input:{once(){}},events:{once:(event,callback)=>{if(event==='shutdown')shutdown.push(callback);}},sys:{isActive:()=>true},tweens:{add(){return{};}}};
+  const audio=new AudioManager({soundManager:sound});audio.bindScene(scene);audio.playMusic('menu');const previous=sound.voices.at(-1);audio.playMusic('gameplay');assert.equal(previous.destroyed,false);shutdown.forEach(callback=>callback());assert.equal(previous.destroyed,true);assert.equal(audio.musicFades.size,0);
+});
+
 class FakeSoundManager{
   constructor(){this.voices=[];this.missing=new Set();this.locked=false;this.context={state:'running',resume:async()=>{this.context.state='running';}};this.game={cache:{audio:{exists:key=>!this.missing.has(key)}}};}
   add(key,config){const voice=new FakeVoice(key,config);this.voices.push(voice);return voice;}

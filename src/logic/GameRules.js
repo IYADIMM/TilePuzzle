@@ -1,6 +1,6 @@
 export const MATCH_SIZE = 2;
 export const TRAY_CAPACITY = 4;
-export const LEVEL_GENERATION_VERSION = 2;
+export const LEVEL_GENERATION_VERSION = 4;
 
 export function isMatchCount(count) {
   return Number(count) >= MATCH_SIZE;

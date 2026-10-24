@@ -8,6 +8,7 @@ import { DAILY_REWARDS,ECONOMY_CATALOG } from '../economy/EconomyCatalog.js';
 import { claimDailyReward } from '../economy/DailyRewardService.js';
 import { equipItem,purchaseCatalogItem } from '../economy/InventoryService.js';
 import { PREMIUM_TEXTURES } from '../art/PremiumAssetManifest.js';
+import { operationId } from '../logic/AttemptCheckpoint.js';
 
 export class ShopScene extends Phaser.Scene{
   constructor(){super('Shop');}
@@ -16,8 +17,8 @@ export class ShopScene extends Phaser.Scene{
     addIconButton(this,52,53,'back',()=>this.scene.start('Menu'),'Back');this.add.text(270,54,'GARDEN SHOP',{...TEXT.title,fontSize:'37px',color:'#fff0b0'}).setOrigin(.5);addPill(this,391,111,132,String(this.save.coins),'◆');addPill(this,154,111,132,String(this.save.gems),'◇');
     this.add.text(270,148,'INTERNAL TEST CATALOG  •  NO REAL MONEY',{...TEXT.hud,fontSize:'12px',color:'#ffe17a',letterSpacing:1}).setOrigin(.5);
     const day=(this.save.economy.daily.streak%7)+1,reward=DAILY_REWARDS[day-1];addGoldButton(this,270,205,390,`DAILY DAY ${day}  •  ${reward.coins} COINS${reward.gems?` + ${reward.gems} GEMS`:''}`,()=>this.claimDaily());
-    this.add.text(270,260,'DIRECT PURCHASES  •  NO RANDOM LOOT',{...TEXT.hud,fontSize:'12px',color:'#f6ce62',letterSpacing:1.2}).setOrigin(.5);
-    ECONOMY_CATALOG.forEach((item,index)=>this.addItem(item,index));
+    this.add.text(270,260,'FUNCTIONAL BOOSTERS  •  NO RANDOM LOOT',{...TEXT.hud,fontSize:'12px',color:'#f6ce62',letterSpacing:1.2}).setOrigin(.5);
+    ECONOMY_CATALOG.filter(item=>item.kind==='booster').forEach((item,index)=>this.addItem(item,index));
     this.add.text(270,866,'TEST INVENTORY ONLY',{...TEXT.title,fontSize:'23px',color:'#ffe07a',stroke:'#351307',strokeThickness:5}).setOrigin(.5);
     this.add.text(270,910,'No billing, ads, store entitlement, or online service is connected.',{...TEXT.hud,fontSize:'11px',color:'#cce0d7',wordWrap:{width:430},align:'center'}).setOrigin(.5);
   }
@@ -42,9 +43,9 @@ export class ShopScene extends Phaser.Scene{
     return root;
   }
   useItem(item,owned){
-    const result=owned&&item.kind!=='booster'?equipItem(this.save,item.id):purchaseCatalogItem(this.save,item.id,`shop:${item.id}:${Date.now()}`);
-    if(result.ok){SaveManager.save(this.save);this.scene.restart();return;}
+    const before=JSON.parse(JSON.stringify(this.save)),result=owned&&item.kind!=='booster'?equipItem(this.save,item.id):purchaseCatalogItem(this.save,item.id,operationId(`shop:${item.id}`));
+    if(result.ok){const saved=SaveManager.save(this.save);if(saved.ok){this.scene.restart();return;}this.save=before;this.modal.show({variant:'danger',kind:'close',title:'Save Unavailable',body:'The purchase was rolled back because progress could not be stored.',primary:'CONTINUE'});return;}
     this.modal.show({variant:'danger',kind:'close',title:'Not Available',body:result.reason==='insufficient-funds'?'Earn more currency before buying this item.':result.reason,primary:'CONTINUE'});
   }
-  claimDaily(){const result=claimDailyReward(this.save);if(result.ok)SaveManager.save(this.save);this.modal.show({kind:result.ok?'reward':'close',title:result.ok?'Daily Gift':'Already Claimed',subtitle:result.ok?`Streak day ${result.streak}`:'Come back after 00:00 UTC',body:result.ok?`+${result.reward.coins} coins${result.reward.gems?`\n+${result.reward.gems} gems`:''}`:'One verified claim is allowed per UTC day.',primary:'CONTINUE',onPrimary:()=>this.scene.restart()});}
+  claimDaily(){const before=JSON.parse(JSON.stringify(this.save)),result=claimDailyReward(this.save);if(result.ok&&!SaveManager.save(this.save).ok){this.save=before;this.modal.show({variant:'danger',kind:'close',title:'Save Unavailable',body:'The daily reward was rolled back because progress could not be stored.',primary:'CONTINUE'});return;}const clockRollback=result.reason==='clock-rollback';this.modal.show({kind:result.ok?'reward':'close',title:result.ok?'Daily Gift':clockRollback?'Clock Check':'Already Claimed',subtitle:result.ok?`Streak day ${result.streak}`:clockRollback?'Device date moved backward':'Come back after 00:00 UTC',body:result.ok?`+${result.reward.coins} coins${result.reward.gems?`\n+${result.reward.gems} gems`:''}`:clockRollback?'Offline rewards cannot verify an earlier date. Restore the correct date and try again.':'One verified claim is allowed per UTC day.',primary:'CONTINUE',onPrimary:()=>this.scene.restart()});}
 }

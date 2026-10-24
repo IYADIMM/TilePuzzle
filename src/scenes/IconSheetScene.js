@@ -1,6 +1,5 @@
 import Phaser from 'phaser';
 import { THEMES,iconTextureKey } from '../data/themes.js';
-import { tileTextureKey } from '../art/TileMaterialFactory.js';
 import { applyDesignCamera } from '../ui/LayoutManager.js';
 import { TEXT } from '../theme.js';
 import { PREMIUM_MATERIALS } from '../art/PremiumAssetManifest.js';
@@ -17,7 +16,7 @@ export class IconSheetScene extends Phaser.Scene {
       this.add.text(22,y-27,theme.name.toUpperCase(),{...TEXT.hud,fontSize:'8px',color:'#e8c672'}).setOrigin(0,.5);
       theme.iconIds.forEach((id,col)=>{
         const x=74+col*78;
-        this.add.image(x,y,PREMIUM_MATERIALS[theme.materialId]?.key||tileTextureKey(theme.materialId)).setDisplaySize(56,70);
+        this.add.image(x,y,PREMIUM_MATERIALS[theme.materialId].key).setDisplaySize(56,70);
         this.add.image(x,y-3,iconTextureKey(id)).setDisplaySize(43,43);
         this.add.text(x,y+30,id.replaceAll('-',' '),{...TEXT.hud,fontSize:'6px',color:'#f8efd8'}).setOrigin(.5);
       });

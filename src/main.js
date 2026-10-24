@@ -27,7 +27,7 @@ const config = {
     autoCenter: Phaser.Scale.CENTER_BOTH
   },
   input: { activePointers: 2 },
-  scene: [BootScene, MenuScene, LevelSelectScene, CollectionScene, AchievementsScene, LeaderboardScene, ShopScene, GameScene, RewardScene, IconSheetScene, AudioSettingsScene, TileStyleGalleryScene]
+  scene: [BootScene, MenuScene, LevelSelectScene, CollectionScene, AchievementsScene, LeaderboardScene, ShopScene, GameScene, RewardScene, ...(import.meta.env.DEV?[IconSheetScene]:[]), AudioSettingsScene, TileStyleGalleryScene]
 };
 
 window.jadeGame = new Phaser.Game(config);
