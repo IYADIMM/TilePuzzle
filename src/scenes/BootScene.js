@@ -7,10 +7,10 @@ import { normalizeLevelNumber } from '../data/levels.js';
 
 export class BootScene extends Phaser.Scene {
   constructor() { super('Boot'); }
-  preload() { AssetFactory.preload(this);preloadApprovedAudio(this); }
+  preload() { this.saved=SaveManager.load();AssetFactory.preload(this,{tileStyle:this.saved.prefs.tileStyle});preloadApprovedAudio(this); }
   create() {
     AssetFactory.createRuntimeTextures(this);
-    const saved=SaveManager.load(),audioManager=new AudioManager({soundManager:this.sound,persist:preferences=>{const latest=SaveManager.load();latest.prefs.audio=preferences;SaveManager.save(latest);}});
+    const saved=this.saved||SaveManager.load(),audioManager=new AudioManager({soundManager:this.sound,persist:preferences=>{const latest=SaveManager.load();latest.prefs.audio=preferences;SaveManager.save(latest);}});
     audioManager.setPreferences(saved.prefs.audio,{persist:false});this.game.registry.set('audioManager',audioManager);
     const fontLoad = document.fonts
       ? Promise.all([
@@ -30,7 +30,7 @@ export class BootScene extends Phaser.Scene {
         this.scene.launch('TileStyleGallery',{hostKey:'Menu'});
         return;
       }
-      const route=screen==='game'?'Game':screen==='levels'?'LevelSelect':screen==='collection'?'Collection':screen==='leaderboard'?'Leaderboard':screen==='shop'?'Shop':import.meta.env.DEV&&screen==='icons'?'IconSheet':'Menu';
+      const route=screen==='game'?'Game':screen==='levels'?'LevelSelect':screen==='collection'?'Collection':screen==='leaderboard'?'Leaderboard':import.meta.env.DEV&&screen==='shop'?'Shop':import.meta.env.DEV&&screen==='icons'?'IconSheet':'Menu';
       this.scene.start(route,{level:normalizeLevelNumber(query.get('level'))});
     });
   }

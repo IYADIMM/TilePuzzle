@@ -8,6 +8,7 @@ import { applyDesignCamera } from '../ui/LayoutManager.js';
 import { bindSceneAudio,getAudioManager } from '../audio/AudioManager.js';
 import { PREMIUM_MATERIALS } from '../art/PremiumAssetManifest.js';
 import { createTileSkinResolver } from '../art/TileStyleRegistry.js';
+import { claimTreasureReward } from '../logic/SaveTransactions.js';
 
 export class MenuScene extends Phaser.Scene {
   constructor(){super('Menu');}
@@ -24,7 +25,7 @@ export class MenuScene extends Phaser.Scene {
     const playLevel=this.save.activeAttempt?.level||this.save.lastLevel;
     addGoldButton(this,270,559,326,`${this.save.activeAttempt?'RESUME':'PLAY'}  •  LEVEL ${playLevel}`,()=>this.scene.start('Game',{level:playLevel}),'');
     addGoldButton(this,170,638,182,'LEVELS',()=>this.scene.start('LevelSelect'));addGoldButton(this,370,638,182,'COLLECTION',()=>this.scene.start('Collection'));
-    addGoldButton(this,164,717,190,'MY RECORDS',()=>this.scene.start('Leaderboard'));addGoldButton(this,382,717,170,'TEST SHOP',()=>this.scene.start('Shop'));
+    addGoldButton(this,164,717,190,'MY RECORDS',()=>this.scene.start('Leaderboard'));addGoldButton(this,382,717,170,import.meta.env.DEV?'TEST SHOP':'ACHIEVEMENTS',()=>this.scene.start(import.meta.env.DEV?'Shop':'Achievements'));
     const pending=this.save.queuedChestRewards?.length||0;this.add.text(270,773,pending?`TREASURE READY  •  ${pending} QUEUED`:'TREASURE TRAIL',{...TEXT.hud,fontSize:'15px',color:'#f6cc55',letterSpacing:2,stroke:'#2f1007',strokeThickness:3}).setOrigin(.5);
     addProgressBar(this,240,810,300,pending?1:this.save.chestProgress/5,pending?'CLAIM READY':`${this.save.chestProgress} / 5`);addIconButton(this,435,810,'play',()=>this.showChest(),'Treasure');
     this.add.text(270,878,'MATCH TWO  •  GROW YOUR LOCAL GARDEN RECORD',{...TEXT.hud,fontSize:'11px',color:'#bdd2c8',letterSpacing:1.1}).setOrigin(.5);
@@ -33,7 +34,7 @@ export class MenuScene extends Phaser.Scene {
     const ids=['cherries','blossom','orange'],resolver=createTileSkinResolver(this.save.prefs.tileStyle,ids);
     ids.forEach((id,index)=>{const x=166+index*104,y=387+(index===1?-24:10),tile=this.add.container(x,y).setAngle((index-1)*6),shadow=this.add.ellipse(6,61,116,27,0x000000,.35),body=this.add.image(0,0,resolver.bodyTextureKey('mahogany')).setDisplaySize(114,142),iconShadow=this.add.image(3,3,resolver.textureKey(id)).setDisplaySize(85,85).setTint(0x26332d).setAlpha(.2),icon=this.add.image(0,-4,resolver.textureKey(id)).setDisplaySize(85,85);tile.add([shadow,body,iconShadow,icon]);this.tweens.add({targets:tile,y:y-8,duration:1450+index*150,yoyo:true,repeat:-1,ease:'Sine.InOut'});});
   }
-  showChest(){const milestone=this.save.queuedChestRewards?.[0],ready=Boolean(milestone);this.modal.show({kind:ready?'reward':'close',title:ready?'Treasure Ready':'Keep Playing',subtitle:ready?milestone.replace('levels:','Levels '):`${5-this.save.chestProgress} more levels`,body:ready?'+150 coins\n+1 Hint booster':'Clear unique levels to fill the treasure trail.',primary:ready?'CLAIM REWARD':'CONTINUE',onPrimary:()=>{if(!ready)return;const key=`chest:${milestone}`;if(this.save.claimedRewards[key])return;this.save.claimedRewards[key]=true;this.save.queuedChestRewards.shift();this.save.coins+=150;this.save.boosters.hint++;SaveManager.save(this.save);getAudioManager(this)?.play('chest_open');this.scene.restart();}});}
+  showChest(){const milestone=this.save.queuedChestRewards?.[0],ready=Boolean(milestone);this.modal.show({kind:ready?'reward':'close',title:ready?'Treasure Ready':'Keep Playing',subtitle:ready?milestone.replace('levels:','Levels '):`${5-this.save.chestProgress} more levels`,body:ready?'+150 coins\n+1 Hint booster':'Clear unique levels to fill the treasure trail.',primary:ready?'CLAIM REWARD':'CONTINUE',onPrimary:()=>{if(!ready||this.claimPending)return;this.claimPending=true;const result=claimTreasureReward(this.save,milestone,data=>SaveManager.save(data));this.claimPending=false;if(!result.ok){this.modal.show({variant:'danger',kind:'close',title:'Reward Not Saved',body:'Your treasure is still ready. Check browser storage and try again.',primary:'TRY AGAIN',onPrimary:()=>this.showChest()});return;}getAudioManager(this)?.play('chest_open');this.scene.restart();}});}
   showSettings(){this.scene.launch('AudioSettings',{hostKey:'Menu'});}
   applyTileStyle(){this.scene.restart();}
 }

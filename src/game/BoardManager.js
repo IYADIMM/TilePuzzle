@@ -4,14 +4,14 @@ import { computeAccessibility } from '../logic/LevelSolver.js';
 import { projectBoard,tileScreenPosition } from '../ui/LayoutManager.js';
 import { Tile } from './Tile.js';
 import { getAudioManager } from '../audio/AudioManager.js';
-import { planHint,planShuffle } from '../logic/BoardActions.js';
+import { planHintAsync,planShuffleAsync } from '../logic/BoardActions.js';
 import { createTileSkinResolver } from '../art/TileStyleRegistry.js';
 
 export class BoardManager {
   constructor(scene,config,bounds,onSelect,styleId='illustrated'){this.scene=scene;this.config=config;this.bounds=bounds;this.onSelect=onSelect;this.tiles=[];this.locked=false;this.revision=0;this.actionToken=0;const query=new URLSearchParams(location.search);this.debugEnabled=import.meta.env.DEV&&query.get('debugGrid')==='1';this.level=generateLevel(config);this.skinResolver=createTileSkinResolver(styleId,this.level.tiles.map(tile=>tile.typeId));this.projection=projectBoard(this.level.tiles,bounds);this.pointerDebug=null;}
   create(){
     this.scene.input.topOnly=true;this.level.tiles.forEach((data,index)=>{const p=tileScreenPosition(data,this.projection);Object.assign(data,{homeX:p.x,homeY:p.y,alive:true,blockedBy:[],blockReason:'selectable'});const tile=new Tile(this.scene,data,p.x,p.y,this.projection,this.config.materialId,this.skinResolver).setDepth(this.depthFor(data));tile.flipIn(Math.min(260,index*6));this.tiles.push(tile);});
-    this.pointerHandler=pointer=>this.routePointer(pointer);this.scene.input.on('pointerdown',this.pointerHandler);this.scene.events.once('shutdown',()=>this.scene.input.off('pointerdown',this.pointerHandler));
+    this.pointerHandler=pointer=>this.routePointer(pointer);this.scene.input.on('pointerdown',this.pointerHandler);this.scene.events.once('shutdown',()=>{this.actionToken++;this.revision++;this.locked=true;this.scene.input.off('pointerdown',this.pointerHandler);});
     this.refreshBlocking();if(this.debugEnabled)this.createDebugOverlay();return this;
   }
   routePointer(pointer){
@@ -38,7 +38,7 @@ export class BoardManager {
   async hint(trayEntries=[]){
     const token=++this.actionToken,revision=this.revision,logical=this.activeTiles.map(tile=>({...tile.tileData,alive:true}));
     const activeIds=new Set(logical.map(tile=>tile.id)),known=this.level.solution.filter(id=>activeIds.has(id));
-    const plan=await defer(()=>planHint(logical,trayEntries,24000,known));
+    const plan=await planHintAsync(logical,trayEntries,24000,known,{isCancelled:()=>token!==this.actionToken||revision!==this.revision});
     if(token!==this.actionToken||revision!==this.revision)return{ok:false,reason:'stale'};
     if(!plan.ok)return plan;
     const tile=this.tiles.find(candidate=>candidate.tileData.id===plan.tileId);
@@ -48,7 +48,7 @@ export class BoardManager {
   async shuffle(trayEntries=[]){
     const token=++this.actionToken,revision=this.revision,active=this.activeTiles,old=active.map(tile=>tile.typeId),logical=active.map(tile=>({...tile.tileData,alive:true}));
     const candidates=Array.from({length:10},()=>Phaser.Utils.Array.Shuffle([...old]));
-    const plan=await defer(()=>planShuffle(logical,trayEntries,candidates,24000));
+    const plan=await planShuffleAsync(logical,trayEntries,candidates,24000,{isCancelled:()=>token!==this.actionToken||revision!==this.revision});
     if(token!==this.actionToken||revision!==this.revision)return{ok:false,reason:'stale'};
     if(!plan.ok)return plan;
     this.locked=true;await this.animateShuffle(active,old,plan.assignment,token);
@@ -69,5 +69,3 @@ export class BoardManager {
   get activeTiles(){return this.tiles.filter(tile=>tile.active&&!tile.isCollected&&tile.tileData.alive!==false);}
   get selectableTiles(){return this.activeTiles.filter(tile=>!tile.isBlocked&&tile.input?.enabled);}
 }
-
-function defer(work){return new Promise(resolve=>setTimeout(()=>resolve(work()),0));}

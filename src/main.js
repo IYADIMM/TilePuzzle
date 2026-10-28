@@ -12,6 +12,7 @@ import { LeaderboardScene } from './scenes/LeaderboardScene.js';
 import { ShopScene } from './scenes/ShopScene.js';
 import { AudioSettingsScene } from './scenes/AudioSettingsScene.js';
 import { TileStyleGalleryScene } from './scenes/TileStyleGalleryScene.js';
+import { installNativeAppBridge } from './systems/NativeAppBridge.js';
 
 const config = {
   type: Phaser.AUTO,
@@ -27,7 +28,13 @@ const config = {
     autoCenter: Phaser.Scale.CENTER_BOTH
   },
   input: { activePointers: 2 },
-  scene: [BootScene, MenuScene, LevelSelectScene, CollectionScene, AchievementsScene, LeaderboardScene, ShopScene, GameScene, RewardScene, ...(import.meta.env.DEV?[IconSheetScene]:[]), AudioSettingsScene, TileStyleGalleryScene]
+  scene: [
+    BootScene, MenuScene, LevelSelectScene, CollectionScene, AchievementsScene,
+    LeaderboardScene, GameScene, RewardScene,
+    ...(import.meta.env.DEV ? [ShopScene, IconSheetScene] : []),
+    AudioSettingsScene, TileStyleGalleryScene
+  ]
 };
 
 window.jadeGame = new Phaser.Game(config);
+installNativeAppBridge(window.jadeGame);

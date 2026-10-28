@@ -6,6 +6,12 @@
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
+    "build:metadata": "node scripts/write-build-metadata.mjs",
+    "android:branding": "node scripts/generate-android-branding.mjs",
+    "android:sync": "npm run android:branding && npm run build:metadata && npm run build && cap sync android",
+    "android:apk": "npm run android:sync && cd android && gradlew.bat assembleDebug",
+    "android:release:unsigned": "npm run android:sync && cd android && gradlew.bat assembleRelease bundleRelease && cd .. && node scripts/collect-android-artifacts.mjs --unsigned",
+    "android:release:signed": "node scripts/assert-android-release.mjs && npm run android:sync && cd android && gradlew.bat assembleRelease bundleRelease && cd .. && node scripts/collect-android-artifacts.mjs --signed",
     "preview": "vite preview --host 0.0.0.0",
     "test": "node --test tests/*.test.js",
     "qa:gameplay": "node scripts/gameplay-qa.mjs",
@@ -30,10 +36,18 @@
     "qa:release": "npm run qa:acceptance && npm run qa:soak"
   },
   "dependencies": {
+    "@capacitor/android": "^8.5.3",
+    "@capacitor/app": "^8.1.2",
+    "@capacitor/core": "^8.5.3",
+    "@fontsource/cairo": "^5.3.0",
+    "@fontsource/fredoka": "^5.3.0",
+    "@fontsource/poppins": "^5.3.0",
     "phaser": "^3.90.0"
   },
   "devDependencies": {
+    "@capacitor/cli": "^8.5.3",
     "playwright-core": "^1.64.1",
+    "sharp": "^0.35.5",
     "vite": "^7.1.12"
   }
 }

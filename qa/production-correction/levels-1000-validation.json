@@ -1,12 +1,21 @@
 {
-  "generatedAt": "2026-10-24T04:15:57.680Z",
-  "generationVersion": 4,
+  "generatedAt": "2026-10-28T05:11:40.884Z",
+  "generationVersion": 5,
   "matchSize": 2,
   "levels": 1000,
   "uniqueFingerprints": 1000,
+  "uniqueTopologyFingerprints": 999,
   "duplicateFingerprints": [],
+  "topologyDuplicateCount": 1,
+  "topologyDuplicateSample": [
+    {
+      "level": 77,
+      "duplicateOf": 51,
+      "topologyHash": "1e067b38124b044d119a588f4f97b8c15f34fb700a61c75701a3499a1a23a55f"
+    }
+  ],
   "fallbackCount": 0,
-  "elapsedMs": 8381,
+  "elapsedMs": 13789,
   "shapeCounts": {
     "tower": 83,
     "diamond": 83,
@@ -215,31 +224,31 @@
     {
       "level": 25,
       "solved": true,
-      "nodes": 39,
+      "nodes": 37,
       "source": "search"
     },
     {
       "level": 100,
       "solved": true,
-      "nodes": 45,
+      "nodes": 39,
       "source": "search"
     },
     {
       "level": 241,
       "solved": true,
-      "nodes": 61,
+      "nodes": 43,
       "source": "search"
     },
     {
       "level": 500,
       "solved": true,
-      "nodes": 61,
+      "nodes": 49,
       "source": "search"
     },
     {
       "level": 750,
       "solved": true,
-      "nodes": 61,
+      "nodes": 55,
       "source": "search"
     },
     {
@@ -258,50 +267,51 @@
   "difficultySummary": [
     {
       "declared": 1,
-      "levels": 6,
+      "levels": 200,
       "tileCountMin": 36,
-      "tileCountMax": 36,
-      "initialSelectableMin": 8,
-      "initialSelectableMax": 14,
-      "initialSelectableAverage": 11
+      "tileCountMax": 40,
+      "initialSelectableMin": 5,
+      "initialSelectableMax": 15,
+      "initialSelectableAverage": 10.23
     },
     {
       "declared": 2,
-      "levels": 6,
-      "tileCountMin": 36,
-      "tileCountMax": 36,
-      "initialSelectableMin": 7,
-      "initialSelectableMax": 10,
-      "initialSelectableAverage": 8
+      "levels": 200,
+      "tileCountMin": 40,
+      "tileCountMax": 44,
+      "initialSelectableMin": 5,
+      "initialSelectableMax": 14,
+      "initialSelectableAverage": 8.2
     },
     {
       "declared": 3,
-      "levels": 6,
-      "tileCountMin": 36,
-      "tileCountMax": 36,
-      "initialSelectableMin": 5,
-      "initialSelectableMax": 10,
-      "initialSelectableAverage": 6
+      "levels": 200,
+      "tileCountMin": 46,
+      "tileCountMax": 50,
+      "initialSelectableMin": 4,
+      "initialSelectableMax": 13,
+      "initialSelectableAverage": 8.15
     },
     {
       "declared": 4,
-      "levels": 6,
-      "tileCountMin": 36,
-      "tileCountMax": 38,
-      "initialSelectableMin": 5,
-      "initialSelectableMax": 9,
-      "initialSelectableAverage": 6.5
+      "levels": 200,
+      "tileCountMin": 50,
+      "tileCountMax": 54,
+      "initialSelectableMin": 4,
+      "initialSelectableMax": 11,
+      "initialSelectableAverage": 6.71
     },
     {
       "declared": 5,
-      "levels": 976,
-      "tileCountMin": 38,
+      "levels": 200,
+      "tileCountMin": 56,
       "tileCountMax": 60,
       "initialSelectableMin": 4,
-      "initialSelectableMax": 10,
-      "initialSelectableAverage": 6.4
+      "initialSelectableMax": 11,
+      "initialSelectableAverage": 7.48
     }
   ],
+  "v4ManifestSha256": "e1345241c149196542c844a8576b43d2e16f80dbaacf7c4e863698207d1778b5",
   "failures": [],
   "passed": true
 }

@@ -34,7 +34,8 @@ export class AudioSettingsScene extends Phaser.Scene {
     addIconButton(this,154,y+18,'−',()=>onChange(-.1),'Decrease volume');addIconButton(this,386,y+18,'+',()=>onChange(.1),'Increase volume');
     const width=150,filled=Math.max(8,width*value);this.add.graphics().fillStyle(0x020d0a,.8).fillRoundedRect(195,y+5,width,25,12).lineStyle(2,0xd99c31).strokeRoundedRect(195,y+5,width,25,12).fillGradientStyle(0xffed94,0xf4bd3d,0xc66f17,0x9e4b0e,1).fillRoundedRect(200,y+10,filled-10,15,7);
   }
-  change(mutator){mutator(this.save);this.save.prefs.audio=normalizeAudioPreferences(this.save.prefs.audio);SaveManager.save(this.save);this.audio?.setPreferences(this.save.prefs.audio,{persist:false});this.scene.restart({hostKey:this.hostKey});}
+  change(mutator){const before=JSON.parse(JSON.stringify(this.save));mutator(this.save);this.save.prefs.audio=normalizeAudioPreferences(this.save.prefs.audio);const result=SaveManager.save(this.save);if(!result.ok){this.save=before;this.showSaveError();return false;}this.audio?.setPreferences(this.save.prefs.audio,{persist:false});this.scene.restart({hostKey:this.hostKey});return true;}
+  showSaveError(){this.saveError?.destroy();this.saveError=this.add.text(270,829,'COULD NOT SAVE • SETTINGS UNCHANGED',{...TEXT.hud,fontSize:'11px',color:'#ff9a80',stroke:'#2f0804',strokeThickness:3}).setOrigin(.5).setDepth(50);}
   close(){const host=this.scene.get(this.hostKey);if(this.hostKey==='Game')host?.board?.setLocked(false);this.scene.stop();}
 }
 

@@ -1,3 +1,13 @@
+@import "@fontsource/fredoka/latin-500.css";
+@import "@fontsource/fredoka/latin-600.css";
+@import "@fontsource/fredoka/latin-700.css";
+@import "@fontsource/poppins/latin-500.css";
+@import "@fontsource/poppins/latin-600.css";
+@import "@fontsource/poppins/latin-700.css";
+@import "@fontsource/cairo/latin-600.css";
+@import "@fontsource/cairo/latin-700.css";
+@import "@fontsource/cairo/latin-800.css";
+
 :root {
   font-family: "Fredoka", "Poppins", "Cairo", sans-serif;
   color: #fff8dd;

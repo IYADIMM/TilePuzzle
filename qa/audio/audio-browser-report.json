@@ -30,13 +30,13 @@
   },
   "synchronized": {
     "currentTrack": "gameplay",
-    "tileSelect": 4,
-    "tilePlaceA": 3,
+    "tileSelect": 5,
+    "tilePlaceA": 4,
     "tilePlaceB": 1,
     "tileMatch": 1,
     "combo": 1,
     "tileBlocked": 1,
-    "booster": 1,
+    "booster": 0,
     "shuffle": 1,
     "undo": 1,
     "attempts": {
@@ -64,6 +64,12 @@
     "variantKeys": {
       "tileSelect": [
         "audio:tile-select-b",
+        "audio:tile-select-c",
+        "audio:tile-select",
+        "audio:tile-select-c",
+        "audio:tile-select-b",
+        "audio:tile-select",
+        "audio:tile-select-b",
         "audio:tile-select",
         "audio:tile-select-c",
         "audio:tile-select-b",
@@ -75,33 +81,27 @@
         "audio:tile-select",
         "audio:tile-select-b",
         "audio:tile-select-c",
-        "audio:tile-select",
-        "audio:tile-select-c",
-        "audio:tile-select-b",
-        "audio:tile-select",
-        "audio:tile-select-b",
-        "audio:tile-select-c",
         "audio:tile-select-b",
         "audio:tile-select-c",
         "audio:tile-select",
         "audio:tile-select-b",
         "audio:tile-select",
         "audio:tile-select-c",
-        "audio:tile-select-b",
-        "audio:tile-select",
-        "audio:tile-select-c",
         "audio:tile-select",
         "audio:tile-select-c",
         "audio:tile-select-b",
+        "audio:tile-select",
+        "audio:tile-select-b",
+        "audio:tile-select-c",
+        "audio:tile-select",
+        "audio:tile-select-b",
         "audio:tile-select-c",
         "audio:tile-select-b",
-        "audio:tile-select",
         "audio:tile-select-c",
-        "audio:tile-select",
-        "audio:tile-select-b"
+        "audio:tile-select"
       ],
       "levelComplete": [
-        "audio:level-complete-b"
+        "audio:level-complete"
       ]
     }
   },

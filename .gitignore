@@ -10,3 +10,15 @@ Tile_Game_Codex_Inputs_READY/
 Premium_Themed_Tile_Game_Codex_Prompt.md
 qa/chrome-profile/
 qa/edge-profile/
+public/generated/
+artifacts/android/*.apk
+artifacts/android/*.aab
+artifacts/android/*.idsig
+*.jks
+*.keystore
+*.p12
+*.pfx
+android/keystore.properties
+.env
+.env.*
+!.env.example

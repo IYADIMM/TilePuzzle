@@ -11,12 +11,12 @@
       "comparisonFile": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\premium-art\\fruit-direction-vs-runtime.png",
       "runtime": {
         "typeIds": [
-          "pineapple",
-          "grapes",
           "strawberry",
+          "orange",
+          "grapes",
           "watermelon",
           "cherries",
-          "orange"
+          "pineapple"
         ],
         "premiumBodies": 36,
         "premiumIcons": 36,
@@ -36,11 +36,11 @@
       "comparisonFile": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\premium-art\\cars-direction-vs-runtime.png",
       "runtime": {
         "typeIds": [
+          "race-car",
+          "taxi",
           "convertible",
           "suv",
-          "race-car",
           "vintage-car",
-          "taxi",
           "sports-car"
         ],
         "premiumBodies": 36,
@@ -61,11 +61,11 @@
       "comparisonFile": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\premium-art\\sports-direction-vs-runtime.png",
       "runtime": {
         "typeIds": [
-          "tennis",
           "basketball",
-          "football",
-          "soccer",
           "trophy",
+          "football",
+          "tennis",
+          "soccer",
           "baseball"
         ],
         "premiumBodies": 36,
@@ -86,10 +86,10 @@
       "comparisonFile": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\premium-art\\auto-parts-direction-vs-runtime.png",
       "runtime": {
         "typeIds": [
-          "gear",
+          "tire",
           "spark-plug",
           "piston",
-          "tire",
+          "gear",
           "steering-wheel",
           "brake-disc"
         ],
@@ -111,11 +111,11 @@
       "comparisonFile": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\premium-art\\wild-animals-direction-vs-runtime.png",
       "runtime": {
         "typeIds": [
-          "tiger",
-          "elephant",
           "lion",
-          "giraffe",
           "panda",
+          "tiger",
+          "giraffe",
+          "elephant",
           "zebra"
         ],
         "premiumBodies": 36,
@@ -137,11 +137,11 @@
       "runtime": {
         "typeIds": [
           "parrot",
-          "rabbit",
-          "hamster",
-          "goldfish",
+          "kitten",
           "puppy",
-          "kitten"
+          "rabbit",
+          "goldfish",
+          "hamster"
         ],
         "premiumBodies": 36,
         "premiumIcons": 36,
@@ -160,12 +160,12 @@
       "comparisonFile": null,
       "runtime": {
         "typeIds": [
-          "cake",
-          "macaron",
-          "cupcake",
           "cookie",
+          "cupcake",
           "ice-cream",
-          "donut"
+          "macaron",
+          "donut",
+          "cake"
         ],
         "premiumBodies": 36,
         "premiumIcons": 36,
@@ -184,12 +184,12 @@
       "comparisonFile": null,
       "runtime": {
         "typeIds": [
-          "sunflower",
           "rose",
-          "blossom",
-          "lavender",
+          "sunflower",
           "tulip",
-          "daisy"
+          "blossom",
+          "daisy",
+          "lavender"
         ],
         "premiumBodies": 36,
         "premiumIcons": 36,
@@ -208,12 +208,12 @@
       "comparisonFile": null,
       "runtime": {
         "typeIds": [
-          "dolphin",
           "tropical-fish",
-          "seahorse",
           "octopus",
-          "turtle",
-          "starfish"
+          "starfish",
+          "dolphin",
+          "seahorse",
+          "turtle"
         ],
         "premiumBodies": 36,
         "premiumIcons": 36,
@@ -232,12 +232,12 @@
       "comparisonFile": null,
       "runtime": {
         "typeIds": [
-          "guitar",
-          "drum",
-          "microphone",
-          "piano",
+          "saxophone",
           "headphones",
-          "saxophone"
+          "piano",
+          "microphone",
+          "guitar",
+          "drum"
         ],
         "premiumBodies": 36,
         "premiumIcons": 36,
@@ -257,11 +257,11 @@
       "runtime": {
         "typeIds": [
           "suitcase",
-          "passport",
           "airplane",
-          "camera",
           "compass",
-          "globe"
+          "camera",
+          "globe",
+          "passport"
         ],
         "premiumBodies": 36,
         "premiumIcons": 36,
@@ -280,12 +280,12 @@
       "comparisonFile": null,
       "runtime": {
         "typeIds": [
-          "rocket",
-          "satellite",
-          "moon",
-          "comet",
           "planet",
-          "astronaut"
+          "comet",
+          "astronaut",
+          "satellite",
+          "rocket",
+          "moon"
         ],
         "premiumBodies": 36,
         "premiumIcons": 36,

@@ -1,0 +1,38 @@
+{
+  "generatedAt": "2026-10-28T05:40:51.009Z",
+  "source": {
+    "appId": "com.iyadimm.jadegardentiles",
+    "versionCode": 1,
+    "versionName": "1.0.0-rc.1",
+    "gitSha": "9d93f0e5c44655c8af79256cbd45173b7a00bc18",
+    "gitShortSha": "9d93f0e5c446",
+    "dirty": true,
+    "buildTimestamp": "2026-10-24T04:24:37.000Z",
+    "releaseStatus": "NOT_RELEASE_CANDIDATE_DIRTY_TREE",
+    "generatedBy": "scripts/write-build-metadata.mjs"
+  },
+  "requestedSigning": "unsigned",
+  "ownerApprovalRequired": true,
+  "artifacts": [
+    {
+      "kind": "apk",
+      "path": "artifacts/android/Jade-Garden-Tiles-1.0.0-rc.1-1-9d93f0e5c446-unsigned.apk",
+      "size": 23265991,
+      "sha256": "3a7b8bee7a9f2cc57a7d2fdea13089c172957076f75ce030ef34b0c3f952dc22",
+      "signing": {
+        "expected": "unsigned",
+        "verified": true
+      }
+    },
+    {
+      "kind": "aab",
+      "path": "artifacts/android/Jade-Garden-Tiles-1.0.0-rc.1-1-9d93f0e5c446-unsigned.aab",
+      "size": 22604663,
+      "sha256": "0799b05c1d4c6a66a4fae09404ac13ef6bde77c2b96789dd057f38d89c267b3a",
+      "signing": {
+        "expected": "unsigned",
+        "verified": true
+      }
+    }
+  ]
+}

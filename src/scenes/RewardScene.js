@@ -8,10 +8,12 @@ import { LEVEL_COUNT } from '../data/levels.js';
 import { PREMIUM_MATERIALS } from '../art/PremiumAssetManifest.js';
 import { createTileSkinResolver } from '../art/TileStyleRegistry.js';
 import { SaveManager } from '../systems/SaveManager.js';
+import { AssetFactory } from '../art/AssetFactory.js';
 
 export class RewardScene extends Phaser.Scene {
   constructor(){super('Reward');}
   init(data){this.dataIn=data;}
+  preload(){if((this.dataIn?.tileStyle||SaveManager.load().prefs.tileStyle)==='classic')AssetFactory.preloadClassic(this);}
   create(){
     const d=this.dataIn,theme=getThemeForLevel(d.level),style=d.tileStyle||SaveManager.load().prefs.tileStyle,skin=createTileSkinResolver(style,theme.iconIds);prepareBackdrop(this,null);const audio=bindSceneAudio(this,null);this.time.delayedCall(950,()=>{if(this.sys.isActive())audio?.play('star_earned');});
     const glow=this.add.circle(270,168,142,0xf7d66a,.1);this.tweens.add({targets:glow,scale:1.13,alpha:.24,duration:1100,yoyo:true,repeat:-1,ease:'Sine.InOut'});

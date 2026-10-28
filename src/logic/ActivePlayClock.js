@@ -20,8 +20,9 @@ export class ActivePlayClock {
   }
 
   resume(reason = 'manual') {
-    this.pauseReasons.delete(reason);
-    if (!this.pauseReasons.size) this.segmentStartedAt = this.now();
+    const wasPaused = this.pauseReasons.size > 0;
+    const removed = this.pauseReasons.delete(reason);
+    if (wasPaused && removed && !this.pauseReasons.size) this.segmentStartedAt = this.now();
     return this.elapsedMs;
   }
 

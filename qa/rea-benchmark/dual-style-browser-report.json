@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-23T23:16:03.500Z",
+  "generatedAt": "2026-10-28T05:20:52.471Z",
   "passed": true,
   "checks": {
     "galleryCards": true,
@@ -61,23 +61,23 @@
     },
     "pointer-center": {
       "accepted": true,
-      "ackMs": 67.17
+      "ackMs": 69.62
     },
     "pointer-side": {
       "accepted": true,
-      "ackMs": 84.37
+      "ackMs": 116.26
     },
     "pointer-lower": {
       "accepted": true,
-      "ackMs": 62.16
+      "ackMs": 61.82
     },
     "liveSwitch": {
       "sameLogical": true,
       "before": {
         "tray": [
           {
-            "visualId": "L1-T26",
-            "typeId": "orange"
+            "visualId": "L1-T23",
+            "typeId": "pineapple"
           }
         ],
         "remaining": 35,
@@ -86,8 +86,8 @@
       "after": {
         "tray": [
           {
-            "visualId": "L1-T26",
-            "typeId": "orange"
+            "visualId": "L1-T23",
+            "typeId": "pineapple"
           }
         ],
         "remaining": 35,

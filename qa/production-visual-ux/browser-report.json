@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-10-23T19:58:05.158Z",
+  "generatedAt": "2026-10-28T05:19:51.924Z",
   "passed": true,
   "visualAcceptance": "PENDING_USER_REVIEW",
   "commercialReadiness": "INTERNAL_ALPHA",
   "performance": {
     "fps": 60,
-    "averageFrameMs": 16.67,
+    "averageFrameMs": 16.66,
     "maxFrameMs": 16.9,
-    "textureCount": 197,
+    "textureCount": 104,
     "canvas": [
       390,
       844
@@ -17,35 +17,35 @@
     "count": 36,
     "first": [
       {
-        "id": "L1-T26",
-        "x": 231,
-        "y": 238
+        "id": "L1-T29",
+        "x": 248,
+        "y": 214
       },
       {
-        "id": "L1-T31",
-        "x": 96,
+        "id": "L1-T33",
+        "x": 180,
+        "y": 256
+      },
+      {
+        "id": "L1-T22",
+        "x": 180,
         "y": 298
-      },
-      {
-        "id": "L1-T28",
-        "x": 163,
-        "y": 323
       }
     ],
     "last": [
       {
-        "id": "L1-T1",
-        "x": 58,
+        "id": "L1-T2",
+        "x": 210,
         "y": 520
       },
       {
-        "id": "L1-T11",
-        "x": 193,
-        "y": 393
+        "id": "L1-T6",
+        "x": 210,
+        "y": 478
       },
       {
-        "id": "L1-T8",
-        "x": 193,
+        "id": "L1-T16",
+        "x": 277,
         "y": 520
       }
     ]
@@ -66,7 +66,7 @@
     "saved": {
       "score": 34200,
       "stars": 3,
-      "bestTime": 7
+      "bestTime": 9
     }
   },
   "captures": [
@@ -82,7 +82,7 @@
         112
       ],
       "span": [
-        374,
+        240,
         410
       ],
       "selectable": 13
@@ -116,10 +116,10 @@
         112
       ],
       "span": [
-        374,
+        334,
         410
       ],
-      "selectable": 13
+      "selectable": 11
     },
     {
       "name": "gameplay-auto-parts-390x844",
@@ -134,9 +134,9 @@
       ],
       "span": [
         374,
-        401
+        410
       ],
-      "selectable": 9
+      "selectable": 14
     },
     {
       "name": "gameplay-wild-animals-390x844",
@@ -150,10 +150,10 @@
         112
       ],
       "span": [
-        374,
-        401
+        321,
+        410
       ],
-      "selectable": 10
+      "selectable": 13
     },
     {
       "name": "gameplay-pets-390x844",
@@ -167,10 +167,10 @@
         112
       ],
       "span": [
-        374,
-        401
+        228,
+        410
       ],
-      "selectable": 11
+      "selectable": 13
     },
     {
       "name": "gameplay-desserts-390x844",
@@ -184,10 +184,10 @@
         112
       ],
       "span": [
-        374,
-        401
+        321,
+        410
       ],
-      "selectable": 9
+      "selectable": 13
     },
     {
       "name": "gameplay-flowers-390x844",
@@ -202,9 +202,9 @@
       ],
       "span": [
         374,
-        401
+        410
       ],
-      "selectable": 8
+      "selectable": 14
     },
     {
       "name": "gameplay-ocean-life-390x844",
@@ -221,7 +221,7 @@
         374,
         401
       ],
-      "selectable": 11
+      "selectable": 14
     },
     {
       "name": "gameplay-music-390x844",
@@ -236,9 +236,9 @@
       ],
       "span": [
         374,
-        401
+        390
       ],
-      "selectable": 13
+      "selectable": 12
     },
     {
       "name": "gameplay-travel-390x844",
@@ -253,7 +253,7 @@
       ],
       "span": [
         374,
-        401
+        410
       ],
       "selectable": 10
     },
@@ -269,8 +269,8 @@
         112
       ],
       "span": [
-        374,
-        401
+        228,
+        410
       ],
       "selectable": 13
     },
@@ -342,7 +342,7 @@
       "saved": {
         "score": 34200,
         "stars": 3,
-        "bestTime": 7
+        "bestTime": 9
       }
     }
   ],

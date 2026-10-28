@@ -2,8 +2,8 @@
   "passed": true,
   "summary": {
     "sampledFacePoints": 9,
-    "verifiedVisiblePoints": 7,
-    "occludedPoints": 2,
+    "verifiedVisiblePoints": 8,
+    "occludedPoints": 1,
     "expandedRenderedEdges": 4,
     "responsiveSizes": 4,
     "blockedPointerEvidence": true
@@ -11,7 +11,7 @@
   "checks": [
     {
       "kind": "face-sample",
-      "id": "L1-T26",
+      "id": "L1-T22",
       "offsetX": -0.32,
       "offsetY": -0.32,
       "visiblyTargeted": true,
@@ -20,7 +20,7 @@
     },
     {
       "kind": "face-sample",
-      "id": "L1-T26",
+      "id": "L1-T22",
       "offsetX": 0,
       "offsetY": -0.32,
       "visiblyTargeted": true,
@@ -29,52 +29,52 @@
     },
     {
       "kind": "face-sample",
-      "id": "L1-T26",
+      "id": "L1-T22",
       "offsetX": 0.32,
       "offsetY": -0.32,
+      "visiblyTargeted": true,
+      "occludedBy": null,
+      "accepted": true
+    },
+    {
+      "kind": "face-sample",
+      "id": "L1-T25",
+      "offsetX": -0.32,
+      "offsetY": 0,
+      "visiblyTargeted": true,
+      "occludedBy": null,
+      "accepted": true
+    },
+    {
+      "kind": "face-sample",
+      "id": "L1-T25",
+      "offsetX": 0,
+      "offsetY": 0,
+      "visiblyTargeted": true,
+      "occludedBy": null,
+      "accepted": true
+    },
+    {
+      "kind": "face-sample",
+      "id": "L1-T25",
+      "offsetX": 0.32,
+      "offsetY": 0,
+      "visiblyTargeted": true,
+      "occludedBy": null,
+      "accepted": true
+    },
+    {
+      "kind": "face-sample",
+      "id": "L1-T25",
+      "offsetX": -0.32,
+      "offsetY": 0.32,
       "visiblyTargeted": false,
-      "occludedBy": "L1-T20",
+      "occludedBy": "L1-T13",
       "accepted": null
     },
     {
       "kind": "face-sample",
-      "id": "L1-T26",
-      "offsetX": -0.32,
-      "offsetY": 0,
-      "visiblyTargeted": true,
-      "occludedBy": null,
-      "accepted": true
-    },
-    {
-      "kind": "face-sample",
-      "id": "L1-T26",
-      "offsetX": 0,
-      "offsetY": 0,
-      "visiblyTargeted": true,
-      "occludedBy": null,
-      "accepted": true
-    },
-    {
-      "kind": "face-sample",
-      "id": "L1-T26",
-      "offsetX": 0.32,
-      "offsetY": 0,
-      "visiblyTargeted": true,
-      "occludedBy": null,
-      "accepted": true
-    },
-    {
-      "kind": "face-sample",
-      "id": "L1-T26",
-      "offsetX": -0.32,
-      "offsetY": 0.32,
-      "visiblyTargeted": false,
-      "occludedBy": "L1-T12",
-      "accepted": null
-    },
-    {
-      "kind": "face-sample",
-      "id": "L1-T26",
+      "id": "L1-T25",
       "offsetX": 0,
       "offsetY": 0.32,
       "visiblyTargeted": true,
@@ -83,7 +83,7 @@
     },
     {
       "kind": "face-sample",
-      "id": "L1-T26",
+      "id": "L1-T25",
       "offsetX": 0.32,
       "offsetY": 0.32,
       "visiblyTargeted": true,
@@ -92,28 +92,28 @@
     },
     {
       "kind": "expanded-edge-sample",
-      "id": "L1-T8",
+      "id": "L1-T25",
       "offsetX": -0.54,
       "offsetY": 0,
       "accepted": true
     },
     {
       "kind": "expanded-edge-sample",
-      "id": "L1-T8",
+      "id": "L1-T28",
       "offsetX": 0.54,
       "offsetY": 0,
       "accepted": true
     },
     {
       "kind": "expanded-edge-sample",
-      "id": "L1-T6",
+      "id": "L1-T22",
       "offsetX": 0,
       "offsetY": -0.54,
       "accepted": true
     },
     {
       "kind": "expanded-edge-sample",
-      "id": "L1-T8",
+      "id": "L1-T25",
       "offsetX": 0,
       "offsetY": 0.54,
       "accepted": true
@@ -124,7 +124,7 @@
         "width": 360,
         "height": 640
       },
-      "id": "L1-T8",
+      "id": "L1-T28",
       "accepted": true,
       "screenshot": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\audit-remediation\\pointer-360x640.png"
     },
@@ -134,7 +134,7 @@
         "width": 390,
         "height": 844
       },
-      "id": "L1-T8",
+      "id": "L1-T28",
       "accepted": true,
       "screenshot": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\audit-remediation\\pointer-390x844.png"
     },
@@ -144,7 +144,7 @@
         "width": 430,
         "height": 932
       },
-      "id": "L1-T8",
+      "id": "L1-T28",
       "accepted": true,
       "screenshot": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\audit-remediation\\pointer-430x932.png"
     },
@@ -154,17 +154,17 @@
         "width": 768,
         "height": 1024
       },
-      "id": "L1-T8",
+      "id": "L1-T28",
       "accepted": true,
       "screenshot": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\audit-remediation\\pointer-768x1024.png"
     },
     {
       "kind": "blocked-pointer",
       "level": 1,
-      "id": "L1-T1",
+      "id": "L1-T2",
       "reason": "top-blocked",
       "offsetX": -0.42,
-      "offsetY": -0.35,
+      "offsetY": 0,
       "rejected": true,
       "screenshot": "C:\\Users\\Lenovo\\OneDrive\\Documents\\ChatGPT\\Tiles\\qa\\audit-remediation\\blocked-pointer-debug-390x844.png"
     }

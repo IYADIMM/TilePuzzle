@@ -1,0 +1,12 @@
+{
+  "appId": "com.iyadimm.jadegardentiles",
+  "appName": "Jade Garden Tiles",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": false,
+    "backgroundColor": "#062e24"
+  }
+}

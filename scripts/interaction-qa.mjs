@@ -4,7 +4,7 @@ import { launchQaBrowser,startQaServer,tilePoint,legalTilePoint } from './qa-hel
 
 const root=process.cwd(),out=path.join(root,'qa','audit-remediation'),port=4192;
 await mkdir(out,{recursive:true});
-const{command,url}=await startQaServer(root,port),browser=await launchQaBrowser(),checks=[],errors=[];
+const server=process.env.QA_URL?null:await startQaServer(root,port),command=server?.command,url=process.env.QA_URL||server.url,browser=await launchQaBrowser(),checks=[],errors=[];
 async function writeReport(file,data){for(let attempt=0;attempt<6;attempt++){try{return await writeFile(file,data);}catch(error){if(attempt===5)throw error;await new Promise(resolve=>setTimeout(resolve,250*(attempt+1)));}}}
 
 async function open(viewport={width:390,height:844},level=1){
@@ -78,4 +78,4 @@ try{
   const passed=visibleSamples.length>=4&&visibleSamples.every(check=>check.accepted)&&expandedSamples.length===4&&expandedSamples.every(check=>check.accepted)&&checks.filter(check=>check.kind==='responsive-pointer').every(check=>check.accepted)&&Boolean(blockedEvidence?.rejected)&&errors.length===0;
   const report={passed,summary:{sampledFacePoints:faceSamples.length,verifiedVisiblePoints:visibleSamples.length,occludedPoints:faceSamples.length-visibleSamples.length,expandedRenderedEdges:expandedSamples.filter(check=>check.accepted).length,responsiveSizes:4,blockedPointerEvidence:Boolean(blockedEvidence)},checks,errors};
   await writeReport(path.join(root,'qa','final-acceptance','interaction-report.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));if(!passed)process.exitCode=1;
-}finally{await browser.close();command.kill();}
+}finally{await browser.close();command?.kill();}

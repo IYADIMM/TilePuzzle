@@ -75,8 +75,24 @@ export function solveLevel(tiles, initialTray = [], knownSolution = [], maxNodes
   return { solved: Boolean(sequence), sequence: sequence || [], nodes, source: 'search', capacity: TRAY_CAPACITY };
 }
 
+export async function solveLevelAsync(tiles,initialTray=[],knownSolution=[],maxNodes=50000,{isCancelled=()=>false,yieldEvery=128}={}){
+  if(knownSolution.length){const known=validateSolution(tiles,knownSolution,initialTray);if(known.solved)return{solved:true,sequence:[...knownSolution],nodes:1,source:'known'};}
+  const byId=new Map(tiles.map(tile=>[tile.id,tile])),initialAlive=new Set(tiles.map(tile=>tile.id)),memo=new Set();let nodes=0,cancelled=false;
+  async function dfs(alive,tray,sequence){
+    if(isCancelled()){cancelled=true;return null;}if(++nodes>maxNodes)return null;
+    if(nodes%yieldEvery===0){await yieldToBrowser();if(isCancelled()){cancelled=true;return null;}}
+    if(!alive.size)return tray.entries.length===0?sequence:null;
+    const key=`${[...alive].sort().join(',')}|${tray.entries.map(entry=>entry.typeId).sort().join(',')}`;if(memo.has(key))return null;memo.add(key);
+    const blockers=computeBlockedBy(tiles,alive),exposed=[...alive].map(id=>byId.get(id)).filter(tile=>!(blockers.get(tile.id)?.length));exposed.sort((a,b)=>priority(b,tray)-priority(a,tray)||b.layer-a.layer||a.id.localeCompare(b.id));
+    for(const tile of exposed){const next=reduceTray(tray,{type:'INSERT',tile:{visualId:tile.id,typeId:tile.typeId}});if(!next.accepted||next.full)continue;const nextAlive=new Set(alive);nextAlive.delete(tile.id);const answer=await dfs(nextAlive,next.state,[...sequence,tile.id]);if(answer)return answer;if(cancelled)return null;}
+    return null;
+  }
+  const sequence=await dfs(initialAlive,createTrayState(initialTray),[]);return{solved:Boolean(sequence),sequence:sequence||[],nodes,source:'search-async',capacity:TRAY_CAPACITY,cancelled};
+}
+
 export function projectRect(tile) {
   return logicalFaceRect(tile);
 }
 function priority(tile, tray) { return tray.entries.filter(entry => entry.typeId === tile.typeId).length * 100 + tile.layer * 10; }
+function yieldToBrowser(){return new Promise(resolve=>{if(typeof requestAnimationFrame==='function')requestAnimationFrame(()=>resolve());else setTimeout(resolve,0);});}
 

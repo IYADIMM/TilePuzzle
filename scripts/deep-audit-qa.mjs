@@ -1,11 +1,10 @@
-import { chromium } from 'playwright-core';
 import { mkdir,writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { legalTilePoint,startQaServer,worldPoint } from './qa-helpers.mjs';
+import { launchQaBrowser,legalTilePoint,startQaServer,worldPoint } from './qa-helpers.mjs';
 
 const root=process.cwd(),out=path.join(root,'qa','deep-audit-remediation'),server=process.env.QA_URL?null:await startQaServer(root,4184),url=process.env.QA_URL||server.url;
 await mkdir(out,{recursive:true});
-const browser=await chromium.launch({executablePath:process.env.PLAYWRIGHT_CHROME_PATH||'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',headless:true,args:['--no-sandbox']});
+const browser=await launchQaBrowser();
 const errors=[],checks={};
 const seed={version:6,maxUnlockedLevel:12,lastLevel:1,coins:1000,gems:20,xp:0,stars:0,lifetimeScore:0,lifetimeCoinsEarned:0,totalMatches:0,chestProgress:0,rules:{matchSize:2,generationVersion:4},activeAttempt:null,completedLevels:{},claimedRewards:{},queuedChestRewards:[],achievements:{},unlockedThemes:['fruits','cars'],boosters:{undo:3,hint:3,shuffle:3},prefs:{audio:{musicEnabled:false,sfxEnabled:false,musicVolume:.1,sfxVolume:.35},haptics:false,reducedMotion:true,tileStyle:'illustrated',tileStyleVersion:1},tutorial:{completed:true,dismissed:false,completedAt:1},attemptStats:{abandoned:0,restarted:0}};
 async function open(query='?screen=game&level=1'){const page=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});page.on('pageerror',error=>errors.push(error.message));await page.addInitScript(save=>{if(!localStorage.getItem('jade-garden-tiles-save-v5'))localStorage.setItem('jade-garden-tiles-save-v5',JSON.stringify(save));},seed);await page.goto(`${url}/${query}`,{waitUntil:'domcontentloaded'});return page;}

@@ -10,7 +10,7 @@ const MONDAY=Date.parse('2026-10-19T12:00:00Z');
 test('higher-quality clears earn more leaderboard points',()=>{
   const modest=calculateLeaderboardPoints({level:1,stars:1,seconds:220,combo:1,boostersUsed:2});
   const perfect=calculateLeaderboardPoints({level:1,stars:3,seconds:45,combo:8,boostersUsed:0});
-  const difficult=calculateLeaderboardPoints({level:25,stars:3,seconds:45,combo:8,boostersUsed:0});
+  const difficult=calculateLeaderboardPoints({level:401,stars:3,seconds:45,combo:8,boostersUsed:0});
   assert.ok(perfect>modest);assert.ok(difficult>perfect);
 });
 

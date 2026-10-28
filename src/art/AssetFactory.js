@@ -3,13 +3,15 @@ import { PREMIUM_ICONS,PREMIUM_MATERIALS,PREMIUM_TEXTURES } from './PremiumAsset
 import { CLASSIC_ASSETS } from './TileStyleRegistry.js';
 
 export class AssetFactory {
-  static preload(scene) {
+  static preload(scene,{tileStyle='illustrated'}={}) {
     Object.entries(PREMIUM_ICONS).forEach(([iconId,url])=>scene.load.image(iconTextureKey(iconId),url));
     Object.values(PREMIUM_TEXTURES).forEach(asset=>scene.load.image(asset.key,asset.url));
     Object.values(PREMIUM_MATERIALS).forEach(asset=>scene.load.image(asset.key,asset.url));
-    CLASSIC_ASSETS.forEach(asset=>scene.load.image(asset.key,asset.url));
+    const classic=tileStyle==='classic'?CLASSIC_ASSETS:CLASSIC_ASSETS.slice(0,3);classic.forEach(asset=>loadImageOnce(scene,asset.key,asset.url));
     scene.load.image('bg:premium-felt','/assets/premium/premium-felt.webp');
   }
+
+  static preloadClassic(scene){CLASSIC_ASSETS.forEach(asset=>loadImageOnce(scene,asset.key,asset.url));}
 
   static createRuntimeTextures(scene) {
     if (!scene.textures.exists('fx:petal')) createParticle(scene, 'fx:petal', 18, ctx => {
@@ -23,6 +25,8 @@ export class AssetFactory {
     });
   }
 }
+
+function loadImageOnce(scene,key,url){if(!scene.textures.exists(key))scene.load.image(key,url);}
 
 function createParticle(scene, key, size, draw) {
   const texture = scene.textures.createCanvas(key, size, size);

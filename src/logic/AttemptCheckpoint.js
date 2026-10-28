@@ -7,6 +7,7 @@ export function createAttemptCheckpoint({
   snapshot,
   history = [],
   attemptId,
+  generationVersion,
   updatedAt = Date.now()
 }) {
   if (!Number.isInteger(level) || level < 1 || !snapshot) throw new Error('Invalid active-attempt checkpoint');
@@ -14,6 +15,7 @@ export function createAttemptCheckpoint({
     level,
     status,
     attemptId,
+    generationVersion: Number.isInteger(generationVersion)?generationVersion:undefined,
     updatedAt,
     elapsedMs: Math.max(0, Number(elapsedMs) || 0),
     reviveUsed: Boolean(reviveUsed),

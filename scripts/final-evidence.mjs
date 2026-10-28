@@ -14,6 +14,7 @@ await mkdir(output, { recursive: true });
 const server = await startQaServer(root,4178);
 const browser = await launchQaBrowser();
 const report = [];
+async function retryIo(work){for(let attempt=0;attempt<6;attempt++){try{return await work();}catch(error){if(attempt===5)throw error;await wait(250*(attempt+1));}}}
 
 async function capture(name, url, action, viewport = { width: 390, height: 844 }) {
   const page = await browser.newPage({ viewport, deviceScaleFactor: 1, isMobile: true, hasTouch: true });
@@ -27,7 +28,7 @@ async function capture(name, url, action, viewport = { width: 390, height: 844 }
   await page.waitForTimeout(850);
   if (action) await action(page);
   const file = path.join(output, `${name}.png`);
-  await page.screenshot({ path: file });
+  await retryIo(()=>page.screenshot({ path: file }));
   const activeScenes=await page.evaluate(()=>window.jadeGame?.scene?.getScenes(true).map(scene=>scene.scene.key)||[]);
   report.push({ name, file, viewport, canvas: await page.locator('canvas').count(), activeScenes, errors });
   await page.close();
@@ -116,7 +117,7 @@ await browser.close();
 server.command.kill();
 const completion=report.find(item=>item.name==='11-level-completion-celebration-390x844');
 const passed = report.length === 18 && report.every(item => item.canvas === 1 && item.errors.length === 0) && completion?.activeScenes.includes('Reward');
-await writeFile(path.join(root, 'qa', 'final-evidence-report.json'), JSON.stringify({ passed, losing, captures: report }, null, 2));
+await retryIo(()=>writeFile(path.join(root, 'qa', 'final-evidence-report.json'), JSON.stringify({ passed, losing, captures: report }, null, 2)));
 console.log(JSON.stringify({ passed, losing, captures: report.map(item => ({ name: item.name, errors: item.errors })) }, null, 2));
 if (!passed) process.exitCode = 1;
 
