@@ -12,7 +12,7 @@ export class CollectionScene extends Phaser.Scene {
   create(){
     this.save=SaveManager.load();drawBackdrop(this);addIconButton(this,48,48,'‹',()=>this.scene.start('Menu'));
     this.add.text(270,50,'COLLECTIONS',{...TEXT.title,fontSize:'34px'}).setOrigin(.5);
-    const discovered=this.save.unlockedThemes.length;this.add.text(270,88,`${discovered} OF 12 GARDENS DISCOVERED  •  72 ORIGINAL TREASURES`,{...TEXT.hud,fontSize:'12px',color:'#bed7cb'}).setOrigin(.5);
+    const discovered=this.save.unlockedThemes.length;this.add.text(270,88,`${discovered} OF 12 COLLECTIONS  •  72 ORIGINAL TREASURES`,{...TEXT.hud,fontSize:'12px',color:'#bed7cb'}).setOrigin(.5);
     THEMES.forEach((theme,i)=>this.card(theme,i));
     const earned=ACHIEVEMENTS.filter(a=>this.save.achievements[a.id]).length;
     addGoldButton(this,170,887,278,`PLAY LEVEL ${this.save.lastLevel}`,()=>this.scene.start('Game',{level:this.save.lastLevel}));addGoldButton(this,401,887,154,`BADGES ${earned}/${ACHIEVEMENTS.length}`,()=>this.scene.start('Achievements'));

@@ -16,7 +16,7 @@ export const DEFAULT_SAVE=Object.freeze({
   boosters:{undo:3,hint:3,shuffle:3},
   prefs:{audio:{...DEFAULT_AUDIO_PREFERENCES},haptics:true,reducedMotion:false,tileStyle:TILE_STYLE_IDS.ILLUSTRATED,tileStyleVersion:TILE_STYLE_VERSION},
   tutorial:{completed:false,dismissed:false,completedAt:null},
-  leaderboard:{player:{id:'garden-player',name:'Garden Player',avatar:'jade'},weekly:{},allTime:{},claimedSeasonRewards:{}},
+  leaderboard:{player:{id:'garden-player',name:'Player',avatar:'jade'},weekly:{},allTime:{},claimedSeasonRewards:{}},
   economy:{ledger:[],inventory:{owned:['tile-classic','tray-mahogany'],equipped:{tile:'tile-classic',tray:'tray-mahogany',celebration:'celebration-gold'}},daily:{lastClaimDay:null,streak:0},revives:{},entitlements:{}},
   storageRecovery:null
 });

@@ -17,9 +17,9 @@ export class MenuScene extends Phaser.Scene {
     this.save=SaveManager.load();this.modal=new Modal(this);drawBackdrop(this);
     addIconButton(this,53,53,'settings',()=>this.showSettings(),'Settings');addPill(this,437,53,150,String(this.save.coins),'◆');
     const glow=this.add.ellipse(270,182,430,190,0x72bd64,.08);this.tweens.add({targets:glow,alpha:.17,scale:1.08,duration:1200,yoyo:true,repeat:-1,ease:'Sine.InOut'});
-    this.add.text(270,138,'JADE GARDEN',{...TEXT.title,fontSize:'52px',color:'#fff4d1',stroke:'#421708',strokeThickness:9,shadow:{offsetY:7,color:'#071711',blur:8,fill:true}}).setOrigin(.5);
-    this.add.text(270,193,'T I L E S',{...TEXT.hud,fontSize:'25px',color:'#f5c84e',letterSpacing:11,stroke:'#421708',strokeThickness:4}).setOrigin(.5);
-    this.add.text(270,226,'A PREMIUM MATCH GARDEN',{...TEXT.hud,fontSize:'11px',color:'#d4e4dc',letterSpacing:3}).setOrigin(.5);
+    this.add.image(270,143,'brand:ivory-mahjong').setDisplaySize(104,104);
+    this.add.text(270,199,'IVORY MAHJONG',{...TEXT.title,fontSize:'32px',color:'#fff4d1',stroke:'#421708',strokeThickness:7,shadow:{offsetY:6,color:'#071711',blur:8,fill:true}}).setOrigin(.5);
+    this.add.text(270,237,'PREMIUM MATCH-TWO PUZZLE',{...TEXT.hud,fontSize:'11px',color:'#d4e4dc',letterSpacing:2.3}).setOrigin(.5);
     this.drawHeroTiles();
     addPill(this,270,274,236,'TILE STYLES','',()=>this.scene.launch('TileStyleGallery',{hostKey:'Menu'}));
     const playLevel=this.save.activeAttempt?.level||this.save.lastLevel;
@@ -28,7 +28,7 @@ export class MenuScene extends Phaser.Scene {
     addGoldButton(this,164,717,190,'MY RECORDS',()=>this.scene.start('Leaderboard'));addGoldButton(this,382,717,170,import.meta.env.DEV?'TEST SHOP':'ACHIEVEMENTS',()=>this.scene.start(import.meta.env.DEV?'Shop':'Achievements'));
     const pending=this.save.queuedChestRewards?.length||0;this.add.text(270,773,pending?`TREASURE READY  •  ${pending} QUEUED`:'TREASURE TRAIL',{...TEXT.hud,fontSize:'15px',color:'#f6cc55',letterSpacing:2,stroke:'#2f1007',strokeThickness:3}).setOrigin(.5);
     addProgressBar(this,240,810,300,pending?1:this.save.chestProgress/5,pending?'CLAIM READY':`${this.save.chestProgress} / 5`);addIconButton(this,435,810,'play',()=>this.showChest(),'Treasure');
-    this.add.text(270,878,'MATCH TWO  •  GROW YOUR LOCAL GARDEN RECORD',{...TEXT.hud,fontSize:'11px',color:'#bdd2c8',letterSpacing:1.1}).setOrigin(.5);
+    this.add.text(270,878,'MATCH TWO  •  BUILD YOUR LOCAL RECORD',{...TEXT.hud,fontSize:'11px',color:'#bdd2c8',letterSpacing:1.1}).setOrigin(.5);
   }
   drawHeroTiles(){
     const ids=['cherries','blossom','orange'],resolver=createTileSkinResolver(this.save.prefs.tileStyle,ids);

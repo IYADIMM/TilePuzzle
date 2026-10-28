@@ -14,7 +14,7 @@ export class ShopScene extends Phaser.Scene{
   constructor(){super('Shop');}
   create(){
     prepareBackdrop(this);this.save=SaveManager.load();this.modal=new Modal(this);
-    addIconButton(this,52,53,'back',()=>this.scene.start('Menu'),'Back');this.add.text(270,54,'GARDEN SHOP',{...TEXT.title,fontSize:'37px',color:'#fff0b0'}).setOrigin(.5);addPill(this,391,111,132,String(this.save.coins),'◆');addPill(this,154,111,132,String(this.save.gems),'◇');
+    addIconButton(this,52,53,'back',()=>this.scene.start('Menu'),'Back');this.add.text(270,54,'STYLE SHOP',{...TEXT.title,fontSize:'37px',color:'#fff0b0'}).setOrigin(.5);addPill(this,391,111,132,String(this.save.coins),'◆');addPill(this,154,111,132,String(this.save.gems),'◇');
     this.add.text(270,148,'INTERNAL TEST CATALOG  •  NO REAL MONEY',{...TEXT.hud,fontSize:'12px',color:'#ffe17a',letterSpacing:1}).setOrigin(.5);
     const day=(this.save.economy.daily.streak%7)+1,reward=DAILY_REWARDS[day-1];addGoldButton(this,270,205,390,`DAILY DAY ${day}  •  ${reward.coins} COINS${reward.gems?` + ${reward.gems} GEMS`:''}`,()=>this.claimDaily());
     this.add.text(270,260,'FUNCTIONAL BOOSTERS  •  NO RANDOM LOOT',{...TEXT.hud,fontSize:'12px',color:'#f6ce62',letterSpacing:1.2}).setOrigin(.5);

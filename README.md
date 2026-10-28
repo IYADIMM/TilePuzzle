@@ -1,6 +1,6 @@
-# Jade Garden Tiles
+# Ivory Mahjong
 
-A portrait-first Phaser 3 match-two game with Mahjong top/side accessibility, an atomic four-slot tray, 1,000 deterministic configurations, 12 rotating collections, approved optional audio, private on-device records, and a mock-only economy catalog. Selection and completion cues each rotate through three no-repeat variations while retaining the approved originals unchanged. All 72 symbols and all 12 tile materials use original high-resolution raster sources with optimized WebP runtime assets. Technical integration is complete; human visual/audio approval and physical Android profiling remain separate release gates.
+A portrait-first Phaser 3 match-two game with Mahjong-style top/side accessibility, an atomic four-slot tray, 1,000 deterministic configurations, 12 rotating collections, approved optional audio, private on-device records, and a development-only mock economy catalog. The Android application ID and legacy save keys intentionally retain their original technical identifiers so installed updates and player progress remain compatible.
 
 ## Run and verify
 

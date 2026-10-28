@@ -1,6 +1,6 @@
 # Native branding report
 
-The pipeline uses the repository-owned Jade Garden brand masters in `public/assets/brand/`; no competitor screenshot pixels or rejected artwork are used. `scripts/generate-android-branding.mjs` creates:
+The pipeline uses the original Ivory Mahjong ceramic emblem in `public/assets/brand/`; no competitor screenshot pixels or rejected artwork are used. `scripts/generate-android-branding.mjs` creates:
 
 - legacy launcher icons for Android density buckets;
 - adaptive foreground/background resources;

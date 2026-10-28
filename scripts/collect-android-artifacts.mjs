@@ -11,7 +11,7 @@ const aabSource = path.join(root, 'android', 'app', 'build', 'outputs', 'bundle'
 const out = path.join(root, 'artifacts', 'android');
 await mkdir(out, { recursive: true });
 const label = requestedSigned ? 'signed' : 'unsigned';
-const base = `Jade-Garden-Tiles-${metadata.versionName}-${metadata.versionCode}-${metadata.gitShortSha}-${label}`;
+const base = `Ivory-Mahjong-${metadata.versionName}-${metadata.versionCode}-${metadata.gitShortSha}-${label}`;
 const entries = [];
 
 for (const [kind, source, extension] of [['apk', apkSource, 'apk'], ['aab', aabSource, 'aab']]) {

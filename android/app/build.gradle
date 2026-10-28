@@ -9,7 +9,7 @@ def signingValues = [releaseKeystore, releaseAlias, releaseStorePassword, releas
 def signingRequested = signingValues.any { it != null && !it.isBlank() }
 def signingReady = signingValues.every { it != null && !it.isBlank() }
 if (signingRequested && !signingReady) {
-    throw new GradleException('Incomplete Jade Garden upload-key environment. Provide all four JGT_UPLOAD_* variables or none.')
+    throw new GradleException('Incomplete Ivory Mahjong upload-key environment. Provide all four JGT_UPLOAD_* variables or none.')
 }
 
 def releaseVersionCode = (env['JGT_VERSION_CODE'] ?: '1').toInteger()

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Jade Garden Tiles</string>
-    <string name="title_activity_main">Jade Garden Tiles</string>
+    <string name="app_name">Ivory Mahjong</string>
+    <string name="title_activity_main">Ivory Mahjong</string>
     <string name="package_name">com.iyadimm.jadegardentiles</string>
     <string name="custom_url_scheme">com.iyadimm.jadegardentiles</string>
 </resources>

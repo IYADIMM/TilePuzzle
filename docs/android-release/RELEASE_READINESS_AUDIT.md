@@ -8,7 +8,7 @@ Audit date: 2026-10-28. Package: `com.iyadimm.jadegardentiles`. Candidate versio
 - Release builds enable R8 and resource shrinking. Debug builds use a separate `.debug` application ID.
 - Release signing is environment-driven; no key or password is stored in source control.
 - Portrait orientation, offline operation, no cleartext traffic, no Android backup/transfer, predictive-back integration, and edge-to-edge-compatible transparent system bars are declared.
-- Native launcher/adaptive/monochrome icons and splash resources are generated from the original Jade Garden brand master.
+- Native launcher/adaptive/monochrome icons and splash resources are generated from the original Ivory Mahjong emblem.
 - Fonts are packaged locally. The release manifest has no Internet permission and production code exposes no mock shop or mock-ad flow.
 - Unit, browser gameplay, 1,000-level generation, visual regression, audio, lint and Android assembly checks are automated.
 

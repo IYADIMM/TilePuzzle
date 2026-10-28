@@ -17,7 +17,7 @@ export class RewardScene extends Phaser.Scene {
   create(){
     const d=this.dataIn,theme=getThemeForLevel(d.level),style=d.tileStyle||SaveManager.load().prefs.tileStyle,skin=createTileSkinResolver(style,theme.iconIds);prepareBackdrop(this,null);const audio=bindSceneAudio(this,null);this.time.delayedCall(950,()=>{if(this.sys.isActive())audio?.play('star_earned');});
     const glow=this.add.circle(270,168,142,0xf7d66a,.1);this.tweens.add({targets:glow,scale:1.13,alpha:.24,duration:1100,yoyo:true,repeat:-1,ease:'Sine.InOut'});
-    this.add.text(270,76,d.reward.stars===3?'PERFECT CLEAR':'GARDEN CLEARED',{...TEXT.title,fontSize:'44px',color:'#ffe08a',stroke:'#4a1c08',strokeThickness:8}).setOrigin(.5);
+    this.add.text(270,76,d.reward.stars===3?'PERFECT CLEAR':'LEVEL COMPLETE',{...TEXT.title,fontSize:'44px',color:'#ffe08a',stroke:'#4a1c08',strokeThickness:8}).setOrigin(.5);
     for(let i=0;i<3;i++){const star=this.add.text(218+i*52,129,i<d.reward.stars?'★':'☆',{...TEXT.title,fontSize:'42px',color:i<d.reward.stars?'#ffd45c':'#7e684d',stroke:'#6b2d0c',strokeThickness:5}).setOrigin(.5).setScale(.1);this.tweens.add({targets:star,scale:1,duration:390,delay:120+i*150,ease:'Back.Out'});}
     theme.iconIds.slice(0,3).forEach((id,i)=>{const x=184+i*86,tile=this.add.image(x,232,skin.bodyTextureKey(theme.materialId)||PREMIUM_MATERIALS[theme.materialId]?.key).setDisplaySize(68,87),icon=this.add.image(x,229,skin.textureKey(id)).setDisplaySize(52,52),tileScale={x:tile.scaleX,y:tile.scaleY},iconScale={x:icon.scaleX,y:icon.scaleY};tile.setScale(tileScale.x*.1,tileScale.y*.1);icon.setScale(iconScale.x*.1,iconScale.y*.1);this.tweens.add({targets:tile,scaleX:tileScale.x,scaleY:tileScale.y,duration:430,delay:520+i*100,ease:'Back.Out'});this.tweens.add({targets:icon,scaleX:iconScale.x,scaleY:iconScale.y,duration:430,delay:520+i*100,ease:'Back.Out'});});
     this.add.graphics().fillStyle(0x020e0b,.62).fillRoundedRect(58,313,432,329,32).fillGradientStyle(0x154f40,0x103d33,0x082820,0x0b3329,1).fillRoundedRect(62,305,416,326,29).lineStyle(8,0x3b1609).strokeRoundedRect(62,305,416,326,29).lineStyle(4,0xe0ad42).strokeRoundedRect(72,315,396,306,22).fillStyle(0xffffff,.1).fillRoundedRect(86,326,368,15,7);
@@ -32,7 +32,7 @@ export class RewardScene extends Phaser.Scene {
     addProgressBar(this,270,579,314,Math.min(1,d.reward.stars/3),`${d.reward.stars} / 3 STARS`);
     if(d.reward.unlockedAchievements.length)this.add.text(270,614,`BADGE UNLOCKED  •  ${d.reward.unlockedAchievements[0].title.toUpperCase()}`,{...TEXT.hud,fontSize:'12px',color:'#ffe298'}).setOrigin(.5);
     addGoldButton(this,270,711,318,d.level<LEVEL_COUNT?'NEXT LEVEL':'LEVEL SELECT',()=>d.level<LEVEL_COUNT?this.scene.start('Game',{level:d.level+1}):this.scene.start('LevelSelect'));
-    addGoldButton(this,270,795,248,'BACK TO GARDEN',()=>this.scene.start('Menu'));
+    addGoldButton(this,270,795,248,'MAIN MENU',()=>this.scene.start('Menu'));
     this.add.text(270,875,`${theme.name} collection • Level ${d.level} complete`,{...TEXT.hud,fontSize:'13px',color:'#c8dfd4'}).setOrigin(.5);
   }
 }

@@ -1,10 +1,10 @@
-# Jade Garden Tiles privacy policy — draft
+# Ivory Mahjong privacy policy — draft
 
 Effective date: [OWNER CONFIRM DATE]
 
-Jade Garden Tiles is designed to work offline. This release does not require an account and does not include advertising, analytics, crash-reporting, social login, cloud storage or payment processing. Game progress, settings, local records and inventory are stored on the player’s device.
+Ivory Mahjong is designed to work offline. This release does not require an account and does not include advertising, analytics, crash-reporting, social login, cloud storage or payment processing. Game progress, settings, local records and inventory are stored on the player’s device.
 
-The app does not transmit personal information or gameplay data to the operator. Android system and app-store services may process technical information under their own policies when the app is downloaded or updated; that processing is not performed by Jade Garden Tiles.
+The app does not transmit personal information or gameplay data to the operator. Android system and app-store services may process technical information under their own policies when the app is downloaded or updated; that processing is not performed by Ivory Mahjong.
 
 The app does not enable Android cloud backup or device-to-device transfer. Uninstalling the app can permanently remove locally stored progress. An ordinary in-place update is intended to preserve the app sandbox, but players should not treat local progress as a guaranteed backup.
 

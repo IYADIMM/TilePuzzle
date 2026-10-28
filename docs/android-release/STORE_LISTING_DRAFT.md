@@ -2,11 +2,11 @@
 
 ## Title
 
-Jade Garden Tiles
+Ivory Mahjong
 
 ## Short description
 
-Relax with layered match-two puzzles in two beautifully crafted tile styles.
+Relax with layered match-two puzzles and two beautifully crafted tile styles.
 
 ## Full description
 

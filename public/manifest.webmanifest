@@ -1,7 +1,7 @@
 {
-  "name": "Jade Garden Tiles",
-  "short_name": "Jade Tiles",
-  "description": "A premium layered match-two garden puzzle.",
+  "name": "Ivory Mahjong",
+  "short_name": "Ivory Mahjong",
+  "description": "A premium layered match-two puzzle with Mahjong-style accessibility.",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
@@ -9,14 +9,14 @@
   "theme_color": "#123f35",
   "icons": [
     {
-      "src": "/assets/brand/jade-garden-ios-opaque-1024.png",
-      "sizes": "1024x1024",
+      "src": "/assets/brand/ivory-mahjong-emblem-1536.png",
+      "sizes": "1536x1536",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/assets/brand/jade-garden-adaptive-foreground-1024.png",
-      "sizes": "1024x1024",
+      "src": "/assets/brand/ivory-mahjong-emblem-1536.png",
+      "sizes": "1536x1536",
       "type": "image/png",
       "purpose": "maskable"
     }

@@ -7,7 +7,7 @@ import { normalizeLevelNumber } from '../data/levels.js';
 
 export class BootScene extends Phaser.Scene {
   constructor() { super('Boot'); }
-  preload() { this.saved=SaveManager.load();AssetFactory.preload(this,{tileStyle:this.saved.prefs.tileStyle});preloadApprovedAudio(this); }
+  preload() { this.saved=SaveManager.load();this.load.image('brand:ivory-mahjong','/assets/brand/ivory-mahjong-emblem-1536.png');AssetFactory.preload(this,{tileStyle:this.saved.prefs.tileStyle});preloadApprovedAudio(this); }
   create() {
     AssetFactory.createRuntimeTextures(this);
     const saved=this.saved||SaveManager.load(),audioManager=new AudioManager({soundManager:this.sound,persist:preferences=>{const latest=SaveManager.load();latest.prefs.audio=preferences;SaveManager.save(latest);}});

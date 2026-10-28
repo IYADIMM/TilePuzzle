@@ -1,28 +1,28 @@
 {
-  "version": 1,
+  "version": 2,
   "backgroundColor": "#07352c",
   "assets": [
     {
-      "id": "store-master",
-      "path": "/assets/brand/jade-garden-app-icon-1024.png",
-      "dimensions": "1024x1024",
+      "id": "ivory-mahjong-emblem",
+      "path": "/assets/brand/ivory-mahjong-emblem-1536.png",
+      "dimensions": "1536x1536",
       "alpha": true,
-      "use": "store artwork master and web favicon"
+      "use": "active menu emblem, web icon, Android launcher/splash and store source"
     },
     {
       "id": "android-adaptive-foreground",
       "path": "/assets/brand/jade-garden-adaptive-foreground-1024.png",
       "dimensions": "1024x1024",
       "alpha": true,
-      "use": "maskable PWA icon and future Android adaptive foreground"
+      "use": "legacy Jade Garden source retained for historical/recovery provenance"
     },
     {
       "id": "ios-opaque-master",
       "path": "/assets/brand/jade-garden-ios-opaque-1024.png",
       "dimensions": "1024x1024",
       "alpha": false,
-      "use": "Apple touch icon, PWA any-purpose icon and future iOS export source"
+      "use": "legacy Jade Garden source retained for historical/recovery provenance"
     }
   ],
-  "provenance": "Original generated artwork; no pixels cropped from reference sheets. Prompt record: qa/ASSET_AND_AUDIO_MANIFEST.md"
+  "provenance": "Original generated artwork; no pixels cropped from reference sheets or competitors. Ivory Mahjong emblem generated 2026-10-28 with the built-in image-generation workflow; owner visual approval pending."
 }

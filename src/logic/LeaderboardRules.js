@@ -6,7 +6,7 @@ export const LEADERBOARD_TIERS = Object.freeze([
   { id: 'sapphire', name: 'Sapphire', min: 2800, color: 0x55a9e8 },
   { id: 'gold', name: 'Gold', min: 5200, color: 0xf1c34d },
   { id: 'diamond', name: 'Diamond', min: 8500, color: 0x9be4e8 },
-  { id: 'garden-master', name: 'Garden Master', min: 12500, color: 0xffdf72 }
+  { id: 'garden-master', name: 'Ivory Master', min: 12500, color: 0xffdf72 }
 ]);
 
 export function calculateLeaderboardPoints({ level, stars = 1, seconds = 999, combo = 0, boostersUsed = 0, score = 0 }) {
@@ -42,7 +42,8 @@ export function getTier(points) {
 
 export function ensureLeaderboard(save) {
   save.leaderboard ||= {};
-  save.leaderboard.player ||= { id: 'garden-player', name: 'Garden Player', avatar: 'jade' };
+  save.leaderboard.player ||= { id: 'garden-player', name: 'Player', avatar: 'jade' };
+  if(save.leaderboard.player.name==='Garden Player')save.leaderboard.player.name='Player';
   save.leaderboard.weekly ||= {};
   save.leaderboard.allTime ||= {};
   save.leaderboard.claimedSeasonRewards ||= {};

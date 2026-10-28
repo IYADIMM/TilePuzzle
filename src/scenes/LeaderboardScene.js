@@ -12,7 +12,7 @@ export class LeaderboardScene extends Phaser.Scene {
   create(){
     prepareBackdrop(this);this.save=SaveManager.load();this.manager=new LeaderboardManager(this.save);this.modal=new Modal(this);
     addIconButton(this,52,53,'back',()=>this.scene.start('Menu'),'Back');
-    this.add.text(270,55,'MY GARDEN RECORDS',{...TEXT.title,fontSize:'34px',color:'#fff0b0',stroke:'#401506',strokeThickness:7}).setOrigin(.5);
+    this.add.text(270,55,'MY RECORDS',{...TEXT.title,fontSize:'34px',color:'#fff0b0',stroke:'#401506',strokeThickness:7}).setOrigin(.5);
     this.add.text(270,99,'SAVED ON THIS DEVICE  •  NOT AN ONLINE RANK',{...TEXT.hud,fontSize:'12px',color:'#ffe17a',letterSpacing:1.2}).setOrigin(.5);
     this.renderBoard();
   }
