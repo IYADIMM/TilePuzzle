@@ -16,7 +16,8 @@ export class BootScene extends Phaser.Scene {
       ? Promise.all([
         document.fonts.load('700 32px Fredoka'),
         document.fonts.load('700 20px Poppins'),
-        document.fonts.load('700 20px Cairo')
+        document.fonts.load('700 20px Cairo'),
+        document.fonts.load('700 32px Cormorant Garamond')
       ])
       : Promise.resolve();
     const ready = Promise.race([
@@ -30,7 +31,7 @@ export class BootScene extends Phaser.Scene {
         this.scene.launch('TileStyleGallery',{hostKey:'Menu'});
         return;
       }
-      const route=screen==='game'?'Game':screen==='levels'?'LevelSelect':screen==='collection'?'Collection':screen==='leaderboard'?'Leaderboard':import.meta.env.DEV&&screen==='shop'?'Shop':import.meta.env.DEV&&screen==='icons'?'IconSheet':'Menu';
+      const route=screen==='game'?'Game':screen==='levels'?'LevelSelect':screen==='collection'?'Collection':screen==='leaderboard'?'Leaderboard':screen==='achievements'?'Achievements':screen==='shop'?'Shop':import.meta.env.DEV&&screen==='icons'?'IconSheet':'Menu';
       this.scene.start(route,{level:normalizeLevelNumber(query.get('level'))});
     });
   }

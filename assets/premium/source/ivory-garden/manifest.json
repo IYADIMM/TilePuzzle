@@ -1,0 +1,16 @@
+{
+  "collectionId": "garden-treasures",
+  "title": "Garden Treasures",
+  "sourceType": "original-built-in-image-generation",
+  "referenceRole": "The four owner-supplied composites define quality and style direction only; no reference pixels were cropped into runtime assets.",
+  "lighting": "soft upper-left studio light",
+  "runtimeFormat": "512x512 transparent WebP",
+  "assets": [
+    {"id":"garden-lotus","name":"Lotus","source":"garden-lotus.png","runtime":"/assets/premium/ivory-garden/garden-lotus.webp"},
+    {"id":"garden-bamboo","name":"Bamboo","source":"garden-bamboo.png","runtime":"/assets/premium/ivory-garden/garden-bamboo.webp"},
+    {"id":"garden-koi","name":"Koi","source":"garden-koi.png","runtime":"/assets/premium/ivory-garden/garden-koi.webp"},
+    {"id":"garden-lantern","name":"Stone Lantern","source":"garden-lantern.png","runtime":"/assets/premium/ivory-garden/garden-lantern.webp"},
+    {"id":"garden-fan","name":"Folding Fan","source":"garden-fan.png","runtime":"/assets/premium/ivory-garden/garden-fan.webp"},
+    {"id":"garden-bluebird","name":"Bluebird","source":"garden-bluebird.png","runtime":"/assets/premium/ivory-garden/garden-bluebird.webp"}
+  ]
+}

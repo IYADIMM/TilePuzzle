@@ -13,6 +13,7 @@ export const DEFAULT_SAVE=Object.freeze({
   rules:{matchSize:MATCH_SIZE,generationVersion:LEVEL_GENERATION_VERSION},activeAttempt:null,
   attemptStats:{abandoned:0,restarted:0},
   completedLevels:{},claimedRewards:{},queuedChestRewards:[],achievements:{},unlockedThemes:['fruits'],
+  bonusContent:{gardenTreasures:{unlocked:true,completed:false,bestScore:0,bestTime:0,stars:0,rewardClaimed:false}},activeBonusAttempt:null,
   boosters:{undo:3,hint:3,shuffle:3},
   prefs:{audio:{...DEFAULT_AUDIO_PREFERENCES},haptics:true,reducedMotion:false,tileStyle:TILE_STYLE_IDS.ILLUSTRATED,tileStyleVersion:TILE_STYLE_VERSION},
   tutorial:{completed:false,dismissed:false,completedAt:null},
@@ -53,6 +54,9 @@ export function validateSaveDomain(save){
     const attempt=save.activeAttempt;
     if(!isAttemptCheckpointValid(attempt))errors.push('activeAttempt');
   }
+  if(save.activeBonusAttempt!=null&&!isAttemptCheckpointValid(save.activeBonusAttempt))errors.push('activeBonusAttempt');
+  const garden=save.bonusContent?.gardenTreasures;
+  if(!garden||typeof garden!=='object'||!Number.isFinite(garden.bestScore)||garden.bestScore<0||!Number.isFinite(garden.bestTime)||garden.bestTime<0||!Number.isInteger(garden.stars)||garden.stars<0||garden.stars>3)errors.push('bonusContent.gardenTreasures');
   return{ok:errors.length===0,errors};
 }
 
@@ -71,6 +75,7 @@ export function migrateSave(raw={}){
   return{
     ...base,...raw,version:6,maxUnlockedLevel:Math.min(LEVEL_COUNT,maxUnlockedLevel),lastLevel:clampInt(raw.lastLevel||maxUnlockedLevel,1,LEVEL_COUNT),coins:nonNegativeInt(raw.coins,base.coins),gems:nonNegativeInt(raw.gems,base.gems),xp:nonNegativeInt(raw.xp),stars:derivedStars,lifetimeScore:nonNegativeInt(raw.lifetimeScore),lifetimeCoinsEarned:nonNegativeInt(raw.lifetimeCoinsEarned),totalMatches:nonNegativeInt(raw.totalMatches||raw.totalTriples),totalTriples:0,
     completedLevels,claimedRewards,queuedChestRewards,achievements:objectOrEmpty(raw.achievements),chestProgress:completedCount%5,
+    bonusContent:{gardenTreasures:{...base.bonusContent.gardenTreasures,...objectOrEmpty(raw.bonusContent?.gardenTreasures),bestScore:nonNegativeInt(raw.bonusContent?.gardenTreasures?.bestScore),bestTime:nonNegativeNumber(raw.bonusContent?.gardenTreasures?.bestTime),stars:clampInt(raw.bonusContent?.gardenTreasures?.stars,0,3),unlocked:raw.bonusContent?.gardenTreasures?.unlocked!==false,completed:Boolean(raw.bonusContent?.gardenTreasures?.completed),rewardClaimed:Boolean(raw.bonusContent?.gardenTreasures?.rewardClaimed)}},activeBonusAttempt:isAttemptCheckpointValid(raw.activeBonusAttempt)?clone(raw.activeBonusAttempt):null,
     unlockedThemes:[...new Set(arrayOrEmpty(raw.unlockedThemes).filter(value=>typeof value==='string').length?arrayOrEmpty(raw.unlockedThemes).filter(value=>typeof value==='string'):base.unlockedThemes)],boosters:{undo:nonNegativeInt(raw.boosters?.undo,base.boosters.undo),hint:nonNegativeInt(raw.boosters?.hint,base.boosters.hint),shuffle:nonNegativeInt(raw.boosters?.shuffle,base.boosters.shuffle)},
     leaderboard:{...base.leaderboard,...objectOrEmpty(raw.leaderboard),player:{...base.leaderboard.player,...objectOrEmpty(raw.leaderboard?.player)},weekly:objectOrEmpty(raw.leaderboard?.weekly),allTime:objectOrEmpty(raw.leaderboard?.allTime),claimedSeasonRewards:objectOrEmpty(raw.leaderboard?.claimedSeasonRewards)},
     economy:{...base.economy,...economy,ledger:arrayOrEmpty(economy.ledger).filter(validLedgerEntry),inventory:{...base.economy.inventory,...objectOrEmpty(economy.inventory),owned:[...new Set(arrayOrEmpty(economy.inventory?.owned).filter(value=>typeof value==='string').length?arrayOrEmpty(economy.inventory?.owned).filter(value=>typeof value==='string'):base.economy.inventory.owned)],equipped:{...base.economy.inventory.equipped,...objectOrEmpty(economy.inventory?.equipped)}},daily:{...base.economy.daily,...objectOrEmpty(economy.daily)},revives:objectOrEmpty(economy.revives),entitlements:objectOrEmpty(economy.entitlements)},

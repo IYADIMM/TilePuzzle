@@ -1,0 +1,489 @@
+{
+  "url": "http://127.0.0.1:4191",
+  "viewports": [
+    {
+      "width": 360,
+      "height": 640,
+      "file": "home-360x640.png",
+      "state": {
+        "texts": [
+          "IVORY MAHJONG",
+          "A PREMIUM TILE MATCHING PUZZLE",
+          "TREASURE TRAIL",
+          "MATCH TWO  •  RELAX  •  GROW YOUR COLLECTION"
+        ],
+        "coins": 250,
+        "level": 1,
+        "bounds": [
+          {
+            "x": 49,
+            "y": 51,
+            "w": 68,
+            "h": 68,
+            "label": "Settings"
+          },
+          {
+            "x": 435,
+            "y": 51,
+            "w": 158,
+            "h": 68
+          },
+          {
+            "x": 270,
+            "y": 493,
+            "w": 446,
+            "h": 91
+          },
+          {
+            "x": 270,
+            "y": 578,
+            "w": 446,
+            "h": 74,
+            "label": "TILE STYLES"
+          },
+          {
+            "x": 151,
+            "y": 657,
+            "w": 210,
+            "h": 72,
+            "label": "LEVELS"
+          },
+          {
+            "x": 389,
+            "y": 657,
+            "w": 210,
+            "h": 72,
+            "label": "COLLECTION"
+          },
+          {
+            "x": 151,
+            "y": 727,
+            "w": 210,
+            "h": 72,
+            "label": "MY RECORDS"
+          },
+          {
+            "x": 389,
+            "y": 727,
+            "w": 210,
+            "h": 72,
+            "label": "ACHIEVEMENTS"
+          },
+          {
+            "x": 435,
+            "y": 829,
+            "w": 68,
+            "h": 68,
+            "label": "Treasure"
+          }
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "file": "home-390x844.png",
+      "state": {
+        "texts": [
+          "IVORY MAHJONG",
+          "A PREMIUM TILE MATCHING PUZZLE",
+          "TREASURE TRAIL",
+          "MATCH TWO  •  RELAX  •  GROW YOUR COLLECTION"
+        ],
+        "coins": 250,
+        "level": 1,
+        "bounds": [
+          {
+            "x": 49,
+            "y": 51,
+            "w": 68,
+            "h": 68,
+            "label": "Settings"
+          },
+          {
+            "x": 435,
+            "y": 51,
+            "w": 158,
+            "h": 68
+          },
+          {
+            "x": 270,
+            "y": 493,
+            "w": 446,
+            "h": 91
+          },
+          {
+            "x": 270,
+            "y": 578,
+            "w": 446,
+            "h": 74,
+            "label": "TILE STYLES"
+          },
+          {
+            "x": 151,
+            "y": 657,
+            "w": 210,
+            "h": 72,
+            "label": "LEVELS"
+          },
+          {
+            "x": 389,
+            "y": 657,
+            "w": 210,
+            "h": 72,
+            "label": "COLLECTION"
+          },
+          {
+            "x": 151,
+            "y": 727,
+            "w": 210,
+            "h": 72,
+            "label": "MY RECORDS"
+          },
+          {
+            "x": 389,
+            "y": 727,
+            "w": 210,
+            "h": 72,
+            "label": "ACHIEVEMENTS"
+          },
+          {
+            "x": 435,
+            "y": 829,
+            "w": 68,
+            "h": 68,
+            "label": "Treasure"
+          }
+        ]
+      }
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "file": "home-430x932.png",
+      "state": {
+        "texts": [
+          "IVORY MAHJONG",
+          "A PREMIUM TILE MATCHING PUZZLE",
+          "TREASURE TRAIL",
+          "MATCH TWO  •  RELAX  •  GROW YOUR COLLECTION"
+        ],
+        "coins": 250,
+        "level": 1,
+        "bounds": [
+          {
+            "x": 49,
+            "y": 51,
+            "w": 68,
+            "h": 68,
+            "label": "Settings"
+          },
+          {
+            "x": 435,
+            "y": 51,
+            "w": 158,
+            "h": 68
+          },
+          {
+            "x": 270,
+            "y": 493,
+            "w": 446,
+            "h": 91
+          },
+          {
+            "x": 270,
+            "y": 578,
+            "w": 446,
+            "h": 74,
+            "label": "TILE STYLES"
+          },
+          {
+            "x": 151,
+            "y": 657,
+            "w": 210,
+            "h": 72,
+            "label": "LEVELS"
+          },
+          {
+            "x": 389,
+            "y": 657,
+            "w": 210,
+            "h": 72,
+            "label": "COLLECTION"
+          },
+          {
+            "x": 151,
+            "y": 727,
+            "w": 210,
+            "h": 72,
+            "label": "MY RECORDS"
+          },
+          {
+            "x": 389,
+            "y": 727,
+            "w": 210,
+            "h": 72,
+            "label": "ACHIEVEMENTS"
+          },
+          {
+            "x": 435,
+            "y": 829,
+            "w": 68,
+            "h": 68,
+            "label": "Treasure"
+          }
+        ]
+      }
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "file": "home-768x1024.png",
+      "state": {
+        "texts": [
+          "IVORY MAHJONG",
+          "A PREMIUM TILE MATCHING PUZZLE",
+          "TREASURE TRAIL",
+          "MATCH TWO  •  RELAX  •  GROW YOUR COLLECTION"
+        ],
+        "coins": 250,
+        "level": 1,
+        "bounds": [
+          {
+            "x": 49,
+            "y": 51,
+            "w": 68,
+            "h": 68,
+            "label": "Settings"
+          },
+          {
+            "x": 435,
+            "y": 51,
+            "w": 158,
+            "h": 68
+          },
+          {
+            "x": 270,
+            "y": 493,
+            "w": 446,
+            "h": 91
+          },
+          {
+            "x": 270,
+            "y": 578,
+            "w": 446,
+            "h": 74,
+            "label": "TILE STYLES"
+          },
+          {
+            "x": 151,
+            "y": 657,
+            "w": 210,
+            "h": 72,
+            "label": "LEVELS"
+          },
+          {
+            "x": 389,
+            "y": 657,
+            "w": 210,
+            "h": 72,
+            "label": "COLLECTION"
+          },
+          {
+            "x": 151,
+            "y": 727,
+            "w": 210,
+            "h": 72,
+            "label": "MY RECORDS"
+          },
+          {
+            "x": 389,
+            "y": 727,
+            "w": 210,
+            "h": 72,
+            "label": "ACHIEVEMENTS"
+          },
+          {
+            "x": 435,
+            "y": 829,
+            "w": 68,
+            "h": 68,
+            "label": "Treasure"
+          }
+        ]
+      }
+    }
+  ],
+  "routes": {
+    "settings": {
+      "destination": "AudioSettings",
+      "accepted": true
+    },
+    "currency": {
+      "destination": "Shop",
+      "accepted": true
+    },
+    "play": {
+      "destination": "Game",
+      "accepted": true
+    },
+    "styles": {
+      "destination": "TileStyleGallery",
+      "accepted": true
+    },
+    "levels": {
+      "destination": "LevelSelect",
+      "accepted": true
+    },
+    "collection": {
+      "destination": "Collection",
+      "accepted": true
+    },
+    "records": {
+      "destination": "Leaderboard",
+      "accepted": true
+    },
+    "achievements": {
+      "destination": "Achievements",
+      "accepted": true
+    }
+  },
+  "bonus": {
+    "before": {
+      "theme": "garden-treasures",
+      "count": 24,
+      "style": "illustrated",
+      "solution": 24
+    },
+    "after": {
+      "rewardScene": true,
+      "completed": true,
+      "bestScore": 15600,
+      "rewardClaimed": true
+    },
+    "pointerSelections": 24,
+    "allPointerSelections": [
+      {
+        "id": "L1-T19",
+        "x": 163,
+        "y": 340
+      },
+      {
+        "id": "L1-T23",
+        "x": 163,
+        "y": 291
+      },
+      {
+        "id": "L1-T20",
+        "x": 231,
+        "y": 291
+      },
+      {
+        "id": "L1-T16",
+        "x": 299,
+        "y": 390
+      },
+      {
+        "id": "L1-T17",
+        "x": 163,
+        "y": 390
+      },
+      {
+        "id": "L1-T15",
+        "x": 163,
+        "y": 439
+      },
+      {
+        "id": "L1-T14",
+        "x": 231,
+        "y": 390
+      },
+      {
+        "id": "L1-T18",
+        "x": 231,
+        "y": 439
+      },
+      {
+        "id": "L1-T10",
+        "x": 193,
+        "y": 273
+      },
+      {
+        "id": "L1-T22",
+        "x": 163,
+        "y": 488
+      },
+      {
+        "id": "L1-T21",
+        "x": 231,
+        "y": 488
+      },
+      {
+        "id": "L1-T8",
+        "x": 125,
+        "y": 322
+      },
+      {
+        "id": "L1-T7",
+        "x": 125,
+        "y": 372
+      },
+      {
+        "id": "L1-T4",
+        "x": 193,
+        "y": 322
+      },
+      {
+        "id": "L1-T11",
+        "x": 260,
+        "y": 322
+      },
+      {
+        "id": "L1-T1",
+        "x": 193,
+        "y": 372
+      },
+      {
+        "id": "L1-T13",
+        "x": 328,
+        "y": 421
+      },
+      {
+        "id": "L1-T3",
+        "x": 260,
+        "y": 421
+      },
+      {
+        "id": "L1-T6",
+        "x": 125,
+        "y": 421
+      },
+      {
+        "id": "L1-T0",
+        "x": 193,
+        "y": 421
+      },
+      {
+        "id": "L1-T5",
+        "x": 260,
+        "y": 372
+      },
+      {
+        "id": "L1-T12",
+        "x": 193,
+        "y": 520
+      },
+      {
+        "id": "L1-T2",
+        "x": 193,
+        "y": 470
+      },
+      {
+        "id": "L1-T9",
+        "x": 125,
+        "y": 470
+      }
+    ]
+  },
+  "errors": []
+}

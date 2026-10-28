@@ -39,7 +39,7 @@ try{
   await clickWorld(page,'AudioSettings',270,786);await page.waitForTimeout(180);
   const restored=await page.evaluate(()=>JSON.parse(localStorage.getItem('jade-garden-tiles-save-v5')).prefs.audio);
   await clickWorld(page,'AudioSettings',270,868);await page.waitForFunction(()=>!jadeGame.scene.isActive('AudioSettings'));
-  await clickWorld(page,'Menu',270,559);await page.waitForFunction(()=>jadeGame.scene.isActive('Game'));await page.evaluate(()=>jadeGame.scene.getScene('Game').tweens.timeScale=12);await page.waitForTimeout(300);
+  await clickWorld(page,'Menu',270,493);await page.waitForFunction(()=>jadeGame.scene.isActive('Game'));await page.evaluate(()=>jadeGame.scene.getScene('Game').tweens.timeScale=12);await page.waitForTimeout(300);
   const ids=await page.evaluate(()=>jadeGame.scene.getScene('Game').board.level.solution.slice(0,7));
   for(const id of ids.slice(0,6)){await page.waitForFunction(()=>{const scene=jadeGame.scene.getScene('Game');return!scene.tray.isBusy&&!scene.board.locked;});const point=await legalTilePoint(page,id);await page.mouse.click(point.x,point.y);await page.waitForFunction(id=>jadeGame.scene.getScene('Game').board.tiles.find(tile=>tile.tileData.id===id).isCollected,id);await page.waitForFunction(()=>!jadeGame.scene.getScene('Game').tray.isBusy);}
 

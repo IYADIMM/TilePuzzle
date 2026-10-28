@@ -43,9 +43,23 @@ export function completeLevel(save, { level, score, combo, totalMatches = 0, tot
 }
 
 export function evaluateAchievements(save, combo = 0) {
-  const stats = { levels: Object.keys(save.completedLevels).length, bestCombo: Math.max(combo, save.bestCombo || 0), themes: save.unlockedThemes.length, stars: save.stars };
+  const stats = achievementStats(save,combo);
   save.bestCombo = stats.bestCombo;
   return ACHIEVEMENTS.filter(a => stats[a.stat] >= a.target && !save.achievements[a.id]).map(a => {
     save.achievements[a.id] = { claimed: true, at: Date.now() }; save.coins += a.reward; return a;
   });
+}
+
+export function getAchievementProgress(save){const stats=achievementStats(save,save.bestCombo||0);return Object.fromEntries(ACHIEVEMENTS.map(item=>[item.id,{current:Math.min(item.target,stats[item.stat]||0),target:item.target,complete:Boolean(save.achievements[item.id])}]));}
+function achievementStats(save,combo=0){return{levels:Object.keys(save.completedLevels||{}).length,bestCombo:Math.max(combo,save.bestCombo||0),themes:(save.unlockedThemes||[]).length,stars:save.stars||0};}
+
+export function completeGardenTreasures(save,{score,seconds}){
+  const state=save.bonusContent?.gardenTreasures;
+  if(!state||state.unlocked===false)return{ok:false,reason:'locked'};
+  const priorStars=state.stars||0,priorScore=state.bestScore||0,priorTime=state.bestTime||0;
+  const firstClear=!state.completed,stars=calculateStarRating({level:10,score,seconds}),rewardKey='bonus:garden-treasures:first-clear';
+  const reward=firstClear&&!save.claimedRewards[rewardKey]?200:0;
+  state.completed=true;state.bestScore=Math.max(state.bestScore||0,score||0);state.bestTime=state.bestTime?Math.min(state.bestTime,seconds):seconds;state.stars=Math.max(state.stars||0,stars);
+  if(reward){save.claimedRewards[rewardKey]=true;state.rewardClaimed=true;save.coins+=reward;save.lifetimeCoinsEarned=(save.lifetimeCoinsEarned||0)+reward;}
+  return{ok:true,firstClear,stars,coins:reward,newStars:Math.max(0,stars-priorStars),isNewBestScore:firstClear||score>priorScore,isNewBestTime:firstClear||!priorTime||seconds<priorTime,unlockedAchievements:[],leaderboard:null};
 }

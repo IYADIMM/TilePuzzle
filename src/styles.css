@@ -7,6 +7,8 @@
 @import "@fontsource/cairo/latin-600.css";
 @import "@fontsource/cairo/latin-700.css";
 @import "@fontsource/cairo/latin-800.css";
+@import "@fontsource/cormorant-garamond/latin-600.css";
+@import "@fontsource/cormorant-garamond/latin-700.css";
 
 :root {
   font-family: "Fredoka", "Poppins", "Cairo", sans-serif;

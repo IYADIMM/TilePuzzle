@@ -31,7 +31,8 @@ const config = {
   scene: [
     BootScene, MenuScene, LevelSelectScene, CollectionScene, AchievementsScene,
     LeaderboardScene, GameScene, RewardScene,
-    ...(import.meta.env.DEV ? [ShopScene, IconSheetScene] : []),
+    ShopScene,
+    ...(import.meta.env.DEV ? [IconSheetScene] : []),
     AudioSettingsScene, TileStyleGalleryScene
   ]
 };

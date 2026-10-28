@@ -44,7 +44,13 @@ export const PREMIUM_ICONS=Object.freeze({
   dolphin:'/assets/premium/ocean-dolphin.webp',turtle:'/assets/premium/ocean-turtle.webp',seahorse:'/assets/premium/ocean-seahorse.webp',starfish:'/assets/premium/ocean-starfish.webp',octopus:'/assets/premium/ocean-octopus.webp','tropical-fish':'/assets/premium/ocean-tropical-fish.webp',
   guitar:'/assets/premium/music-guitar.webp',piano:'/assets/premium/music-piano.webp',drum:'/assets/premium/music-drum.webp',saxophone:'/assets/premium/music-saxophone.webp',headphones:'/assets/premium/music-headphones.webp',microphone:'/assets/premium/music-microphone.webp',
   airplane:'/assets/premium/travel-airplane.webp',suitcase:'/assets/premium/travel-suitcase.webp',camera:'/assets/premium/travel-camera.webp',compass:'/assets/premium/travel-compass.webp',passport:'/assets/premium/travel-passport.webp',globe:'/assets/premium/travel-globe.webp',
-  rocket:'/assets/premium/space-rocket.webp',planet:'/assets/premium/space-planet.webp',moon:'/assets/premium/space-moon.webp',astronaut:'/assets/premium/space-astronaut.webp',comet:'/assets/premium/space-comet.webp',satellite:'/assets/premium/space-satellite.webp'
+  rocket:'/assets/premium/space-rocket.webp',planet:'/assets/premium/space-planet.webp',moon:'/assets/premium/space-moon.webp',astronaut:'/assets/premium/space-astronaut.webp',comet:'/assets/premium/space-comet.webp',satellite:'/assets/premium/space-satellite.webp',
+  'garden-lotus':'/assets/premium/ivory-garden/garden-lotus.webp',
+  'garden-bamboo':'/assets/premium/ivory-garden/garden-bamboo.webp',
+  'garden-koi':'/assets/premium/ivory-garden/garden-koi.webp',
+  'garden-lantern':'/assets/premium/ivory-garden/garden-lantern.webp',
+  'garden-fan':'/assets/premium/ivory-garden/garden-fan.webp',
+  'garden-bluebird':'/assets/premium/ivory-garden/garden-bluebird.webp'
 });
 
 export const PREMIUM_MATERIALS=Object.freeze(Object.fromEntries(['mahogany','naturalWood','chrome','brushedSteel','clearGlass','frostedGlass','ceramic','leather','fabric','fur','stone','decorativeMetal'].map(id=>[id,{key:`premium:tile-material-${id}`,url:`/assets/premium/tile-material-${id}.webp`}])));

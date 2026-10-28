@@ -15,7 +15,7 @@ export class RewardScene extends Phaser.Scene {
   init(data){this.dataIn=data;}
   preload(){if((this.dataIn?.tileStyle||SaveManager.load().prefs.tileStyle)==='classic')AssetFactory.preloadClassic(this);}
   create(){
-    const d=this.dataIn,theme=getThemeForLevel(d.level),style=d.tileStyle||SaveManager.load().prefs.tileStyle,skin=createTileSkinResolver(style,theme.iconIds);prepareBackdrop(this,null);const audio=bindSceneAudio(this,null);this.time.delayedCall(950,()=>{if(this.sys.isActive())audio?.play('star_earned');});
+    const d=this.dataIn,theme=d.theme||getThemeForLevel(d.level),style=d.tileStyle||SaveManager.load().prefs.tileStyle,skin=createTileSkinResolver(style,theme.iconIds);prepareBackdrop(this,null);const audio=bindSceneAudio(this,null);this.time.delayedCall(950,()=>{if(this.sys.isActive())audio?.play('star_earned');});
     const glow=this.add.circle(270,168,142,0xf7d66a,.1);this.tweens.add({targets:glow,scale:1.13,alpha:.24,duration:1100,yoyo:true,repeat:-1,ease:'Sine.InOut'});
     this.add.text(270,76,d.reward.stars===3?'PERFECT CLEAR':'LEVEL COMPLETE',{...TEXT.title,fontSize:'44px',color:'#ffe08a',stroke:'#4a1c08',strokeThickness:8}).setOrigin(.5);
     for(let i=0;i<3;i++){const star=this.add.text(218+i*52,129,i<d.reward.stars?'★':'☆',{...TEXT.title,fontSize:'42px',color:i<d.reward.stars?'#ffd45c':'#7e684d',stroke:'#6b2d0c',strokeThickness:5}).setOrigin(.5).setScale(.1);this.tweens.add({targets:star,scale:1,duration:390,delay:120+i*150,ease:'Back.Out'});}
@@ -28,11 +28,11 @@ export class RewardScene extends Phaser.Scene {
     const resultCopy=d.reward.firstClear?`FIRST CLEAR  +${d.reward.coins} COINS`:d.reward.isNewBestScore?'BEST SCORE UPDATED':d.reward.newStars>0?`STAR RATING IMPROVED  +${d.reward.newStars}`:d.reward.isNewBestTime?'BEST TIME UPDATED':'REPLAY COMPLETE  •  BEST HOLDS';
     this.add.text(270,505,resultCopy,{...TEXT.hud,fontSize:'17px',color:'#ffd66e',stroke:'#3b1607',strokeThickness:3}).setOrigin(.5);
     const lb=d.reward.leaderboard;
-    this.add.text(270,541,lb.earned?`LOCAL LEAGUE  +${lb.earned} PTS`:'LOCAL LEAGUE  •  BEST RESULT HOLDS',{...TEXT.hud,fontSize:'15px',color:'#8fe0b7',stroke:'#071c17',strokeThickness:3}).setOrigin(.5);
+    this.add.text(270,541,d.bonusId?'BONUS COLLECTION  •  PROGRESS SAVED':lb?.earned?`LOCAL LEAGUE  +${lb.earned} PTS`:'LOCAL LEAGUE  •  BEST RESULT HOLDS',{...TEXT.hud,fontSize:'15px',color:'#8fe0b7',stroke:'#071c17',strokeThickness:3}).setOrigin(.5);
     addProgressBar(this,270,579,314,Math.min(1,d.reward.stars/3),`${d.reward.stars} / 3 STARS`);
     if(d.reward.unlockedAchievements.length)this.add.text(270,614,`BADGE UNLOCKED  •  ${d.reward.unlockedAchievements[0].title.toUpperCase()}`,{...TEXT.hud,fontSize:'12px',color:'#ffe298'}).setOrigin(.5);
-    addGoldButton(this,270,711,318,d.level<LEVEL_COUNT?'NEXT LEVEL':'LEVEL SELECT',()=>d.level<LEVEL_COUNT?this.scene.start('Game',{level:d.level+1}):this.scene.start('LevelSelect'));
+    addGoldButton(this,270,711,318,d.bonusId?'GARDEN COLLECTION':d.level<LEVEL_COUNT?'NEXT LEVEL':'LEVEL SELECT',()=>d.bonusId?this.scene.start('Collection'):d.level<LEVEL_COUNT?this.scene.start('Game',{level:d.level+1}):this.scene.start('LevelSelect'));
     addGoldButton(this,270,795,248,'MAIN MENU',()=>this.scene.start('Menu'));
-    this.add.text(270,875,`${theme.name} collection • Level ${d.level} complete`,{...TEXT.hud,fontSize:'13px',color:'#c8dfd4'}).setOrigin(.5);
+    this.add.text(270,875,d.bonusId?`${theme.name} bonus complete`:`${theme.name} collection • Level ${d.level} complete`,{...TEXT.hud,fontSize:'13px',color:'#c8dfd4'}).setOrigin(.5);
   }
 }

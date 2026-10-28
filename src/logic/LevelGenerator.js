@@ -4,11 +4,12 @@ import { MATCH_SIZE,isValidLevelInventory } from './GameRules.js';
 
 export function generateLevel(config) {
   if(!isValidLevelInventory(config.tileCount))throw new Error(`Level ${config.level} tileCount must be divisible by MATCH_SIZE (${MATCH_SIZE})`);
-  const theme = getTheme(config.themeId);
+  const baseTheme = getTheme(config.themeId);
+  const theme = config.theme||Object.freeze({...baseTheme,id:config.themeId,iconIds:config.iconIds||baseTheme.iconIds,materialId:config.materialId||baseTheme.materialId});
   const rng = mulberry32(config.seed);
   for (let attempt = 0; attempt < 5; attempt++) {
     const positions = buildPositions(config.tileCount, config.layers, config.layoutId,{seed:config.seed,generationVersion:config.generationVersion});
-    const { tiles, solution } = assignSolvableSymbols(positions, theme.iconIds, rng, config.level);
+    const { tiles, solution } = assignSolvableSymbols(positions, config.iconIds||theme.iconIds, rng, config.level);
     const solved = solveLevel(tiles, [], solution);
     if (solved.solved) return { ...config, theme, tiles, solution: solved.sequence, validation: {...solved,shapeValid:validateShapePositions(config,positions),shapeFallbackUsed:false}, attempt };
   }
